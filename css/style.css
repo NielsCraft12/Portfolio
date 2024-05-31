@@ -1,0 +1,330 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Baloo 2", cursive;
+}
+
+.banner-text {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.banner-text ul {
+  height: 50px;
+  display: flex;
+  justify-content: flex-end; /* Aligns the navbar to the right */
+}
+
+.banner-text ul li {
+  display: inline-block;
+  padding: 40px 15px;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.banner-text a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.banner-text h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 100px;
+  margin-top: 20%;
+}
+
+.animation-area {
+  background: linear-gradient(to left, #bb7a45, #ae445a);
+  width: 100vw;
+  height: 100vh;
+}
+
+.box-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.box-area li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 25px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 20s linear infinite;
+  bottom: -150px;
+}
+
+.box-area li:nth-child(1) {
+  left: 86%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.box-area li:nth-child(2) {
+  left: 12%;
+  width: 30px;
+  height: 30px;
+  animation-delay: 1.5s;
+  animation-duration: 10s;
+}
+
+.box-area li:nth-child(3) {
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  animation-delay: 5.5s;
+}
+
+.box-area li:nth-child(4) {
+  left: 42%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 15s;
+}
+
+.box-area li:nth-child(5) {
+  left: 65%;
+  width: 40px;
+  height: 40px;
+  animation-delay: 0s;
+}
+
+.box-area li:nth-child(6) {
+  left: 15%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3.5s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.container-animated {
+  width: 95%;
+  max-width: 1160px;
+  margin: auto;
+}
+
+.animated-heading {
+  font-size: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
+/*About me */
+#aboutme h1 {
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+}
+
+#aboutme {
+  background-color: #1e1e1e;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: min-content min-content min-content min-content;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . Image Text Text . ."
+    "CSharp Unity Html Css JavaScript Github Php"
+    "CShrapText UnityText HtmlText CssText JavaScriptText GithubText PhpText"
+    "CSharpLevel UnityLevel HtmlLevel CssLevel JavaScriptLevel GithubLevel PhpLevel";
+}
+
+@media (min-width: 600px) {
+  .container {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content min-content;
+    grid-template-areas:
+      "Image"
+      "Text"
+      "CSharp"
+      "CShrapText"
+      "CSharpLevel"
+      "Unity"
+      "UnityText"
+      "UnityLevel"
+      "Html"
+      "HtmlText"
+      "HtmlLevel"
+      "Css"
+      "CssText"
+      "CssLevel"
+      "JavaScript"
+      "JavaScriptText"
+      "JavaScriptLevel"
+      "Github"
+      "GithubText"
+      "GithubLevel"
+      "Php"
+      "PhpText"
+      "PhpLevel";
+  }
+}
+
+.CSharp {
+  grid-area: CSharp;
+}
+
+.Unity {
+  grid-area: Unity;
+}
+
+.Html {
+  grid-area: Html;
+}
+
+.Css {
+  grid-area: Css;
+}
+
+.JavaScript {
+  grid-area: JavaScript;
+}
+
+.Github {
+  grid-area: Github;
+}
+
+.CShrapText {
+  grid-area: CShrapText;
+}
+
+.UnityText {
+  grid-area: UnityText;
+}
+
+.HtmlText {
+  grid-area: HtmlText;
+}
+
+.CssText {
+  grid-area: CssText;
+}
+
+.JavaScriptText {
+  grid-area: JavaScriptText;
+}
+
+.GithubText {
+  grid-area: GithubText;
+}
+
+.CSharpLevel {
+  grid-area: CSharpLevel;
+}
+
+.UnityLevel {
+  grid-area: UnityLevel;
+}
+
+.HtmlLevel {
+  grid-area: HtmlLevel;
+}
+
+.CssLevel {
+  grid-area: CssLevel;
+}
+
+.JavaScriptLevel {
+  grid-area: JavaScriptLevel;
+}
+
+.GithubLevel {
+  grid-area: GithubLevel;
+}
+
+.Php {
+  grid-area: Php;
+}
+
+.PhpText {
+  grid-area: PhpText;
+}
+
+.PhpLevel {
+  grid-area: PhpLevel;
+}
+
+.Image {
+  grid-area: Image;
+}
+
+.Text {
+  padding-left: 30px;
+  grid-area: Text;
+}
+
+p {
+  color: #fff;
+  font-size: 25px;
+}
+
+#Projects {
+  background-color: #ff9d9d;
+  height: 100vh;
+}
+
+#Projects h1 {
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+}
+
+#Contact {
+  background-color: #000000;
+  height: 100vh;
+}
+
+#Contact h1 {
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#navbar {
+  display: flex;
+  justify-content: flex-end; /* Ensures the navbar items are aligned to the right */
+  text-align: right; /* Aligns the text to the right */
+  position: fixed;
+  width: 100%;
+}

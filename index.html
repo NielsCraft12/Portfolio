@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--Code by Divinector - divinectorweb.com-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>animated background with pure css and html</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <section id="Home"></section>
+    <script type="text/javascript">
+      (function () {
+        var words = [" Developer", " Game Developer", " Gamer", " Movie Lover", " Happy Person"],
+          i = 0;
+        setInterval(function () {
+          $("#words").fadeOut(function () {
+            $(this)
+              .html(words[(i = (i + 1) % words.length)])
+              .fadeIn();
+          });
+        }, 3000);
+      })();
+    </script>
+    <section id="#HomeContent">
+      <div class="banner-text">
+        <div id="navbar">
+          <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#aboutme">About Me</a></li>
+            <li><a href="#Projects">Projects</a></li>
+            <li><a href="#Contact">Contact</a></li>
+          </ul>
+        </div>
+        <h2>Hello, I'm Niels de Laat</h2>
+
+        <div class="row-outer">
+          <div class="container-animated">
+            <div class="animated-heading">
+              <br />
+              <h1>I'm a<span id="words"> Developer</span></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="animation-area">
+        <ul class="box-area">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </section>
+    <section id="aboutme">
+      <h1>About Me</h1>
+      <div class="container">
+        <div class="Image">
+          <img src="Images/me.jpg" alt="" style="height: 50vh; border-radius: 20px" />
+        </div>
+        <div class="Text">
+          <p style="max-height: 50vh; max-width: 100vw">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim, recusandae minus! Ex, quae! Placeat ullam voluptas reiciendis? Non eveniet obcaecati quae veniam impedit ab modi cum sapiente suscipit, dolore accusantium!</p>
+        </div>
+        <div class="CSharp">
+          <img src="Images/CSharpLogo.png" alt="" style="height: 250px" />
+        </div>
+        <div class="Unity"></div>
+        <div class="Html"></div>
+        <div class="Css"></div>
+        <div class="JavaScript"></div>
+        <div class="Github"></div>
+        <div class="CShrapText">C#</div>
+        <div class="UnityText"></div>
+        <div class="HtmlText"></div>
+        <div class="CssText"></div>
+        <div class="JavaScriptText"></div>
+        <div class="GithubText"></div>
+        <div class="CSharpLevel">hallo</div>
+        <div class="UnityLevel"></div>
+        <div class="HtmlLevel"></div>
+        <div class="CssLevel"></div>
+        <div class="JavaScriptLevel"></div>
+        <div class="GithubLevel"></div>
+        <div class="Php"></div>
+        <div class="PhpText"></div>
+        <div class="PhpLevel"></div>
+      </div>
+    </section>
+    <section id="Projects">
+      <h1>Projects</h1>
+    </section>
+
+    <section id="Contact">
+      <h1>Contact Me</h1>
+    </section>
+  </body>
+</html>
