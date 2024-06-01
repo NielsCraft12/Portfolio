@@ -173,7 +173,7 @@ body {
 
 .Myskills {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 0px;
   width: 100%;
 }
 
@@ -240,12 +240,19 @@ html {
   width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   .container-skills {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 20px;
     justify-items: center;
+  }
+
+  #aboutme h1 {
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    padding-top: 3vh;
   }
 
   .skill {
@@ -253,8 +260,9 @@ html {
     margin: 0;
   }
 
-  .skill img {
-    height: 25px;
+  #aboutme .Image img {
+    height: 45vh;
+    border-radius: 50px;
   }
 
   #aboutme {
@@ -271,8 +279,6 @@ html {
   }
 
   #aboutme p {
-    color: #000000;
-    font-size: 15px;
+    color: #ffffff;
   }
-
 }

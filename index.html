@@ -1,167 +1,154 @@
 <!DOCTYPE html>
 <!-- Code by Divinector - divinectorweb.com -->
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>animated background with pure css and html</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <title>animated background with pure css and html</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
-    }
+      .container div {
+        margin: 10px;
+        text-align: center;
+      }
 
-    .container div {
-      margin: 10px;
-      text-align: center;
-    }
+      .container img {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
 
-    .container img {
-      display: block;
-      margin: 0 auto;
-    }
-  </style>
-</head>
+  <body>
+    <section id="Home"></section>
+    <script type="text/javascript">
+      (function () {
+        var words = [" Developer", " Game Developer", " Gamer", " Movie Lover", " Happy Person"],
+          i = 0;
+        setInterval(function () {
+          $("#words").fadeOut(function () {
+            $(this)
+              .html(words[(i = (i + 1) % words.length)])
+              .fadeIn();
+          });
+        }, 3000);
+      })();
+    </script>
+    <section id="#HomeContent">
+      <div class="banner-text">
+        <div id="navbar">
+          <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#aboutme">About Me</a></li>
+            <li><a href="#Projects">Projects</a></li>
+            <li><a href="#Contact">Contact</a></li>
+          </ul>
+        </div>
+        <h2>Hello, I'm Niels de Laat</h2>
 
-<body>
-  <section id="Home"></section>
-  <script type="text/javascript">
-    (function () {
-      var words = [" Developer", " Game Developer", " Gamer", " Movie Lover", " Happy Person"],
-        i = 0;
-      setInterval(function () {
-        $("#words").fadeOut(function () {
-          $(this)
-            .html(words[(i = (i + 1) % words.length)])
-            .fadeIn();
-        });
-      }, 3000);
-    })();
-  </script>
-  <section id="#HomeContent">
-    <div class="banner-text">
-      <div id="navbar">
-        <ul>
-          <li><a href="#Home">Home</a></li>
-          <li><a href="#aboutme">About Me</a></li>
-          <li><a href="#Projects">Projects</a></li>
-          <li><a href="#Contact">Contact</a></li>
+        <div class="row-outer">
+          <div class="container-animated">
+            <div class="animated-heading">
+              <br />
+              <h1>I'm a<span id="words"> Developer</span></h1>
+            </div>
+          </div>
+
+          <a href="#aboutme">
+            <h1 style="text-align: center; color: white; padding-top: 30vh"><i class="fa-solid fa-chevron-down fa-bounce"></i></h1>
+          </a>
+        </div>
+      </div>
+      <div class="animation-area">
+        <ul class="box-area">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
         </ul>
       </div>
-      <h2>Hello, I'm Niels de Laat</h2>
-
-      <div class="row-outer">
-        <div class="container-animated">
-          <div class="animated-heading">
-            <br />
-            <h1>I'm a<span id="words"> Developer</span>
-            </h1>
+    </section>
+    <section id="aboutme">
+      <h1>About Me</h1>
+      <div class="aboutme-content">
+        <div class="container">
+          <div class="Image">
+            <img src="Images/me.jpg" alt="" />
+          </div>
+          <div class="Text">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, recusandae minus! Ex, quae! Placeat ullam voluptas reiciendis? Non eveniet obcaecati quae veniam impedit ab modi cum sapiente suscipit, dolore accusantium! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur soluta accusantium esse fugiat harum similique id animi nulla, unde fuga? Quibusdam, nobis id? Adipisci eveniet, omnis rerum fuga incidunt aliquid.</p>
           </div>
         </div>
-
-        <a href="#aboutme">
-          <h1 style="text-align: center; color: white; padding-top: 30vh;"><i
-              class="fa-solid fa-chevron-down fa-bounce"></i></h1>
-        </a>
       </div>
-
-    </div>
-    <div class="animation-area">
-      <ul class="box-area">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </div>
-  </section>
-  <section id="aboutme">
-    <h1>About Me</h1>
-    <div class="aboutme-content">
-      <div class="container">
-        <div class="Image">
-          <img src="Images/me.jpg" alt="" />
-        </div>
-        <div class="Text">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, recusandae minus! Ex, quae! Placeat ullam
-            voluptas reiciendis? Non eveniet obcaecati quae veniam impedit ab modi cum sapiente suscipit, dolore
-            accusantium! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur soluta accusantium esse
-            fugiat harum similique id animi nulla, unde fuga? Quibusdam, nobis id? Adipisci eveniet, omnis rerum fuga
-            incidunt aliquid.</p>
-        </div>
-      </div>
-    </div>
-    <div class="Myskills">
-      <h1>My Skills</h1>
-      <div class="container-skills">
-        <div class="skill">
-          <img src="Images/CSharpLogo.png" alt="CSharp Logo" />
-          <p>C#</p>
-          <div class="stars">★★★★☆</div>
-        </div>
-        <div class="skill">
-          <img src="Images/UnityLogo.png" alt="Unity Logo" />
-          <p>Unity</p>
-          <div class="stars">★★★★☆</div>
-        </div>
-        <div class="skill">
-          <img src="Images/htmlLogo.png" alt="Html Logo" />
-          <p>HTML</p>
-          <div class="stars">★★☆☆☆</div>
-        </div>
-        <div class="skill">
-          <img src="Images/cssLogo.png" alt="Css Logo" />
-          <p>CSS</p>
-          <div class="stars">★★☆☆☆</div>
-        </div>
-        <div class="skill">
-          <img src="Images/JavaScriptLogo.png" alt="JavaScript Logo" />
-          <p>JavaScript</p>
-          <div class="stars">★★☆☆☆</div>
-        </div>
-        <div class="skill">
-          <img src="Images/GithubLogo.png" alt="Github Logo" />
-          <p>GitHub</p>
-          <div class="stars">★★★★☆</div>
-        </div>
-        <div class="skill">
-          <img src="Images/BlenderLogo.webp" alt="Blender Logo" />
-          <p>Blender</p>
-          <div class="stars">★☆☆☆☆</div>
-        </div>
-        <div class="skill">
-          <img src="Images/PhpLogo.png" alt="Php Logo" />
-          <p>PHP</p>
-          <div class="stars">★☆☆☆☆</div>
-        </div>
-        <div class="skill">
-          <img src="Images/PythonLogo.png" alt="Python Logo" />
-          <p>Python</p>
-          <div class="stars">★★☆☆☆</div>
+      <div class="Myskills">
+        <h1>My Skills</h1>
+        <div class="container-skills">
+          <div class="skill">
+            <img src="Images/CSharpLogo.png" alt="CSharp Logo" />
+            <p>C#</p>
+            <div class="stars">★★★★☆</div>
+          </div>
+          <div class="skill">
+            <img src="Images/UnityLogo.png" alt="Unity Logo" />
+            <p>Unity</p>
+            <div class="stars">★★★★☆</div>
+          </div>
+          <div class="skill">
+            <img src="Images/htmlLogo.png" alt="Html Logo" />
+            <p>HTML</p>
+            <div class="stars">★★☆☆☆</div>
+          </div>
+          <div class="skill">
+            <img src="Images/cssLogo.png" alt="Css Logo" />
+            <p>CSS</p>
+            <div class="stars">★★☆☆☆</div>
+          </div>
+          <div class="skill">
+            <img src="Images/JavaScriptLogo.png" alt="JavaScript Logo" />
+            <p>JavaScript</p>
+            <div class="stars">★★☆☆☆</div>
+          </div>
+          <div class="skill">
+            <img src="Images/GithubLogo.png" alt="Github Logo" />
+            <p>GitHub</p>
+            <div class="stars">★★★★☆</div>
+          </div>
+          <div class="skill">
+            <img src="Images/BlenderLogo.webp" alt="Blender Logo" />
+            <p>Blender</p>
+            <div class="stars">★☆☆☆☆</div>
+          </div>
+          <div class="skill">
+            <img src="Images/PhpLogo.png" alt="Php Logo" />
+            <p>PHP</p>
+            <div class="stars">★☆☆☆☆</div>
+          </div>
+          <div class="skill">
+            <img src="Images/PythonLogo.png" alt="Python Logo" />
+            <p>Python</p>
+            <div class="stars">★★☆☆☆</div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
+    <section id="Projects">
+      <h1>Projects</h1>
+    </section>
 
-
-  <section id="Projects">
-    <h1>Projects</h1>
-  </section>
-
-  <section id="Contact">
-    <h1>Contact Me</h1>
-  </section>
-</body>
-
+    <section id="Contact">
+      <h1>Contact Me</h1>
+    </section>
+  </body>
 </html>
