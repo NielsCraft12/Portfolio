@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<!-- Code by Divinector - divinectorweb.com -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-  <title>animated background with pure css and html</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+  <meta name="viewport" content="height=device-height, 
+ width=device-width, initial-scale=1.0, 
+ minimum-scale=1.0, maximum-scale=1.0, 
+ user-scalable=no, target-densitydpi=device-dpi">
+  <title>Portfolio Niels de Laat</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--foogle fonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <!--Style sheets-->
+  <link href="css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/Home.css">
+  <link rel="stylesheet" href="css/Aboutme.css">
+  <link rel="stylesheet" href="css/Experience.css">
+  <link rel="stylesheet" href="css/Projects.css">
+  <link rel="stylesheet" href="css/Contact.css">
+  <!--Fontawesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -49,14 +61,28 @@
   </script>
   <section id="#HomeContent">
     <div class="banner-text">
-      <div id="navbar">
-        <ul>
-          <li><a href="#Home">Home</a></li>
-          <li><a href="#aboutme">About Me</a></li>
-          <li><a href="#Projects">Projects</a></li>
-          <li><a href="#Contact">Contact</a></li>
-        </ul>
-      </div>
+      <nav>
+        <input type="checkbox" id="sidebar-active">
+        <label for="sidebar-active" class="open-sidebar-button">
+          <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i>
+        </label>
+        <label id="overlay" for="sidebar-active"></label>
+        <div class="links-container">
+          <label for="sidebar-active" class="close-sidebar-button">
+            <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff;"></i>
+          </label>
+          <a class="home-link" href="#Home">Home</a>
+          <a href="#Aboutme">About me</a>
+          <a href="#Experience">Experience</a>
+          <a href="#Projects">Projects</a>
+          <a href="#Contact">Contact</a>
+        </div>
+      </nav>
+
+
+
+
+
       <h2>Hello, I'm Niels de Laat</h2>
 
       <div class="row-outer">
@@ -67,9 +93,8 @@
           </div>
         </div>
 
-        <a href="#aboutme">
-          <h1 style="text-align: center; color: white; padding-top: 30vh"><i
-              class="fa-solid fa-chevron-down fa-bounce"></i></h1>
+        <a href="#Aboutme">
+          <h1 id="down-arrow"><i class="fa-solid fa-chevron-down fa-bounce"></i></h1>
         </a>
       </div>
     </div>
@@ -84,7 +109,7 @@
       </ul>
     </div>
   </section>
-  <section id="aboutme">
+  <section id="Aboutme">
     <h1 id="aboutmetext">About Me</h1>
     <div class="aboutme-content">
       <div class="container">
@@ -94,9 +119,7 @@
         <div class="Text">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, recusandae minus! Ex, quae! Placeat ullam
             voluptas reiciendis? Non eveniet obcaecati quae veniam impedit ab modi cum sapiente suscipit, dolore
-            accusantium! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur soluta accusantium esse
-            fugiat harum similique id animi nulla, unde fuga? Quibusdam, nobis id? Adipisci eveniet, omnis rerum fuga
-            incidunt aliquid.</p>
+            accusantium! Lorem ipsum, dolor sit amet consectetur Lorem ipsum, dolor sit amet consectetur adipisicing</p>
         </div>
       </div>
     </div>
@@ -151,7 +174,60 @@
       </div>
     </div>
   </section>
+  <hr class="rounded">
+  <section id="Experience">
 
+    <h1>Experience</h1>
+
+    <div class="timeline">
+      <div class="container-timeline left-container">
+        <img src="Images/gluLogo.png" alt="">
+        <div class="text-box">
+          <h2>Grafisch Lyceum Utrecht</h2>
+          <small>2024-Present</small>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
+            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
+          <span class="left-container-arrow"></span>
+        </div>
+
+        <!--</div>
+      <div class="container-timeline right-container">
+        <img src="Images/gluLogo.png" alt="">
+        <div class="text-box">
+          <h2>Toekomst</h2>
+          <small>2024-Present</small>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
+            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
+          <span class="right-container-arrow"></span>
+        </div>
+
+      </div>
+      <div class="container-timeline left-container">
+        <img src="Images/gluLogo.png" alt="">
+        <div class="text-box">
+          <h2>Toekomst</h2>
+          <small>2024-Present</small>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
+            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
+          <span class="left-container-arrow"></span>
+        </div>
+
+      </div>
+      <div class="container-timeline right-container">
+        <img src="Images/gluLogo.png" alt="">
+        <div class="text-box">
+          <h2>Toekomst</h2>
+          <small>2024-Present</small>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
+            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
+          <span class="right-container-arrow"></span>
+        </div>
+      -->
+      </div>
+    </div>
+
+
+  </section>
   <section id="Projects">
     <h1>Projects</h1>
   </section>

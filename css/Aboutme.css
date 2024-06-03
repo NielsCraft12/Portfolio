@@ -1,0 +1,242 @@
+#Aboutme h1 {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+}
+
+#Aboutme {
+    height: 100vh;
+    background-color: #1e1e1e;
+    padding: 50px 0;
+}
+
+#Aboutme .Aboutme-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#Aboutme .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* Reduced the gap here */
+}
+
+#Aboutme .Image img {
+    height: 60vh;
+    border-radius: 20px;
+}
+
+#Aboutme .Text {
+    text-align: left;
+    max-width: 50vw;
+    color: #fff;
+    font-size: 20px;
+}
+
+.Myskills h1 {
+    font-size: 40px;
+}
+
+.Myskills {
+    text-align: center;
+    padding-top: 0px;
+    width: 100%;
+}
+
+.container-skills {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.skill {
+    text-align: center;
+    color: #fff;
+}
+
+.skill img {
+    height: 80px;
+    border-radius: 10px;
+}
+
+.skill .stars {
+    font-size: 15px;
+    color: gold;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 780px) and (orientation: portrait) {
+
+    .container-skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+        /* Define grid layout */
+        gap: 20px;
+        /* Add gap between grid items */
+        justify-items: center;
+        max-width: 90%;
+        /* Limit maximum width */
+        margin: 0 auto;
+        /* Center the container */
+    }
+
+
+    #Aboutmetext {
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+        padding-top: 2vh;
+    }
+
+    .skill {
+        text-align: center;
+        color: #fff;
+        width: 120px;
+        /* Set width for grid items */
+    }
+
+    #Aboutme .Image img {
+        height: 25vh;
+        border-radius: 20px;
+    }
+
+    #Aboutme {
+        padding: 20px 0;
+    }
+
+    #Aboutme .container {
+        flex-direction: column;
+        gap: 1px;
+        /* Reduced the gap for mobile here */
+    }
+
+    #Aboutme .Text {
+        max-width: 90vw;
+        font-size: 16px;
+    }
+
+    .banner-text h2 {
+        font-size: 24px;
+        margin-top: 30%;
+    }
+
+    .banner-text ul li {
+        justify-content: center;
+        font-size: 12px;
+        padding-top: 10px;
+        padding-right: 5vw;
+    }
+
+    .animated-heading {
+        font-size: 14px;
+    }
+
+    .skill img {
+        height: 5vh;
+        /* Set image height */
+        width: auto;
+        /* Ensure the width adjusts proportionally */
+    }
+
+
+    .Myskills p {
+        font-size: 2vh;
+    }
+
+    .skill .stars {
+        font-size: 14px;
+        /* Adjust star font size */
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    #Projects h1,
+    #Contact h1 {
+        font-size: 24px;
+    }
+
+    #Aboutme h1,
+    .Myskills h1 {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 781px) and (orientation: portrait) {
+    .container-skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
+
+    #Aboutmetext {
+        font-size: 32px;
+        color: #fff;
+        text-align: center;
+        padding-top: 3vh;
+    }
+
+    .skill {
+        width: auto;
+        margin: 0;
+    }
+
+    #Aboutme .Image img {
+        height: 35vh;
+        border-radius: 50px;
+    }
+
+    #Aboutme {
+        padding: 30px 0;
+    }
+
+    #Aboutme .container {
+        flex-direction: column;
+        gap: 15px;
+        /* Reduced the gap for tablet here */
+    }
+
+    #Aboutme .Text {
+        max-width: 90vw;
+        font-size: 18px;
+    }
+
+    .banner-text h2 {
+        font-size: 50px;
+        margin-top: 30%;
+    }
+
+    .skill img {
+        height: 70px;
+    }
+
+    .skill .stars {
+        font-size: 14px;
+    }
+
+    #Aboutme h1,
+    .Myskills h1 {
+        font-size: 36px;
+    }
+}
