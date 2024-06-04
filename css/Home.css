@@ -1,7 +1,7 @@
 #down-arrow {
     text-align: center;
     color: white;
-    padding-top: 30vh;
+    padding-top: 28vh;
 }
 
 .banner-text {
@@ -111,11 +111,12 @@
 }
 
 .animated-heading {
+    padding-left: 15VW;
     font-size: 30px;
     color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    text-align: left;
 }
 
 @media only screen and (max-width: 780px) and (orientation: portrait) {
@@ -134,7 +135,9 @@
         padding-top: 17vh;
     }
 
-
+    .animated-heading {
+        padding-left: 30vw;
+    }
 
 
 }

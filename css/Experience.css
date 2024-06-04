@@ -64,7 +64,7 @@
 }
 
 .container-timeline:nth-child(2) {
-    animation-delay: 1.5s;
+    animation-delay: 3.5s;
 }
 
 .container-timeline:nth-child(3) {
@@ -209,4 +209,11 @@
     .left-container {
         padding-left: 130px;
     }
+
+    #Experience {
+        height: max-content;
+    }
+
+
+
 }
