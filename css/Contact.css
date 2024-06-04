@@ -1,10 +1,157 @@
 #Contact {
     background-color: #1e1e1e;
     height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 #Contact h1 {
     font-size: 50px;
     color: #fff;
     text-align: center;
+}
+
+.contact-container {
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+
+.contact-left-title h2 {
+    font-weight: 600;
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.contact-left-title hr {
+    border: none;
+    width: 120px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+}
+
+.contact-inputs {
+    width: 400px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: #666;
+    border-radius: 50px;
+}
+
+
+.contact-left textarea {
+    height: 140px;
+    padding-top: 15px;
+    border-radius: 20px;
+}
+
+.contact-inputs:focus {
+    border: solid 3px transparent;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to left, #bb7a45, #ae445a);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.contact-inputs:focus {
+    border: solid 3px transparent;
+}
+
+.contact-inputs::placeholder {
+    color: #a9a9a9;
+}
+
+.contact-left button {
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    width: 430px;
+    color: #fff;
+    gap: 10px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(to left, #bb7a45, #ae445a);
+    cursor: pointer;
+
+}
+
+.contact-left button i {
+    height: 15px;
+}
+
+.contact-right img {
+    width: 500px;
+}
+
+@media (max-width:800px) {
+    .contact-inputs {
+        width: 80vw;
+    }
+
+    .contact-right {
+        display: none;
+
+    }
+
+    .contact-container {
+        padding-top: 30px;
+    }
+
+}
+
+
+
+.fa {
+    padding: 20px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-linkedin {
+
+    border-radius: 20px;
+    background: #007bb5;
+    color: white;
+}
+
+.fa-itch-io {
+
+    border-radius: 20px;
+    background: #dd4a4a;
+    color: white;
+}
+
+.socal-media-buttons {
+    font-size: 30px;
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

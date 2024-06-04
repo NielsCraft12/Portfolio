@@ -171,15 +171,7 @@
         font-size: 14px;
     }
 
-    #Projects h1,
-    #Contact h1 {
-        font-size: 24px;
-    }
 
-    #Aboutme h1,
-    .Myskills h1 {
-        font-size: 24px;
-    }
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 781px) and (orientation: portrait) {
@@ -229,14 +221,5 @@
 
     .skill img {
         height: 70px;
-    }
-
-    .skill .stars {
-        font-size: 14px;
-    }
-
-    #Aboutme h1,
-    .Myskills h1 {
-        font-size: 36px;
     }
 }
