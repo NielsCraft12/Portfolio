@@ -1,5 +1,5 @@
 #Aboutme h1 {
-    font-size: 50px;
+    font-size: 5vh;
     color: #fff;
     text-align: center;
 }
@@ -8,6 +8,7 @@
     height: 100vh;
     background-color: #1e1e1e;
     padding: 50px 0;
+    overflow: hidden;
 }
 
 #Aboutme .Aboutme-content {
@@ -34,11 +35,12 @@
     text-align: left;
     max-width: 50vw;
     color: #fff;
-    font-size: 20px;
+    font-size: 3vh;
 }
 
 .Myskills h1 {
-    font-size: 40px;
+    font-size: 10vh;
+    color: #ff0000;
 }
 
 .Myskills {
@@ -171,7 +173,9 @@
         font-size: 14px;
     }
 
-
+    #Aboutme h1 {
+        font-size: 30px;
+    }
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 781px) and (orientation: portrait) {
@@ -222,4 +226,7 @@
     .skill img {
         height: 70px;
     }
+
+
+
 }

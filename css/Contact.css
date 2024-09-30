@@ -2,20 +2,20 @@
     background-color: #1e1e1e;
     height: 100vh;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 #Contact h1 {
     font-size: 50px;
     color: #fff;
     text-align: center;
+
 }
 
 .contact-container {
-    padding-top: 100px;
+    padding-top: 5vh;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .contact-left {
@@ -99,11 +99,22 @@
     height: 15px;
 }
 
-.contact-right img {
-    width: 500px;
+.more-contact-title {
+    margin: 20px;
+    line-height: 37px;
+    font-size: 50px;
+    text-align: center;
+
 }
 
+
+
 @media (max-width:800px) {
+    .more-contact-title {
+        font-size: 30px;
+
+    }
+
     .contact-inputs {
         width: 80vw;
     }
@@ -117,13 +128,28 @@
         padding-top: 30px;
     }
 
+    .contact-left button {
+        width: 87vw;
+    }
+
+    .socal-media-buttons {
+        margin-bottom: 20px;
+
+    }
+
+    #Contact h1 {
+        font-size: 30px;
+    }
+
+
 }
 
 
 
 .fa {
     padding: 20px;
-    width: 50px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     text-decoration: none;
 }
@@ -147,6 +173,12 @@
     color: white;
 }
 
+.fa-envelope {
+    border-radius: 20px;
+    background: #55ACEE;
+    color: white;
+}
+
 .socal-media-buttons {
     font-size: 30px;
     gap: 20px;
@@ -154,4 +186,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+.contact-divider {
+
+    width: 10vw;
+    margin-top: 20px;
 }

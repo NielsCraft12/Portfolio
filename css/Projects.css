@@ -137,4 +137,8 @@
     #Projects {
         height: max-content;
     }
+
+    #Projects h1 {
+        font-size: 30px;
+    }
 }

@@ -1,3 +1,8 @@
+#Home {
+    overflow: hidden;
+}
+
+
 #down-arrow {
     text-align: center;
     color: white;
@@ -18,7 +23,7 @@
 .banner-text h2 {
     text-align: center;
     color: #fff;
-    font-size: 6vw;
+    font-size: 6vh;
     margin-top: 35vh;
 }
 
@@ -111,15 +116,26 @@
 }
 
 .animated-heading {
-    padding-left: 15VW;
-    font-size: 30px;
-    color: #fff;
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: left;
 }
 
+.animated-heading h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 4vh;
+}
+
 @media only screen and (max-width: 780px) and (orientation: portrait) {
+
+    .animated-heading h1 {
+        align-items: center;
+        font-size: 20px;
+    }
+
+
     #down-arrow {
         text-align: center;
         color: white;
@@ -134,11 +150,6 @@
     .banner-text h2 {
         padding-top: 17vh;
     }
-
-    .animated-heading {
-        padding-left: 30vw;
-    }
-
 
 }
 

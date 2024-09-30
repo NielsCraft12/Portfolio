@@ -4,10 +4,13 @@
 }
 
 body {
+  background-color: #1e1e1e;
   overflow-x: hidden;
   font-family: "Baloo 2", cursive;
-  background-color: #1e1e1e;
+  overflow: hidden;
+
 }
+
 
 html {
   overflow-x: hidden;
@@ -43,7 +46,7 @@ hr.rounded {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e1e1e;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
