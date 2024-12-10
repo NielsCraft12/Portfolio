@@ -1,9 +1,21 @@
 #Home {
   overflow: hidden;
+  min-width: 100vw;
+  /* Ensures full-width of viewport */
+  min-height: 100vh;
+  /* Ensures full height of viewport */
 }
 
 #HomeContent {
-  max-height: max-content;
+  min-height: 100vh;
+  /* Ensures content height matches viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#HomeContent {
+  max-height: 100vh;
 }
 
 #down-arrow {
@@ -34,7 +46,8 @@
 .animation-area {
   background: linear-gradient(to left, #bb7a45, #ae445a);
   min-width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  max-width: max-content;
 }
 
 .box-area {
@@ -141,7 +154,7 @@
   #down-arrow {
     text-align: center;
     color: white;
-    padding-top: 50vh;
+    /* padding-top: 50vh; */
   }
 
   .hamburger {
@@ -154,8 +167,7 @@
   }
 }
 
-@media only screen and (max-width: 1200px) and (min-width: 781px) and (orientation: portrait) {
-}
+@media only screen and (max-width: 1200px) and (min-width: 781px) and (orientation: portrait) {}
 
 nav {
   position: fixed;
@@ -244,11 +256,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked ~ .links-container {
+  #sidebar-active:checked~.links-container {
     right: 0;
   }
 
-  #sidebar-active:checked ~ #overlay {
+  #sidebar-active:checked~#overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -257,11 +269,11 @@ nav a:hover {
     z-index: 9;
   }
 
-  #sidebar-active:checked ~ .open-sidebar-button {
+  #sidebar-active:checked~.open-sidebar-button {
     display: none;
   }
 
-  #sidebar-active:checked ~ .links-container .close-sidebar-button {
+  #sidebar-active:checked~.links-container .close-sidebar-button {
     display: block;
     position: absolute;
     top: 10px;
@@ -270,7 +282,7 @@ nav a:hover {
     /* Ensures it stays above the menu */
   }
 
-  #sidebar-active:not(:checked) ~ .close-sidebar-button {
+  #sidebar-active:not(:checked)~.close-sidebar-button {
     display: none;
   }
 
