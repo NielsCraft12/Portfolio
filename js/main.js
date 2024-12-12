@@ -1,66 +1,23 @@
-const allPosts = [
-    {
-        title: "Mastering Responsive Web Design: Building Sites for All Devices",
-        label: "Masterclass",
-        thumbnail: "images/1.jpg",
-        summary:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste labore quaerat repellat blanditiis ullam amet.",
-        link: "#",
-    },
+function calculateAge(birthday) {
+  const today = new Date();
+  const birthDate = new Date(birthday);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+  const dayDifference = today.getDate() - birthDate.getDate();
 
-    {
-        title: "CSS Grid Simplified - Updated",
-        label: "Development",
-        thumbnail: "images/2.jpg",
-        summary:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste labore quaerat repellat blanditiis ullam amet.",
-        link: "#",
-    },
+  // Adjust age if today's date is before the birthday this year
+  if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+    age--;
+  }
 
-    {
-        title: "Faster Websites: Performance Tips",
-        label: "Optimization",
-        thumbnail: "images/3.jpg",
-        summary:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste labore quaerat repellat blanditiis ullam amet.",
-        link: "#",
-    },
+  return age;
+}
 
-    {
-        title: "Front-End Framework Comparison",
-        label: "Development",
-        thumbnail: "",
-        summary:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste labore quaerat repellat blanditiis ullam amet.",
-        link: "#",
-    },
-];
+function updateAgeDisplay() {
+  const birthday = "2005-03-20"; // Set your birth date here (YYYY-MM-DD)
+  const ageElement = document.getElementById("age");
+  ageElement.textContent = calculateAge(birthday);
+}
 
-const blogPostsContainer = document.querySelector(".blog-posts-container");
-
-const generatePostsHTML = () => {
-    allPosts.forEach((p) => {
-        const HTML = `<div class="thumbnail">
-          <img src="${p.thumbnail}" alt="" />
-        </div>
-  
-        <div class="text-content">
-          <div class="label">${p.label}</div>
-          <h3 class="post-title">
-            ${p.title}
-          </h3>
-          <div class="summary">
-            ${p.summary}
-          </div>
-          <a class="read-more-btn" href="${p.link}">Read More...</a>
-        </div>`;
-
-        const blogPost = document.createElement("div");
-        blogPost.classList.add("blog-post");
-        blogPost.innerHTML = HTML;
-
-        blogPostsContainer.appendChild(blogPost);
-    });
-};
-
-generatePostsHTML();
+// Update age display when the page loads
+window.onload = updateAgeDisplay;
