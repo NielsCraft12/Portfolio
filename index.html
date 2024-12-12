@@ -1,129 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
-    <meta
-      name="viewport"
-      content="height=device-height, 
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+  <meta name="viewport" content="height=device-height, 
  width=device-width, initial-scale=1.0, 
  minimum-scale=1.0, maximum-scale=1.0, 
- user-scalable=no, target-densitydpi=device-dpi"
-    />
-    <title>Portfolio Niels de Laat</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--foogle fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
-    <!--Style sheets-->
-    <link href="css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/Home.css" />
-    <!-- <link rel="stylesheet" href="css/Aboutme.css" /> -->
-    <link rel="stylesheet" href="css/Experience.css" />
-    <link rel="stylesheet" href="css/Projects.css" />
-    <link rel="stylesheet" href="css/Contact.css" />
-    <!--Fontawesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <style>
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
-      }
+ user-scalable=no, target-densitydpi=device-dpi" />
+  <title>Portfolio Niels de Laat</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--foogle fonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <!--Style sheets-->
+  <link href="css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/Home.css" />
+  <!-- <link rel="stylesheet" href="css/Aboutme.css" /> -->
+  <link rel="stylesheet" href="css/Experience.css" />
+  <link rel="stylesheet" href="css/Projects.css" />
+  <link rel="stylesheet" href="css/Contact.css" />
+  <!--Fontawesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+    }
 
-      .container div {
-        margin: 10px;
-        text-align: center;
-      }
+    .container div {
+      margin: 10px;
+      text-align: center;
+    }
 
-      .container img {
-        display: block;
-        margin: 0 auto;
-      }
-    </style>
-  </head>
+    .container img {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
 
-  <body>
-    <nav>
-      <input type="checkbox" id="sidebar-active" />
-      <label for="sidebar-active" class="open-sidebar-button">
-        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+<body>
+  <nav>
+    <input type="checkbox" id="sidebar-active" />
+    <label for="sidebar-active" class="open-sidebar-button">
+      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+    </label>
+    <label id="overlay" for="sidebar-active"></label>
+    <div class="links-container">
+      <label for="sidebar-active" class="close-sidebar-button">
+        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
-      <label id="overlay" for="sidebar-active"></label>
-      <div class="links-container">
-        <label for="sidebar-active" class="close-sidebar-button">
-          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
-        </label>
-        <a class="home-link" href="#Home">Home</a>
-        <a href="#Projects">Projects</a>
-        <a href="#Experience">Experience</a>
-        <a href="#Contact">Contact</a>
-      </div>
-    </nav>
-
-    <section id="Home"></section>
-    <div class="container">
-      <div class="Picture">
-        <img src="Images/me.jpg" alt="" />
-      </div>
-      <div class="Text">
-        <p class="age-location">🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands</p>
-        <h1>Hello, I'm Niels de Laat,</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quis consectetur quas corporis tenetur fugiat. Illum odit voluptatibus dolorum totam, corporis quis neque, nemo, tenetur fugit unde iste sit eos!</p>
-        <h1 style="text-align: center">Skills</h1>
-        <ul class="cd-demo-chip-list">
-          <li>
-            <span class="chip">
-              <img class="chip__img" src="Images/CSharpLogo.png" alt="Picture of Olivia Saturday" />
-              <i class="chip__label">C#</i>
-            </span>
-          </li>
-
-          <li>
-            <span class="chip">
-              <img class="chip__img" src="Images/UnityLogo.png" alt="Picture of David Smith" />
-              <i class="chip__label">Unity</i>
-            </span>
-          </li>
-
-          <li>
-            <span class="chip">
-              <img class="chip__img" src="Images/JavaScriptLogo.png" alt="Picture of Marta Rossi" />
-              <i class="chip__label">JavaScript</i>
-            </span>
-          </li>
-
-          <li>
-            <span class="chip">
-              <img class="chip__img" src="images/htmlLogo.png" alt="Picture of Paul Brown" />
-              <i class="chip__label">HTML</i>
-            </span>
-          </li>
-          <li>
-            <span class="chip">
-              <img class="chip__img" src="images/cssLogo2.png" alt="Picture of Paul Brown" />
-              <i class="chip__label">CSS</i>
-            </span>
-          </li>
-          <li>
-            <span class="chip">
-              <img class="chip__img" src="images/GithubLogo.png" alt="Picture of Paul Brown" />
-              <i class="chip__label">GitHub</i>
-            </span>
-          </li>
-
-          <li>
-            <span class="chip">
-              <img class="chip__img" src="images/PythonLogo.png" alt="Picture of Paul Brown" />
-              <i class="chip__label">Python</i>
-            </span>
-          </li>
-        </ul>
-      </div>
+      <a class="home-link" href="#Home">Home</a>
+      <a href="#Projects">Projects</a>
+      <a href="#Experience">Experience</a>
+      <a href="#Contact">Contact</a>
     </div>
+  </nav>
 
-    <!-- <script type="text/javascript">
+  <section id="Home"></section>
+  <div class="container">
+    <div class="Picture">
+      <img src="Images/me.jpg" alt="" />
+    </div>
+    <div class="Text">
+      <p class="age-location">🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands</p>
+      <h1>Hello, I'm Niels de Laat,</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quis consectetur quas corporis tenetur
+        fugiat. Illum odit voluptatibus dolorum totam, corporis quis neque, nemo, tenetur fugit unde iste sit eos!</p>
+      <h1 style="text-align: center">Skills</h1>
+      <ul class="cd-demo-chip-list">
+        <li>
+          <span class="chip">
+            <img class="chip__img" src="Images/CSharpLogo.png" alt="Picture of Olivia Saturday" />
+            <i class="chip__label">C#</i>
+          </span>
+        </li>
+
+        <li>
+          <span class="chip">
+            <img class="chip__img" src="Images/UnityLogo.png" alt="Picture of David Smith" />
+            <i class="chip__label">Unity</i>
+          </span>
+        </li>
+
+        <li>
+          <span class="chip">
+            <img class="chip__img" src="Images/JavaScriptLogo.png" alt="Picture of Marta Rossi" />
+            <i class="chip__label">JavaScript</i>
+          </span>
+        </li>
+
+        <li>
+          <span class="chip">
+            <img class="chip__img" src="images/htmlLogo.png" alt="Picture of Paul Brown" />
+            <i class="chip__label">HTML</i>
+          </span>
+        </li>
+        <li>
+          <span class="chip">
+            <img class="chip__img" src="images/cssLogo2.png" alt="Picture of Paul Brown" />
+            <i class="chip__label">CSS</i>
+          </span>
+        </li>
+        <li>
+          <span class="chip">
+            <img class="chip__img" src="images/GithubLogo.png" alt="Picture of Paul Brown" />
+            <i class="chip__label">GitHub</i>
+          </span>
+        </li>
+
+        <li>
+          <span class="chip">
+            <img class="chip__img" src="images/PythonLogo.png" alt="Picture of Paul Brown" />
+            <i class="chip__label">Python</i>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- <script type="text/javascript">
       (function () {
         var words = [" Developer", " Game Developer", " Gamer", " Movie Lover", " Happy Person"],
           i = 0;
@@ -214,8 +215,8 @@
           <li></li>
         </ul>
       </div>
-    </section> -->
-    <!-- <section id="Aboutme">
+    </section> 
+    <section id="Aboutme">
       <h1 id="aboutmetext">About Me</h1>
       <div class="aboutme-content">
         <div class="container">
@@ -279,87 +280,95 @@
       </div>
     </section> -->
 
-    <!-- <hr class="rounded" /> -->
-    <section id="Projects">
-      <h1>Projects</h1>
+  <!-- <hr class="rounded" /> -->
+  <section id="Projects">
+    <h1>Projects</h1>
 
-      <div class="blog-container">
-        <a href="#hallo">
-          <div class="blog-box">
-            <!--img---->
-            <div class="blog-img">
-              <img alt="blog" src="images/SHYGame.jpg" />
-            </div>
-            <!--text--->
-            <div class="blog-text">
-              <span>2024</span>
-              <a href="#" class="blog-title">SHYGame</a>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
-              <a href="#" class="blog-readmore">See More</a>
-            </div>
+    <div class="blog-container">
+      <a href="#hallo">
+        <div class="blog-box">
+          <!--img---->
+          <div class="blog-img">
+            <img alt="blog" src="images/SHYGame.jpg" />
           </div>
-        </a>
-        <a href="#">
-          <div class="blog-box">
-            <!--img---->
-            <div class="blog-img">
-              <img alt="blog" src="images/astroinds2.png" />
-            </div>
-            <!--text--->
-            <div class="blog-text">
-              <span>2024</span>
-              <a href="#" class="blog-title">astroids 3D</a>
-              <a href="#">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
-              </a>
-              <a href="#" class="blog-readmore">See More</a>
-            </div>
-          </div>
-        </a>
-
-        <a href="#">
-          <div class="blog-box">
-            <!--img---->
-            <div class="blog-img">
-              <img alt="blog" src="images/onlyOneblock.png" />
-            </div>
-            <!--text--->
-            <div class="blog-text">
-              <span>2024</span>
-              <a href="#" class="blog-title">You have only one block</a>
-              <a href="#">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
-              </a>
-              <a href="#" class="blog-readmore">See More</a>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <hr class="rounded" />
-    <section id="Experience">
-      <h1>Experience</h1>
-
-      <div class="timeline">
-        <div class="container-timeline left-container">
-          <img src="Images/gluLogo.png" alt="" />
-          <div class="text-box">
-            <h2>Grafisch Lyceum Utrecht</h2>
-            <small>2024-Present</small>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
-            <span class="left-container-arrow"></span>
+          <!--text--->
+          <div class="blog-text">
+            <span>2024</span>
+            <a href="#" class="blog-title">SHYGame</a>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis
+              perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum
+              distinctio minima voluptate quae?</p>
+            <a href="#" class="blog-readmore">See More</a>
           </div>
         </div>
-        <div class="container-timeline right-container">
-          <img src="Images/gluLogo.png" alt="" />
-          <div class="text-box">
-            <h2>The Future</h2>
-            <small>Future</small>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
-            <span class="right-container-arrow"></span>
+      </a>
+      <a href="#">
+        <div class="blog-box">
+          <!--img---->
+          <div class="blog-img">
+            <img alt="blog" src="images/astroinds2.png" />
           </div>
-          <!--<
+          <!--text--->
+          <div class="blog-text">
+            <span>2024</span>
+            <a href="#" class="blog-title">astroids 3D</a>
+            <a href="#">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci
+                omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur
+                dolorum distinctio minima voluptate quae?</p>
+            </a>
+            <a href="#" class="blog-readmore">See More</a>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="blog-box">
+          <!--img---->
+          <div class="blog-img">
+            <img alt="blog" src="images/onlyOneblock.png" />
+          </div>
+          <!--text--->
+          <div class="blog-text">
+            <span>2024</span>
+            <a href="#" class="blog-title">You have only one block</a>
+            <a href="#">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci
+                omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur
+                dolorum distinctio minima voluptate quae?</p>
+            </a>
+            <a href="#" class="blog-readmore">See More</a>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <hr class="rounded" />
+  <section id="Experience">
+    <h1>Experience</h1>
+
+    <div class="timeline">
+      <div class="container-timeline left-container">
+        <img src="Images/gluLogo.png" alt="" />
+        <div class="text-box">
+          <h2>Grafisch Lyceum Utrecht</h2>
+          <small>2024-Present</small>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
+            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
+          <span class="left-container-arrow"></span>
+        </div>
+      </div>
+      <div class="container-timeline right-container">
+        <img src="Images/gluLogo.png" alt="" />
+        <div class="text-box">
+          <h2>The Future</h2>
+          <small>Future</small>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
+            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
+          <span class="right-container-arrow"></span>
+        </div>
+        <!--<
       </div>
       <div class="container-timeline left-container">
         <img src="Images/gluLogo.png" alt="">
@@ -382,29 +391,33 @@
           <span class="right-container-arrow"></span>
         </div>
       -->
-        </div>
       </div>
-    </section>
-    <hr class="rounded" style="margin-bottom: 3px" />
-    <section id="Contact">
-      <h1>Contact Me</h1>
+    </div>
+  </section>
+  <hr class="rounded" style="margin-bottom: 3px" />
+  <section id="Contact">
+    <h1>Contact Me</h1>
 
-      <div class="contact-container">
-        <form action="sendemail.php" method="post" class="contact-left">
-          <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required />
-          <input id="email" type="email" name="email" placeholder="Your Email" class="contact-inputs" required />
-          <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
-          <button type="submit"><span>Submit</span> <i class="fa-solid fa-paper-plane" style="color: #ffffff"></i></button>
-        </form>
-      </div>
-      <hr class="contact-divider rounded" />
-      <h1 class="more-contact-title">Or see other ways to contact me</h1>
-      <div class="socal-media-buttons">
-        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#105;&#101;&#108;&#115;&#100;&#101;&#108;&#97;&#97;&#116;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" class="fa fa-envelope fa-2xl"></a>
-        <a href="https://nielscraft12.itch.io/" target="”_blank”" class="fa fa-itch-io fa-2xl"></a>
-        <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”" class="fa fa-linkedin fa-2xl"></a>
-      </div>
-    </section>
-    <script src="js/main.js"></script>
-  </body>
+    <div class="contact-container">
+      <form action="sendemail.php" method="post" class="contact-left">
+        <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required />
+        <input id="email" type="email" name="email" placeholder="Your Email" class="contact-inputs" required />
+        <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+        <button type="submit"><span>Submit</span> <i class="fa-solid fa-paper-plane"
+            style="color: #ffffff"></i></button>
+      </form>
+    </div>
+    <hr class="contact-divider rounded" />
+    <h1 class="more-contact-title">Or see other ways to contact me</h1>
+    <div class="socal-media-buttons">
+      <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#105;&#101;&#108;&#115;&#100;&#101;&#108;&#97;&#97;&#116;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
+        class="fa fa-envelope fa-2xl"></a>
+      <a href="https://nielscraft12.itch.io/" target="”_blank”" class="fa fa-itch-io fa-2xl"></a>
+      <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”"
+        class="fa fa-linkedin fa-2xl"></a>
+    </div>
+  </section>
+  <script src="js/main.js"></script>
+</body>
+
 </html>

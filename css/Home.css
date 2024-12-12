@@ -44,10 +44,9 @@
 .Text h1 {
   margin-top: 0;
   padding-top: 0;
-  text-align: left;
+  text-align: center;
   margin: 0;
   padding: 0;
-  /* padding-left: 0%; */
   color: white;
   font-size: 4.6em;
 }
@@ -199,10 +198,15 @@ nav a:hover {
     height: 40vh;
   }
 
+  .Text p {
+    max-width: 100%;
+  }
+
   .Text h1 {
     font-size: 8vw;
     text-align: center;
   }
+
   .age-location {
     font-size: 10px;
   }
@@ -236,11 +240,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked ~ .links-container {
+  #sidebar-active:checked~.links-container {
     right: 0;
   }
 
-  #sidebar-active:checked ~ #overlay {
+  #sidebar-active:checked~#overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -249,11 +253,11 @@ nav a:hover {
     z-index: 9;
   }
 
-  #sidebar-active:checked ~ .open-sidebar-button {
+  #sidebar-active:checked~.open-sidebar-button {
     display: none;
   }
 
-  #sidebar-active:checked ~ .links-container .close-sidebar-button {
+  #sidebar-active:checked~.links-container .close-sidebar-button {
     display: block;
     position: absolute;
     top: 10px;
@@ -262,7 +266,7 @@ nav a:hover {
     /* Ensures it stays above the menu */
   }
 
-  #sidebar-active:not(:checked) ~ .close-sidebar-button {
+  #sidebar-active:not(:checked)~.close-sidebar-button {
     display: none;
   }
 
