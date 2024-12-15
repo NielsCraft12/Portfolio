@@ -15,7 +15,8 @@
 .container {
   background: linear-gradient(to left, #bb7a45, #ae445a);
   min-width: 100vw;
-  height: 100vh;
+  max-height: max-content;
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -208,7 +209,7 @@ nav a:hover {
   }
 
   .age-location {
-    font-size: 10px;
+    font-size: 15px;
   }
 
   .links-container {
@@ -240,11 +241,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked~.links-container {
+  #sidebar-active:checked ~ .links-container {
     right: 0;
   }
 
-  #sidebar-active:checked~#overlay {
+  #sidebar-active:checked ~ #overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -253,11 +254,11 @@ nav a:hover {
     z-index: 9;
   }
 
-  #sidebar-active:checked~.open-sidebar-button {
+  #sidebar-active:checked ~ .open-sidebar-button {
     display: none;
   }
 
-  #sidebar-active:checked~.links-container .close-sidebar-button {
+  #sidebar-active:checked ~ .links-container .close-sidebar-button {
     display: block;
     position: absolute;
     top: 10px;
@@ -266,7 +267,7 @@ nav a:hover {
     /* Ensures it stays above the menu */
   }
 
-  #sidebar-active:not(:checked)~.close-sidebar-button {
+  #sidebar-active:not(:checked) ~ .close-sidebar-button {
     display: none;
   }
 
@@ -285,4 +286,17 @@ nav a:hover {
     left: 0;
     z-index: 10;
   }
+}
+
+.footer {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+}
+.footer p {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
 }
