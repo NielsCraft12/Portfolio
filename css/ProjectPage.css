@@ -1,58 +1,83 @@
 .containerProject {
-    display: grid;
-    grid-template-columns: 3fr min-content 1fr;
-    grid-template-areas: "Main-Content divider SideBar";
-    gap: 20px;
-    padding: 20px;
-    height: 100%;
+  display: grid;
+  grid-template-columns: 3fr min-content 1fr;
+  grid-template-areas: "Main-Content divider SideBar";
+  gap: 20px;
+  padding: 20px;
+  height: 100%;
 }
 
 .SideBar {
-    grid-area: SideBar;
-    padding: 20px;
-    padding-top: 100px;
-    min-width: 200px;
-    justify-content: left;
-    align-items: left;
-
+  grid-area: SideBar;
+  padding: 20px;
+  padding-top: 100px;
+  min-width: 200px;
+  justify-content: left;
+  align-items: left;
 }
 
 .divider {
-    padding-top: 100px;
-    grid-area: divider;
+  padding-top: 100px;
+  grid-area: divider;
 }
 
 .Main-Content {
-
-    grid-area: Main-Content;
-    padding-left: 20%;
+  grid-area: Main-Content;
+  padding-left: 20%;
 }
 
 h1 {
-    text-align: center;
-    color: #fff;
-    font-size: 3em;
-    margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 3em;
+  margin-bottom: 20px;
 }
 
 h3 {
-    color: #fff;
-    font-size: 1.5em;
-    margin-bottom: 20px;
+  color: #fff;
+  font-size: 1.5em;
+  margin-bottom: 20px;
 }
 
 hr.roundedv {
-    /* display: flex;
+  /* display: flex;
     justify-content: center; */
-    border: none;
-    /* Remove the border to show the gradient background */
-    width: 4px;
-    /* Set the width to match the previous border */
-    height: 80vh;
-    /* Set the height to a vertical size */
-    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-    /* Gradient from top to bottom */
-    border-radius: 5px;
-    margin-top: 0;
-    margin-bottom: 0;
+  border: none;
+  /* Remove the border to show the gradient background */
+  width: 4px;
+  /* Set the width to match the previous border */
+  height: 80vh;
+  /* Set the height to a vertical size */
+  background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+  /* Gradient from top to bottom */
+  border-radius: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .containerProject {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "Main-Content"
+      "divider"
+      "SideBar";
+    padding: 10px;
+  }
+
+  .Main-Content {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  hr.roundedv {
+    width: 80%;
+    height: 4px;
+    margin: 20px auto;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+  }
+
+  .SideBar {
+    padding-top: 20px;
+  }
 }

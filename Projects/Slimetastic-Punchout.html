@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
-    <meta name="viewport" content="height=device-height, 
+    <meta
+      name="viewport"
+      content="height=device-height, 
    width=device-width, initial-scale=1.0, 
    minimum-scale=1.0, maximum-scale=1.0, 
-   user-scalable=no, target-densitydpi=device-dpi" />
+   user-scalable=no, target-densitydpi=device-dpi"
+    />
     <title>Slimetastic Punchout</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--foogle fonts-->
@@ -19,9 +21,7 @@
     <!-- <link rel="stylesheet" href="css/Aboutme.css" /> -->
 
     <!--Fontawesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!--Favicon-->
     <link rel="icon" type="image/png" href="../Images/Favicon/favicon-96x96.png" sizes="96x96" />
@@ -29,43 +29,39 @@
     <link rel="shortcut icon" href="../Images/Favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="../Images/Favicon/apple-touch-icon.png" />
     <link rel="manifest" href="../Images/Favicon/site.webmanifest" />
-</head>
+  </head>
 
-<body>
+  <body>
     <nav>
-        <input type="checkbox" id="sidebar-active" />
-        <label for="sidebar-active" class="open-sidebar-button">
-            <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+      <input type="checkbox" id="sidebar-active" />
+      <label for="sidebar-active" class="open-sidebar-button">
+        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+      </label>
+      <label id="overlay" for="sidebar-active"></label>
+      <div class="links-container">
+        <label for="sidebar-active" class="close-sidebar-button">
+          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
         </label>
-        <label id="overlay" for="sidebar-active"></label>
-        <div class="links-container">
-            <label for="sidebar-active" class="close-sidebar-button">
-                <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
-            </label>
-            <a class="home-link" href="../index.html#Home">Home</a>
-            <a href="../index.html#Projects">Projects</a>
-            <a href="../index.html#Experience">Experience</a>
-            <a href="../index.html#Contact">Contact</a>
-        </div>
+        <a class="home-link" href="../index.html#Home">Home</a>
+        <a href="../index.html#Projects">Projects</a>
+        <a href="../index.html#Experience">Experience</a>
+        <a href="../index.html#Contact">Contact</a>
+      </div>
     </nav>
 
     <div class="containerProject">
-        <div class="Main-Content">
-            <h1>Slimetastic Punchout</h1>
+      <div class="Main-Content">
+        <h1>Slimetastic Punchout</h1>
 
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit cumque, esse aut suscipit impedit et
-                sequi unde alias ea libero dolorum facere quasi laudantium. Inventore nobis incidunt labore itaque
-                nulla. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat perspiciatis, obcaecati, optio
-                cupiditate beatae quos quidem ut tenetur odio libero ratione illum pariatur natus ab maiores facilis
-                doloremque molestiae harum?</p>
-        </div>
-        <div class="divider">
-            <hr class="roundedv">
-        </div>
-        <div class="SideBar">
-            <h3>Credits</h3>
-        </div>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit cumque, esse aut suscipit impedit et sequi unde alias ea libero dolorum facere quasi laudantium. Inventore nobis incidunt labore itaque nulla. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat perspiciatis, obcaecati, optio cupiditate beatae quos quidem ut tenetur odio libero ratione illum pariatur natus ab maiores facilis doloremque molestiae harum?</p>
+      </div>
+      <div class="divider">
+        <hr class="roundedv" />
+      </div>
+      <div class="SideBar">
+        <h1 style="text-align: center">Screenshots</h1>
+        <h1 style="text-align: center">Credits</h1>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
