@@ -1,260 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <!-- Character encoding and viewport settings -->
-  <meta charset="UTF-8" />
-  <!-- Custom viewport settings to prevent scaling on mobile devices -->
-  <meta name="viewport" content="height=device-height, 
+  <head>
+    <!-- Character encoding and viewport settings -->
+    <meta charset="UTF-8" />
+    <!-- Custom viewport settings to prevent scaling on mobile devices -->
+    <meta
+      name="viewport"
+      content="height=device-height, 
    width=device-width, initial-scale=1.0, 
    minimum-scale=1.0, maximum-scale=1.0, 
-   user-scalable=no, target-densitydpi=device-dpi" />
-  <title>Slimetastic Punchout</title>
+   user-scalable=no, target-densitydpi=device-dpi"
+    />
+    <title>Slimetastic Punchout</title>
 
-  <!-- External Resources -->
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+    <!-- Default Highlight.js css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+    <!-- Remove old Highlight.js theme reference -->
+    <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
 
-  <!-- Stylesheet Links -->
-  <link href="../css/style.css" rel="stylesheet" />
-  <link href="../css/ProjectPage.css" rel="stylesheet" />
-  <link href="../css/Home.css" rel="stylesheet" />
+    <!-- External Resources -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Stylesheet Links -->
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/ProjectPage.css" rel="stylesheet" />
+    <link href="../css/Home.css" rel="stylesheet" />
 
-  <!-- Favicon Settings for various platforms -->
-  <link rel="icon" type="image/png" href="../Images/Favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="../Images/Favicon/favicon.svg" />
-  <link rel="shortcut icon" href="../Images/Favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../Images/Favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../Images/Favicon/site.webmanifest" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  <style>
-    body {
-      max-width: calc(100vh * 16/9);
-      margin: 0 auto;
-    }
+    <!-- Favicon Settings for various platforms -->
+    <link rel="icon" type="image/png" href="../Images/Favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../Images/Favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../Images/Favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../Images/Favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../Images/Favicon/site.webmanifest" />
 
-    .mobile-message {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      background: #1E1E1E;
-      border-radius: 20px;
-      margin: 10px 0;
-      color: white;
-    }
+    <style>
+      body {
+        max-width: calc(100vh * 16 / 9);
+        margin: 0 auto;
+      }
 
-    .mobile-divider {
-      display: none;
-    }
+      .mobile-message {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        background: #1e1e1e;
+        border-radius: 20px;
+        margin: 10px 0;
+        color: white;
+      }
 
-    .pc-divider {
-      display: flex;
-    }
-
-    .title {
-      font-size: 75px;
-    }
-
-    .subtitle {
-      font-weight: 100;
-      font-size: xx-large;
-      font-size: 30px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .itch-embed-container {
+      .mobile-divider {
         display: none;
       }
 
       .pc-divider {
-        display: none !important;
-      }
-
-      .mobile-divider {
-        display: block !important;
-      }
-
-      .mobile-message {
-        display: block;
+        display: flex;
       }
 
       .title {
-        font-size: 50px;
+        font-size: 75px;
       }
 
       .subtitle {
         font-weight: 100;
         font-size: xx-large;
-        font-size: 25px;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .itch-embed-container {
-        display: block;
+        font-size: 30px;
       }
 
-      .mobile-message {
-        display: none;
+      @media screen and (max-width: 768px) {
+        .itch-embed-container {
+          display: none;
+        }
+
+        .pc-divider {
+          display: none !important;
+        }
+
+        .mobile-divider {
+          display: block !important;
+        }
+
+        .mobile-message {
+          display: block;
+        }
+
+        .title {
+          font-size: 50px;
+        }
+
+        .subtitle {
+          font-weight: 100;
+          font-size: xx-large;
+          font-size: 25px;
+        }
       }
 
-      .pc-divider {
-        display: flex !important;
+      @media (min-width: 769px) {
+        .itch-embed-container {
+          display: block;
+        }
+
+        .mobile-message {
+          display: none;
+        }
+
+        .pc-divider {
+          display: flex !important;
+        }
+
+        .mobile-divider {
+          display: none !important;
+        }
+
+        .subtitle {
+          font-weight: 100;
+          font-size: xx-large;
+          font-size: 25px;
+        }
+
+        .title {
+          font-size: 50px;
+        }
       }
+    </style>
+  </head>
 
-      .mobile-divider {
-        display: none !important;
-      }
-
-      .subtitle {
-        font-weight: 100;
-        font-size: xx-large;
-        font-size: 25px;
-      }
-
-      .title {
-        font-size: 50px;
-      }
-
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Navigation Menu -->
-  <nav>
-    <!-- Mobile sidebar toggle mechanism -->
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-
-    <!-- Navigation Links -->
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+  <body>
+    <!-- Navigation Menu -->
+    <nav style="padding-right: 50px">
+      <input type="checkbox" id="sidebar-active" />
+      <label for="sidebar-active" class="open-sidebar-button">
+        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
       </label>
-      <a class="home-link" href="../index.html#Home">Home</a>
-      <a href="../index.html#Projects">Projects</a>
-      <a href="../index.html#Experience">Experience</a>
-      <a href="../index.html#Contact">Contact</a>
-    </div>
-  </nav>
-
-  <!-- Main Content Container -->
-  <div class="containerProject">
-    <!-- Project Description Section -->
-    <div class="Main-Content">
-      <h1 class="GradiantTitle title">Slimetastic Punchout</h1>
-      <h3 class="GradiantTitle subtitle">Description</h3>
-      <p>Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy
-        slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing,
-        and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents
-        out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy
-        fight for control. It’s slimy chaos at its best!</p>
-
-
-    </div>
-
-    <!-- Visual Divider -->
-    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch;">
-      <hr class="roundedv " style="height: 100%; margin: 0;" />
-      <!-- <hr class="roundedv mobile-divider" /> -->
-    </div>
-
-    <div class="divider mobile-divider">
-      <hr class="roundedv" />
-    </div>
-
-
-    <!-- Sidebar Content -->
-    <div class="SideBar" style="height: max-content;">
-      <!-- Trailer Section -->
-      <h1 style="text-align: center" class="GradiantTitle">Trailer</h1>
-      <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden;">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-          src="https://www.youtube.com/embed/zgEdaaWe3JQ?si=Uud4DAc4EJKVmMVA" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-        </iframe>
+      <label id="overlay" for="sidebar-active"></label>
+      <div class="links-container">
+        <label for="sidebar-active" class="close-sidebar-button">
+          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+        </label>
+        <a data-i18n="home" class="home-link" href="../index.html?lang=">Home</a>
+        <a data-i18n="projects" href="../index.html?lang=#Projects">Projects</a>
+        <a data-i18n="experience" href="../index.html?lang=#Experience">Experience</a>
+        <a data-i18n="contact" href="../index.html?lang=#Contact">Contact</a>
+        <div class="language-switcher">
+          <button class="language-btn">
+            <span class="current-lang">English</span>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <ul class="language-menu">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="nl">Nederlands</a></li>
+          </ul>
+        </div>
       </div>
+    </nav>
 
-      <!-- Screenshots Section -->
-      <h1 style="text-align: center; margin-top: 10px;" class="GradiantTitle">Screenshots</h1>
-      <img class="ScreenShots" src="../Images/ProjectScreenShots/SlimetasticPunchout/Screenshot1.png"
-        alt="screen shot of the game" />
-      <img class="ScreenShots" src="../Images/ProjectScreenShots/SlimetasticPunchout/Screenshot2.png"
-        alt="screen shot of the game" />
-      <img class="ScreenShots" src="../Images/ProjectScreenShots/SlimetasticPunchout/Screenshot3.png"
-        alt="screen shot of the game" />
-      <h1 style="text-align: center; margin-top: 10px; margin-bottom: 0;" class="GradiantTitle">Play</h1>
-      <div class="itch-embed-container"
-        style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden;">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0"
-          src="https://itch.io/embed-upload/12639739?color=1E1E1E" allowfullscreen="">
-          <a href="https://nielscraft12.itch.io/slimetastic-punchout">Play Slimetastic Punchout on itch.io</a>
-        </iframe>
-      </div>
-      <div class="mobile-message">
-        <p>To play Slimetastic Punchout, please visit this page on a computer.</p>
-        <!-- <p>The game is not available on mobile/tablet devices.</p> -->
-      </div>
+    <!-- Main Content Container -->
+    <div class="containerProject">
+      <!-- Project Description Section -->
+      <div class="Main-Content">
+        <h1 data-i18n="slimetasticTitle" class="GradiantTitle title">Slimetastic Punchout</h1>
+        <h3 data-i18n="description" class="GradiantTitle subtitle">Description</h3>
+        <p data-i18n="slimetasticDescription">Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!</p>
 
-      <!-- Credits Section -->
-      <h1 style="text-align: center; margin-top: 10px; margin-bottom: 0;" class="GradiantTitle">Credits</h1>
-      <h3 style="text-align: center; margin-bottom: 0;">Developers</h3>
-      <a class="credits" href="https://nielsdelaat.us.to" target="_blank">Niels de Laat</a>
-      <a class="credits" href="https://github.com/Linkerpink" target="_blank">Noah van Uunen</a>
-      <h3 style="text-align: center;margin-bottom: 0; margin-top: 5px;">Artists</h3>
-      <a class="credits" href="https://www.artstation.com/seemz" target="_blank">Seemay Alsemgeest</a>
-      <a class="credits" href="https://www.artstation.com/sekerio" target="_blank">Jordy Andriessen</a>
-      <a class="credits" href="https://www.artstation.com/lisavdkloet" target="_blank">Lisa van der Kloet</a>
-    </div>
-  </div>
-
-  <!-- Image Modal for Screenshots -->
-  <div id="imageModal" class="modal">
-    <span class="modal-close">&times;</span>
-    <img class="modal-content" id="modalImg">
-  </div>
-
-  <!-- Modal functionality script -->
-  <script>
-    // Get modal elements
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    const closeBtn = document.getElementsByClassName("modal-close")[0];
-
-    // Add click event to all screenshots to open modal
-    document.querySelectorAll('.ScreenShots').forEach(img => {
-      img.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-      }
-    });
-
-    // Close modal when clicking close button
-    closeBtn.onclick = function () {
-      modal.style.display = "none";
+        <pre><code class="language-javascript">
+function fibonacci(num) {
+    let num1 = 0;
+    let num2 = 1;
+    let sum;
+    
+    for (let i = 0; i < num; i++) {
+        sum = num1 + num2;
+        num1 = num2;
+        num2 = sum;
     }
+    return num2;
+}
 
-    // Close modal when clicking outside the image
-    window.onclick = function (event) {
-      if (event.target == modal) {
+console.log(fibonacci(155));</code></pre>
+      </div>
+
+      <!-- Visual Divider -->
+      <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
+        <hr class="roundedv" style="height: 100%; margin: 0" />
+        <!-- <hr class="roundedv mobile-divider" /> -->
+      </div>
+
+      <div class="divider mobile-divider">
+        <hr class="roundedv" />
+      </div>
+
+      <!-- Sidebar Content -->
+      <div class="SideBar" style="height: max-content">
+        <!-- Trailer Section -->
+        <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
+        <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="https://www.youtube.com/embed/zgEdaaWe3JQ?si=Uud4DAc4EJKVmMVA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+        </div>
+
+        <!-- Screenshots Section -->
+        <h1 data-i18n="screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
+        <img class="ScreenShots" src="../Images/ProjectScreenShots/SlimetasticPunchout/Screenshot1.png" alt="screen shot of the game" />
+        <img class="ScreenShots" src="../Images/ProjectScreenShots/SlimetasticPunchout/Screenshot2.png" alt="screen shot of the game" />
+        <img class="ScreenShots" src="../Images/ProjectScreenShots/SlimetasticPunchout/Screenshot3.png" alt="screen shot of the game" />
+        <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1>
+        <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/12639739?color=1E1E1E" allowfullscreen="">
+            <a href="https://nielscraft12.itch.io/slimetastic-punchout">Play Slimetastic Punchout on itch.io</a>
+          </iframe>
+        </div>
+        <div class="mobile-message">
+          <p data-i18n="mobileMessage">To play Slimetastic Punchout, please visit this page on a computer.</p>
+        </div>
+
+        <!-- Credits Section -->
+        <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Credits</h1>
+        <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
+        <a class="credits" href="https://nielsdelaat.us.to" target="_blank">Niels de Laat</a>
+        <a class="credits" href="https://github.com/Linkerpink" target="_blank">Noah van Uunen</a>
+        <h3 data-i18n="artists" style="text-align: center; margin-bottom: 0; margin-top: 5px">Artists</h3>
+        <a class="credits" href="https://www.artstation.com/seemz" target="_blank">Seemay Alsemgeest</a>
+        <a class="credits" href="https://www.artstation.com/sekerio" target="_blank">Jordy Andriessen</a>
+        <a class="credits" href="https://www.artstation.com/lisavdkloet" target="_blank">Lisa van der Kloet</a>
+      </div>
+    </div>
+
+    <!-- Image Modal for Screenshots -->
+    <div id="imageModal" class="modal">
+      <span class="modal-close">&times;</span>
+      <img class="modal-content" id="modalImg" />
+    </div>
+
+    <!-- Modal functionality script -->
+    <script>
+      // Add this before the modal code
+      function updateNavigationLinks(lang) {
+        document.querySelectorAll('.links-container a[href*="?lang"]').forEach((link) => {
+          link.href = link.href.replace("?lang", `?lang=${lang}`);
+        });
+      }
+
+      // Get modal elements
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
+      const closeBtn = document.getElementsByClassName("modal-close")[0];
+
+      // Add click event to all screenshots to open modal
+      document.querySelectorAll(".ScreenShots").forEach((img) => {
+        img.onclick = function () {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        };
+      });
+
+      // Close modal when clicking close button
+      closeBtn.onclick = function () {
         modal.style.display = "none";
-      }
-    }
-  </script>
-</body>
+      };
 
+      // Close modal when clicking outside the image
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+    <script defer src="../js/translate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>
+      hljs.configure({ languages: ["javascript"] });
+      hljs.highlightAll();
+    </script>
+  </body>
 </html>

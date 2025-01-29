@@ -1,158 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
-  <meta name="viewport" content="height=device-height, 
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+    <meta
+      name="viewport"
+      content="height=device-height, 
  width=device-width, initial-scale=1.0, 
  minimum-scale=1.0, maximum-scale=1.0, 
- user-scalable=no, target-densitydpi=device-dpi" />
-  <title>Portfolio Niels de Laat</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!--foogle fonts-->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
-  <!--Style sheets-->
-  <link href="css/style.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/Home.css" />
-  <!-- <link rel="stylesheet" href="css/Aboutme.css" /> -->
-  <link rel="stylesheet" href="css/Experience.css" />
-  <link rel="stylesheet" href="css/Projects.css" />
-  <link rel="stylesheet" href="css/Contact.css" />
-  <!--Fontawesome-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <!--Favicon-->
-  <link rel="icon" type="image/png" href="Images/Favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="Images/Favicon/favicon.svg" />
-  <link rel="shortcut icon" href="Images/Favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="Images/Favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="Images/Favicon/site.webmanifest" />
-  <style>
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
-    }
+ user-scalable=no, target-densitydpi=device-dpi"
+    />
+    <title>Portfolio Niels de Laat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--foogle fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+    <!--Style sheets-->
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/Home.css" />
+    <!-- <link rel="stylesheet" href="css/Aboutme.css" /> -->
+    <link rel="stylesheet" href="css/Experience.css" />
+    <link rel="stylesheet" href="css/Projects.css" />
+    <link rel="stylesheet" href="css/Contact.css" />
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="Images/Favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="Images/Favicon/favicon.svg" />
+    <link rel="shortcut icon" href="Images/Favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="Images/Favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="Images/Favicon/site.webmanifest" />
+    <style>
 
-    .container div {
-      margin: 10px;
-      text-align: center;
-    }
+    </style>
+  </head>
 
-    .container img {
-      display: block;
-      margin: 0 auto;
-    }
-
-    .language-switcher {
-      position: relative;
-      display: inline-block;
-    }
-
-    .language-menu {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 120px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .language-btn {
-      background-color: transparent;
-      color: white;
-      /* padding: 10px; */
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-    }
-
-    .language-menu li a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .language-menu li a:hover {
-      background-color: #ddd;
-    }
-
-    .language-switcher:hover .language-menu {
-      display: block;
-    }
-  </style>
-</head>
-
-<body>
-  <nav>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+  <body>
+    <nav>
+      <input type="checkbox" id="sidebar-active" />
+      <label for="sidebar-active" class="open-sidebar-button">
+        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
       </label>
-      <a class="home-link" href="#Home">Home</a>
-      <a href="#Projects">Projects</a>
-      <a href="#Experience">Experience</a>
-      <a href="#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en">English</a></li>
-          <li><a href="#" data-lang="nl">Nederlands</a></li>
-        </ul>
+      <label id="overlay" for="sidebar-active"></label>
+      <div class="links-container">
+        <label for="sidebar-active" class="close-sidebar-button">
+          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+        </label>
+        <a data-i18n="home" class="home-link" href="#Home">Home</a>
+        <a data-i18n="projects" href="#Projects">Projects</a>
+        <a data-i18n="experience" href="#Experience">Experience</a>
+        <a data-i18n="contact" href="#Contact">Contact</a>
+        <div class="language-switcher">
+          <button class="language-btn">
+            <span class="current-lang">English</span>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <ul class="language-menu">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="nl">Nederlands</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <section id="Home"></section>
-  <div class="container">
-    <div class="Picture">
-      <img src="Images/me.jpg" alt="" />
-    </div>
-    <div class="Text">
-      <p class="age-location">🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands</p>
-      <h1 data-i18n="welcome" style="letter-spacing: -1%;">Hello, I'm Niels de Laat,</h1>
-      <p>a game developer who focuses on entertaining people with my games. I create games with the Unity engine and C#
-        to bring all my ideas to life, and I enjoy learning new and innovative things in programming and game
-        development. When I'm not programming I am playing <a href="https://steamcommunity.com/id/vgbkjdsfu/"
-          target=”_blank” style="text-decoration: none; color: #fffffff9;">games</a> or watching <a
-          href="https://trakt.tv/users/nielscraft12" target=”_blank”
-          style="text-decoration: none; color: #fffffff9;">movies</a>. </p>
-      <h1 style="text-align: center">Skills</h1>
-      <ul class="cd-demo-chip-list">
-        <li>
-          <span class="chip">
-            <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
-            <i class="chip__label">C#</i>
-          </span>
-        </li>
+    <section id="Home"></section>
+    <div class="container">
+      <div class="Picture">
+        <img src="Images/me.jpg" alt="" />
+      </div>
+      <div class="Text">
+        <p data-i18n="ageLocation" class="age-location">🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands</p>
+        <h1 data-i18n="welcome" style="word-spacing: -1px">Hello, I'm Niels de Laat,</h1>
+        <p data-i18n="aboutMe">a game developer who focuses on entertaining people with my games. I create games with the Unity engine and C# to bring all my ideas to life, and I enjoy learning new and innovative things in programming and game development. When I'm not programming I am playing <a href="https://steamcommunity.com/id/vgbkjdsfu/" target=""_blank"" style="text-decoration: none; color: #fffffff9">games</a> or watching <a href="https://trakt.tv/users/nielscraft12" target=""_blank"" style="text-decoration: none; color: #fffffff9">movies</a>.</p>
+        <h1 data-i18n="skills" style="text-align: center">Skills</h1>
+        <ul class="cd-demo-chip-list">
+          <li>
+            <span class="chip">
+              <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+              <i class="chip__label">C#</i>
+            </span>
+          </li>
 
-        <li>
-          <span class="chip">
-            <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
-            <i class="chip__label">Unity</i>
-          </span>
-        </li>
+          <li>
+            <span class="chip">
+              <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+              <i class="chip__label">Unity</i>
+            </span>
+          </li>
 
-        <!-- <li>
+          <!-- <li>
           <span class="chip">
             <img class="chip__img" src="Images/JavaScriptLogo.png" alt="Picture of Marta Rossi" />
             <i class="chip__label">JavaScript</i>
@@ -171,83 +107,47 @@
             <i class="chip__label">CSS</i>
           </span>
         </li> -->
-        <li>
-          <span class="chip">
-            <img class="chip__img" src="Images/GithubLogo.png" alt="Git Logo" />
-            <i class="chip__label">Git</i>
-          </span>
-        </li>
+          <li>
+            <span class="chip">
+              <img class="chip__img" src="Images/GithubLogo.png" alt="Git Logo" />
+              <i class="chip__label">Git</i>
+            </span>
+          </li>
 
-        <li>
-          <span class="chip">
-            <img class="chip__img" src="Images/PythonLogo.png" alt="Ptyhon Logo" />
-            <i class="chip__label">Python</i>
-          </span>
-        <li>
-          <span class="chip">
-            <img class="chip__img" src="Images/TrelloLogo.png" alt="Trello Logo" />
-            <i class="chip__label">Trello</i>
-          </span>
-        </li>
-      </ul>
+          <li>
+            <span class="chip">
+              <img class="chip__img" src="Images/PythonLogo.png" alt="Ptyhon Logo" />
+              <i class="chip__label">Python</i>
+            </span>
+          </li>
+
+          <li>
+            <span class="chip">
+              <img class="chip__img" src="Images/TrelloLogo.png" alt="Trello Logo" />
+              <i class="chip__label">Trello</i>
+            </span>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <section id="Projects">
-    <h1 class="hidden" style="margin-top: 0; padding-top: 0;">Projects</h1>
+    <section id="Projects">
+      <h1 data-i18n="projects" class="hidden" style="margin-top: 0; padding-top: 0">Projects</h1>
 
-    <div class="blog-container">
-      <a href="Projects/Slimetastic-Punchout.html">
-        <div class="blog-box hidden">
-          <!--img---->
-          <div class="blog-img">
-            <img alt="blog" src="Images/SlimetasticPunchout.png" />
-          </div>
-          <!--text--->
-          <div class="blog-text">
-            <span>2024</span>
-            <a href="Projects/Slimetastic-Punchout.html" class="blog-title">Slimetastic Punchout</a>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis
-              perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum
-              distinctio minima voluptate quae?</p>
-            <p style="color: black;">Technologies:</p>
-            <ul class="cd-demo-chip-list" style=" justify-content: left;">
-              <li>
-                <span class="chip">
-                  <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
-                  <i class="chip__label">C#</i>
-                </span>
-              </li>
-
-              <li>
-                <span class="chip">
-                  <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
-                  <i class="chip__label">Unity</i>
-                </span>
-              </li>
-            </ul>
-            <a href="Projects/Slimetastic-Punchout.html" class="blog-readmore">See More</a>
-          </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class="blog-box hidden">
-          <!--img---->
-          <div class="blog-img">
-            <img alt="blog" src="Images/WA-LCH.png" />
-          </div>
-          <!--text--->
-          <div class="blog-text">
-            <span>2024</span>
-            <a href="#" class="blog-title">WA-LCH</a>
-            <a href="#">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci
-                omnis
-                perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur
-                dolorum
-                distinctio minima voluptate quae?</p>
-              <p style="color: black;">Technologies:</p>
-              <ul class="cd-demo-chip-list" style=" justify-content: left;">
+      <div class="blog-container">
+        <a href="Projects/Slimetastic-Punchout.html">
+          <div class="blog-box hidden">
+            <!--img---->
+            <div class="blog-img">
+              <img alt="blog" src="Images/SlimetasticPunchout.png" />
+            </div>
+            <!--text--->
+            <div class="blog-text">
+              <span>2024</span>
+              <a href="Projects/Slimetastic-Punchout.html" class="blog-title">Slimetastic Punchout</a>
+              <p data-i18n="discritoinGame1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
+              <p data-i18n="technologies" style="color: black">Technologies:</p>
+              <ul class="cd-demo-chip-list" style="justify-content: left">
                 <li>
                   <span class="chip">
                     <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
@@ -262,51 +162,79 @@
                   </span>
                 </li>
               </ul>
-            </a>
-            <a href="#" class="blog-readmore">See More</a>
+              <a data-i18n="seeMore" href="Projects/Slimetastic-Punchout.html" class="blog-readmore">See More</a>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+        <a href="#">
+          <div class="blog-box hidden">
+            <!--img---->
+            <div class="blog-img">
+              <img alt="blog" src="Images/WA-LCH.png" />
+            </div>
+            <!--text--->
+            <div class="blog-text">
+              <span>2024</span>
+              <a href="#" class="blog-title">WA-LCH</a>
+              <a href="#">
+                <p data-i18n="discritoinGame2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
+                <p data-i18n="technologies" style="color: black">Technologies:</p>
+                <ul class="cd-demo-chip-list" style="justify-content: left">
+                  <li>
+                    <span class="chip">
+                      <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+                      <i class="chip__label">C#</i>
+                    </span>
+                  </li>
 
-      <a href="#">
-        <div class="blog-box hidden">
-          <!--img---->
-          <div class="blog-img">
-            <img alt="blog" src="Images/onlyOneblock.png" />
+                  <li>
+                    <span class="chip">
+                      <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+                      <i class="chip__label">Unity</i>
+                    </span>
+                  </li>
+                </ul>
+              </a>
+              <a data-i18n="seeMore" href="#" class="blog-readmore">See More</a>
+            </div>
           </div>
-          <!--text--->
-          <div class="blog-text">
-            <span>2024</span>
-            <a href="#" class="blog-title">You have only one block</a>
-            <a href="#">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci
-                omnis
-                perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur
-                dolorum
-                distinctio minima voluptate quae?</p>
-              <p style="color: black;">Technologies:</p>
-              <ul class="cd-demo-chip-list" style=" justify-content: left;">
-                <li>
-                  <span class="chip">
-                    <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
-                    <i class="chip__label">C#</i>
-                  </span>
-                </li>
+        </a>
 
-                <li>
-                  <span class="chip">
-                    <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
-                    <i class="chip__label">Unity</i>
-                  </span>
-                </li>
-              </ul>
-            </a>
-            <a href="#" class="blog-readmore">See More</a>
+        <a href="#">
+          <div class="blog-box hidden">
+            <!--img---->
+            <div class="blog-img">
+              <img alt="blog" src="Images/onlyOneblock.png" />
+            </div>
+            <!--text--->
+            <div class="blog-text">
+              <span>2024</span>
+              <a href="#" class="blog-title">You have only one block</a>
+              <a href="#">
+                <p data-i18n="discritoinGame3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
+                <p data-i18n="technologies" style="color: black">Technologies:</p>
+                <ul class="cd-demo-chip-list" style="justify-content: left">
+                  <li>
+                    <span class="chip">
+                      <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+                      <i class="chip__label">C#</i>
+                    </span>
+                  </li>
+
+                  <li>
+                    <span class="chip">
+                      <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+                      <i class="chip__label">Unity</i>
+                    </span>
+                  </li>
+                </ul>
+              </a>
+              <a data-i18n="seeMore" href="#" class="blog-readmore">See More</a>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
 
-      <!-- <a href="#">
+        <!-- <a href="#">
         <div class="blog-box hidden">
 
           <div class="blog-img">
@@ -417,37 +345,33 @@
           </div>
         </div>
       </a> -->
-
-    </div>
-  </section>
-
-  <hr class="rounded" />
-  <section id="Experience">
-    <h1>Experience</h1>
-
-    <div class="timeline">
-      <div class="container-timeline left-container">
-        <img src="Images/gluLogo.png" alt="" />
-        <div class="text-box">
-          <h2>Grafisch Lyceum Utrecht – Game Development</h2>
-          <small>2024-Present</small>
-          <p>The Game Developer program at Grafisch Lyceum Utrecht focuses on game design, coding, and collaboration
-            with programmers and artists. It uses projects and tools to learn the skills necessary for creating fun
-            games.</p>
-          <span class="left-container-arrow"></span>
-        </div>
       </div>
-      <div class="container-timeline right-container">
-        <img src="Images/Future.png" alt="" />
-        <div class="text-box">
-          <h2>The Future</h2>
-          <small>Future</small>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
-            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
+    </section>
 
-          <span class="right-container-arrow"></span>
+    <hr class="rounded" />
+    <section id="Experience">
+      <h1 data-i18n="experience">Experience</h1>
+
+      <div class="timeline">
+        <div class="container-timeline left-container">
+          <img src="Images/gluLogo.png" alt="" />
+          <div class="text-box">
+            <h2>Grafisch Lyceum Utrecht – Game Development</h2>
+            <small data-i18n="gluTime">2023-Present</small>
+            <p data-i18n="gluDescription">The Game Developer program at Grafisch Lyceum Utrecht focuses on game design, coding, and collaboration with programmers and artists. It uses projects and tools to learn the skills necessary for creating fun games.</p>
+            <span class="left-container-arrow"></span>
+          </div>
         </div>
-        <!--<
+        <div class="container-timeline right-container">
+          <img src="Images/Future.png" alt="" />
+          <div class="text-box">
+            <h2 data-i18n="futureTitle">The Future</h2>
+            <small data-i18n="futureTime">Future</small>
+            <p data-i18n="futureDescription">future Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
+
+            <span class="right-container-arrow"></span>
+          </div>
+          <!--<
       </div>
       <div class="container-timeline left-container">
         <img src="Images/gluLogo.png" alt="">
@@ -470,28 +394,25 @@
           <span class="right-container-arrow"></span>
         </div>
       -->
+        </div>
       </div>
+    </section>
+    <hr class="rounded" style="margin-bottom: 3px" />
+    <section id="Contact">
+      <h1 data-i18n="contactTitle">Contact Me</h1>
+      <div class="socal-media-buttons">
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#105;&#101;&#108;&#115;&#100;&#101;&#108;&#97;&#97;&#116;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" class="fa fa-envelope fa-2xl"></a>
+        <a href="https://nielscraft12.itch.io/" target="”_blank”" class="fa fa-itch-io fa-2xl"></a>
+        <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”" class="fa fa-linkedin fa-2xl"></a>
+      </div>
+    </section>
+    <script defer src="js/translate.js"></script>
+    <script defer src="js/main.js"></script>
+    <script defer src="js/animation.js"></script>
+  </body>
+  <footer>
+    <div class="footer">
+      <p>© 2025 Niels de Laat</p>
     </div>
-  </section>
-  <hr class="rounded" style="margin-bottom: 3px" />
-  <section id="Contact">
-    <h1>Contact Me</h1>
-    <div class="socal-media-buttons">
-      <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#105;&#101;&#108;&#115;&#100;&#101;&#108;&#97;&#97;&#116;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
-        class="fa fa-envelope fa-2xl"></a>
-      <a href="https://nielscraft12.itch.io/" target="”_blank”" class="fa fa-itch-io fa-2xl"></a>
-      <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”"
-        class="fa fa-linkedin fa-2xl"></a>
-    </div>
-  </section>
-  <script defer src="js/translate.js"></script>
-  <script defer src="js/main.js"></script>
-  <script defer src="js/animation.js"></script>
-</body>
-<footer>
-  <div class="footer">
-    <p>© 2024 Niels de Laat</p>
-  </div>
-</footer>
-
+  </footer>
 </html>

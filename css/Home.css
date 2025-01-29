@@ -241,11 +241,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked~.links-container {
+  #sidebar-active:checked ~ .links-container {
     right: 0;
   }
 
-  #sidebar-active:checked~#overlay {
+  #sidebar-active:checked ~ #overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -254,11 +254,11 @@ nav a:hover {
     z-index: 9;
   }
 
-  #sidebar-active:checked~.open-sidebar-button {
+  #sidebar-active:checked ~ .open-sidebar-button {
     display: none;
   }
 
-  #sidebar-active:checked~.links-container .close-sidebar-button {
+  #sidebar-active:checked ~ .links-container .close-sidebar-button {
     display: block;
     position: absolute;
     top: 10px;
@@ -267,7 +267,7 @@ nav a:hover {
     /* Ensures it stays above the menu */
   }
 
-  #sidebar-active:not(:checked)~.close-sidebar-button {
+  #sidebar-active:not(:checked) ~ .close-sidebar-button {
     display: none;
   }
 
@@ -300,4 +300,73 @@ nav a:hover {
   font-size: 20px;
   margin: 0;
   padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container div {
+  margin: 10px;
+  text-align: center;
+}
+
+.container img {
+  display: block;
+  margin: 0 auto;
+}
+
+.language-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.language-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.language-btn {
+  background-color: transparent;
+  color: white;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  min-width: fit-content;
+  white-space: nowrap;
+}
+
+.language-menu li a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.language-menu li a:hover {
+  background-color: #ddd;
+}
+
+.language-switcher:hover .language-menu {
+  display: block;
+}
+
+.current-lang {
+  font-family: "Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 16px;
 }
