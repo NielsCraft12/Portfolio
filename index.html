@@ -47,6 +47,50 @@
       display: block;
       margin: 0 auto;
     }
+
+    .language-switcher {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-menu {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .language-btn {
+      background-color: transparent;
+      color: white;
+      /* padding: 10px; */
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .language-menu li a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .language-menu li a:hover {
+      background-color: #ddd;
+    }
+
+    .language-switcher:hover .language-menu {
+      display: block;
+    }
   </style>
 </head>
 
@@ -65,6 +109,16 @@
       <a href="#Projects">Projects</a>
       <a href="#Experience">Experience</a>
       <a href="#Contact">Contact</a>
+      <div class="language-switcher">
+        <button class="language-btn">
+          <span class="current-lang">English</span>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <ul class="language-menu">
+          <li><a href="#" data-lang="en">English</a></li>
+          <li><a href="#" data-lang="nl">Nederlands</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -75,7 +129,7 @@
     </div>
     <div class="Text">
       <p class="age-location">🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands</p>
-      <h1>Hello, I'm Niels de Laat,</h1>
+      <h1 data-i18n="welcome" style="letter-spacing: -1%;">Hello, I'm Niels de Laat,</h1>
       <p>a game developer who focuses on entertaining people with my games. I create games with the Unity engine and C#
         to bring all my ideas to life, and I enjoy learning new and innovative things in programming and game
         development. When I'm not programming I am playing <a href="https://steamcommunity.com/id/vgbkjdsfu/"
@@ -119,8 +173,8 @@
         </li> -->
         <li>
           <span class="chip">
-            <img class="chip__img" src="Images/GithubLogo.png" alt="GitHub Logo" />
-            <i class="chip__label">GitHub</i>
+            <img class="chip__img" src="Images/GithubLogo.png" alt="Git Logo" />
+            <i class="chip__label">Git</i>
           </span>
         </li>
 
@@ -422,7 +476,6 @@
   <hr class="rounded" style="margin-bottom: 3px" />
   <section id="Contact">
     <h1>Contact Me</h1>
-    </div>
     <div class="socal-media-buttons">
       <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#105;&#101;&#108;&#115;&#100;&#101;&#108;&#97;&#97;&#116;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
         class="fa fa-envelope fa-2xl"></a>
@@ -431,6 +484,7 @@
         class="fa fa-linkedin fa-2xl"></a>
     </div>
   </section>
+  <script defer src="js/translate.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/animation.js"></script>
 </body>
