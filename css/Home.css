@@ -229,7 +229,7 @@ nav a:hover {
     /* To prevent overlap with the close button */
   }
 
-  nav a {
+  nav a li ul {
     box-sizing: border-box;
     height: auto;
     width: 100%;
