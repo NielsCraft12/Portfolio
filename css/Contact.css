@@ -146,7 +146,7 @@
 
 
 
-.fa {
+.icon {
     padding: 20px;
     width: 30px;
     height: 30px;
@@ -155,7 +155,7 @@
 }
 
 
-.fa:hover {
+.icon:hover {
     opacity: 0.7;
 }
 

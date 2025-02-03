@@ -15,12 +15,12 @@ const translations = {
     //Projects
     seeMore: "See More",
     technologies: "Technologies",
-    discritoinGame1: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    discritoinGame2: "1Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    discritoinGame3: "2Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    // discritoinGame4:"fhjhgh",
-    // discritoinGame5:"fhjhgh",
-    // discritoinGame6:"fhjhgh",
+    descriptionGame1: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    descriptionGame2: "1Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    descriptionGame3: "2Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    descriptionGame4: "3Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    // descriptionGame5:"fhjhgh",
+    // descriptionGame6:"fhjhgh",
 
     //Experience
     gluTime: "2023 - Present",
@@ -32,18 +32,26 @@ const translations = {
     //contact
     contactTitle: "Contact Me",
 
-    // slimetastic Punchout
-
-    // Slimetastic Punchout page specific
-    slimetasticTitle: "Slimetastic Punchout",
-    slimetasticDescription: "Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!",
+    // project pages
+    description: "Description",
     trailer: "Trailer",
-    screenshots: "Screenshots",
     play: "Play",
     credits: "Credits",
+    screenshots: "Screenshots",
     developers: "Developers",
     artists: "Artists",
-    mobileMessage: "To play Slimetastic Punchout, please visit this page on a computer.",
+
+    // Slimetastic Punchout
+    slimetasticDescription: "Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!",
+    slimetasticMobileMessage: "To play Slimetastic Punchout, please visit this page on a computer.",
+
+    // WA-LCH
+    walchDescription: "You’re a cleaning bot called LCH and have been in hibernation mode for quite some years.Suddenly you are woken up by some unknown source, and your job is to clean everything around you to escape.You obtain a keycard to the next room after finishing cleaning the previous room.But be careful... there are evil robots lurking",
+    walchMobileMessage: "To play WA-LCH, please visit this page on a computer.",
+
+    // You Only Have One Box
+    oneBoxDescription: "A short 2D Platformer where you only have one box you have to take with you to platform across certain obstacles be careful you don't lose it! Made as part of a Game Jam with the theme \"You Only Have One\"",
+    oneBoxMobileMessage: "To play You Only Have One Box, please visit this page on a computer.",
   },
   nl: {
     //navbar
@@ -61,12 +69,12 @@ const translations = {
     //Projects
     seeMore: "Bekijk meer",
     technologies: "Technologieën",
-    discritoinGame1: " test Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    discritoinGame2: "test2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    discritoinGame3: "test3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    // discritoinGame4:"fhjhgh",
-    // discritoinGame5:"fhjhgh",
-    // discritoinGame6:"fhjhgh",
+    descriptionGame1: " test Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    descriptionGame2: "test2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    descriptionGame3: "test3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    descriptionGame4: "67Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    // descriptionGame5:"fhjhgh",
+    // descriptionGame6:"fhjhgh",
 
     //Experience
     gluTime: "2023 - Heden",
@@ -78,16 +86,27 @@ const translations = {
     //contact
     contactTitle: "Contacteer mij",
 
-    // Slimetastic Punchout page specific
-    slimetasticTitle: "Slimetastic Punchout",
-    slimetasticDescription: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het tegen elkaar opneemt in snelle arena's. Het doel? Bedek zoveel mogelijk tegels terwijl je over de kaart glijdt, stuitert en spat. Onderweg kun je wat stevige stoten landen om je tegenstanders opzij te duwen - of ze gewoon van hun stuk te brengen. Elke wedstrijd is onvoorspelbaar, vol gelach en een rommelige strijd om de controle. Het is slijmerige chaos op zijn best!",
+    // project pages
+    description: "Beschrijving",
     trailer: "Trailer",
     screenshots: "Screenshots",
     play: "Spelen",
     credits: "Credits",
     developers: "Ontwikkelaars",
     artists: "Artiesten",
-    mobileMessage: "Om Slimetastic Punchout te spelen, bezoek deze pagina op een computer.",
+
+    // Slimetastic Punchout
+    slimetasticDescription: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het tegen elkaar opneemt in snelle arena's. Het doel? Bedek zoveel mogelijk tegels terwijl je over de kaart glijdt, stuitert en spat. Onderweg kun je wat stevige stoten landen om je tegenstanders opzij te duwen - of ze gewoon van hun stuk te brengen. Elke wedstrijd is onvoorspelbaar, vol gelach en een rommelige strijd om de controle. Het is slijmerige chaos op zijn best!",
+    slimetasticMobileMessage: "Om Slimetastic Punchout te spelen, bezoek deze pagina op een computer.",
+
+    // WA-LCH
+    walchDescription: "Je bent een schoonmaakrobot genaamd LCH en je bent al een aantal jaren in de slaapstand geweest. Plots word je gewekt door een onbekende bron, en je taak is om alles om je heen schoon te maken om te ontsnappen. Je krijgt een sleutelkaart naar de volgende kamer nadat je de vorige kamer hebt schoongemaakt. Maar wees voorzichtig... er zijn kwaadaardige robots op de loer",
+    walchMobileMessage: "Om WA-LCH te spelen, bezoek deze pagina op een computer.",
+
+    // You Only Have One Box
+    oneBoxDescription: "Een korte 2D Platformer waar je maar één doos hebt die je mee moet nemen om over bepaalde obstakels te platformen, pas op dat je hem niet verliest! Gemaakt als onderdeel van een Game Jam met het thema \"You Only Have One\"",
+    MobileMessage: "Om You Only Have One Box te spelen, bezoek deze pagina op een computer.",
+
   },
 };
 
@@ -105,21 +124,16 @@ function updateContent(lang) {
   const currentLangSpan = document.querySelector(".current-lang");
   currentLangSpan.textContent = lang === "en" ? "English" : "Nederlands";
   localStorage.setItem("preferredLanguage", lang);
-
-  // Update navigation links if the function exists
-  if (typeof updateNavigationLinks === "function") {
-    updateNavigationLinks(lang);
-  }
+  updateAgeDisplay();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Check URL parameters first
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlLang = urlParams.get("lang");
-  const savedLang = urlLang || localStorage.getItem("preferredLanguage") || "en";
+  const savedLang = localStorage.getItem("preferredLanguage") || "en";
 
   // Set up language switcher
   const languageLinks = document.querySelectorAll(".language-menu a");
+  const currentLangSpan = document.querySelector(".current-lang");
+
   languageLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
@@ -130,4 +144,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial translation
   updateContent(savedLang);
+
 });

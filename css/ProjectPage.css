@@ -96,15 +96,21 @@ hr.roundedv {
     padding-right: 5%;
   }
 
+  .SideBar {
+    padding: 20px;
+    padding-top: 20px;
+    /* Center sidebar content on mobile */
+    text-align: center;
+    margin: 0 auto;
+    width: 90%;
+    /* Control width on mobile */
+  }
+
   hr.roundedv {
     width: 80%;
     height: 4px;
     margin: 20px auto;
     background: linear-gradient(to right, #ff7e5f, #feb47b);
-  }
-
-  .SideBar {
-    padding-top: 20px;
   }
 
 }

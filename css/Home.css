@@ -214,7 +214,8 @@ nav a:hover {
 
   .links-container {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    /* Center links horizontally */
     justify-content: flex-start;
     position: fixed;
     top: 0;
@@ -225,8 +226,96 @@ nav a:hover {
     background-color: #1e1e1e;
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
     transition: 0.75s ease-out;
-    padding-top: 60px;
-    /* To prevent overlap with the close button */
+    padding-top: 80px;
+    gap: 10px;
+  }
+
+  nav a {
+    height: 45px;
+    padding: 0 25px;
+    font-size: 1.2rem;
+    /* Increase text size */
+    justify-content: center;
+    /* Center text within link */
+    width: 100%;
+    /* Make links full width */
+    text-align: center;
+    /* Center text */
+  }
+
+  .language-switcher {
+    padding: 0 25px;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .language-btn {
+    width: 100%;
+    padding: 10px 0;
+    justify-content: center;
+    /* Changed from flex-start to center */
+    text-align: center;
+    /* Add text centering */
+    font-size: 1.2rem;
+    display: flex;
+    /* Ensure flex display */
+    align-items: center;
+    /* Center items vertically */
+  }
+
+  .language-btn .current-lang {
+    margin: 0 5px;
+    /* Add some space between text and icon */
+  }
+
+  .language-menu {
+    position: relative;
+    width: 100%;
+    margin-top: 45px;
+    background-color: #2e2e2e;
+    border-radius: 5px;
+  }
+
+  .language-menu li a {
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 20px;
+    text-align: center;
+  }
+
+  .language-menu li a:hover {
+    background-color: #3e3e3e;
+  }
+
+  .current-lang {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .language-switcher {
+    padding: 0 25px;
+    margin-top: 10px;
+    width: 100%;
+    /* Full width for consistency */
+    display: flex;
+    justify-content: center;
+    /* Center language switcher */
+  }
+
+  .language-menu {
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .language-btn {
+    width: 100%;
+    padding: 10px 0;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+    /* Match link text size */
   }
 
   nav a li ul {
@@ -241,11 +330,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked ~ .links-container {
+  #sidebar-active:checked~.links-container {
     right: 0;
   }
 
-  #sidebar-active:checked ~ #overlay {
+  #sidebar-active:checked~#overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -254,20 +343,19 @@ nav a:hover {
     z-index: 9;
   }
 
-  #sidebar-active:checked ~ .open-sidebar-button {
+  #sidebar-active:checked~.open-sidebar-button {
     display: none;
   }
 
-  #sidebar-active:checked ~ .links-container .close-sidebar-button {
+  #sidebar-active:checked~.links-container .close-sidebar-button {
     display: block;
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 11;
-    /* Ensures it stays above the menu */
   }
 
-  #sidebar-active:not(:checked) ~ .close-sidebar-button {
+  #sidebar-active:not(:checked)~.close-sidebar-button {
     display: none;
   }
 
@@ -285,6 +373,37 @@ nav a:hover {
     top: 0;
     left: 0;
     z-index: 10;
+  }
+
+  .current-lang {
+    font-size: 1.2rem;
+    /* Match other text sizes */
+  }
+
+  .language-btn {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .language-btn i {
+    margin-left: 5px;
+    /* Add space between text and icon */
+  }
+
+  .current-lang {
+    text-align: center;
+    display: inline-block;
+    /* Ensures the text stays with the icon */
+  }
+
+  .language-menu li a {
+    text-align: center;
+    justify-content: center;
   }
 }
 
@@ -345,7 +464,7 @@ nav a:hover {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  width: auto;
+  /* width: auto; */
   min-width: fit-content;
   white-space: nowrap;
 }
