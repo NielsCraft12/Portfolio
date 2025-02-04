@@ -147,6 +147,8 @@ nav {
   justify-content: flex-end;
   align-items: center;
   z-index: 1000;
+  padding-right: 30px;
+  /* Add this line */
 }
 
 .links-container {
@@ -156,6 +158,8 @@ nav {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
+  padding-right: 30px;
+  /* Add this line */
 }
 
 nav a {
@@ -228,6 +232,8 @@ nav a:hover {
     transition: 0.75s ease-out;
     padding-top: 80px;
     gap: 10px;
+    padding-right: 0;
+    /* Reset padding for mobile view */
   }
 
   nav a {
@@ -403,7 +409,9 @@ nav a:hover {
 
   .language-menu li a {
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
+    /* padding-left: 40px; */
+    /* Add some left padding for better visual appearance */
   }
 }
 
@@ -467,6 +475,7 @@ nav a:hover {
   /* width: auto; */
   min-width: fit-content;
   white-space: nowrap;
+  padding-left: 20px;
 }
 
 .language-menu li a {
@@ -474,6 +483,7 @@ nav a:hover {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  width: 260px;
 }
 
 .language-menu li a:hover {

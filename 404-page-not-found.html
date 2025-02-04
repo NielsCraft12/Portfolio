@@ -1,159 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 Page Not Found</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
-    <link rel="icon" type="image/png" href="Images/Favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="Images/Favicon/favicon.svg" />
-    <link rel="shortcut icon" href="Images/Favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="Images/Favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="Images/Favicon/site.webmanifest" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Page Not Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
-    <style>
-      body {
-        font-family: "Baloo 2", cursive;
-        background-color: #1e1e1e;
-        color: white;
-        text-align: center;
-        min-height: 100vh;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        box-sizing: border-box;
-        overflow: hidden;
-      }
+  <link rel="icon" type="image/png" href="Images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="Images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="Images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="Images/Favicon/site.webmanifest" />
 
+  <style>
+    body {
+      font-family: "Baloo 2", cursive;
+      background-color: #1e1e1e;
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      min-width: 280px;
+      max-height: 90vh;
+      overflow: hidden;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    h1 {
+      font-size: min(120px, 15vh);
+      margin: 0;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: min(24px, 3vh);
+      margin: 10px 0;
+      color: #fff;
+    }
+
+    a {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    a:hover {
+      transform: scale(1.05);
+    }
+
+    .message {
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 35vh;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
       .container {
-        width: 100%;
-        max-width: 600px;
-        min-width: 280px;
-        max-height: 90vh;
-        overflow: hidden;
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
+        padding: 20px;
       }
 
       h1 {
-        font-size: min(120px, 15vh);
-        margin: 0;
-        background: linear-gradient(to right, #ff7e5f, #feb47b);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 80px;
       }
 
       p {
-        font-size: min(24px, 3vh);
-        margin: 10px 0;
-        color: #fff;
+        font-size: 20px;
+      }
+    }
+
+    @media (max-height: 600px) {
+      .container {
+        padding: 15px;
       }
 
-      a {
-        display: inline-block;
-        padding: 12px 30px;
-        background: linear-gradient(to right, #ff7e5f, #feb47b);
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        font-size: 18px;
-        transition: transform 0.3s ease;
-      }
-
-      a:hover {
-        transform: scale(1.05);
-      }
-
-      .message {
-        margin-bottom: 20px;
-        opacity: 0.9;
+      h1 {
+        font-size: min(60px, 12vh);
       }
 
       img {
-        width: auto;
-        max-width: 100%;
-        height: auto;
-        max-height: 35vh;
-        object-fit: contain;
+        max-height: 25vh;
       }
 
-      @media (max-width: 768px) {
-        .container {
-          padding: 20px;
-        }
-
-        h1 {
-          font-size: 80px;
-        }
-
-        p {
-          font-size: 20px;
-        }
+      p {
+        font-size: min(16px, 2.5vh);
+        margin: 5px 0;
       }
+    }
+  </style>
+</head>
 
-      @media (max-height: 600px) {
-        .container {
-          padding: 15px;
-        }
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <img id="myPicture" style="opacity: 0" alt="404 error image" />
+    <p class="message" id="randomText"></p>
+    <a href="/" data-i18n="returnHome">Return Home</a>
+  </div>
+  <script defer src="js/translate.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const myPix = ["Images/404Images/player dead.png", "Images/404Images/player sticker.png", "Images/404Images/roobma bomb sticker.png", "Images/404Images/slimeKing.png", "Images/404Images/slime.png", "Images/404Images/punchingslimes.png"];
+      const translate = ["playerDead", "player", "roombaBomb", "slimeKing", "slime", "punchingSlimes"];
 
-        h1 {
-          font-size: min(60px, 12vh);
-        }
+      const randomNum = Math.floor(Math.random() * myPix.length);
 
-        img {
-          max-height: 25vh;
-        }
+      const img = new Image();
+      img.onload = function () {
+        const myPicture = document.getElementById("myPicture");
+        const randomText = document.getElementById("randomText");
 
-        p {
-          font-size: min(16px, 2.5vh);
-          margin: 5px 0;
-        }
-      }
-    </style>
-  </head>
+        myPicture.src = myPix[randomNum];
+        myPicture.style.opacity = "1";
+        randomText.setAttribute("data-i18n", translate[randomNum]);
 
-  <body>
-    <div class="container">
-      <h1>404</h1>
-      <img id="myPicture" style="opacity: 0" alt="404 error image" />
-      <p class="message" id="randomText"></p>
-      <a href="/" data-i18n="returnHome">Return Home</a>
-    </div>
-    <script defer src="js/translate.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const myPix = ["images/404Images/player dead.png", "images/404Images/player sticker.png", "images/404Images/roobma bomb sticker.png", "images/404Images/slimeKing.png", "images/404Images/slime.png", "images/404Images/punchingslimes.png"];
-        const translate = ["playerDead", "player", "roombaBomb", "slimeKing", "slime", "punchingSlimes"];
+        // Call updateContent directly with the current language
+        const savedLang = localStorage.getItem("preferredLanguage") || "en";
+        updateContent(savedLang);
+      };
+      img.src = myPix[randomNum];
+    });
+  </script>
+</body>
 
-        const randomNum = Math.floor(Math.random() * myPix.length);
-
-        const img = new Image();
-        img.onload = function () {
-          const myPicture = document.getElementById("myPicture");
-          const randomText = document.getElementById("randomText");
-
-          myPicture.src = myPix[randomNum];
-          myPicture.style.opacity = "1";
-          randomText.setAttribute("data-i18n", translate[randomNum]);
-
-          // Call updateContent directly with the current language
-          const savedLang = localStorage.getItem("preferredLanguage") || "en";
-          updateContent(savedLang);
-        };
-        img.src = myPix[randomNum];
-      });
-    </script>
-  </body>
 </html>

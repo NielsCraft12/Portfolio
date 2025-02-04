@@ -7,27 +7,27 @@ const translations = {
     contact: "Contact",
 
     // Home about me
-    welcome: "Hello, I'm Niels de Laat,",
+    welcome: "Hello, I'm Niels de Laat",
     ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands',
-    aboutMe: 'a game developer who focuses on entertaining people with my games. I create games with the Unity engine and C# to bring all my ideas to life, and I enjoy learning new and innovative things in programming and game development. When I\'m not programming I am playing <a href="https://steamcommunity.com/id/vgbkjdsfu/" target="_blank" style="text-decoration: none; color: #fffffff9">games</a> or watching <a href="https://trakt.tv/users/nielscraft12" target="_blank" style="text-decoration: none; color: #fffffff9">movies</a>.',
+    aboutMe: "I'm a developer who loves to create entertaining games. I bring my ideas to life using Unity and C# and I enjoy learning new and innovative approaches. When I'm not programming I am playing <a href=\"https://steamcommunity.com/id/vgbkjdsfu/\" target=\" _blank\" style=\"text-decoration: none; color: #fffffff9\">games</a> or watching <a href=\"https://trakt.tv/users/nielscraft12\" target=\" _blank\" style=\"text-decoration: none; color: #fffffff9\">movies</a>.",
     skills: "Skills",
 
     //Projects
     seeMore: "See More",
     technologies: "Technologies",
-    descriptionGame1: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    descriptionGame2: "1Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    descriptionGame3: "2Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    descriptionGame4: "3Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    descriptionGame1: "Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this",
+    descriptionGame2: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source.",
+    descriptionGame3: "A challenging 2D platformer where your only tool is a single box. Guide both yourself and your",
+    descriptionGame4: "Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control",
     // descriptionGame5:"fhjhgh",
     // descriptionGame6:"fhjhgh",
 
     //Experience
     gluTime: "2023 - Present",
-    gluDescription: "The Game Developer program at Grafisch Lyceum Utrecht focuses on game design, coding, and collaboration with programmers and artists. It uses projects and tools to learn the skills necessary for creating fun games.",
+    gluDescription: "The Game Development program at Grafisch Lyceum Utrecht teaches game design,coding, and collaboration between programmers and artists. Through practical projects we learn the skills needed to fun games.",
     futureTitle: "The Future",
     futureTime: "Future",
-    futureDescription: "future Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium omnis autem delectus alias reiciendis! Natus earum dicta nobis est",
+    futureDescription: "Your project here? click <a style=\"color: #ff7e5f;\" href=\"#Contact\">here</a> To Contact Me",
 
     //contact
     contactTitle: "Contact Me",
@@ -46,12 +46,16 @@ const translations = {
     slimetasticMobileMessage: "To play Slimetastic Punchout, please visit this page on a computer.",
 
     // WA-LCH
-    walchDescription: "You’re a cleaning bot called LCH and have been in hibernation mode for quite some years.Suddenly you are woken up by some unknown source, and your job is to clean everything around you to escape.You obtain a keycard to the next room after finishing cleaning the previous room.But be careful... there are evil robots lurking",
+    walchDescription: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon.",
     walchMobileMessage: "To play WA-LCH, please visit this page on a computer.",
 
     // You Only Have One Box
-    oneBoxDescription: 'A short 2D Platformer where you only have one box you have to take with you to platform across certain obstacles be careful you don\'t lose it! Made as part of a Game Jam with the theme "You Only Have One"',
+    oneBoxDescription: "A challenging 2D platformer where your only tool is a single box. Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you'll have to start over! This game won 1st place in the GLU Game Jam, where it was created under the theme \"You Only Have One\".",
     oneBoxMobileMessage: "To play You Only Have One Box, please visit this page on a computer.",
+
+    //WA-LCH Origins
+    walchOriginsDescription: "Step into the role of a dedicated cleaning robot, just like in the <a class=\"credits\" href=\"WA-LCH.html\">original WA-LCH</a>. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad.<br><br> In this prequel, your mission is to maintain order in a bustling, cluttered laboratory where absent-minded scientists leave piles of trash everywhere. If the mess gets out of control, it’ll attract unwanted visitors like rats that cause even more trouble. <br><br> Can you keep the lab spotless and prevent it from spiraling into total chaos? Put your cleaning skills to the test and find out! <br><br> This game was created in just 30 hours as part of a late Global Game Jam hosted by GLU, with the theme “Bubbles.” It even secured second place among the games developed during the event!",
+    walchOriginsMobileMessage: "To play WA-LCH Origins, please visit this page on a computer.",
 
     //404 page
     playerDead: "This bot tried its best… and failed spectacularly.",
@@ -70,27 +74,27 @@ const translations = {
     contact: "Contact",
 
     // Home / about me
-    welcome: "Hoi, ik ben Niels de Laat,",
+    welcome: "Hoi, ik ben Niels de Laat",
     ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, Nederland',
-    aboutMe: 'een game developer die zich richt op het vermaken van mensen met mijn games. Ik maak games met de Unity engine en C# om al mijn ideeën tot leven te brengen, en ik vind het leuk om nieuwe en innovatieve dingen te leren in programmeren en game development. Als ik niet aan het programmeren ben, speel ik <a href="https://steamcommunity.com/id/vgbkjdsfu/" target="_blank" style="text-decoration: none; color: #fffffff9">games</a> of kijk ik <a href="https://trakt.tv/users/nielscraft12" target="_blank" style="text-decoration: none; color: #fffffff9">films</a>.',
+    aboutMe: "Ik ben een ontwikkelaar die ervan houdt om vermakelijke games te maken. Ik breng mijn ideeën tot leven met behulp van Unity en C# en ik geniet ervan om nieuwe en innovatieve benaderingen te leren. Als ik niet aan het programmeren ben, speel ik <a href=\"https://steamcommunity.com/id/vgbkjdsfu/\" target=\" _blank\" style=\"text-decoration: none; color: #fffffff9\">games</a> of kijk ik <a href=\"https://trakt.tv/users/nielscraft12\" target=\" _blank\" style=\"text-decoration: none; color: #fffffff9\">films</a>.",
     skills: "Vaardigheden",
 
     //Projects
     seeMore: "Bekijk meer",
     technologies: "Technologieën",
-    descriptionGame1: " test Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    descriptionGame2: "test2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    descriptionGame3: "test3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
-    descriptionGame4: "67Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur dolorum distinctio minima voluptate quae?",
+    descriptionGame1: " Stap in de rol van een toegewijde schoonmaakrobot, net als in de originele WA-LCH. Maar dit",
+    descriptionGame2: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron.",
+    descriptionGame3: "Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je",
+    descriptionGame4: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt",
     // descriptionGame5:"fhjhgh",
     // descriptionGame6:"fhjhgh",
 
     //Experience
     gluTime: "2023 - Heden",
-    gluDescription: "Het Game Developer programma op het Grafisch Lyceum Utrecht richt zich op game design, coderen en samenwerking met programmeurs en artiesten. Het gebruikt projecten en tools om de vaardigheden te leren die nodig zijn voor het maken van leuke games.",
+    gluDescription: "Het Game Development-programma van het Grafisch Lyceum Utrecht leert game-ontwerp, codering en samenwerking tussen programmeurs en artiesten. Door praktische projecten leren we de vaardigheden die nodig zijn om leuke games te maken.",
     futureTitle: "De Toekomst",
     futureTime: "Toekomst",
-    futureDescription: "tokomst Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium omnis autem delectus alias reiciendis! Natus earum dicta nobis est",
+    futureDescription: "Jouw project hier? Klik <a style=\"color: #ff7e5f;\" href=\"#Contact\">hier</a> om contact met mij op te nemen",
 
     //contact
     contactTitle: "Contacteer mij",
@@ -105,16 +109,21 @@ const translations = {
     artists: "Artiesten",
 
     // Slimetastic Punchout
-    slimetasticDescription: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het tegen elkaar opneemt in snelle arena's. Het doel? Bedek zoveel mogelijk tegels terwijl je over de kaart glijdt, stuitert en spat. Onderweg kun je wat stevige stoten landen om je tegenstanders opzij te duwen - of ze gewoon van hun stuk te brengen. Elke wedstrijd is onvoorspelbaar, vol gelach en een rommelige strijd om de controle. Het is slijmerige chaos op zijn best!",
+    slimetasticDescription: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het tegen elkaar op",
     slimetasticMobileMessage: "Om Slimetastic Punchout te spelen, bezoek deze pagina op een computer.",
 
     // WA-LCH
-    walchDescription: "Je bent een schoonmaakrobot genaamd LCH en je bent al een aantal jaren in de slaapstand geweest. Plots word je gewekt door een onbekende bron, en je taak is om alles om je heen schoon te maken om te ontsnappen. Je krijgt een sleutelkaart naar de volgende kamer nadat je de vorige kamer hebt schoongemaakt. Maar wees voorzichtig... er zijn kwaadaardige robots op de loer",
+    walchDescription: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron. Je missie is om alles om je heen schoon te maken om te ontsnappen. Maak elke kamer grondig schoon om sleutelkaarten te verkrijgen die toegang geven tot het volgende gebied. Maar wees voorzichtig... kwaadaardige robots loeren in de schaduwen. Won tweede plaats op GluCon.",
     walchMobileMessage: "Om WA-LCH te spelen, bezoek deze pagina op een computer.",
 
     // You Only Have One Box
-    oneBoxDescription: 'Een korte 2D Platformer waar je maar één doos hebt die je mee moet nemen om over bepaalde obstakels te platformen, pas op dat je hem niet verliest! Gemaakt als onderdeel van een Game Jam met het thema "You Only Have One"',
+    oneBoxDescription: "Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je kostbare doos door steeds lastiger obstakels. Verlies je het, dan moet je opnieuw beginnen! Dit spel won de 1e plaats in de GLU Game Jam, waar het werd gemaakt onder het thema \"You Only Have One\".",
     MobileMessage: "Om You Only Have One Box te spelen, bezoek deze pagina op een computer.",
+
+    //WA-LCH Origins
+    walchOriginsDescription: "Stap in de rol van een toegewijde schoonmaakrobot, net als in de <a class=\"credits\" href=\"WA-LCH.html\">originele WA-LCH</a>. Maar dit keer ben je niet alleen bezig met het opruimen van een verlaten laboratorium vol radioactieve rotzooi, je gaat de chaos te lijf voordat het zo erg wordt.<br><br> In deze prequel is je missie om orde te handhaven in een druk, rommelig laboratorium waar verstrooide wetenschappers overal stapels afval achterlaten. Als de rotzooi uit de hand loopt, trekt het ongewenste bezoekers aan zoals ratten die nog meer problemen veroorzaken. <br><br> Kun je het lab brandschoon houden en voorkomen dat het in totale chaos vervalt? Test je schoonmaakvaardigheden en kom erachter! <br><br> Dit spel is in slechts 30 uur gemaakt als onderdeel van een late Global Game Jam georganiseerd door GLU, met het thema “Bubbles.” Het behaalde zelfs de tweede plaats onder de spellen die tijdens het evenement zijn ontwikkeld!",
+    walchOriginsMobileMessage: "Om WA-LCH Origins te spelen, bezoek deze pagina op een computer.",
+
 
     //404 page
     playerDead: "Deze bot heeft zijn best gedaan... en is spectaculair mislukt.",
