@@ -50,8 +50,17 @@ const translations = {
     walchMobileMessage: "To play WA-LCH, please visit this page on a computer.",
 
     // You Only Have One Box
-    oneBoxDescription: "A short 2D Platformer where you only have one box you have to take with you to platform across certain obstacles be careful you don't lose it! Made as part of a Game Jam with the theme \"You Only Have One\"",
+    oneBoxDescription: 'A short 2D Platformer where you only have one box you have to take with you to platform across certain obstacles be careful you don\'t lose it! Made as part of a Game Jam with the theme "You Only Have One"',
     oneBoxMobileMessage: "To play You Only Have One Box, please visit this page on a computer.",
+
+    //404 page
+    playerDead: "This bot tried its best… and failed spectacularly.",
+    player: "This bot couldn't find your page, but it's trying its best!",
+    roombaBomb: "Oops! The roomba bomb accidentally blown up the page",
+    slimeKing: "By order of the Slime Kingdom, this page is missing!",
+    slime: "No page here, only squishy, squishy disappointment.",
+    punchingSlimes: "They were too busy brawling to save the content.",
+    returnHome: "Return Home",
   },
   nl: {
     //navbar
@@ -104,9 +113,17 @@ const translations = {
     walchMobileMessage: "Om WA-LCH te spelen, bezoek deze pagina op een computer.",
 
     // You Only Have One Box
-    oneBoxDescription: "Een korte 2D Platformer waar je maar één doos hebt die je mee moet nemen om over bepaalde obstakels te platformen, pas op dat je hem niet verliest! Gemaakt als onderdeel van een Game Jam met het thema \"You Only Have One\"",
+    oneBoxDescription: 'Een korte 2D Platformer waar je maar één doos hebt die je mee moet nemen om over bepaalde obstakels te platformen, pas op dat je hem niet verliest! Gemaakt als onderdeel van een Game Jam met het thema "You Only Have One"',
     MobileMessage: "Om You Only Have One Box te spelen, bezoek deze pagina op een computer.",
 
+    //404 page
+    playerDead: "Deze bot heeft zijn best gedaan... en is spectaculair mislukt.",
+    player: "Deze bot kon je pagina niet vinden, maar doet zijn best!",
+    roombaBomb: "Oeps! De roomba-bom heeft per ongeluk de pagina opgeblazen",
+    slimeKing: "Op bevel van het Slime Kingdom ontbreekt deze pagina!",
+    slime: "Geen pagina hier, alleen zachte, zachte teleurstelling.",
+    punchingSlimes: "Ze waren te druk met vechten om de inhoud te redden.",
+    returnHome: "terug naar huis",
   },
 };
 
@@ -127,6 +144,13 @@ function updateContent(lang) {
   updateAgeDisplay();
 }
 
+function initTranslation() {
+  const savedLang = localStorage.getItem("preferredLanguage") || "en";
+  updateContent(savedLang);
+}
+
+window.initTranslation = initTranslation; // Make it globally available
+
 document.addEventListener("DOMContentLoaded", function () {
   const savedLang = localStorage.getItem("preferredLanguage") || "en";
 
@@ -144,5 +168,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial translation
   updateContent(savedLang);
-
 });
