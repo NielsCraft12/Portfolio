@@ -41,10 +41,7 @@
   text-decoration: none;
   /* color: #fff; */
   color: #ff7e5f;
-
 }
-
-
 
 .credits:hover {
   /* color: #ff7e5f; */
@@ -112,7 +109,6 @@ hr.roundedv {
     margin: 20px auto;
     background: linear-gradient(to right, #ff7e5f, #feb47b);
   }
-
 }
 
 .ScreenShots {
@@ -141,7 +137,7 @@ hr.roundedv {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .85);
+  background-color: rgba(0, 0, 0, 0.85);
 }
 
 .modal-content {
@@ -186,4 +182,137 @@ hr.roundedv {
   -moz-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+body {
+  max-width: calc(100vh * 16 / 9);
+  margin: 0 auto;
+}
+
+.mobile-message {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 20px;
+  margin: 20px auto;
+  color: white;
+  max-width: 90%;
+}
+
+.mobile-divider {
+  display: none;
+}
+
+.pc-divider {
+  display: flex;
+}
+
+.title {
+  font-size: 75px;
+}
+
+.subtitle {
+  font-weight: 100;
+  font-size: xx-large;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .itch-embed-container {
+    display: none !important; /* Force hide */
+  }
+
+  .mobile-message {
+    display: block !important; /* Force show */
+  }
+
+  .containerProject {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "Main-Content"
+      "divider"
+      "SideBar";
+    padding: 10px;
+  }
+
+  .Main-Content {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .SideBar {
+    padding: 20px;
+    padding-top: 20px;
+    /* Center sidebar content on mobile */
+    text-align: center;
+    margin: 0 auto;
+    width: 90%;
+    /* Control width on mobile */
+  }
+
+  hr.roundedv {
+    width: 80%;
+    height: 4px;
+    margin: 20px auto;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+  }
+
+  .pc-divider {
+    display: none !important;
+  }
+
+  .mobile-divider {
+    display: block !important;
+  }
+
+  .mobile-message {
+    display: block;
+  }
+
+  .title {
+    font-size: 50px;
+  }
+
+  .subtitle {
+    font-weight: 100;
+    font-size: xx-large;
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 769px) {
+  .itch-embed-container {
+    display: block !important;
+  }
+
+  .mobile-message {
+    display: none !important;
+  }
+
+  .itch-embed-container {
+    display: block;
+  }
+
+  .mobile-message {
+    display: none;
+  }
+
+  .pc-divider {
+    display: flex !important;
+  }
+
+  .mobile-divider {
+    display: none !important;
+  }
+
+  .subtitle {
+    font-weight: 100;
+    font-size: xx-large;
+    font-size: 25px;
+  }
+
+  .title {
+    font-size: 50px;
+  }
 }

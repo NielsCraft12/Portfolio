@@ -8,6 +8,12 @@
  width=device-width, initial-scale=1.0, 
  minimum-scale=1.0, maximum-scale=1.0, 
  user-scalable=no, target-densitydpi=device-dpi" />
+
+ <meta name="description" content="Hello, I'm Niels de Laat I'm a developer who loves to create entertaining games. I bring my ideas to life using
+ Unity and C# and I enjoy learning new and innovative approaches. When I'm not programming I am playing">
+
+
+
   <title>Portfolio Niels de Laat</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!--foogle fonts-->
@@ -25,11 +31,11 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <!--Favicon-->
-  <link rel="icon" type="image/png" href="Images/Favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="Images/Favicon/favicon.svg" />
-  <link rel="shortcut icon" href="Images/Favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="Images/Favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="Images/Favicon/site.webmanifest" />
+  <link rel="icon" type="image/png" href="images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="images/Favicon/site.webmanifest" />
 
 </head>
 
@@ -64,69 +70,93 @@
   <section id="Home"></section>
   <div class="container">
     <div class="Picture">
-      <img src="Images/me.jpg" alt="" />
+      <picture>
+        <source srcset="images/webp/me.webp" type="image/webp" />
+        <img src="images/png/me.jpg" alt="Profile picture" />
+    </picture>
+      <!-- <img src="images/webp/me.webp" srcset="images/png/me.jpg" alt="" /> -->
     </div>
     <div class="Text">
       <p data-i18n="ageLocation" class="age-location">🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands</p>
       <h1 data-i18n="welcome" style="word-spacing: -1px">Hello, I'm Niels de Laat</h1>
       <p data-i18n="aboutMe">I'm a developer who loves to create entertaining games. I bring my ideas to life using
         Unity and C# and I enjoy learning new and innovative approaches. When I'm not programming I am playing <a
-          href="https://steamcommunity.com/id/vgbkjdsfu/" target="" _blank""
+          href="https://infinitebacklog.net/users/nielscraft12" target="" _blank"" rel="noreferrer"
           style="text-decoration: none; color: #fffffff9">games</a> or watching <a
-          href="https://trakt.tv/users/nielscraft12" target="" _blank""
+          href="https://trakt.tv/users/nielscraft12" target="" _blank"" rel="noreferrer"
           style="text-decoration: none; color: #fffffff9">movies</a>.</p>
       <h1 data-i18n="skills" style="text-align: center">Skills</h1>
       <ul class="cd-demo-chip-list">
         <li>
           <span class="chip">
-            <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+            <picture>
+              <source  srcset="images/webp/CSharpLogo.webp" type="image/webp" />
+              <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+          </picture>
+            <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
             <i class="chip__label">C#</i>
           </span>
         </li>
 
         <li>
           <span class="chip">
-            <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+            <picture>
+              <source  srcset="images/webp/UnityLogo.webp" type="image/webp" />
+              <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
+          </picture>
+            <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
             <i class="chip__label">Unity</i>
           </span>
         </li>
 
         <!-- <li>
           <span class="chip">
-            <img class="chip__img" src="Images/JavaScriptLogo.png" alt="Picture of Marta Rossi" />
+            <img class="chip__img" src="images/JavaScriptLogo.png" alt="Picture of Marta Rossi" />
             <i class="chip__label">JavaScript</i>
           </span>
         </li>
 
         <li>
           <span class="chip">
-            <img class="chip__img" src="Images/htmlLogo.png" alt="Picture of Paul Brown" />
+            <img class="chip__img" src="images/htmlLogo.png" alt="Picture of Paul Brown" />
             <i class="chip__label">HTML</i>
           </span>
         </li>
         <li>
           <span class="chip">
-            <img class="chip__img" src="Images/cssLogo2.png" alt="Picture of Paul Brown" />
+            <img class="chip__img" src="images/cssLogo2.png" alt="Picture of Paul Brown" />
             <i class="chip__label">CSS</i>
           </span>
         </li> -->
         <li>
           <span class="chip">
-            <img class="chip__img" src="Images/GithubLogo.png" alt="Git Logo" />
+            <picture>
+              <source  srcset="images/webp/GithubLogo.webp" type="image/webp" />
+              <img class="chip__img" src="images/png/GithubLogo.png" alt="Profile picture" />
+          </picture>
+            <!-- <img class="chip__img" src="images/GithubLogo.png" alt="Git Logo" /> -->
             <i class="chip__label">Git</i>
           </span>
         </li>
 
         <li>
           <span class="chip">
-            <img class="chip__img" src="Images/PythonLogo.png" alt="Ptyhon Logo" />
+            <picture>
+              <source  srcset="images/webp/PythonLogo.webp" type="image/webp" />
+              <img class="chip__img" src="images/png/PythonLogo.png" alt="Profile picture" />
+          </picture>
+            <!-- <img class="chip__img" src="images/PythonLogo.png" alt="Ptyhon Logo" /> -->
             <i class="chip__label">Python</i>
           </span>
         </li>
 
         <li>
           <span class="chip">
-            <img class="chip__img" src="Images/TrelloLogo.png" alt="Trello Logo" />
+            <picture>
+              <source  srcset="images/webp/TrelloLogo.webp" type="image/webp" />
+              <img class="chip__img" src="images/png/TrelloLogo.png" alt="Trello Logo" />
+          </picture>
+            <!-- <img class="chip__img" src="images/TrelloLogo.png" alt="Trello Logo" /> -->
             <i class="chip__label">Trello</i>
           </span>
         </li>
@@ -140,143 +170,190 @@
     <div class="blog-container">
 
 
-      <a href="/Projects/WA-LCH-Origins.html">
+      <!-- <a href="/projects/wa-lch-origins.html">
         <div class="blog-box hidden">
 
           <div class="blog-img">
-            <img alt="blog" src="Images/WalchOrgins.png" />
+            <picture>
+              <source srcset="images/webp/WalchOrgins.webp" type="image/webp" />
+              <img alt="blog" src="images/WalchOrgins.png" />
+            </picture>
+
           </div>
 
           <div class="blog-text">
             <span>2025</span>
-            <a href="/Projects/WA-LCH-Origins.html" class="blog-title">WA-LCH Origins</a>
-            <a href="/Projects/WA-LCH-Origins.html">
+            <a href="/projects/wa-lch-Oorigins.html" class="blog-title">WA-LCH Origins</a>
+            <a href="/projects/wa-lch-origins.html">
               <p data-i18n="descriptionGame1">Step into the role of a dedicated cleaning robot, just like in the
                 original WA-LCH. But this</p>
               <p style="color: black;">Technologies:</p>
               <ul class="cd-demo-chip-list" style=" justify-content: left;">
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+                    <picture>
+                      <source  srcset="images/webp/CSharpLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+                      </picture>
+                   
                     <i class="chip__label">C#</i>
                   </span>
                 </li>
 
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+                    <picture>
+                      <source  srcset="images/webp/UnityLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/UnityLogo.png" alt="Unity Logo" />
+                    </picture>
                     <i class="chip__label">Unity</i>
                   </span>
                 </li>
               </ul>
             </a>
-            <a href="/Projects/WA-LCH-Origins.html" class="blog-readmore">See More</a>
+            <a href="/projects/wa-lch-origins.html" class="blog-readmore">See More</a>
           </div>
         </div>
-      </a>
+      </a> -->
 
 
 
-      <a href="Projects/WA-LCH.html">
+      <a href="projects/wa-lch.html">
         <div class="blog-box hidden">
           <!--img---->
           <div class="blog-img">
-            <img alt="blog" src="Images/WA-LCH.png" />
+            <picture>
+              <source srcset="images/webp/WA-LCH.webp" type="image/webp" />
+              <img alt="blog" src="images/png/WA-LCH.png" />
+            </picture>
+            <!-- <img alt="blog" src="images/WA-LCH.png" /> -->
           </div>
           <!--text--->
           <div class="blog-text">
             <span>2024</span>
-            <a href="Projects/WA-LCH.html" class="blog-title">WA-LCH</a>
-            <a href="Projects/WA-LCH.html">
+            <a href="projects/wa-lch.html" class="blog-title">WA-LCH</a>
+            <a href="projects/wa-lch.html">
               <p data-i18n="descriptionGame2">You are LCH, a cleaning bot who awakens from years of hibernation by an
                 unknown source.</p>
               <p data-i18n="technologies" style="color: black">Technologies:</p>
               <ul class="cd-demo-chip-list" style="justify-content: left">
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+                    <picture>
+                      <source  srcset="images/webp/CSharpLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+                      </picture>
+                    <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
                     <i class="chip__label">C#</i>
                   </span>
                 </li>
 
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+                    <picture>
+                      <source  srcset="images/webp/UnityLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
+                    </picture>
+                    <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
                     <i class="chip__label">Unity</i>
                   </span>
                 </li>
               </ul>
             </a>
-            <a data-i18n="seeMore" href="Projects/WA-LCH.html" class="blog-readmore">See More</a>
+            <a data-i18n="seeMore" href="Projects/wa-lch.html" class="blog-readmore">See More</a>
           </div>
         </div>
       </a>
 
-      <a href="Projects/You-Only-Have-One-Box.html">
+      <a href="projects/you-only-have-one-box.html">
         <div class="blog-box hidden">
           <!--img---->
           <div class="blog-img">
-            <img alt="blog" src="Images/onlyOneblock.png" />
+            <picture>
+              <source srcset="images/webp/onlyOneblock.webp" type="image/webp" />
+              <img alt="blog" src="images/png/onlyOneblock.png" />
+            </picture>
+            <!-- <img alt="blog" src="images/onlyOneblock.png" /> -->
           </div>
           <!--text--->
           <div class="blog-text">
             <span>2024</span>
-            <a href="Projects/You-Only-Have-One-Box.html" class="blog-title">You have only one block</a>
-            <a href="Projects/You-Only-Have-One-Box.html">
+            <a href="projects/you-only-have-one-box.html" class="blog-title">You Only Have One Box</a>
+            <a href="projects/you-only-have-one-box.html">
               <p data-i18n="descriptionGame3">A challenging 2D platformer where your only tool is a single box. Guide
                 both yourself and your</p>
               <p data-i18n="technologies" style="color: black">Technologies:</p>
               <ul class="cd-demo-chip-list" style="justify-content: left">
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+                    <picture>
+                      <source  srcset="images/webp/CSharpLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+                      </picture>
+                    <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
                     <i class="chip__label">C#</i>
                   </span>
                 </li>
 
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+                    <picture>
+                      <source  srcset="images/webp/UnityLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
+                    </picture>
+                    <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
                     <i class="chip__label">Unity</i>
                   </span>
                 </li>
               </ul>
             </a>
-            <a data-i18n="seeMore" href="Projects/You-Only-Have-One-Box.html" class="blog-readmore">See More</a>
+            <a data-i18n="seeMore" href="projects/you-only-have-one-box.html" class="blog-readmore">See More</a>
           </div>
         </div>
       </a>
-      <a href="Projects/Slimetastic-Punchout.html">
+      <a href="projects/slimetastic-punchout.html">
         <div class="blog-box hidden">
           <!--img---->
           <div class="blog-img">
-            <img alt="blog" src="Images/SlimetasticPunchout.png" />
+            <picture>
+              <source srcset="images/webp/SlimetasticPunchout.webp" type="image/webp" />
+              <img alt="blog" src="images/SlimetasticPunchout.png" />
+            </picture>
+            <!-- <img alt="blog" src="images/SlimetasticPunchout.png" /> -->
           </div>
           <!--text--->
           <div class="blog-text">
             <span>2024</span>
-            <a href="Projects/Slimetastic-Punchout.html" class="blog-title">Slimetastic Punchout</a>
-            <a href="Projects/Slimetastic-Punchout.html">
+            <a href="projects/slimetastic-punchout.html" class="blog-title">Slimetastic Punchout</a>
+            <a href="projects/slimetastic-punchout.html">
               <p data-i18n="descriptionGame4">Slimetastic Punchout is a chaotic and fun local multiplayer game where you
                 take control</p>
               <p data-i18n="technologies" style="color: black">Technologies:</p>
               <ul class="cd-demo-chip-list" style="justify-content: left">
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+                    <picture>
+                      <source  srcset="images/webp/CSharpLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+                      </picture>
+                    <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
                     <i class="chip__label">C#</i>
                   </span>
                 </li>
 
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+                    <picture>
+                      <source  srcset="images/webp/UnityLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
+                    </picture>
+                    <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
                     <i class="chip__label">Unity</i>
                   </span>
                 </li>
               </ul>
             </a>
-            <a data-i18n="seeMore" href="Projects/Slimetastic-Punchout.html" class="blog-readmore">See More</a>
+            <a data-i18n="seeMore" href="projects/slimetastic-punchout.html" class="blog-readmore">See More</a>
           </div>
         </div>
       </a>
@@ -285,7 +362,7 @@
         <div class="blog-box hidden">
 
           <div class="blog-img">
-            <img alt="blog" src="Images/onlyOneblock.png" />
+            <img alt="blog" src="images/onlyOneblock.png" />
           </div>
 
           <div class="blog-text">
@@ -301,14 +378,14 @@
               <ul class="cd-demo-chip-list" style=" justify-content: left;">
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+                    <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" />
                     <i class="chip__label">C#</i>
                   </span>
                 </li>
 
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+                    <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" />
                     <i class="chip__label">Unity</i>
                   </span>
                 </li>
@@ -322,7 +399,7 @@
         <div class="blog-box hidden">
 
           <div class="blog-img">
-            <img alt="blog" src="Images/onlyOneblock.png" />
+            <img alt="blog" src="images/onlyOneblock.png" />
           </div>
 
           <div class="blog-text">
@@ -338,14 +415,14 @@
               <ul class="cd-demo-chip-list" style=" justify-content: left;">
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/CSharpLogo.png" alt="C# Logo" />
+                    <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" />
                     <i class="chip__label">C#</i>
                   </span>
                 </li>
 
                 <li>
                   <span class="chip">
-                    <img class="chip__img" src="Images/UnityLogo.png" alt="Unity Logo" />
+                    <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" />
                     <i class="chip__label">Unity</i>
                   </span>
                 </li>
@@ -364,7 +441,7 @@
 
     <div class="timeline">
       <div class="container-timeline left-container">
-        <img src="Images/gluLogo.png" alt="" />
+        <img src="images/png/gluLogo.png" alt="" />
         <div class="text-box">
           <h2>Grafisch Lyceum Utrecht – Game Development</h2>
           <small data-i18n="gluTime">2023-Present</small>
@@ -375,20 +452,17 @@
         </div>
       </div>
       <div class="container-timeline right-container">
-        <img src="Images/Future.png" alt="" />
+        <img src="images/png/Future.png" alt="" />
         <div class="text-box">
           <h2 data-i18n="futureTitle">The Future</h2>
           <small data-i18n="futureTime">Future</small>
-          <p data-i18n="futureDescription">Your project here? click <a style="color: #ff7e5f;" href="#Contact">here</a>
-            To
-            Contact
-            Me</p>
+          <p data-i18n="futureDescription">Your project here? click <a style="color: #ff7e5f;" href="#Contact">here</a> To Me</p>
           <span class="right-container-arrow"></span>
         </div>
         <!--<
       </div>
       <div class="container-timeline left-container">
-        <img src="Images/gluLogo.png" alt="">
+        <img src="images/gluLogo.png" alt="">
         <div class="text-box">
           <h2>Toekomst</h2>
           <small>2024-Present</small>
@@ -399,7 +473,7 @@
 
       </div>
       <div class="container-timeline right-container">
-        <img src="Images/gluLogo.png" alt="">
+        <img src="images/gluLogo.png" alt="">
         <div class="text-box">
           <h2>Toekomst</h2>
           <small>2024-Present</small>
@@ -417,8 +491,8 @@
     <div class="socal-media-buttons">
       <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#105;&#101;&#108;&#115;&#100;&#101;&#108;&#97;&#97;&#116;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
         class="fa fa-envelope fa-2xl icon"></a>
-      <a href="https://nielscraft12.itch.io/" target="”_blank”" class="fa fa-itch-io fa-2xl icon"></a>
-      <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”"
+      <a href="https://nielscraft12.itch.io/" target="”_blank”" rel="noreferrer" class="fa fa-itch-io fa-2xl icon"></a>
+      <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”" rel="noreferrer"
         class="fa fa-linkedin fa-2xl icon"></a>
     </div>
   </section>
@@ -427,8 +501,26 @@
   <script defer src="js/animation.js"></script>
 </body>
 <footer>
-  <div class="footer">
-    <p>© 2025 Niels de Laat</p>
+  <div class="footer" style="display: flex; align-items: center; position: relative;">
+    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer;">
+      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
+        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+          -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
+          -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
+          -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
+          1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
+          0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
+          -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
+          -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
+          316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
+          123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
+          c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
+          -1440 483 -149 19 -562 27 -710 15z"/>
+        </g>
+      </svg>
+    </a>
+    <p style="flex: 1; text-align: center;">© 2025 Niels de Laat</p>
   </div>
 </footer>
 

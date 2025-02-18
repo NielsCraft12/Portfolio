@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-
 }
 
 body {
@@ -9,10 +8,7 @@ body {
   overflow-x: hidden;
   font-family: "Baloo 2", cursive;
   overflow: hidden;
-
-
 }
-
 
 html {
   overflow-x: hidden;
@@ -39,12 +35,18 @@ hr.rounded {
   margin-right: auto;
 }
 
+.mi-icon {
+  color: #1b1b1b;
+}
 
-
+[data-lang="mi"].active .mi-icon,
+[data-lang="mi"].active path {
+  color: #ffffff;
+  fill: #ffffff !important;
+}
 
 ::-webkit-scrollbar {
   width: 15px;
-
 }
 
 ::-webkit-scrollbar-track {

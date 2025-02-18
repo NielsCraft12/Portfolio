@@ -1,295 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <!-- Character encoding and viewport settings -->
-  <meta charset="UTF-8" />
-  <!-- Custom viewport settings to prevent scaling on mobile devices -->
-  <meta name="viewport" content="height=device-height, 
+  <head>
+    <!-- Character encoding and viewport settings -->
+    <meta charset="UTF-8" />
+    <!-- Custom viewport settings to prevent scaling on mobile devices -->
+    <meta
+      name="viewport"
+      content="height=device-height, 
    width=device-width, initial-scale=1.0, 
    minimum-scale=1.0, maximum-scale=1.0, 
-   user-scalable=no, target-densitydpi=device-dpi" />
-  <title>WA-LCH</title>
+   user-scalable=no, target-densitydpi=device-dpi"
+    />
 
-  <!-- Default Highlight.js css -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-  <!-- Remove old Highlight.js theme reference -->
-  <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
+    <meta name="description" content="Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad." />
+    <title>WA-LCH</title>
 
-  <!-- External Resources -->
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+    <!-- Default Highlight.js css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+    <!-- Remove old Highlight.js theme reference -->
+    <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
 
-  <!-- Stylesheet Links -->
-  <link href="../css/style.css" rel="stylesheet" />
-  <link href="../css/ProjectPage.css" rel="stylesheet" />
-  <link href="../css/Home.css" rel="stylesheet" />
+    <!-- External Resources -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Stylesheet Links -->
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/ProjectPage.css" rel="stylesheet" />
+    <link href="../css/Home.css" rel="stylesheet" />
 
-  <!-- Favicon Settings for various platforms -->
-  <link rel="icon" type="image/png" href="../Images/Favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="../Images/Favicon/favicon.svg" />
-  <link rel="shortcut icon" href="../Images/Favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../Images/Favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../Images/Favicon/site.webmanifest" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  <style>
-    body {
-      max-width: calc(100vh * 16 / 9);
-      margin: 0 auto;
-    }
+    <!-- Favicon Settings for various platforms -->
+    <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+  </head>
 
-    .mobile-message {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      background: #1e1e1e;
-      border-radius: 20px;
-      margin: 10px 0;
-      color: white;
-    }
-
-    .mobile-divider {
-      display: none;
-    }
-
-    .pc-divider {
-      display: flex;
-    }
-
-    .title {
-      font-size: 75px;
-    }
-
-    .subtitle {
-      font-weight: 100;
-      font-size: xx-large;
-      font-size: 30px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .itch-embed-container {
-        display: none;
-      }
-
-      .pc-divider {
-        display: none !important;
-      }
-
-      .mobile-divider {
-        display: block !important;
-      }
-
-      .mobile-message {
-        display: block;
-      }
-
-      .title {
-        font-size: 50px;
-      }
-
-      .subtitle {
-        font-weight: 100;
-        font-size: xx-large;
-        font-size: 25px;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .itch-embed-container {
-        display: block;
-      }
-
-      .mobile-message {
-        display: none;
-      }
-
-      .pc-divider {
-        display: flex !important;
-      }
-
-      .mobile-divider {
-        display: none !important;
-      }
-
-      .subtitle {
-        font-weight: 100;
-        font-size: xx-large;
-        font-size: 25px;
-      }
-
-      .title {
-        font-size: 50px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Navigation Menu -->
-  <nav>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+  <body>
+    <!-- Navigation Menu -->
+    <nav>
+      <input type="checkbox" id="sidebar-active" />
+      <label for="sidebar-active" class="open-sidebar-button">
+        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
       </label>
-      <a data-i18n="home" class="home-link" href="../index.html">Home</a>
-      <a data-i18n="projects" href="../index.html?lang=#Projects">Projects</a>
-      <a data-i18n="experience" href="../index.html?lang=#Experience">Experience</a>
-      <a data-i18n="contact" href="../index.html?lang=#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en">English</a></li>
-          <li><a href="#" data-lang="nl">Nederlands</a></li>
-        </ul>
+      <label id="overlay" for="sidebar-active"></label>
+      <div class="links-container">
+        <label for="sidebar-active" class="close-sidebar-button">
+          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+        </label>
+        <a data-i18n="home" class="home-link" href="../">Home</a>
+        <a data-i18n="projects" href="../?lang=#Projects">Projects</a>
+        <a data-i18n="experience" href="../?lang=#Experience">Experience</a>
+        <a data-i18n="contact" href="../?lang=#Contact">Contact</a>
+        <div class="language-switcher">
+          <button class="language-btn">
+            <span class="current-lang">English</span>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <ul class="language-menu">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="nl">Nederlands</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Main Content Container -->
-  <div class="containerProject">
-    <!-- Project Description Section -->
-    <div class="Main-Content">
-      <h1 class="GradiantTitle title">WA-LCH Origins</h1>
-      <h3 data-i18n="description" class="GradiantTitle subtitle">Description</h3>
-      <p data-i18n="walchOriginsDescription">Step into the role of a dedicated cleaning robot, just like in the <a
-          class="credits" href="WA-LCH.html">original
-          WA-LCH</a>. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re
-        dealing
-        with the chaos before it got that bad.<br><br>
+    <!-- Main Content Container -->
+    <div class="containerProject">
+      <!-- Project Description Section -->
+      <div class="Main-Content">
+        <h1 class="GradiantTitle title">WA-LCH Origins</h1>
+        <h3 data-i18n="description" class="GradiantTitle subtitle">Description</h3>
+        <p data-i18n="walchOriginsDescription">
+          Step into the role of a dedicated cleaning robot, just like in the <a class="credits" href="WA-LCH.html">original WA-LCH</a>. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad.<br /><br />
 
-        In this prequel, your mission is to maintain order in a bustling, cluttered laboratory where absent-minded
-        scientists leave piles of trash everywhere. If the mess gets out of control, it’ll attract unwanted visitors
-        like rats that cause even more trouble. <br><br>
+          In this prequel, your mission is to maintain order in a bustling, cluttered laboratory where absent-minded scientists leave piles of trash everywhere. If the mess gets out of control, it’ll attract unwanted visitors like rats that cause even more trouble. <br /><br />
 
-        Can you keep the lab spotless and prevent it from spiraling into total chaos? Put your cleaning skills to the
-        test and find out! <br><br>
-        This game was created in just 30 hours as part of a late Global Game Jam hosted by GLU, with the theme
-        “Bubbles.” It even secured second place among the games developed during the event!</p>
+          Can you keep the lab spotless and prevent it from spiraling into total chaos? Put your cleaning skills to the test and find out! <br /><br />
+          This game was created in just 30 hours as part of a late Global Game Jam hosted by GLU, with the theme “Bubbles.” It even secured second place among the games developed during the event!
+        </p>
 
-      <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play
-      </h1>
-      <div class="itch-embed-container"
-        style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
-          src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="">
-          <a href="https://joahvds.itch.io/walch-origins">Play WA-LCH Origins on itch.io</a>
-        </iframe>
-      </div>
-      <div class="mobile-message">
-        <p data-i18n="walchOriginsMobileMessage">To play WA-LCH Origins, please visit this page on a computer.</p>
+        <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1>
+        <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="">
+            <a href="https://joahvds.itch.io/walch-origins">Play WA-LCH Origins on itch.io</a>
+          </iframe>
+        </div>
+        <div class="mobile-message">
+          <p data-i18n="walchOriginsMobileMessage">To play WA-LCH Origins, please visit this page on a computer.</p>
+        </div>
       </div>
 
-    </div>
-
-    <!-- Visual Divider -->
-    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
-      <hr class="roundedv" style="height: 100%; margin: 0" />
-      <!-- <hr class="roundedv mobile-divider" /> -->
-    </div>
-
-    <div class="divider mobile-divider">
-      <hr class="roundedv" />
-    </div>
-
-    <!-- Sidebar Content -->
-    <div class="SideBar" style="height: max-content">
-      <!-- Trailer Section -->
-      <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
-      <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0; width: calc(100vh * 16 / 9); height: 100%"
-          src="https://www.youtube.com/embed/D95I2jfcv_Q?si=lCGYlfrblu8t_9Bj" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+      <!-- Visual Divider -->
+      <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
+        <hr class="roundedv" style="height: 100%; margin: 0" />
+        <!-- <hr class="roundedv mobile-divider" /> -->
       </div>
 
-      <!-- Screenshots Section -->
-      <h1 data-i18n="screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
-      <img class="ScreenShots" src="../Images/ProjectScreenShots/WALCH/WALCHscreenshot1.png"
-        alt="screen shot of the game" />
-      <img class="ScreenShots" src="../Images/ProjectScreenShots/WALCH/WALCHscreenshot2.png"
-        alt="screen shot of the game" />
-      <img class="ScreenShots" src="../Images/ProjectScreenShots/WALCH/WALCHscreenshot3.png"
-        alt="screen shot of the game" />
+      <div class="divider mobile-divider">
+        <hr class="roundedv" />
+      </div>
 
+      <!-- Sidebar Content -->
+      <div class="SideBar" style="height: max-content">
+        <!-- Trailer Section -->
+        <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
+        <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+          <iframe style="position: absolute; top: 0; left: 0; width: calc(100vh * 16 / 9); height: 100%" src="https://www.youtube.com/embed/D95I2jfcv_Q?si=lCGYlfrblu8t_9Bj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+        </div>
 
-      <!-- Credits Section -->
-      <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">
-        Credits</h1>
-      <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
-      <a class="credits" href="https://nielsdelaat.us.to" target="_blank">Niels de Laat</a>
-      <a class="credits" href="http://joahvandersloot.github.io/Portfolio" target="_blank">Joah van der Sloot</a>
-      <h3 data-i18n="artists" style="text-align: center; margin-bottom: 0; margin-top: 5px">Artists</h3>
-      <a class="credits" href="https://www.artstation.com/finnvonk" target="_blank">Finn Vonk</a>
-      <a class="credits" href="https://thierryvanrooijen.artstation.com/" target="_blank">Thierry van Rooijen</a>
-      <a class="credits" href="https://www.artstation.com/maxtesser" target="_blank">Max Tesser</a>
+        <!-- Screenshots Section -->
+        <h1 data-i18n="screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
+        <picture>
+          <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot1.webp" type="image/webp" />
+          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot1.png" alt="Profile picture" />
+        </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot2.webp" type="image/webp" />
+          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot2.png" alt="Profile picture" />
+        </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot3.webp" type="image/webp" />
+          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot3.png" alt="Profile picture" />
+        </picture>
+
+        <!-- Credits Section -->
+        <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Credits</h1>
+        <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
+        <a class="credits" href="https://nielsdelaat.us.to" target="_blank" rel="noreferrer">Niels de Laat</a>
+        <a class="credits" href="http://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">Joah van der Sloot</a>
+        <h3 data-i18n="artists" style="text-align: center; margin-bottom: 0; margin-top: 5px">Artists</h3>
+        <a class="credits" href="https://www.artstation.com/finnvonk" target="_blank" rel="noreferrer">Finn Vonk</a>
+        <a class="credits" href="https://thierryvanrooijen.artstation.com/" target="_blank" rel="noreferrer">Thierry van Rooijen</a>
+        <a class="credits" href="https://www.artstation.com/maxtesser" target="_blank" rel="noreferrer">Max Tesser</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Image Modal for Screenshots -->
-  <div id="imageModal" class="modal">
-    <span class="modal-close">&times;</span>
-    <img class="modal-content" id="modalImg" />
-  </div>
+    <!-- Image Modal for Screenshots -->
+    <div id="imageModal" class="modal">
+      <span class="modal-close">&times;</span>
+      <img class="modal-content" id="modalImg" />
+    </div>
 
-  <!-- Modal functionality script -->
-  <script>
-    // Add this before the modal code
-    function updateNavigationLinks(lang) {
-      document.querySelectorAll('.links-container a[href*="?lang"]').forEach((link) => {
-        link.href = link.href.replace("?lang", `?lang=${lang}`);
-      });
-    }
-
-    // Get modal elements
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    const closeBtn = document.getElementsByClassName("modal-close")[0];
-
-    // Add click event to all screenshots to open modal
-    document.querySelectorAll(".ScreenShots").forEach((img) => {
-      img.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-      };
-    });
-
-    // Close modal when clicking close button
-    closeBtn.onclick = function () {
-      modal.style.display = "none";
-    };
-
-    // Close modal when clicking outside the image
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
+    <!-- Modal functionality script -->
+    <script>
+      // Add this before the modal code
+      function updateNavigationLinks(lang) {
+        document.querySelectorAll('.links-container a[href*="?lang"]').forEach((link) => {
+          link.href = link.href.replace("?lang", `?lang=${lang}`);
+        });
       }
-    };
-  </script>
-  <script defer src="../js/translate.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
-  <script>
-    hljs.configure({ languages: ["javascript"] });
-    hljs.highlightAll();
-  </script>
-</body>
 
+      // Get modal elements
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
+      const closeBtn = document.getElementsByClassName("modal-close")[0];
+
+      // Add click event to all screenshots to open modal
+      document.querySelectorAll(".ScreenShots").forEach((img) => {
+        img.onclick = function () {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        };
+      });
+
+      // Close modal when clicking close button
+      closeBtn.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // Close modal when clicking outside the image
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+    <script defer src="../js/translate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>
+      hljs.configure({ languages: ["javascript"] });
+      hljs.highlightAll();
+    </script>
+  </body>
 </html>
