@@ -21,8 +21,3 @@ function updateAgeDisplay() {
 
 // Update age display when the page loads
 window.onload = updateAgeDisplay;
-
-
-
-
-

@@ -140,46 +140,39 @@
       <img class="modal-content" id="modalImg" />
     </div>
 
-    <!-- Modal functionality script -->
-    <script>
-      // Add this before the modal code
-      function updateNavigationLinks(lang) {
-        document.querySelectorAll('.links-container a[href*="?lang"]').forEach((link) => {
-          link.href = link.href.replace("?lang", `?lang=${lang}`);
-        });
-      }
-
-      // Get modal elements
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
-      const closeBtn = document.getElementsByClassName("modal-close")[0];
-
-      // Add click event to all screenshots to open modal
-      document.querySelectorAll(".ScreenShots").forEach((img) => {
-        img.onclick = function () {
-          modal.style.display = "block";
-          modalImg.src = this.src;
-        };
-      });
-
-      // Close modal when clicking close button
-      closeBtn.onclick = function () {
-        modal.style.display = "none";
-      };
-
-      // Close modal when clicking outside the image
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-    </script>
+    <script defer src="../js/imagezoom.js"></script>
     <script defer src="../js/translate.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
     <script>
       hljs.configure({ languages: ["javascript"] });
       hljs.highlightAll();
     </script>
   </body>
+  <footer>
+    <div class="footer" style="display: flex; align-items: center; position: relative">
+      <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
+          <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+            <path
+              d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+            -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
+            -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
+            -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
+            1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
+            0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
+            -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
+            -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
+            316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
+            123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
+            c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
+            -1440 483 -149 19 -562 27 -710 15z"
+            />
+          </g>
+        </svg>
+      </a>
+      <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+      <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+      </script>
+    </div>
+  </footer>
 </html>

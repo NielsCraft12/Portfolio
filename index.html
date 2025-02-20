@@ -522,7 +522,10 @@
         </g>
       </svg>
     </a>
-    <p style="flex: 1; text-align: center;">© 2025 Niels de Laat</p>
+    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+    <script>
+      document.getElementById("copyright-year").textContent = new Date().getFullYear();
+    </script>
   </div>
 </footer>
 
