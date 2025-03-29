@@ -85,7 +85,7 @@ const translations = {
     descriptionGame1: " Stap in de rol van een toegewijde schoonmaakrobot, net als in de originele WA-LCH. Maar dit",
     descriptionGame2: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron.",
     descriptionGame3: "Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je",
-    descriptionGame4: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt",
+    descriptionGame4: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over ",
     // descriptionGame5:"fhjhgh",
     // descriptionGame6:"fhjhgh",
 
@@ -109,7 +109,7 @@ const translations = {
     artists: "Artiesten",
 
     // Slimetastic Punchout
-    slimetasticDescription: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het tegen elkaar op",
+    slimetasticDescription: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het uitvecht in snelle arena's. Het doel? Bedek zoveel mogelijk tegels terwijl je over de kaart glijdt, stuitert en spettert. Onderweg kun je wat stevige stoten landen om je tegenstanders uit de weg te duwen - of ze gewoon van hun stuk te brengen. Elke wedstrijd is onvoorspelbaar, zit vol met gelach en is een rommelige strijd om de controle. Het is slijmerige chaos op zijn best!",
     slimetasticMobileMessage: "Om Slimetastic Punchout te spelen, bezoek deze pagina op een computer.",
 
     // WA-LCH
