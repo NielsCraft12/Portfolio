@@ -15,9 +15,11 @@ html {
   scroll-behavior: smooth;
 }
 
-p {
+p,
+.project-list {
   color: #fff;
   font-size: 25px;
+  word-spacing: 2px;
 }
 
 hr.rounded {

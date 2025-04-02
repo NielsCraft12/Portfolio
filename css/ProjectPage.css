@@ -59,7 +59,15 @@ h3 {
   color: #fff;
   font-size: 1.5em;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
+
+.project-list {
+  list-style-type: disc;
+  padding-left: 50px;
+  margin-right: 5%;
+}
+
 
 hr.roundedv {
   /* display: flex;
@@ -220,11 +228,13 @@ body {
 
 @media screen and (max-width: 768px) {
   .itch-embed-container {
-    display: none !important; /* Force hide */
+    display: none !important;
+    /* Force hide */
   }
 
   .mobile-message {
-    display: block !important; /* Force show */
+    display: block !important;
+    /* Force show */
   }
 
   .containerProject {
