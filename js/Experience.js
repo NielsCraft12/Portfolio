@@ -14,8 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Variables
   let currentPosition = 0;
   let isDragging = false;
+  let touchStartX = 0;
+  let touchEndX = 0;
   const sections = Array.from(contentSections);
   const positions = [];
+  const container = document.querySelector('.experience-container'); // Add this line
 
   // Create slider points based on content sections
   sections.forEach((section, index) => {
@@ -83,17 +86,48 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  skills.forEach((skill) => {
-    skill.addEventListener("click", () => {
-      const skillName = skill.getAttribute("data-skill");
-      toggleSkillContent(skill, skillName);
-    });
+  // Replace existing touch event listeners with these new ones
+  function handleTouchStart(e) {
+    touchStartX = e.touches[0].clientX;
+  }
+
+  function handleTouchMove(e) {
+    touchEndX = e.touches[0].clientX;
+    // Prevent scrolling while swiping
+    if (Math.abs(touchEndX - touchStartX) > 10) {
+      e.preventDefault();
+    }
+  }
+
+  function handleTouchEnd() {
+    const swipeDistance = touchEndX - touchStartX;
+    if (Math.abs(swipeDistance) > 50) { // Minimum swipe distance
+      if (swipeDistance > 0) {
+        navigateSlider('prev'); // Swipe right goes to previous
+      } else {
+        navigateSlider('next'); // Swipe left goes to next
+      }
+    }
+  }
+
+  // Add touch events to both slider and container if they exist
+  [slider, container].filter(Boolean).forEach(element => {
+    element.addEventListener('touchstart', handleTouchStart);
+    element.addEventListener('touchmove', handleTouchMove);
+    element.addEventListener('touchend', handleTouchEnd);
+  });
+
+  // Add touch events to content sections as well
+  contentSections.forEach(section => {
+    section.addEventListener('touchstart', handleTouchStart);
+    section.addEventListener('touchmove', handleTouchMove);
+    section.addEventListener('touchend', handleTouchEnd);
   });
 
   certificateIcons.forEach((icon) => {
-    icon.addEventListener("click", () => {
-      alert("Certificate earned! Click to download or view details.");
-    });
+    // icon.addEventListener("click", () => {
+    //   alert("Certificate earned! Click to download or view details.");
+    // });
 
     icon.addEventListener("mouseenter", (e) => {
       showTooltip(e, "View Certificate");
@@ -106,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Functions
   function updateSlider(index) {
+    const previousIndex = positions.indexOf(currentPosition);
     currentPosition = positions[index];
 
     // Update slider visuals
@@ -121,11 +156,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Show corresponding content section
+    // Show corresponding content section with animation
     contentSections.forEach((section, i) => {
       if (i === index) {
+        // Remove any existing slide classes
+        section.classList.remove('slide-left', 'slide-right');
+        // Add the appropriate slide class based on navigation direction
+        section.classList.add(previousIndex > index ? 'slide-right' : 'slide-left');
+
+        // Force a reflow to ensure the animation plays
+        void section.offsetWidth;
+
+        // Add active class and remove slide class
         section.classList.add("active");
+        section.classList.remove('slide-left', 'slide-right');
       } else {
+        // Slide out in the opposite direction
+        if (section.classList.contains('active')) {
+          section.classList.add(previousIndex > index ? 'slide-left' : 'slide-right');
+        }
         section.classList.remove("active");
       }
     });

@@ -438,186 +438,176 @@
   <hr class="rounded" />
   <section id="Experience">
     <h1 data-i18n="experience">Experience</h1>
-
-    <!-- <div class="timeline">
-      <div class="container-timeline left-container">
-        <img src="images/png/gluLogo.png" alt="" />
-        <div class="text-box">
-          <h2>Grafisch Lyceum Utrecht – Game Development</h2>
-          <small data-i18n="gluTime">2023-Present</small>
-          <p data-i18n="gluDescription">The Game Development program at Grafisch Lyceum Utrecht teaches game design,
-            coding, and collaboration between programmers and artists. Through practical projects we learn the skills
-            needed to fun games. </p>
-          <span class="left-container-arrow"></span>
-        </div>
-      </div>
-      <div class="container-timeline right-container">
-        <img src="images/png/Future.png" alt="" />
-        <div class="text-box">
-          <h2 data-i18n="futureTitle">The Future</h2>
-          <small data-i18n="futureTime">Future</small>
-          <p data-i18n="futureDescription">Your project here? click <a style="color: #ff7e5f;" href="#Contact">here</a>
-            To Me</p>
-          <span class="right-container-arrow"></span>
-        </div>
-       <
-      </div>
-      <div class="container-timeline left-container">
-        <img src="images/gluLogo.png" alt="">
-        <div class="text-box">
-          <h2>Toekomst</h2>
-          <small>2024-Present</small>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
-            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
-          <span class="left-container-arrow"></span>
+    <div class="experience-container">
+      <div class="tooltip" id="tooltip"></div>
+      <div class="timeline-container">
+        <div class="controls">
+          <button id="prev-btn">◀</button>
+          <div class="slider" id="slider">
+            <div class="slider-track" id="slider-track"></div>
+            <div class="slider-points">
+              <!-- Points dynamically created by JS -->
+            </div>
+            <div class="slider-thumb" id="slider-thumb"></div>
+          </div>
+          <button id="next-btn">▶</button>
         </div>
 
-      </div>
-      <div class="container-timeline right-container">
-        <img src="images/gluLogo.png" alt="">
-        <div class="text-box">
-          <h2>Toekomst</h2>
-          <small>2024-Present</small>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repudiandae nam dolores quam accusantium
-            omnis autem delectus alias reiciendis! Natus earum dicta nobis est</p>
-          <span class="right-container-arrow"></span>
+        <div class="content-section active" data-index="0">
+          <div class="header">
+            <div class="title-container">
+              <div class="title">GLU Game Developer</div>
+              <div class="badges">
+                <div class="skill">School</div>
+                <div class="skill">MBO</div>
+              </div>
+            </div>
+            <div class="date">08/2023 - <span data-i18n="present">Present</span></div>
+          </div>
+
+          <div class="content">
+            <p data-i18n="gluDescription">The Game Development program at Grafisch Lyceum Utrecht teaches game design,
+              coding, and collaboration between programmers and artists. Through practical projects we learn the skills
+              needed to fun games.</p>
+            <h1 style="text-align: left; font-size: 40px;" data-i18n="skillsLearned">Skills Learned:</h1>
+            <div class="skills">
+              <!-- <div class="skill" data-skill="frontend">Frontend</div>
+              <div class="skill" data-skill="backend">Backend</div>
+              <div class="skill" data-skill="devops">DevOps</div> -->
+
+              <div class="badge">
+                <picture>
+                  <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
+                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
+                </picture>
+                Unity
+              </div>
+              <div class="badge">
+                <picture>
+                  <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
+                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+                </picture>
+                C#
+              </div>
+              <div class="badge">
+                <picture>
+                  <source srcset="images/webp/TrelloLogo.webp" type="image/webp" />
+                  <img class="chip__img" src="images/png/TrelloLogo.png" alt="Profile picture" />
+                </picture>
+                Scrum
+              </div>
+              <div class="badge">
+                <picture>
+                  <source srcset="images/webp/GithubLogo.webp" type="image/webp" />
+                  <img class="chip__img" src="images/png/GithubLogo.png" alt="Profile picture" />
+                </picture>
+                Git
+              </div>
+            </div>
+
+            <div class="skill-content" id="frontend-content">
+              <h3>Frontend Skills</h3>
+              <p>The frontend portion covered React, Redux, TypeScript, CSS frameworks, and modern JavaScript features.
+                I
+                built several interactive applications and learned about responsive design principles.</p>
+            </div>
+
+            <div class="skill-content" id="backend-content">
+              <h3>Backend Skills</h3>
+              <p>Backend development included Node.js, Express, MongoDB, GraphQL, and RESTful API design. I implemented
+                authentication, authorization, and database integration.</p>
+            </div>
+
+            <div class="skill-content" id="devops-content">
+              <h3>DevOps Skills</h3>
+              <p>The DevOps section covered CI/CD pipelines, containerization with Docker, testing strategies, and
+                deployment to cloud platforms like Heroku and AWS.</p>
+            </div>
+          </div>
         </div>
-     
+
+        <!-- <div class="content-section" data-index="1">
+          <div class="header">
+            <div class="title-container">
+              <div class="title">React Advanced</div>
+              <div class="badge">Workshop</div>
+            </div>
+            <div class="date">01.2024 - 03.2024</div>
+          </div>
+
+          <div class="content">
+            <p>Participated in an intensive React Advanced workshop focusing on performance optimization, custom hooks,
+              advanced state management patterns, and integrating with modern backend technologies.</p>
+
+            <div class="skills">
+          <div class="skill" data-skill="react">React</div>
+              <div class="skill" data-skill="typescript">TypeScript</div>
+              <div class="skill"  data-skill="performance" >Performance</div>>
+        <div class="skill">Unity</div>
+        <div class="skill">C#</div>
+      </div>
+    </div>
+
+    <div class="skill-content" id="react-content">
+      <h3>React Skills</h3>
+      <p>Mastered advanced React patterns including render props, compound components, and custom hooks.
+        Implemented context API for complex state management.</p>
+    </div>
+
+    <div class="skill-content" id="typescript-content">
+      <h3>TypeScript Integration</h3>
+      <p>Applied TypeScript to React projects with proper typing of props, state, and event handlers. Created
+        reusable typed components and custom type definitions.</p>
+    </div>
+
+    <div class="skill-content" id="performance-content">
+      <h3>Performance Optimization</h3>
+      <p>Learned techniques for React performance optimization including memoization, code splitting, lazy
+        loading, and preventing unnecessary re-renders.</p>
+    </div>
+
+    </div>
+    </div> -->
+
+        <!-- <div class="content-section" data-index="2">
+        <div class="header">
+          <div class="title-container">
+            <div class="title">Cloud Architecture</div>
+            <div class="badge">Certification</div>
+          </div>
+          <div class="date">05.2024 - 10.2024</div>
+        </div>
+        
+        <div class="content">
+          <p>Completed comprehensive cloud architecture certification covering AWS, Azure, and GCP. Focused on scalable infrastructure design, serverless architecture, and security best practices.</p>
+          
+          <div class="skills">
+            <div class="skill" data-skill="aws">AWS</div>
+            <div class="skill" data-skill="serverless">Serverless</div>
+            <div class="skill" data-skill="security">Security</div>
+          </div>
+          
+          <div class="skill-content" id="aws-content">
+            <h3>AWS Cloud Services</h3>
+            <p>Deep dive into AWS services including EC2, S3, Lambda, DynamoDB, and CloudFormation for infrastructure as code. Created and deployed full-stack applications.</p>
+          </div>
+          
+          <div class="skill-content" id="serverless-content">
+            <h3>Serverless Architecture</h3>
+            <p>Implemented serverless applications using AWS Lambda and API Gateway, focusing on scalability, cost optimization, and event-driven architecture.</p>
+          </div>
+          
+          <div class="skill-content" id="security-content">
+            <h3>Cloud Security</h3>
+            <p>Applied security best practices for cloud environments including IAM policies, encryption, VPC configuration, and compliance with industry standards.</p>
+          </div>
+          
+        </div>
       </div>
     </div> -->
 
- <div class="tooltip" id="tooltip"></div>
-  <div class="timeline-container">
-    <div class="controls">
-      <button id="prev-btn">◀</button>
-      <div class="slider" id="slider">
-        <div class="slider-track" id="slider-track"></div>
-        <div class="slider-points">
-          <!-- Points dynamically created by JS -->
-        </div>
-        <div class="slider-thumb" id="slider-thumb"></div>
-      </div>
-      <button id="next-btn">▶</button>
-    </div>
-    
-    <div class="content-section active" data-index="0">
-      <div class="header">
-        <div class="title-container">
-          <div class="title">FullStackOpen</div>
-          <div class="badge">Course</div>
-        </div>
-        <div class="date">08.2023 - 12.2024</div>
-      </div>
-      
-      <div class="content">
-        <p>To constantly improve, I began FullStackOpen program from the University of Helsinki, which included frontend, backend and mobile development with various testing and DevOps solutions, giving me a well-rounded understanding of modern web technologies and practices.</p>
-        
-        <div class="skills">
-          <div class="skill" data-skill="frontend">Frontend</div>
-          <div class="skill" data-skill="backend">Backend</div>
-          <div class="skill" data-skill="devops">DevOps</div>
-        </div>
-        
-        <div class="skill-content" id="frontend-content">
-          <h3>Frontend Skills</h3>
-          <p>The frontend portion covered React, Redux, TypeScript, CSS frameworks, and modern JavaScript features. I built several interactive applications and learned about responsive design principles.</p>
-        </div>
-        
-        <div class="skill-content" id="backend-content">
-          <h3>Backend Skills</h3>
-          <p>Backend development included Node.js, Express, MongoDB, GraphQL, and RESTful API design. I implemented authentication, authorization, and database integration.</p>
-        </div>
-        
-        <div class="skill-content" id="devops-content">
-          <h3>DevOps Skills</h3>
-          <p>The DevOps section covered CI/CD pipelines, containerization with Docker, testing strategies, and deployment to cloud platforms like Heroku and AWS.</p>
-        </div>
-        
-        <!-- <div class="certificate">
-          <div class="certificate-icon" id="certificate">🏆</div>
-        </div> -->
       </div>
     </div>
-    
-    <div class="content-section" data-index="1">
-      <div class="header">
-        <div class="title-container">
-          <div class="title">React Advanced</div>
-          <div class="badge">Workshop</div>
-        </div>
-        <div class="date">01.2024 - 03.2024</div>
-      </div>
-      
-      <div class="content">
-        <p>Participated in an intensive React Advanced workshop focusing on performance optimization, custom hooks, advanced state management patterns, and integrating with modern backend technologies.</p>
-        
-        <div class="skills">
-          <div class="skill" data-skill="react">React</div>
-          <div class="skill" data-skill="typescript">TypeScript</div>
-          <div class="skill" data-skill="performance">Performance</div>
-        </div>
-        
-        <div class="skill-content" id="react-content">
-          <h3>React Skills</h3>
-          <p>Mastered advanced React patterns including render props, compound components, and custom hooks. Implemented context API for complex state management.</p>
-        </div>
-        
-        <div class="skill-content" id="typescript-content">
-          <h3>TypeScript Integration</h3>
-          <p>Applied TypeScript to React projects with proper typing of props, state, and event handlers. Created reusable typed components and custom type definitions.</p>
-        </div>
-        
-        <div class="skill-content" id="performance-content">
-          <h3>Performance Optimization</h3>
-          <p>Learned techniques for React performance optimization including memoization, code splitting, lazy loading, and preventing unnecessary re-renders.</p>
-        </div>
-        
-        <!-- <div class="certificate">
-          <div class="certificate-icon" id="certificate-react">🏆</div>
-        </div> -->
-      </div>
-    </div>
-    
-    <div class="content-section" data-index="2">
-      <div class="header">
-        <div class="title-container">
-          <div class="title">Cloud Architecture</div>
-          <div class="badge">Certification</div>
-        </div>
-        <div class="date">05.2024 - 10.2024</div>
-      </div>
-      
-      <div class="content">
-        <p>Completed comprehensive cloud architecture certification covering AWS, Azure, and GCP. Focused on scalable infrastructure design, serverless architecture, and security best practices.</p>
-        
-        <div class="skills">
-          <div class="skill" data-skill="aws">AWS</div>
-          <div class="skill" data-skill="serverless">Serverless</div>
-          <div class="skill" data-skill="security">Security</div>
-        </div>
-        
-        <div class="skill-content" id="aws-content">
-          <h3>AWS Cloud Services</h3>
-          <p>Deep dive into AWS services including EC2, S3, Lambda, DynamoDB, and CloudFormation for infrastructure as code. Created and deployed full-stack applications.</p>
-        </div>
-        
-        <div class="skill-content" id="serverless-content">
-          <h3>Serverless Architecture</h3>
-          <p>Implemented serverless applications using AWS Lambda and API Gateway, focusing on scalability, cost optimization, and event-driven architecture.</p>
-        </div>
-        
-        <div class="skill-content" id="security-content">
-          <h3>Cloud Security</h3>
-          <p>Applied security best practices for cloud environments including IAM policies, encryption, VPC configuration, and compliance with industry standards.</p>
-        </div>
-        
-        <!-- <div class="certificate">
-          <div class="certificate-icon" id="certificate-cloud">🏆</div>
-        </div> -->
-      </div>
-    </div>
-  </div>
-
   </section>
   <hr class="rounded" style="margin-bottom: 3px" />
   <section id="Contact">
@@ -634,7 +624,7 @@
   <script defer src="js/main.js"></script>
   <script defer src="js/animation.js"></script>
   <script defer src="js/Experience.js"></script>
-  
+
 </body>
 <footer>
   <div class="footer" style="display: flex; align-items: center; position: relative;">

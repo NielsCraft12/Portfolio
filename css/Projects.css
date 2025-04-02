@@ -74,6 +74,17 @@
 .blog-text span {
   color: #ff7e5f;
   font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.blog-box .blog-text span {
+  color: #f33c3c;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .blog-text .blog-title {

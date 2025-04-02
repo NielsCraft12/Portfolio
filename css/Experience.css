@@ -7,8 +7,6 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 40px 0;
 }
 
@@ -24,11 +22,14 @@
   max-width: 900px;
   border-radius: 12px;
   overflow: hidden;
-  margin-top: auto;
+  margin-top: 100px;
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
-  display: block;
+  position: relative;
+  overflow-y: visible;
+  height: fit-content;
+  overflow-x: hidden;
 }
 
 .controls {
@@ -85,7 +86,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  background-color: #696969;
+  background-color: #888;
   border-radius: 50%;
   top: 50%;
   left: 60%;
@@ -118,8 +119,8 @@
 }
 
 .slider-point.active {
-  background-color: #696969;
-  border-color: #696969;
+  background-color: #888;
+  border-color: #888;
 }
 
 .slider-point:hover {
@@ -133,25 +134,44 @@
   padding: 20px;
   background-color: #1e1e1e;
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #1e1e1e;
 }
 
 .title-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .title {
   font-size: 24px;
   font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
 }
 
 .badge {
-  background-color: #1a6d40;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
   color: white;
   padding: 5px 15px;
   border-radius: 20px;
-  margin-left: 15px;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .date {
@@ -165,56 +185,23 @@
   color: white;
   border-top: 1px solid #222;
   line-height: 1.6;
+  overflow-y: visible;
+  height: auto;
 }
 
 .skills {
   display: flex;
   gap: 10px;
-  margin-top: 30px;
   flex-wrap: wrap;
 }
 
 .skill {
-  background-color: #1a1a1a;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
   border: 1px solid #333;
   color: white;
-  padding: 10px 25px;
+  padding: 10px 20px;
   border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.skill:hover {
-  background-color: #252525;
-  transform: translateY(-2px);
-}
-
-.skill.active {
-  background-color: #1a6d40;
-  border-color: #1a6d40;
-}
-
-.certificate {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-}
-
-.certificate-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #ffc107;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.certificate-icon:hover {
-  transform: scale(1.1) rotate(10deg);
+  font-size: 14px;
 }
 
 .content-section {
@@ -245,6 +232,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -252,7 +240,7 @@
 
 .tooltip {
   position: absolute;
-  background-color: #1a6d40;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
   color: white;
   padding: 6px 12px;
   border-radius: 4px;

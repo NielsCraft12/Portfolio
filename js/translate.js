@@ -23,8 +23,9 @@ const translations = {
     // descriptionGame6:"fhjhgh",
 
     //Experience
-    gluTime: "2023 - Present",
-    gluDescription: "The Game Development program at Grafisch Lyceum Utrecht teaches game design,coding, and collaboration between programmers and artists. Through practical projects we learn the skills needed to fun games.",
+    skillsLearned: "Skills Learned:",
+    present: "present",
+    gluDescription: "The Game Development program at Grafisch Lyceum Utrecht teaches game design, coding, and collaboration between programmers and artists. Through practical projects we learn the skills needed to fun games.",
     futureTitle: "The Future",
     futureTime: "Future",
     futureDescription: 'Your project here? click <a style="color: #ff7e5f;" href="#Contact">here</a> To Contact Me',
@@ -95,7 +96,8 @@ const translations = {
     // descriptionGame6:"fhjhgh",
 
     //Experience
-    gluTime: "2023 - Heden",
+    skillsLearned: "Vaardigheden geleerd:",
+    present: "Heden",
     gluDescription: "Het Game Development-programma van het Grafisch Lyceum Utrecht leert game-ontwerp, codering en samenwerking tussen programmeurs en artiesten. Door praktische projecten leren we de vaardigheden die nodig zijn om leuke games te maken.",
     futureTitle: "De Toekomst",
     futureTime: "Toekomst",
@@ -167,8 +169,9 @@ const translations = {
     // descriptionGame6:"fhjhgh",
 
     //Experience
-    gluTime: "2023 - Ughrec",
-    gluDescription: "Ta spaghetti bahany chinu ka grafisch lyceum utrecht teaches spaghetti hodoc,coding, yee leuvow squee ocaoke yee bowale.  Thru midmut thyyou pem estudo ta disell neblo da agei bam",
+    skillsLearned: "Disell da mi traba:",
+    present: "Ughrec",
+    gluDescription: "Ta spaghetti bahany chinu ka grafisch lyceum utrecht teaches spaghetti hodoc, coding, yee leuvow squee ocaoke yee bowale.  Thru midmut thyyou pem estudo ta disell neblo da agei bam",
     futureTitle: "Ta tegpul",
     futureTime: "Tegpul",
     futureDescription: 'Tu yoref aca? mod <a style="color: #ff7e5f;" href="#Contact">aca</a> da koabo me',
