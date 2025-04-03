@@ -111,6 +111,7 @@ Component
   background-color: hsla(230, 13%, 9%, 0.517);
 
   font-size: 0.9375rem;
+  transition: transform 0.2s;
 }
 
 .chip__label {
@@ -336,11 +337,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked~.links-container {
+  #sidebar-active:checked ~ .links-container {
     right: 0;
   }
 
-  #sidebar-active:checked~#overlay {
+  #sidebar-active:checked ~ #overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -349,11 +350,11 @@ nav a:hover {
     z-index: 9;
   }
 
-  #sidebar-active:checked~.open-sidebar-button {
+  #sidebar-active:checked ~ .open-sidebar-button {
     display: none;
   }
 
-  #sidebar-active:checked~.links-container .close-sidebar-button {
+  #sidebar-active:checked ~ .links-container .close-sidebar-button {
     display: block;
     position: absolute;
     top: 10px;
@@ -361,7 +362,7 @@ nav a:hover {
     z-index: 11;
   }
 
-  #sidebar-active:not(:checked)~.close-sidebar-button {
+  #sidebar-active:not(:checked) ~ .close-sidebar-button {
     display: none;
   }
 
