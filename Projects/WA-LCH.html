@@ -1,145 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Character encoding and viewport settings -->
-    <meta charset="UTF-8" />
-    <!-- Custom viewport settings to prevent scaling on mobile devices -->
-    <meta
-      name="viewport"
-      content="height=device-height, 
+
+<head>
+  <!-- Character encoding and viewport settings -->
+  <meta charset="UTF-8" />
+  <!-- Custom viewport settings to prevent scaling on mobile devices -->
+  <meta name="viewport" content="height=device-height, 
    width=device-width, initial-scale=1.0, 
    minimum-scale=1.0, maximum-scale=1.0, 
-   user-scalable=no, target-densitydpi=device-dpi"
-    />
+   user-scalable=no, target-densitydpi=device-dpi" />
 
-    <meta name="description" content="You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon." />
-    <title>WA-LCH</title>
+  <meta name="description"
+    content="You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon." />
+  <title>WA-LCH</title>
 
-    <!-- Default Highlight.js css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-    <!-- Remove old Highlight.js theme reference -->
-    <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
+  <!-- Default Highlight.js css -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <!-- Remove old Highlight.js theme reference -->
+  <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
 
-    <!-- External Resources -->
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <!-- External Resources -->
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
-    <!-- Stylesheet Links -->
-    <link href="../css/style.css" rel="stylesheet" />
-    <link href="../css/ProjectPage.css" rel="stylesheet" />
-    <link href="../css/Home.css" rel="stylesheet" />
+  <!-- Stylesheet Links -->
+  <link href="../css/style.css" rel="stylesheet" />
+  <link href="../css/ProjectPage.css" rel="stylesheet" />
+  <link href="../css/Home.css" rel="stylesheet" />
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    <!-- Favicon Settings for various platforms -->
-    <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
-    <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="../images/Favicon/site.webmanifest" />
-  </head>
+  <!-- Favicon Settings for various platforms -->
+  <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+</head>
 
-  <body>
-    <!-- Navigation Menu -->
-    <nav>
-      <input type="checkbox" id="sidebar-active" />
-      <label for="sidebar-active" class="open-sidebar-button">
-        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+<body>
+  <!-- Navigation Menu -->
+  <nav>
+    <input type="checkbox" id="sidebar-active" />
+    <label for="sidebar-active" class="open-sidebar-button">
+      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+    </label>
+    <label id="overlay" for="sidebar-active"></label>
+    <div class="links-container">
+      <label for="sidebar-active" class="close-sidebar-button">
+        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
-      <label id="overlay" for="sidebar-active"></label>
-      <div class="links-container">
-        <label for="sidebar-active" class="close-sidebar-button">
-          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
-        </label>
-        <a data-i18n="home" class="home-link" href="../">Home</a>
-        <a data-i18n="projects" href="../?lang=#Projects">Projects</a>
-        <a data-i18n="experience" href="../?lang=#Experience">Experience</a>
-        <a data-i18n="contact" href="../?lang=#Contact">Contact</a>
-        <div class="language-switcher">
-          <button class="language-btn">
-            <span class="current-lang">English</span>
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <ul class="language-menu">
-            <li><a href="#" data-lang="en">English</a></li>
-            <li><a href="#" data-lang="nl">Nederlands</a></li>
-          </ul>
-        </div>
+      <a data-i18n="home" class="home-link" href="../">Home</a>
+      <a data-i18n="projects" href="../?lang=#Projects">Projects</a>
+      <a data-i18n="experience" href="../?lang=#Experience">Experience</a>
+      <a data-i18n="contact" href="../?lang=#Contact">Contact</a>
+      <div class="language-switcher">
+        <button class="language-btn">
+          <span class="current-lang">English</span>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <ul class="language-menu">
+          <li><a href="#" data-lang="en">English</a></li>
+          <li><a href="#" data-lang="nl">Nederlands</a></li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Main Content Container -->
-    <div class="containerProject">
-      <!-- Project Description Section -->
-      <div class="Main-Content">
-        <h1 class="GradiantTitle title">WA-LCH</h1>
-        <h3 data-i18n="description" class="GradiantTitle subtitle">Description</h3>
-        <p data-i18n="walchDescription">You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon.</p>
-        <h3 data-i18n="WhatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
-        <div data-i18n="walchWhatIMadeText">
-          <p>I worked on procedural map generation, interactive mechanics, and enemy and item spawning. Here’s what I did:</p>
-          <ul class="project-list">
-            <li>Map Generation: Implemented a procedural map generation system using a maze-based algorithm to create dynamic and unpredictable environments for each playthrough.</li>
-            <li>QTE System for Generators: Implemented a quick-time event (QTE) system for interacting with generators, requiring players to complete timed inputs to activate them successfully.</li>
-            <li>Pickup Spawning: Implemented a system for dynamically spawning collectible pickups throughout the map, ensuring variety and strategic placement.</li>
-            <li>Enemy Spawning: Implemented an adaptive enemy spawning mechanic that balances challenge by adjusting spawn locations and enemy density based on player progression.</li>
-          </ul>
-          <p>My contributions helped shape the core mechanics and gameplay experience, making the game more engaging, dynamic, and replayable.</p>
-        </div>
-        <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1>
-        <div class="itch-embed-container" style="position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 20px; overflow: hidden">
-          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/10784145?color=1E1E1E" allowfullscreen="">
-            <a href="https://joahvds.itch.io/wa-lch">Play WA-LCH on itch.io</a>
-          </iframe>
-        </div>
-        <div class="mobile-message">
-          <p data-i18n="walchMobileMessage">To play WA-LCH, please visit this page on a computer.</p>
-        </div>
+  <!-- Main Content Container -->
+  <div class="containerProject">
+    <!-- Project Description Section -->
+    <div class="Main-Content">
+      <h1 class="GradiantTitle title">WA-LCH</h1>
+      <h3 data-i18n="description" class="GradiantTitle subtitle">Description</h3>
+      <p data-i18n="walchDescription">You are LCH, a cleaning bot who awakens from years of hibernation by an unknown
+        source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards
+        that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at
+        GluCon.</p>
+      <h3 data-i18n="WhatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
+      <div data-i18n="walchWhatIMadeText">
+        <p>I worked on procedural map generation, interactive mechanics, and enemy and item spawning. Here’s what I did:
+        </p>
+        <ul class="project-list">
+          <li>Map Generation: Implemented a procedural map generation system using a maze-based algorithm to create
+            dynamic and unpredictable environments for each playthrough.</li>
+          <li>QTE System for Generators: Implemented a quick-time event (QTE) system for interacting with generators,
+            requiring players to complete timed inputs to activate them successfully.</li>
+          <li>Pickup Spawning: Implemented a system for dynamically spawning collectible pickups throughout the map,
+            ensuring variety and strategic placement.</li>
+          <li>Enemy Spawning: Implemented an adaptive enemy spawning mechanic that balances challenge by adjusting spawn
+            locations and enemy density based on player progression.</li>
+        </ul>
+        <p>My contributions helped shape the core mechanics and gameplay experience, making the game more engaging,
+          dynamic, and replayable.</p>
+      </div>
+      <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play
+      </h1>
+      <div class="itch-embed-container"
+        style="position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 20px; overflow: hidden">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
+          src="https://itch.io/embed-upload/10784145?color=1E1E1E" allowfullscreen="">
+          <a href="https://joahvds.itch.io/wa-lch">Play WA-LCH on itch.io</a>
+        </iframe>
+      </div>
+      <div class="mobile-message">
+        <p data-i18n="walchMobileMessage">To play WA-LCH, please visit this page on a computer.</p>
+      </div>
+    </div>
+
+    <!-- Visual Divider -->
+    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
+      <hr class="roundedv" style="height: 100%; margin: 0" />
+      <!-- <hr class="roundedv mobile-divider" /> -->
+    </div>
+
+    <div class="divider mobile-divider">
+      <hr class="roundedv" />
+    </div>
+
+    <!-- Sidebar Content -->
+    <div class="SideBar" style="height: max-content">
+      <!-- Trailer Section -->
+      <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
+      <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+          src="https://www.youtube.com/embed/D95I2jfcv_Q?si=lCGYlfrblu8t_9Bj" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
       </div>
 
-      <!-- Visual Divider -->
-      <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
-        <hr class="roundedv" style="height: 100%; margin: 0" />
-        <!-- <hr class="roundedv mobile-divider" /> -->
-      </div>
-
-      <div class="divider mobile-divider">
-        <hr class="roundedv" />
-      </div>
-
-      <!-- Sidebar Content -->
-      <div class="SideBar" style="height: max-content">
-        <!-- Trailer Section -->
-        <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
-        <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="https://www.youtube.com/embed/D95I2jfcv_Q?si=lCGYlfrblu8t_9Bj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
-        </div>
-
-        <!-- Screenshots Section -->
-        <h1 data-i18n="screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
-        <picture>
-          <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot1.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot1.png" alt="Profile picture" />
-        </picture>
-        <picture>
-          <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot2.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot2.png" alt="Profile picture" />
-        </picture>
-        <picture>
-          <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot3.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot3.png" alt="Profile picture" />
-        </picture>
-        <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot1.png" alt="screen shot of the game" />
+      <!-- Screenshots Section -->
+      <h1 data-i18n="screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
+      <picture>
+        <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot1.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot1.png"
+          alt="Profile picture" />
+      </picture>
+      <picture>
+        <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot2.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot2.png"
+          alt="Profile picture" />
+      </picture>
+      <picture>
+        <source srcset="../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot3.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot3.png"
+          alt="Profile picture" />
+      </picture>
+      <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot1.png" alt="screen shot of the game" />
         <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot2.png" alt="screen shot of the game" />
         <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot3.png" alt="screen shot of the game" /> -->
 
-        <!-- Credits Section -->
-        <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Credits</h1>
-        <!-- <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
+      <!-- Credits Section -->
+      <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">
+        Credits</h1>
+      <!-- <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
       <a class="credits" href="https://nielsdelaat.us.to" target="_blank" rel="noreferrer">Niels de Laat</a>
       <a class="credits" href="http://joahvandersloot.github.io/Portfolio" target="_blank">Joah van der Sloot</a>
       <a class="credits" href="https://sites.google.com/view/daanoostwouderportfolio/home " target="_blank"
@@ -147,79 +169,80 @@
       <h3 data-i18n="artists" style="text-align: center; margin-bottom: 0; margin-top: 5px">Artists</h3>
       <a class="credits" href="https://www.artstation.com/seemz" target="_blank" rel="noreferrer">Seemay Alsemgeest</a>
       <a class="credits" href="https://www.artstation.com/finnvonk" target="_blank" rel="noreferrer">Finn Vonk</a> -->
-        <ul class="cd-demo-chip-list">
-          <li>
-            <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-code GradiantTitle"></i>
-                <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
-                <i class="chip__label">Niels de Laat</i>
-              </span>
-            </a>
-          </li>
+      <ul class="cd-demo-chip-list">
+        <li>
+          <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
+            <span class="chip">
+              <i class="fa-solid fa-code GradiantTitle"></i>
+              <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
+              <i class="chip__label">Niels de Laat</i>
+            </span>
+          </a>
+        </li>
 
-          <li>
-            <a href="http://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-code GradiantTitle"></i>
-                <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
-                <i class="chip__label">Joah van der Sloot</i>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="https://sites.google.com/view/daanoostwouderportfolio/home" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-code GradiantTitle"></i>
-                <!-- <img class="chip__img" src="images/GithubLogo.png" alt="Git Logo" /> -->
-                <i class="chip__label">Daan Oostwouder</i>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.artstation.com/finnvonk" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-paintbrush GradiantTitle"></i>
-                <!-- <img class="chip__img" src="images/TrelloLogo.png" alt="Trello Logo" /> -->
-                <i class="chip__label">Finn Vonk</i>
-              </span>
-            </a>
-          </li>
+        <li>
+          <a href="http://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">
+            <span class="chip">
+              <i class="fa-solid fa-code GradiantTitle"></i>
+              <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
+              <i class="chip__label">Joah van der Sloot</i>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="https://sites.google.com/view/daanoostwouderportfolio/home" target="_blank" rel="noreferrer">
+            <span class="chip">
+              <i class="fa-solid fa-code GradiantTitle"></i>
+              <!-- <img class="chip__img" src="images/GithubLogo.png" alt="Git Logo" /> -->
+              <i class="chip__label">Daan Oostwouder</i>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.artstation.com/finnvonk" target="_blank" rel="noreferrer">
+            <span class="chip">
+              <i class="fa-solid fa-paintbrush GradiantTitle"></i>
+              <!-- <img class="chip__img" src="images/TrelloLogo.png" alt="Trello Logo" /> -->
+              <i class="chip__label">Finn Vonk</i>
+            </span>
+          </a>
+        </li>
 
-          <li>
-            <a href="https://www.artstation.com/seemz" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-paintbrush GradiantTitle"></i>
-                <!-- <img class="chip__img" src="images/PythonLogo.png" alt="Ptyhon Logo" /> -->
-                <i class="chip__label">Seemay Alsemgeest</i>
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
+        <li>
+          <a href="https://www.artstation.com/seemz" target="_blank" rel="noreferrer">
+            <span class="chip">
+              <i class="fa-solid fa-paintbrush GradiantTitle"></i>
+              <!-- <img class="chip__img" src="images/PythonLogo.png" alt="Ptyhon Logo" /> -->
+              <i class="chip__label">Seemay Alsemgeest</i>
+            </span>
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
 
-    <!-- Image Modal for Screenshots -->
-    <div id="imageModal" class="modal">
-      <span class="modal-close">&times;</span>
-      <img class="modal-content" id="modalImg" />
-    </div>
+  <!-- Image Modal for Screenshots -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
 
-    <!-- Modal functionality script -->
-    <script defer src="../js/imagezoom.js"></script>
-    <script defer src="../js/translate.js"></script>
-    <script>
-      hljs.configure({ languages: ["javascript"] });
-      hljs.highlightAll();
-    </script>
-  </body>
-  <footer>
-    <div class="footer" style="display: flex; align-items: center; position: relative">
-      <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
-          <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-            <path
-              d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+  <!-- Modal functionality script -->
+  <script defer src="../js/imagezoom.js"></script>
+  <script defer src="../js/translate.js"></script>
+  <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script>
+    hljs.configure({ languages: ["javascript"] });
+    hljs.highlightAll();
+  </script>
+</body>
+<footer>
+  <div class="footer" style="display: flex; align-items: center; position: relative">
+    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
+      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
+        preserveAspectRatio="xMidYMid meet" class="mi-icon">
+        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
             -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
             -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
             -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
@@ -230,15 +253,15 @@
             316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
             123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
             c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-            -1440 483 -149 19 -562 27 -710 15z"
-            />
-          </g>
-        </svg>
-      </a>
-      <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-      <script>
-        document.getElementById("copyright-year").textContent = new Date().getFullYear();
-      </script>
-    </div>
-  </footer>
+            -1440 483 -149 19 -562 27 -710 15z" />
+        </g>
+      </svg>
+    </a>
+    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+    <script>
+      document.getElementById("copyright-year").textContent = new Date().getFullYear();
+    </script>
+  </div>
+</footer>
+
 </html>

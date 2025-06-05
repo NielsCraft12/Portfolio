@@ -71,6 +71,8 @@ const translations = {
     slimeKing: "By order of the Slime Kingdom, this page is missing!",
     slime: "No page here, only squishy, squishy disappointment.",
     punchingSlimes: "They were too busy brawling to save the content.",
+    gaylien: "Too many packing peanuts dropped for you to reach this page!",
+    dino: "Page Missing, But Look! A Dino!",
     returnHome: "Return Home",
   },
   nl: {
@@ -145,6 +147,8 @@ const translations = {
     slimeKing: "Op bevel van het Slime Kingdom ontbreekt deze pagina!",
     slime: "Geen pagina hier, alleen zachte, zachte teleurstelling.",
     punchingSlimes: "Ze waren te druk met vechten om de inhoud te redden.",
+    gaylien: "Te veel inpakpinda's gedropt om deze pagina te bereiken!",
+    dino: "Pagina ontbreekt, maar kijk! Een Dino!",
     returnHome: "terug naar huis",
   },
   mi: {
@@ -219,6 +223,8 @@ const translations = {
     slimeKing: "Bey fog de ta slime tubute, ba piplo tis bidlev!",
     slime: "No piplo aca, solo squishy, squishy reetav",
     punchingSlimes: "Feila fem mac doe brawling da app ta yehmun",
+    gaylien: "Mac mublai packing peanuts baydew nunu to da ploma ba piplo!",
+    dino: "Piplo bidlev, pelo bida! a dino!",
     returnHome: "Dogsip camion",
   },
 };

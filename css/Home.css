@@ -34,7 +34,7 @@
   /* width: 100%; */
   margin: 0;
   border-radius: 10%;
-  height: 80vh;
+  height: 90vh;
   margin: 0 auto;
   border: #1e1e1e;
 }
@@ -201,19 +201,17 @@ nav a:hover {
   display: none;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1300px) {
   .age-location {
-    padding-top: 0px;
-    margin-top: 0px; /* Reduced since container now has padding */
+    margin-top: 10px; /* Reduced since container now has padding */
     display: block;
     position: relative;
     z-index: 1; /* Ensure it's above other elements if needed */
   }
 }
 
-@media screen and (max-hight: 400px) {
+@media screen and (max-hight: 800px) {
   .age-location {
-    padding-top: 0px;
     margin-top: 0px; /* Reduced since container now has padding */
     display: block;
     position: relative;
