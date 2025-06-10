@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Test Page</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+        body {
+            padding: 20px;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .test-container {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+
+        .controls {
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .language-switcher {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .language-switcher a {
+            color: #ff7e5f;
+            text-decoration: none;
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ff7e5f;
+            border-radius: 3px;
+        }
+
+        .language-switcher a:hover {
+            background: #ff7e5f;
+            color: white;
+        }
+
+        pre {
+            background: #222;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Translation System Test Page</h1>
+
+    <div class="controls">
+        <h3>Language Switcher</h3>
+        <div class="language-switcher">
+            <a href="#" data-lang="en">English</a>
+            <a href="#" data-lang="nl">Nederlands</a>
+            <a href="#" data-lang="mi">Minionese</a>
+        </div>
+
+        <h3>Debug Controls</h3>
+        <button onclick="toggleMissingTranslationDisplay()">Toggle Missing Translation Display Mode</button>
+        <button onclick="findMissingTranslations()">Find All Missing Translations</button>
+        <button onclick="console.clear()">Clear Console</button>
+    </div>
+
+    <div class="test-container">
+        <h3>Test Elements</h3>
+
+        <h4>Working Translations:</h4>
+        <p><strong>Home:</strong> <span data-i18n="nav.home">Home</span></p>
+        <p><strong>Projects:</strong> <span data-i18n="nav.projects">Projects</span></p>
+        <p><strong>Experience:</strong> <span data-i18n="nav.experience">Experience</span></p>
+        <h4>Missing Translations (these should show as missing):</h4>
+        <p><strong>Non-existent key:</strong> <span data-i18n="non.existent.key">This should show as missing</span></p>
+        <p><strong>Another missing key:</strong> <span data-i18n="test.missing.translation">Missing translation
+                test</span></p>
+        <p><strong>Nested missing:</strong> <span data-i18n="deeply.nested.missing.key">Deep missing</span></p>
+
+        <h4>Missing Translation Headings:</h4>
+        <h1 data-i18n="missing.h1.title">Missing H1 Title</h1>
+        <h2 data-i18n="missing.h2.title">Missing H2 Title</h2>
+        <h3 data-i18n="missing.h3.title">Missing H3 Title</h3>
+        <h4 data-i18n="missing.h4.title">Missing H4 Title</h4>
+
+        <h4>Empty Key Tests (should be ignored):</h4>
+        <h3 data-i18n="">Empty Key H3 - Should be ignored</h3>
+        <p data-i18n="">Empty Key P - Should be ignored</p>
+    </div>
+
+    <div class="test-container">
+        <h3>Instructions</h3>
+        <ol>
+            <li>Switch between languages to see how missing translations behave</li>
+            <li>Look at the browser console for detailed logging</li>
+            <li>Click "Toggle Missing Translation Display Mode" to show missing keys directly</li>
+            <li>Click "Find All Missing Translations" to get a full report</li>
+            <li>Hover over elements with missing translations to see tooltips</li>
+        </ol>
+    </div>
+
+    <div class="test-container">
+        <h3>Console Commands</h3>
+        <p>You can also run these commands in the browser console:</p>
+        <pre>
+// Toggle between showing missing keys vs fallback text
+toggleMissingTranslationDisplay()
+
+// Find all missing translations for all languages
+findMissingTranslations()
+
+// Find missing translations for a specific language
+findMissingTranslations('nl')
+
+// Manually update content to a specific language
+updateContent('en')
+        </pre>
+    </div>
+
+    <script type="module" src="js/translate.js"></script>
+    <script>
+        // Add click handlers for language switching
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('[data-lang]').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    updateContent(lang);
+
+                    // Update active state
+                    document.querySelectorAll('[data-lang]').forEach(l => l.style.background = '');
+                    this.style.background = '#ff7e5f';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

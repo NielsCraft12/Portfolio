@@ -326,3 +326,21 @@ body {
     font-size: 50px;
   }
 }
+
+pre {
+  padding: 1rem;
+  max-width: 90vw;
+  overflow: auto;
+  tab-size: 2;
+  word-break: normal;
+  hyphens: none;
+}
+
+pre code {
+  overflow-x: auto;
+  white-space: pre;
+  display: block;
+  min-width: 100px;
+  max-width: 100%;
+  min-height: 100px;
+}

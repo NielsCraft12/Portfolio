@@ -26,6 +26,13 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script>
+
   <!-- Stylesheet Links -->
   <link href="../css/style.css" rel="stylesheet" />
   <link href="../css/ProjectPage.css" rel="stylesheet" />
@@ -57,10 +64,10 @@
       <label for="sidebar-active" class="close-sidebar-button">
         <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
-      <a data-i18n="home" class="home-link" href="../">Home</a>
-      <a data-i18n="projects" href="../?lang=#Projects">Projects</a>
-      <a data-i18n="experience" href="../?lang=#Experience">Experience</a>
-      <a data-i18n="contact" href="../?lang=#Contact">Contact</a>
+      <a data-i18n="nav.home" class="home-link" href="../">Home</a>
+      <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
+      <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
+      <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
       <div class="language-switcher">
         <button class="language-btn">
           <span class="current-lang">English</span>
@@ -79,36 +86,49 @@
     <!-- Project Description Section -->
     <div class="Main-Content">
       <h1 class="GradiantTitle title">WA-LCH Origins</h1>
-      <h3 data-i18n="description" class="GradiantTitle subtitle">Description</h3>
-      <p data-i18n="walchOriginsDescription">
-        Step into the role of a dedicated cleaning robot, just like in the <a class="credits"
-          href="WA-LCH.html">original WA-LCH</a>. But this time, you’re not just tidying up an abandoned lab filled with
-        radioactive mess you’re dealing with the chaos before it got that bad.<br /><br />
-
-        In this prequel, your mission is to maintain order in a bustling, cluttered laboratory where absent-minded
-        scientists leave piles of trash everywhere. If the mess gets out of control, it’ll attract unwanted visitors
-        like rats that cause even more trouble. <br /><br />
-
-        Can you keep the lab spotless and prevent it from spiraling into total chaos? Put your cleaning skills to the
-        test and find out! <br /><br />
-        This game was created in just 30 hours as part of a late Global Game Jam hosted by GLU, with the theme
-        “Bubbles.” It even secured second place among the games developed during the event!
+      <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
+      <p>
+        Made in ~30 hours during a game jam (theme: “”Bubbles”) — built with Unity and C#. WA-LCH Origins is a chaotic
+        mini-cleanup adventure where you play as a janitor scrubbing away trash and
+        trapping rogue rats using bubble-based tools. Built entirely under game jam pressure, it features
+        player-controlled physics movement, animated doors, trap-based rat removal, and a bubbly cleaning mechanic.
       </p>
-      <h3 data-i18n="WhatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
-      <div data-i18n="walchOriginsWhatIMadeText">
-        <p>I worked on several key gameplay mechanics and also created the game’s trailer. Here’s what I did:</p>
-        <ul class="project-list">
-          <li>Player Movement: Implemented the movement system, allowing smooth player controls.</li>
-          <li>Doors: Developed the door system for entering and exiting rooms.</li>
-          <li>Trash Cleaning: Created the mechanic for cleaning up trash, an important gameplay feature.</li>
-          <li>Rat Shooting: Implemented the shooting system for dealing with rats.</li>
-          <li>Game Trailer: Edited and produced a trailer to showcase the game.</li>
-        </ul>
-        <p>My work helped make the core interactions and feel of the game, making it more immersive and fun for players.
-        </p>
-      </div>
+      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
+      <h3 class="GradiantTitle subtitle">Player Movement</h3>
+      <p>Handled via Rigidbody for responsive physics-based control. Rotation matches movement direction for an
+        intuitive feel.</p>
+      <pre><code class="language-csharp">
+  rb.linearVelocity = new Vector3(
+    moveDirection.y * maxSpeed,
+    yVelocity,
+    moveDirection.x * maxSpeed
+);
+      </code></pre>
+      <h3 class="GradiantTitle subtitle">Cleaning mechanic</h3>
+      <p>When activated, the cleaning ability shows a particle effect and wipes nearby trash or rats from the scene.</p>
+      <pre><code class="language-csharp">
+Collider[] hitColliders = Physics.OverlapSphere(
+    cleaningpoint.transform.position,
+    cleaningRadius
+);
+</code></pre>
+      <img src="../images/gif/walchOriginsCleaning.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 100%; height: auto;">
+      <h3 class="GradiantTitle subtitle">Trap Launching</h3>
+      <p>The player shoots traps on cooldown to deal with fast-moving rats.</p>
+      <pre><code class="language-csharp">
+        if (trapcooldownTimer <= 0)
+        {
+           Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
+           trapcooldownTimer = trapcooldown;
+        }
+        </code></pre>
+      <img src="../images/gif/waLchOriginsTraps.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 100%; height: auto;">
 
-      <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play
+
+      <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
+        class="GradiantTitle">Play
       </h1>
       <div class="itch-embed-container"
         style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
@@ -118,7 +138,8 @@
         </iframe>
       </div>
       <div class="mobile-message">
-        <p data-i18n="walchOriginsMobileMessage">To play WA-LCH Origins, please visit this page on a computer.</p>
+        <p data-i18n="projectPages.walchOrigins.walchOriginsMobileMessage">To play WA-LCH Origins, please visit this
+          page on a computer.</p>
       </div>
     </div>
 
@@ -135,7 +156,7 @@
     <!-- Sidebar Content -->
     <div class="SideBar" style="height: max-content">
       <!-- Trailer Section -->
-      <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
+      <h1 data-i18n="projectPages.trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
       <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
           src="https://www.youtube.com/embed/z1rAx_g-JZI?si=OWBI3CY6Af5n6Iyw" title="YouTube video player"
@@ -145,7 +166,8 @@
       </div>
 
       <!-- Screenshots Section -->
-      <h1 data-i18n="screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
+      <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">
+        Screenshots</h1>
       <picture>
         <source srcset="../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot1.webp" type="image/webp" />
         <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot1.png"
@@ -163,7 +185,8 @@
       </picture>
 
       <!-- Credits Section -->
-      <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">
+      <h1 data-i18n="projectPages.credits" style="text-align: center; margin-top: 10px; margin-bottom: 0"
+        class="GradiantTitle">
         Credits</h1>
       <!-- <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
       <a class="credits" href="https://nielsdelaat.us.to" target="_blank" rel="noreferrer">Niels de Laat</a>
@@ -234,7 +257,7 @@
   </div>
 
   <script defer src="../js/imagezoom.js"></script>
-  <script defer src="../js/translate.js"></script>
+  <script type="module" defer src="../js/translate.js"></script>
   <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 <footer>

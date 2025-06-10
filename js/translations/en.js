@@ -1,0 +1,153 @@
+// English translations
+export const en = {
+
+    nav: {
+        //navbar
+        home: "Home",
+        projects: "Projects",
+        experience: "Experience",
+        contact: "Contact",
+
+    },
+
+    aboutMe: {
+        // Home about me
+        welcome: "Hello, I'm Niels de Laat",
+        ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands',
+        aboutMe: 'I\'m a developer who loves to create entertaining games. I bring my ideas to life using Unity and C# and I enjoy learning new and innovative approaches. When I\'m not programming I am playing <a href="https://infinitebacklog.net/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">games</a> or watching <a href="https://trakt.tv/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">movies</a>.',
+        skills: "Skills",
+
+    },
+
+    projects: {
+        //Projects
+        seeMore: "See More",
+        technologies: "Technologies",
+        descriptionGame1: "Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this",
+        descriptionGame2: "This is the website you're currently viewing—a fully custom, multi-language developer",
+        descriptionGame3: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source.",
+        descriptionGame4: "A challenging 2D platformer where your only tool is a single box. Guide both yourself and your",
+        descriptionGame5: "Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control",
+        // descriptionGame5:"fhjhgh",
+        // descriptionGame6:"fhjhgh",
+    },
+
+    experience: {
+        //Experience
+        education: "Education",
+        skillsLearned: "Skills Learned:",
+        present: "present",
+        gluDescription: "The Game Development program at Grafisch Lyceum Utrecht teaches game design, coding, and collaboration between programmers and artists. Through practical projects we learn the skills needed to fun games.",
+        futureTitle: "The Future",
+        futureTime: "Future",
+        futureDescription: 'Your project here? click <a style="color: #ff7e5f;" href="#Contact">here</a> To Contact Me',
+    },
+
+    contact: {
+        //contact
+        contactTitle: "Contact Me",
+    },
+
+    projectPages: {
+        // project pages
+        description: "Description",
+        trailer: "Trailer",
+        play: "Play",
+        credits: "Credits",
+        screenshots: "Screenshots",
+        developers: "Developers",
+        artists: "Artists",
+        whatIMadeTitle: "What I Made",
+
+        slimetasticPunchout: {
+            // Slimetastic Punchout
+            slimetasticDescription: "Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It's slimy chaos at its best!",
+            slimetasticMobileMessage: "To play Slimetastic Punchout, please visit this page on a computer.",
+            slimetasticWhatIMadeText: '<p>I worked on procedural map generation, interactive mechanics, and enemy and item spawning. Here\'s what I did:</p><p>I worked on different parts of the game, helping with both gameplay and UI. Here\'s what I did:</p><ul class="project-list"><li>Player Movement (Early Version): I created the first version of player movement, setting upthe basiccontrols. Another developer later changed it, but my work laid the foundation.</li><li>Tile Color Changing (Early Version): I made the initial system that let tiles change color. This was alsolater modified, but my setup helped get the feature started.</li><li>Menus: I designed and coded the game\'s menus, including:</li><li style="margin-left: 25px;">Main Menus: Set up the navigation structure.</li><li style="margin-left: 25px;">Local Multiplayer Menus: Created the UI for selecting multiplayer options.</li><li style="margin-left: 25px;">Character Selection Menu: Built the system for choosing characters, colors, andcosmetics.</li></ul><p>The character selection menu was a big part of my work. I wrote a script to handle:</p><ul class="project-list"><li>Assigning players and selecting colors.</li><li>Choosing cosmetics.</li><li>Showing ready status and making sure colors weren\'t duplicated.</li></ul>',
+        },
+
+        walch: {
+            // WA-LCH
+            walchDescription: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon.",
+            walchMobileMessage: "To play WA-LCH, please visit this page on a computer.",
+            walchWhatIMadeText: '<ul class="project-list"><li>Map Generation: Implemented a procedural map generation system using a maze-based algorithm to create dynamic and unpredictable environments for each playthrough.</li><li>QTE System for Generators: Implemented a quick-time event (QTE) system for interacting with generators, requiring players to complete timed inputs to activate them successfully.</li><li>Pickup Spawning: Implemented a system for dynamically spawning collectible pickups throughout the map, ensuring variety and strategic placement.</li><li>Enemy Spawning: Implemented an adaptive enemy spawning mechanic that balances challenge by adjusting spawn locations and enemy density based on player progression.</li></ul><p>My contributions helped shape the core mechanics and gameplay experience, making the game more engaging, dynamic, and replayable.</p>',
+        },
+
+        youOnlyHaveOneBox: {
+            // You Only Have One Box
+            oneBoxDescription: 'A challenging 2D platformer where your only tool is a single box. Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you\'ll have to start over! This game won 1st place in the GLU Game Jam, where it was created under the theme "You Only Have One".',
+            oneBoxMobileMessage: "To play You Only Have One Box, please visit this page on a computer.",
+            oneBoxWhatIMadeText: '<p>I worked on key parts of the level design and enemy AI. Here\'s what I did:</p><ul class="project-list"><li>Tilemap: Implemented the tilemap, creating the structure of the game world.</li><li>Enemy AI: Programmed an enemy that moves left to right and turns around when it hits anobstacle, adding dynamic challenge.</li></ul>',
+        },
+
+        walchOrigins: {
+            //WA-LCH Origins
+            walchOriginsDescription: 'Step into the role of a dedicated cleaning robot, just like in the <a class="credits" href="WA-LCH.html">original WA-LCH</a>. But this time, you\'re not just tidying up an abandoned lab filled with radioactive mess you\'re dealing with the chaos before it got that bad.<br><br> In this prequel, your mission is to maintain order in a bustling, cluttered laboratory where absent-minded scientists leave piles of trash everywhere. If the mess gets out of control, it\'ll attract unwanted visitors like rats that cause even more trouble. <br><br> Can you keep the lab spotless and prevent it from spiraling into total chaos? Put your cleaning skills to the test and find out! <br><br> This game was created in just 30 hours as part of a late Global Game Jam hosted by GLU, with the theme "Bubbles." It even secured second place among the games developed during the event!',
+            walchOriginsMobileMessage: "To play WA-LCH Origins, please visit this page on a computer.",
+            walchOriginsWhatIMadeText: '<p>I worked on several key gameplay mechanics and also created the game\'s trailer. Here\'s what I did:</p><ul class="project-list"><li>Player Movement: Implemented the movement system, allowing smooth player controls.</li><li>Doors: Developed the door system for entering and exiting rooms.</li><li>Trash Cleaning: Created the mechanic for cleaning up trash, an important gameplay feature.</li><li>Rat Shooting: Implemented the shooting system for dealing with rats.</li><li>Game Trailer: Edited and produced a trailer to showcase the game.</li></ul><p>My work helped make the core interactions and feel of the game, making it more immersive and fun for players.</p>',
+        },
+
+        portfolio: {
+            //Portfolio
+            portfolioDescription: "This is the website you're currently viewing—a fully custom, " +
+                "multi-language developer portfolio showcasing my game development projects, skills, and personality. " +
+                "It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.",
+            whatIMadeStart: "This project wasn’t just about creating a static site—it’s a full experience. Here's what I built:",
+            homepage: {
+                homePage: "Home Page",
+                homePagePoint1: "Clean layout with profile picture, dynamic age display, and skills list.",
+                homePagePoint2: "Fully responsive design using Flexbox and custom media queries.",
+            },
+            projectsPage: {
+                projectsPage: "Projects Page",
+                projectsPagePoint1: "Each project is presented in a card format with hover effects.",
+                projectsPagePoint2: "Displays project year, title, thumbnail, brief description, and tech stack.",
+                projectsPagePoint3: "Clicking a project opens a detailed page with:",
+                projectsPagePoint31: "Embedded trailer",
+                projectsPagePoint32: "Full description of my contributions",
+                projectsPagePoint33: "Screenshots that can be enlarged",
+                projectsPagePoint34: "Playable game (if supported)",
+
+            },
+            languageSupport: {
+                languageSupport: "Language Support",
+                languageSupportPoint1: "The entire website supports English and Dutch.",
+                languageSupportPoint2: "Visitors can switch languages using a dropdown.",
+                languageSupportPoint3: "Content updates instantly via data-i18n attributes and a custom translation script.",
+
+            },
+            error404: {
+                error404Page: "Custom 404 Page",
+                error404PagePoint1: 'Lost visitors get a custom error page that displays a random character from one of my games with a matching fun message.' +
+                    'Images load in either WebP or fallback PNG formats based on browser support. <a href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">click here</a>' +
+                    ' to view the 404 page.',
+            }, easterEggs: {
+                easterEggs: "Easter Eggs",
+                easterEggsPoint1: "Try to find them. No Time? click on the boxes below to reveal theEaster egg.",
+                easterEggsPoint2: "The site includes a Minoneese translation: a fictional, playful third language option you can access from the hidden icon in the footer.",
+                easterEggsPoint3: "the words \"games\" and \"movies\" at the end of the About Me section have hidden clickable links to personal profiles and fun references.",
+                spoilerTooltip: "Click to reveal spoiler",
+            },
+            technologies: {
+                technologies: "Technologies Used",
+                technologiesPoint1: "HTML5 + semantic structure",
+                technologiesPoint2: "Custom CSS (no frameworks)",
+                technologiesPoint3: "JavaScript (vanilla ES6)",
+                technologiesPoint4: 'The <code class="language-html"style="font-size: 20px;">&lt;picture&gt;</code> element enablesformat-aware image loading.',
+            },
+        },
+    },
+
+    error404: {
+        //404 page
+        playerDead: "This bot tried its best… and failed spectacularly.",
+        player: "This bot couldn't find your page, but it's trying its best!",
+        roombaBomb: "Oops! The roomba bomb accidentally blown up the page",
+        slimeKing: "By order of the Slime Kingdom, this page is missing!",
+        slime: "No page here, only squishy, squishy disappointment.",
+        punchingSlimes: "They were too busy brawling to save the content.",
+        gaylien: "Too many packing peanuts dropped for you to reach this page!",
+        dino: "Page Missing, But Look! A Dino!",
+        returnHome: "Return Home",
+    },
+};

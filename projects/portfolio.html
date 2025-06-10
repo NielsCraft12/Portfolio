@@ -1,192 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Character encoding and viewport settings -->
-    <meta charset="UTF-8" />
-    <!-- Custom viewport settings to prevent scaling on mobile devices -->
-    <meta
-      name="viewport"
-      content="height=device-height, 
+
+<head>
+  <!-- Character encoding and viewport settings -->
+  <meta charset="UTF-8" />
+  <!-- Custom viewport settings to prevent scaling on mobile devices -->
+  <meta name="viewport" content="height=device-height, 
    width=device-width, initial-scale=1.0, 
    minimum-scale=1.0, maximum-scale=1.0, 
-   user-scalable=no, target-densitydpi=device-dpi"
-    />
+   user-scalable=no, target-densitydpi=device-dpi" />
 
-    <meta name="description" content="Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad." />
-    <title>WA-LCH</title>
+  <meta name="description"
+    content="Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad." />
+  <title>Portfolio</title>
 
-    <!-- Default Highlight.js css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-    <!-- Remove old Highlight.js theme reference -->
-    <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
+  <!-- Default Highlight.js css -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <!-- Remove old Highlight.js theme reference -->
+  <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
 
-    <!-- External Resources -->
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <!-- External Resources -->
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
-    <!-- Stylesheet Links -->
-    <link href="../css/style.css" rel="stylesheet" />
-    <link href="../css/ProjectPage.css" rel="stylesheet" />
-    <link href="../css/Home.css" rel="stylesheet" />
+  <!-- Stylesheet Links -->
+  <link href="../css/style.css" rel="stylesheet" />
+  <link href="../css/ProjectPage.css" rel="stylesheet" />
+  <link href="../css/Home.css" rel="stylesheet" />
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Favicon Settings for various platforms -->
-    <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
-    <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="../images/Favicon/site.webmanifest" />
-  </head>
+  <!-- Favicon Settings for various platforms -->
+  <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../images/Favicon/site.webmanifest" />
 
-  <body>
-    <style>
-      .js-spoiler {
-        background: #e8e8e800;
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+
+
+  <style>
+    /* CSS custom property for the spoiler tooltip text */
+    :root {
+      --spoiler-tooltip-text: "Click to reveal spoiler";
+    }
+
+    .spoiler-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 16px;
+      /* Add gap between spoiler boxes */
+    }
+
+    .spoiler-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+      cursor: pointer;
+      border-radius: 4px;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      pointer-events: auto;
+    }
+
+    .spoiler-cover.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Tooltip Styles */
+    .spoiler-cover::after {
+      content: var(--spoiler-tooltip-text);
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #222;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .spoiler-cover:hover::after {
+      opacity: 1;
+    }
+
+    /* Desktop layout for 404 images */
+    .portfolio-404-images {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+
+    .portfolio-404-images picture {
+      flex: 1;
+      max-width: 33%;
+    }
+
+    .portfolio-404-images picture img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Mobile layout for 404 images */
+    @media (max-width: 768px) {
+      .portfolio-404-images {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
       }
 
-      .js-spoiler.hidden {
-        background: rgb(255, 255, 255);
-        cursor: pointer;
-        border-radius: 3px;
+      .portfolio-404-images picture {
+        width: 90%;
+        max-width: 768px;
       }
 
-      .js-spoiler.hidden span {
-        opacity: 0;
-        user-select: none;
+      .portfolio-404-images picture img {
+        width: 100% !important;
+        height: auto;
       }
-    </style>
-    <!-- Navigation Menu -->
-    <nav>
-      <input type="checkbox" id="sidebar-active" />
-      <label for="sidebar-active" class="open-sidebar-button">
-        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <input type="checkbox" id="sidebar-active" />
+    <label for="sidebar-active" class="open-sidebar-button">
+      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+    </label>
+    <label id="overlay" for="sidebar-active"></label>
+    <div class="links-container">
+      <label for="sidebar-active" class="close-sidebar-button">
+        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
-      <label id="overlay" for="sidebar-active"></label>
-      <div class="links-container">
-        <label for="sidebar-active" class="close-sidebar-button">
-          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
-        </label>
-        <a data-i18n="home" class="home-link" href="../">Home</a>
-        <a data-i18n="projects" href="../?lang=#Projects">Projects</a>
-        <a data-i18n="experience" href="../?lang=#Experience">Experience</a>
-        <a data-i18n="contact" href="../?lang=#Contact">Contact</a>
-        <div class="language-switcher">
-          <button class="language-btn">
-            <span class="current-lang">English</span>
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <ul class="language-menu">
-            <li><a href="#" data-lang="en">English</a></li>
-            <li><a href="#" data-lang="nl">Nederlands</a></li>
-          </ul>
-        </div>
+      <a data-i18n="nav.home" class="home-link" href="../">Home</a>
+      <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
+      <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
+      <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
+      <div class="language-switcher">
+        <button class="language-btn">
+          <span class="current-lang">English</span>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <ul class="language-menu">
+          <li><a href="#" data-lang="en">English</a></li>
+          <li><a href="#" data-lang="nl">Nederlands</a></li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Main Content Container -->
-    <div class="containerProject">
-      <!-- Project Description Section -->
-      <div class="Main-Content">
-        <h1 class="GradiantTitle title">Portfolio</h1>
-        <h3 data-i18n="description" class="GradiantTitle subtitle">Description</h3>
-        <p data-i18n="walchOriginsDescription">This is the website you're currently viewing—a fully custom, multi-language developer portfolio showcasing my game development projects, skills, and personality. It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.</p>
-        <h3 data-i18n="WhatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
-        <div data-i18n="walchOriginsWhatIMadeText">
-          <p>This project wasn’t just about creating a static site—it’s a full experience. Here's what I built:</p>
-          <h3 class="GradiantTitle subtitle">Home Page</h3>
-          <ul class="project-list">
-            <li>Clean layout with profile picture, dynamic age display, and skills list.</li>
-            <li>Fully responsive design using Flexbox and custom media queries.</li>
-          </ul>
-          <h3 class="GradiantTitle subtitle">Projects Page</h3>
-          <ul class="project-list">
-            <li>Each project is presented in a card format with hover effects.</li>
-            <li>Displays project year, title, thumbnail, brief description, and tech stack.</li>
-            <li>Clicking a project opens a detailed page with:</li>
-            <ul class="project-list">
-              <li>Embedded trailer</li>
-              <li>Full description of my contributions</li>
-              <li>Playable game (if supported)</li>
-            </ul>
-          </ul>
-          <h3 class="GradiantTitle subtitle">Language Support</h3>
-          <ul class="project-list">
-            <li>The entire website supports English and Dutch.</li>
-            <li>Visitors can switch languages using a dropdown.</li>
-            <li>Content updates instantly via data-i18n attributes and a custom translation script.</li>
-          </ul>
-          <h3 class="GradiantTitle subtitle">Custom 404 Page</h3>
-          <p>Lost visitors get a custom error page that displays a random character from one of my games with a matching fun message. Images load in either WebP or fallback PNG formats based on browser support.</p>
-          <h3 class="GradiantTitle subtitle">Easter Eggs</h3>
-          <ul class="project-list">
-            <span class="js-spoiler hidden" aria-label="Spoiler" aria-expanded="false" tabindex="0" role="button">
-              <li><span aria-hidden="true">The site includes a Minoneese translation: a fictional, playful third language option you can access from the footer icon. </span></li>
-            </span>
-            <li>Some lines in the About Me section have hidden clickable links to personal profiles and fun references.</li>
-          </ul>
+  <!-- Main Content Container -->
+  <div class="containerProject">
+    <!-- Project Description Section -->
+    <div class="Main-Content">
+      <h1 class="GradiantTitle title">Portfolio</h1>
+      <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
+      <p data-i18n="projectPages.portfolio.portfolioDescription">This is the website you're currently viewing—a fully
+        custom,
+        multi-language
+        developer portfolio showcasing my game development projects, skills, and personality. It's built from the ground
+        up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.</p>
+      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
+      <p data-i18n="projectPages.portfolio.whatIMadeStart">This project wasn’t just about creating a static site—it’s a
+        full
+        experience. Here's what I built:</p>
+      <h3 data-i18n="projectPages.portfolio.homepage.homePage" class="GradiantTitle subtitle">Home Page</h3>
+      <ul class="project-list">
+        <li data-i18n="projectPages.portfolio.homepage.homePagePoint1">Clean layout with profile picture, dynamic age
+          display, and skills list.</li>
+        <li data-i18n="projectPages.portfolio.homepage.homePagePoint2">Fully responsive design using Flexbox and custom
+          media queries.</li>
+      </ul>
+      <pre><code class="language-js code-snippet">
+          // JavaScript that dynamically calculates and displays my age
+          function calculateAge(birthday) {
+            const today = new Date();
+            const birthDate = new Date(birthday);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+            const dayDifference = today.getDate() - birthDate.getDate();
 
-          <h3 class="GradiantTitle subtitle">Technologies Used</h3>
-          <ul class="project-list">
-            <li>HTML5 + semantic structure</li>
-            <li>Custom CSS (no frameworks)</li>
-            <li>JavaScript (vanilla ES6)</li>
-            <li>localStorage for language memory</li>
-            <li>picture> element for format-aware image loading</li>
-          </ul>
+            // Adjust age if today's date is before the birthday this year
+            if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+              age--;
+            }
+
+            return age;
+        }
+</code></pre>
+      <h3 data-i18n="projectPages.portfolio.projectsPage.projectsPage" class="GradiantTitle subtitle">Projects Page
+      </h3>
+      <ul class="project-list">
+        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint1">Each project is presented in a card
+          format with hover effects.</li>
+        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint2">Displays project year, title, thumbnail,
+          brief description, and tech stack.
+        </li>
+        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint3">Clicking a project opens a detailed page
+          with:
+        </li>
+        <ul class="project-list">
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint31">Embedded trailer</li>
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint32">Full description of my contributions
+          </li>
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint33">Screenshots that can be enlarged
+          </li>
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint34">Playable game (if supported)</li>
+        </ul>
+
+      </ul> <img src="../images/gif/ScreenshotShow.gif" alt="Screenshot demonstration"
+        style="width: 100%; max-width: 600px; height: auto;" />
+      <img src="../images/gif/ProjectCard.gif" alt="Project card animation"
+        style="width: 100%; max-width: 300px; height: auto; margin-top: 10px;" />
+
+
+
+      <h3 data-i18n="projectPages.portfolio.languageSupport.languageSupport" class="GradiantTitle subtitle">Language
+        Support</h3>
+      <ul class="project-list">
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint1">The entire website supports English
+          and
+          Dutch.</li>
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint2">Visitors can switch languages using
+          a dropdown.</li>
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint3">Content updates instantly via
+          data-i18n attributes and a custom translation script.</li>
+      </ul>
+
+      <img src="../images/gif/Taranslate.gif" alt="" style="display: block; margin: 20px auto; width: 80%;">
+
+      <pre><code class="language-js code-snippet">
+// Updates the UI text content and styling based on the selected language
+function updateContent(lang) {
+  // Exit early if the selected language has no translations available
+  if (!translations[lang]) return;
+
+  // Remove the "active" class from all language selection elements
+  document.querySelectorAll("[data-lang]").forEach((el) => el.classList.remove("active"));
+
+  // For every element with a data-i18n attribute, update its inner HTML
+  // with the corresponding translation in the selected language
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      element.innerHTML = translations[lang][key];
+    }
+  });
+
+  // Update the visible language label in the UI
+  const currentLangSpan = document.querySelector(".current-lang");
+  if (lang === "en") {
+    currentLangSpan.textContent = "English";
+  } else if (lang === "nl") {
+    currentLangSpan.textContent = "Nederlands";
+  }
+
+  // Store the selected language in local storage for persistence
+  localStorage.setItem("preferredLanguage", lang);
+
+  // Call a function to update other dynamic content (e.g., age formatting)
+  updateAgeDisplay();
+}
+</code></pre>
+      <h3 data-i18n="projectPages.portfolio.error404.error404Page" class="GradiantTitle subtitle">Custom 404 Page</h3>
+      <p data-i18n="projectPages.portfolio.error404.error404PagePoint1" style="margin-bottom: 10px;">Lost visitors get a
+        custom error page that displays
+        a random
+        character from one
+        of my games with a matching
+        fun message. Images load in either WebP or fallback PNG formats based on browser support. <a
+          href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">click here</a> to view
+        the 404 page.</p>
+
+      <div class="portfolio-404-images">
+        <picture>
+          <source srcset="../images/webp/ProjectImages/Portfolio/404Image1.webp" type="image/webp" />
+          <img src="../images/png/ProjectImages/Portfolio/404Image1.png" alt="Profile picture" />
+        </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectImages/Portfolio/404Image2.webp" type="image/webp" />
+          <img src="../images/png/ProjectImages/Portfolio/404Image2.png" alt="Profile picture" />
+        </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectImages/Portfolio/404Image3.webp" type="image/webp" />
+          <img src="../images/png/ProjectImages/Portfolio/404Image3.png" alt="Profile picture" />
+        </picture>
+      </div>
+
+
+      <h3 data-i18n="projectPages.portfolio.easterEggs.easterEggs" class="GradiantTitle subtitle">Easter Eggs</h3>
+      <p data-i18n="projectPages.portfolio.easterEggs.easterEggsPoint1" style=" margin-bottom: 16px;">Try to find them.
+        No
+        Time? click on the boxes below to reveal the
+        Easter
+        eggs.</p>
+      <ul class="project-list">
+
+        <div class=" spoiler-container" onclick="toggleSpoiler(this)">
+          <span>
+            <li data-i18n="projectPages.portfolio.easterEggs.easterEggsPoint2">The site includes a Minoneese
+              translation: a fictional, playful third language
+              option you can access from the hidden icon in the footer.</li>
+          </span>
+          <div class="spoiler-cover"></div>
         </div>
 
-        <!-- <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1> -->
-        <!-- <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden"> -->
-        <!-- <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="">
+        <div class="spoiler-container" onclick="toggleSpoiler(this)">
+          <span>
+            <li data-i18n="projectPages.portfolio.easterEggs.easterEggsPoint3"> The words "games" and "movies" at the
+              end of the About Me section have hidden clickable
+              links to
+              personal profiles and fun references.
+            </li>
+          </span>
+          <div class="spoiler-cover"></div>
+        </div>
+
+
+
+
+      </ul>
+
+      <h3 data-i18n="projectPages.portfolio.technologies.technologies" class="GradiantTitle subtitle">Technologies Used
+      </h3>
+      <ul class="project-list">
+        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint1">HTML5 + semantic structure</li>
+        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint2">Custom CSS (no frameworks)</li>
+        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint3">JavaScript (vanilla ES6)</li>
+        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint4">The <code class="language-html"
+            style="font-size: 20px;">&lt;picture&gt;</code> element enables
+          format-aware image loading.
+        </li>
+      </ul>
+    </div>
+
+    <!-- <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1> -->
+    <!-- <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden"> -->
+    <!-- <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="">
             <a href="https://joahvds.itch.io/walch-origins">Play WA-LCH Origins on itch.io</a>
           </iframe> -->
-        <!-- </div> -->
-        <!-- <div class="mobile-message">
+    <!-- </div> -->
+    <!-- <div class="mobile-message">
           <p data-i18n="walchOriginsMobileMessage">To play WA-LCH Origins, please visit this page on a computer.</p>
         </div> -->
-      </div>
 
-      <!-- Visual Divider -->
-      <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
-        <hr class="roundedv" style="height: 100%; margin: 0" />
-        <!-- <hr class="roundedv mobile-divider" /> -->
-      </div>
 
-      <div class="divider mobile-divider">
-        <hr class="roundedv" />
-      </div>
+    <!-- Visual Divider -->
+    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
+      <hr class="roundedv" style="height: 100%; margin: 0" />
+      <!-- <hr class="roundedv mobile-divider" /> -->
+    </div>
 
-      <!-- Sidebar Content -->
-      <div class="SideBar" style="height: max-content">
-        <!-- Trailer Section -->
-        <!-- <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
+    <div class="divider mobile-divider">
+      <hr class="roundedv" />
+    </div>
+
+    <!-- Sidebar Content -->
+    <div class="SideBar" style="height: max-content">
+      <!-- Trailer Section -->
+      <!-- <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
         <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
           <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="https://www.youtube.com/embed/z1rAx_g-JZI?si=OWBI3CY6Af5n6Iyw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
         </div> -->
 
-        <!-- Screenshots Section -->
-        <h1 data-i18n="screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
-        <picture>
-          <source srcset="../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot1.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot1.png" alt="Profile picture" />
-        </picture>
-        <picture>
-          <source srcset="../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot2.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot2.png" alt="Profile picture" />
-        </picture>
-        <picture>
-          <source srcset="../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot3.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot3.png" alt="Profile picture" />
-        </picture>
+      <!-- Screenshots Section -->
+      <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">
+        Screenshots</h1>
+      <picture>
+        <source srcset="../images/webp/Portfolio.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/Portfolio.png" alt="Profile picture" />
+      </picture>
+      <picture>
+        <source srcset="../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot1.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/Portfolio/portfolioScreenshot1.png"
+          alt="Profile picture" />
+      </picture>
+      <picture>
+        <source srcset="../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot2.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/Portfolio/portfolioScreenshot2.png"
+          alt="Profile picture" />
+      </picture>
 
-        <!-- Credits Section -->
-        <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Credits</h1>
-        <!-- <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
+      <!-- Credits Section -->
+      <h1 data-i18n="projectPages.credits" style="text-align: center; margin-top: 10px; margin-bottom: 0"
+        class="GradiantTitle">
+        Credits</h1>
+      <!-- <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
       <a class="credits" href="https://nielsdelaat.us.to" target="_blank" rel="noreferrer">Niels de Laat</a>
       <a class="credits" href="http://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">Joah van der
         Sloot</a>
@@ -196,37 +420,37 @@
         Rooijen</a>
       <a class="credits" href="https://www.artstation.com/maxtesser" target="_blank" rel="noreferrer">Max Tesser</a> -->
 
-        <ul class="cd-demo-chip-list">
-          <li>
-            <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-code GradiantTitle"></i>
-                <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
-                <i class="chip__label">Niels de Laat</i>
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <ul class="cd-demo-chip-list">
+        <li>
+          <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
+            <span class="chip">
+              <i class="fa-solid fa-code GradiantTitle"></i>
+              <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
+              <i class="chip__label">Niels de Laat</i>
+            </span>
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
 
-    <!-- Image Modal for Screenshots -->
-    <div id="imageModal" class="modal">
-      <span class="modal-close">&times;</span>
-      <img class="modal-content" id="modalImg" />
-    </div>
+  <!-- Image Modal for Screenshots -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
 
-    <script defer src="../js/imagezoom.js"></script>
-    <script defer src="../js/translate.js"></script>
-    <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  </body>
-  <footer>
-    <div class="footer" style="display: flex; align-items: center; position: relative">
-      <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
-          <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-            <path
-              d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+  <script defer src="../js/imagezoom.js"></script>
+  <script type="module" defer src="../js/translate.js"></script>
+  <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+<footer>
+  <div class="footer" style="display: flex; align-items: center; position: relative">
+    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
+      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
+        preserveAspectRatio="xMidYMid meet" class="mi-icon">
+        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
             -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
             -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
             -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
@@ -237,47 +461,22 @@
             316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
             123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
             c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-            -1440 483 -149 19 -562 27 -710 15z"
-            />
-          </g>
-        </svg>
-      </a>
-      <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-      <script>
-        document.getElementById("copyright-year").textContent = new Date().getFullYear();
-      </script>
+            -1440 483 -149 19 -562 27 -710 15z" />
+        </g>
+      </svg>
+    </a>
+    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+    <script>
+      document.getElementById("copyright-year").textContent = new Date().getFullYear();
+    </script>
+    <script>
+      function toggleSpoiler(container) {
+        const cover = container.querySelector('.spoiler-cover');
+        cover.classList.toggle('hidden');
+      }
+    </script>
 
-      <script>
-        function handleSpoiler(evt) {
-          const wrapper = evt.currentTarget;
-          const content = wrapper.children[0];
+  </div>
+</footer>
 
-          // toggle the visibility
-          wrapper.classList.toggle("hidden");
-
-          // set aria attributes for screen readers
-          if (wrapper.classList.contains("hidden")) {
-            wrapper.setAttribute("aria-expanded", false);
-            wrapper.setAttribute("role", "button");
-            wrapper.setAttribute("aria-label", "spoiler");
-
-            content.setAttribute("aria-hidden", true);
-          } else {
-            wrapper.setAttribute("aria-expanded", true);
-            wrapper.setAttribute("role", "presentation");
-            wrapper.removeAttribute("aria-label");
-
-            content.setAttribute("aria-hidden", false);
-          }
-        }
-
-        // an array of our js-spoilers
-        const jSpoilers = [...document.getElementsByClassName("js-spoiler")];
-
-        // hard coding two event listeners to demonstrate a togglable and a one time only spoiler
-        jSpoilers[0].addEventListener("click", handleSpoiler);
-        jSpoilers[1].addEventListener("click", handleSpoiler, { once: true });
-      </script>
-    </div>
-  </footer>
 </html>

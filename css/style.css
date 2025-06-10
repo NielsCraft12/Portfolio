@@ -18,7 +18,7 @@ html {
 p,
 .project-list {
   color: #fff;
-  font-size: 25px;
+  font-size: 22px;
   word-spacing: 2px;
 }
 
@@ -58,4 +58,52 @@ hr.rounded {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(to left, #ff7e5f, #feb47b);
   border-radius: 10px;
+}
+
+/* Missing Translation Styles */
+.missing-translation {
+  background: rgba(255, 0, 0, 0.2) !important;
+  border: 2px dashed #ff4444 !important;
+  color: #ff6666 !important;
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  position: relative !important;
+  display: inline-block !important;
+  min-width: 150px !important;
+  min-height: 20px !important;
+}
+
+.missing-translation::before {
+  content: "⚠️ ";
+  font-size: 0.8em;
+}
+
+/* Specific styling for heading tags */
+h1.missing-translation,
+h2.missing-translation,
+h3.missing-translation,
+h4.missing-translation,
+h5.missing-translation,
+h6.missing-translation {
+  display: block !important;
+  width: auto !important;
+  min-width: 200px !important;
+  padding: 8px 12px !important;
+  margin: 10px 0 !important;
+}
+
+.missing-translation:hover::after {
+  content: attr(data-missing-key);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
 }
