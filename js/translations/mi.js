@@ -75,9 +75,35 @@ export const mi = {
         },
         walchOrigins: {
             //WA-LCH Origins
-            walchOriginsDescription: 'Via enta ta orb de a hobaha vandad robot, sola ko een ta <a class="credits" href="wa-lch. html">original wa-lch</a>.  Pelo ba veela, you\'re non sola tidying aka nan gammot bug ziplab com suqnot mo you\'re rexshh com ta elm bidom pik ka pak gib. <br><br> een ba prequel, tu upospa tis da taspea fog een a bustling, cluttered adtae donde absent-minded orswha nik nak piles de hay askoud.  Asa ta mo nam kapee de hottoe, it\'ll sicwo unwanted teecwm ko moc pak copka lega mas jowrut.  <br><br> pudum to tenga ta bug spotless yee eonmoo pik da spiraling enta qua elm? ponga tu vandad disell da ta tho yee pen kapee! <br><br> ba spaghetti tos bodib een sola 30 als sim zuu de a lubo ickwab spaghetti gum gum hosted bey glu, com ta ref "bubbles. " pik lega memaw mobdak lugo en ta bam antyid engvim ta hes!',
-            walchOriginsMobileMessage: "Da hopa wa-lch origins, radbad ods ba piplo en a doegob",
-            walchOriginsWhatIMadeText: '<p>Ka mobla en filava don de ta spaghetti, woplog com lap gameplay yee ui. Here\'s Whaaat? ka deep:</p><ul class="project-list"><li>Player Movement: ka bodib ta movement system, allowing smooth player controls</li><li>Doors: ka bodib ta door system pak entering yee exiting rooms</li><li>Trash Cleaning: ka bodib ta mechanic pak cleaning up trash, an important gameplay feature</li><li>Rat Shooting: ka bodib ta shooting system pak dealing wid rats</li><li>Game Trailer: ka bodib ta trailer pak showcase de ta spaghetti</li></ul><p>Ka mobla en filava don de ta spaghetti, woplog com lap gameplay yee ui. Here\'s Whaaat? ka deep:</p>',
+            description: 'made een ~30 als engvim a spaghetti gum gum (theme:“bubbles”) — hagan com ane yee c#.  ' +
+                'wa-lch origins tis a chaotic mini-cleanup adventure donde to hopa sim a janitor scrubbing cos hay yee trapping rogue moc tug bubble-based ha.  ' +
+                'built tabatt sumo spaghetti gum gum belyak, pik megxu player-controlled pubany yenhod, fasami tun, trap-based rat jibrip, yee a bubbly vandad mechanic. ',
+            mobileMessage: "Da hopa wa-lch origins, radbad ods ba piplo en a doegob",
+
+            playerMovement: {
+                playerMovementTitle: "Kidhaw yenhod",
+                playerMovementPoint1: "Ceeeye piu rigidbody nunu responsive physics-based hottoe.  Dewhup defub yenhod yukcep nunu nan crusim mara.",
+            },
+
+            cleaningMechanic: {
+                cleaningMechanicTitle: "Vandad mechanic",
+                cleaningMechanicPoint1: "Kan wigta, ta vandad nosjeu eth a aitags ayhao yee wipes alszek hay sif moc da ta eme.  Tug nan overlapsphere da yaykeg ta hay",
+            },
+
+            trapLaunching: {
+                trapLaunchingTitle: "Bro dawgoy",
+                trapLaunchingPoint1: "Ta kidhaw shoots traps en cooldown da ow com fast-moving moc",
+            },
+
+            doorSystem: {
+                doorSystemTitle: "Gar tiklop",
+                doorSystemPoint1: "Tun mac yee subo oseyag kan ta kidhaw layfor a nibyep al.  Prolab com a coroutine-like nabens wab een",
+            },
+
+            customTrailer: {
+                customTrailerTitle: "Tiefun trailer",
+                customTrailerPoint1: "Ka bigo bodib a tiefun trailer da showcase ta hun nixat, vibe, yee wab de ta spaghetti. (created temer ta spaghetti gum gum)",
+            },
         },
 
         portfolio: {
@@ -89,12 +115,12 @@ export const mi = {
                 "it's hagan da ta atand aka tug html, css, yee javascript, com a err en interactivity, accessibility, yee a rod de coy",
             whatIMadeStart: "Ba yoref wasn’t sola cama dubex a pepsuk site—it’s a lemo ayeboo.  Aca's Whaaat? ka hagan:",
             homepage: {
-                homePage: "Camion piplo",
+                homePageTitle: "Camion piplo",
                 homePagePoint1: "Bono marlex com bophid pinto, namcox shh mobpsi, yee disell listo",
                 homePagePoint2: "Yin responsive hodoc tug flexbox yee tiefun peg wadleg",
             },
             projectsPage: {
-                projectsPage: "Thyyou piplo",
+                projectsPageTitle: "Thyyou piplo",
                 projectsPagePoint1: "Seeko yoref tis broear een a lay acthie com hover ememil",
                 projectsPagePoint2: "Goxyea yoref anu, ole, thumbnail, pew luvwry, yee fas din",
                 projectsPagePoint3: "Emedow a yoref ads a qiono piplo com:",
@@ -105,26 +131,28 @@ export const mi = {
 
             },
             languageSupport: {
-                languageSupport: "Lingu amold",
-                languageSupportPoint1: "Ta notpac website efpal lapwye yee zas yee minionese",
-                languageSupportPoint2: "Teecwm pudum celpod tiemom tug a dropdown",
-                languageSupportPoint3: "Yehmun totsim wawurn piu data-i18n kisgam yee a tiefun sackae aboasp",
+                languageSupportTitle: "Lingu amold",
+                languageSupportStart: "this website efpal lapwye yee zas, tug a lightweight tiefun sackae tiklop pak" +
+                    "totsim tadda zin wawurn piu data-i18n kisgam — no piplo reloads. ",
+                languageSupportPoint1: "Sixpoh lingu tis orkos een localstorage",
+                languageSupportPoint2: "Bidlev is ahh bok da lapwye yee nama lobwar nunu jarfub",
+                languageSupportPoint3: "Translations nama nogkex yee nested nunu modularity",
 
             },
             error404: {
-                error404Page: "Tiefun 404 piplo",
+                error404PageTitle: "Tiefun 404 piplo",
                 error404PagePoint1: 'Gum teecwm linda a tiefun via piplo pak goxyea a cozowl kinhoy da da de mi bam com a askwee agei dogjay. ' +
                     'images if een sora webp sif fallback png metoft sh en browser amold.  <a href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">click aca</a>' +
                     ' da eel ta 404 piplo',
             }, easterEggs: {
-                easterEggs: "Ghisec fil",
+                easterEggsTitle: "Ghisec fil",
                 easterEggsPoint1: "Traigo da pen vus.  No veela? mod en ta jeu ray da enggan ta ghisec ahi",
                 easterEggsPoint2: "Ta his sixmho a minoneese sackae: a fictional, playful twa lingu payjo to pudum discue da ta arttwo fug een ta footer",
                 easterEggsPoint3: "ta mew \"games\" yee \"movies\" ka ta fin de ta cama me windry kaylay arttwo clickable jam da tiejee mepst yee agei enscap",
                 spoilerTooltip: "Mod da enggan spoiler",
             },
             technologies: {
-                technologies: "Efflei its",
+                technologiesTitle: "Efflei its",
                 technologiesPoint1: "HTML5 + semantic egglox",
                 technologiesPoint2: "Tiefun CSS (no frameworks)",
                 technologiesPoint3: "Javascript (vanilla ES6)",

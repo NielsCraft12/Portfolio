@@ -77,9 +77,35 @@ export const nl = {
 
         walchOrigins: {
             //WA-LCH Origins
-            walchOriginsDescription: 'Stap in de rol van een toegewijde schoonmaakrobot, net als in de <a class="credits" href="WA-LCH.html">originele WA-LCH</a>. Maar dit keer ben je niet alleen bezig met het opruimen van een verlaten laboratorium vol radioactieve rotzooi, je gaat de chaos te lijf voordat het zo erg wordt.<br><br> In deze prequel is je missie om orde te handhaven in een druk, rommelig laboratorium waar verstrooide wetenschappers overal stapels afval achterlaten. Als de rotzooi uit de hand loopt, trekt het ongewenste bezoekers aan zoals ratten die nog meer problemen veroorzaken. <br><br> Kun je het lab brandschoon houden en voorkomen dat het in totale chaos vervalt? Test je schoonmaakvaardigheden en kom erachter! <br><br> Dit spel is in slechts 30 uur gemaakt als onderdeel van een late Global Game Jam georganiseerd door GLU, met het thema "Bubbles." Het behaalde zelfs de tweede plaats onder de spellen die tijdens het evenement zijn ontwikkeld!',
-            walchOriginsMobileMessage: "Om WA-LCH Origins te spelen, bezoek deze pagina op een computer.",
-            walchOriginsWhatIMadeText: '<p>Ik heb aan verschillende belangrijke gameplaymechanieken gewerkt en ook de trailer voor de game gemaakt. Hier is wat ik heb gedaan:</p><ul class="project-list"><li>Spelersbeweging: Het bewegingssysteem geïmplementeerd, waardoor soepele besturing mogelijk is.</li><li>Deuren: Het deursysteem ontwikkeld voor het betreden en verlaten van kamers.</li><li>Vuil opruimen: De mechaniek gecreëerd voor het opruimen van afval, een belangrijke gameplayfunctie.</li><li>Ratten schieten: Het schietsysteem geïmplementeerd om met ratten om te gaan.</li><li>Game-trailer: Een trailer bewerkt en geproduceerd om de game te presenteren.</li></ul><p>Mijn werk hielp bij het vormgeven van de kerninteracties en de sfeer van de game, waardoor het meeslepender en leuker werd voor spelers.</p>',
+            description: 'Gemaakt in ~30 uur tijdens een game jam (thema: "Bubbles") — gebouwd met Unity en C#. WA-LCH Origins is een chaotisch mini-opruimavontuur waarin je een schoonmaakrobot speelt die rommel' +
+                'wegschrobt en ontsnapte ratten vangt met bubble-gereedschap. Volledig gemaakt onder game jam druk, met door de speler bestuurbare physics beweging, geanimeerde deuren, val-gebaseerde rattenverwijdering' +
+                'en een bubbelige schoonmaakmechaniek.',
+            mobileMessage: "Om WA-LCH Origins te spelen, bezoek deze pagina op een computer.",
+
+            playerMovement: {
+                playerMovementTitle: "Spelerbeweging",
+                playerMovementPoint1: "Afgehandeld via Rigidbody voor responsieve physics-gebaseerde besturing. Rotatie volgt de bewegingsrichting voor een intuïtief gevoel.",
+            },
+
+            cleaningMechanic: {
+                cleaningMechanicTitle: "Schoonmaakmechaniek",
+                cleaningMechanicPoint1: "Als de schoonmaakfunctie wordt geactiveerd, verschijnt er een particle-effect en worden rommel of ratten in de buurt uit de scène verwijderd. Er wordt een OverlapSphere gebruikt om de rommel te vinden.",
+            },
+
+            trapLaunching: {
+                trapLaunchingTitle: "Vallen Afschieten",
+                trapLaunchingPoint1: "De speler schiet vallen af met een cooldown om snelle ratten aan te pakken.",
+            },
+
+            doorSystem: {
+                doorSystemTitle: "Door System",
+                doorSystemPoint1: "Doors open and close automatically when the player enters a trigger zone. Managed with a coroutine-like update loop in.",
+            },
+
+            customTrailer: {
+                customTrailerTitle: "Zelfgemaakte Trailer",
+                customTrailerPoint1: "Ik heb ook een aangepaste trailer gemaakt om de kernmechanieken, sfeer en gameplay loop van de game te laten zien. (Gemaakt na de game jam)",
+            },
         },
 
         portfolio: {
@@ -88,12 +114,12 @@ export const nl = {
                 "vaardigheden en persoonlijkheid laat zien.Deze is volledig zelf gebouwd met HTML, CSS en JavaScript, met de nadruk op interactiviteit, toegankelijkheid en een beetje humor.",
             whatIMadeStart: "Dit project was meer dan alleen een statische website maken — het is een hele ervaring. Dit is wat ik heb gemaakt:",
             homepage: {
-                homePage: "Thuispagina",
+                homePageTitle: "Thuispagina",
                 homePagePoint1: "Overzichtelijke layout met profielfoto, dynamische leeftijdsweergave en vaardighedenlijst.",
                 homePagePoint2: "Volledig responsief ontwerp met Flexbox en zelfgemaakte media queries.",
             },
             projectsPage: {
-                projectsPage: "projectenpagina",
+                projectsPageTitle: "projectenpagina",
                 projectsPagePoint1: "Elk project wordt gepresenteerd in kaartformaat met hover-effecten.",
                 projectsPagePoint2: "Laat het jaar van het project zien, de titel, een klein plaatje, korte uitleg en welke technieken ik heb gebruikt.",
                 projectsPagePoint3: "Als je op een project klikt, krijg je een uitgebreide pagina te zien met:",
@@ -104,26 +130,28 @@ export const nl = {
 
             },
             languageSupport: {
-                languageSupport: "Taalondersteuning",
-                languageSupportPoint1: "De hele website is beschikbaar in het Engels en Nederlands.",
-                languageSupportPoint2: "Bezoekers kunnen van taal wisselen met een dropdown menu.",
-                languageSupportPoint3: "De inhoud wordt direct aangepast via data-i18n attributen en een zelfgemaakte vertaalscript.",
+                languageSupportTitle: "Taalondersteuning",
+                languageSupportStart: "Deze website ondersteunt Engels en Nederlands, met een lichtgewicht zelfgemaakt vertalingssysteem dat alle " +
+                    "tekst direct bijwerkt via data-i18n attributen — zonder de pagina opnieuw te laden.",
+                languageSupportPoint1: "Actieve taal wordt opgeslagen in localStorage",
+                languageSupportPoint2: "Ontbrekende sleutels vallen terug op Engels en worden gemarkeerd voor debugging",
+                languageSupportPoint3: "Vertalingen zijn gestructureerd en genest voor modulariteit",
 
             },
             error404: {
-                error404Page: "Zefgemaakte 404-pagina",
+                error404PageTitle: "Zefgemaakte 404-pagina",
                 error404PagePoint1: 'Bezoekers die verdwalen krijgen een zelfgemaakte foutpagina te zien met een willekeurig karakter uit een van mijn games en een bijpassende leuke boodschap.' +
                     ' Afbeeldingen laden in WebP of als alternatief PNG formaat, afhankelijk van wat de browser ondersteunt. <a href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">Klik hier</a>' +
                     ' om de 404-pagina te bekijken.',
             }, easterEggs: {
-                easterEggs: "Easter Eggs",
+                easterEggsTitle: "Easter Eggs",
                 easterEggsPoint1: "Probeer ze te vinden. Geen tijd? Klik op de vakjes hieronder om de Easter egg te onthullen.",
                 easterEggsPoint2: "De site heeft ook een Minoneese vertaling: een fictieve, speelse derde taaloptie die je kunt vinden via het verborgen icoontje in de footer.",
                 easterEggsPoint3: "De woorden \"games\" en \"movies\" aan het einde van het Over Mij gedeelte hebben verborgen klikbare links naar persoonlijke profielen en leuke verwijzingen.",
                 spoilerTooltip: "Klik om spoiler te onthullen",
             },
             technologies: {
-                technologies: "Gebruikte Technieken",
+                technologiesTitle: "Gebruikte Technieken",
                 technologiesPoint1: "HTML5 + semantische structuur",
                 technologiesPoint2: "zelfgemaakte CSS (geen frameworks)",
                 technologiesPoint3: "JavaScript (originele ES6)",

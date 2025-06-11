@@ -82,9 +82,35 @@ export const en = {
 
         walchOrigins: {
             //WA-LCH Origins
-            walchOriginsDescription: 'Step into the role of a dedicated cleaning robot, just like in the <a class="credits" href="WA-LCH.html">original WA-LCH</a>. But this time, you\'re not just tidying up an abandoned lab filled with radioactive mess you\'re dealing with the chaos before it got that bad.<br><br> In this prequel, your mission is to maintain order in a bustling, cluttered laboratory where absent-minded scientists leave piles of trash everywhere. If the mess gets out of control, it\'ll attract unwanted visitors like rats that cause even more trouble. <br><br> Can you keep the lab spotless and prevent it from spiraling into total chaos? Put your cleaning skills to the test and find out! <br><br> This game was created in just 30 hours as part of a late Global Game Jam hosted by GLU, with the theme "Bubbles." It even secured second place among the games developed during the event!',
-            walchOriginsMobileMessage: "To play WA-LCH Origins, please visit this page on a computer.",
-            walchOriginsWhatIMadeText: '<p>I worked on several key gameplay mechanics and also created the game\'s trailer. Here\'s what I did:</p><ul class="project-list"><li>Player Movement: Implemented the movement system, allowing smooth player controls.</li><li>Doors: Developed the door system for entering and exiting rooms.</li><li>Trash Cleaning: Created the mechanic for cleaning up trash, an important gameplay feature.</li><li>Rat Shooting: Implemented the shooting system for dealing with rats.</li><li>Game Trailer: Edited and produced a trailer to showcase the game.</li></ul><p>My work helped make the core interactions and feel of the game, making it more immersive and fun for players.</p>',
+            description: 'Made in ~30 hours during a game jam (theme:“Bubbles”) — built with Unity and C#. ' +
+                'WA-LCH Origins is a chaotic mini-cleanup adventure where you play as a janitor scrubbing away trash and trapping rogue rats using bubble-based tools. ' +
+                'Built entirely under game jam pressure, it features player-controlled physics movement, animated doors, trap-based rat removal, and a bubbly cleaning mechanic.',
+            mobileMessage: "To play WA-LCH Origins, please visit this page on a computer.",
+
+            playerMovement: {
+                playerMovementTitle: "Player Movement",
+                playerMovementPoint1: "Handled via Rigidbody for responsive physics-based control. Rotation matches movement direction for an intuitive feel.",
+            },
+
+            cleaningMechanic: {
+                cleaningMechanicTitle: "Cleaning Mechanic",
+                cleaningMechanicPoint1: "When activated, the cleaning ability shows a particle effect and wipes nearby trash or rats from the scene. Using an OverlapSphere to detect the trash",
+            },
+
+            trapLaunching: {
+                trapLaunchingTitle: "Trap Launching",
+                trapLaunchingPoint1: "The player shoots traps on cooldown to deal with fast-moving rats.",
+            },
+
+            doorSystem: {
+                doorSystemTitle: "Door System",
+                doorSystemPoint1: "Doors open and close automatically when the player enters a trigger zone. Managed with a coroutine-like update loop in.",
+            },
+
+            customTrailer: {
+                customTrailerTitle: "Custom Trailer",
+                customTrailerPoint1: "I also created a custom trailer to showcase the core mechanics, vibe, and loop of the game. (Created after the game jam)",
+            },
         },
 
         portfolio: {
@@ -94,12 +120,12 @@ export const en = {
                 "It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.",
             whatIMadeStart: "This project wasn’t just about creating a static site—it’s a full experience. Here's what I built:",
             homepage: {
-                homePage: "Home Page",
+                homePageTitle: "Home Page",
                 homePagePoint1: "Clean layout with profile picture, dynamic age display, and skills list.",
                 homePagePoint2: "Fully responsive design using Flexbox and custom media queries.",
             },
             projectsPage: {
-                projectsPage: "Projects Page",
+                projectsPageTitle: "Projects Page",
                 projectsPagePoint1: "Each project is presented in a card format with hover effects.",
                 projectsPagePoint2: "Displays project year, title, thumbnail, brief description, and tech stack.",
                 projectsPagePoint3: "Clicking a project opens a detailed page with:",
@@ -110,26 +136,28 @@ export const en = {
 
             },
             languageSupport: {
-                languageSupport: "Language Support",
-                languageSupportPoint1: "The entire website supports English and Dutch.",
-                languageSupportPoint2: "Visitors can switch languages using a dropdown.",
-                languageSupportPoint3: "Content updates instantly via data-i18n attributes and a custom translation script.",
-
+                languageSupportTitle: "Language Support",
+                languageSupportStart: "This website supports English and Dutch, using a lightweight custom translation system " +
+                    "that updates all text instantly via data-i18n attributes — no page reloads.",
+                languageSupportPoint1: "Active language is stored in localStorage",
+                languageSupportPoint2: "Missing keys fall back to English and are highlighted for debugging",
+                languageSupportPoint3: "Translations are structured and nested for modularity",
             },
             error404: {
-                error404Page: "Custom 404 Page",
+                error404PageTitle: "Custom 404 Page",
                 error404PagePoint1: 'Lost visitors get a custom error page that displays a random character from one of my games with a matching fun message.' +
                     'Images load in either WebP or fallback PNG formats based on browser support. <a href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">click here</a>' +
                     ' to view the 404 page.',
-            }, easterEggs: {
-                easterEggs: "Easter Eggs",
+            },
+            easterEggs: {
+                easterEggsTitle: "Easter Eggs",
                 easterEggsPoint1: "Try to find them. No Time? click on the boxes below to reveal theEaster egg.",
                 easterEggsPoint2: "The site includes a Minoneese translation: a fictional, playful third language option you can access from the hidden icon in the footer.",
                 easterEggsPoint3: "the words \"games\" and \"movies\" at the end of the About Me section have hidden clickable links to personal profiles and fun references.",
                 spoilerTooltip: "Click to reveal spoiler",
             },
             technologies: {
-                technologies: "Technologies Used",
+                technologiesTitle: "Technologies Used",
                 technologiesPoint1: "HTML5 + semantic structure",
                 technologiesPoint2: "Custom CSS (no frameworks)",
                 technologiesPoint3: "JavaScript (vanilla ES6)",

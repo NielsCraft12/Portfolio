@@ -76,6 +76,7 @@ hr.rounded {
 .missing-translation::before {
   content: "⚠️ ";
   font-size: 0.8em;
+  color: #ff4444 !important;
 }
 
 /* Specific styling for heading tags */

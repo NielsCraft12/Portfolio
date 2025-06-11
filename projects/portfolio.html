@@ -189,7 +189,7 @@
       <p data-i18n="projectPages.portfolio.whatIMadeStart">This project wasn’t just about creating a static site—it’s a
         full
         experience. Here's what I built:</p>
-      <h3 data-i18n="projectPages.portfolio.homepage.homePage" class="GradiantTitle subtitle">Home Page</h3>
+      <h3 data-i18n="projectPages.portfolio.homepage.homePageTitle" class="GradiantTitle subtitle">Home Page</h3>
       <ul class="project-list">
         <li data-i18n="projectPages.portfolio.homepage.homePagePoint1">Clean layout with profile picture, dynamic age
           display, and skills list.</li>
@@ -213,7 +213,7 @@
             return age;
         }
 </code></pre>
-      <h3 data-i18n="projectPages.portfolio.projectsPage.projectsPage" class="GradiantTitle subtitle">Projects Page
+      <h3 data-i18n="projectPages.portfolio.projectsPage.projectsPageTitle" class="GradiantTitle subtitle">Projects Page
       </h3>
       <ul class="project-list">
         <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint1">Each project is presented in a card
@@ -240,54 +240,44 @@
 
 
 
-      <h3 data-i18n="projectPages.portfolio.languageSupport.languageSupport" class="GradiantTitle subtitle">Language
+      <h3 data-i18n="projectPages.portfolio.languageSupport.languageSupportTitle" class="GradiantTitle subtitle">
+        Language
         Support</h3>
+      <p data-i18n="projectPages.portfolio.languageSupport.languageSupportStart" style="margin-bottom: 10px;">This
+        website supports English and Dutch, using a lightweight custom translation system that updates all text
+        instantly via data-i18n attributes—no page reloads.</p>
       <ul class="project-list">
-        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint1">The entire website supports English
-          and
-          Dutch.</li>
-        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint2">Visitors can switch languages using
-          a dropdown.</li>
-        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint3">Content updates instantly via
-          data-i18n attributes and a custom translation script.</li>
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint1">Active language is stored in
+          localStorage</li>
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint2">Missing keys fall back to English
+          and are highlighted for debugging</li>
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint3">Translations are structured and
+          nested for modularity</li>
       </ul>
-
       <img src="../images/gif/Taranslate.gif" alt="" style="display: block; margin: 20px auto; width: 80%;">
+      <pre><code class="language-js">
+      // handling translations
+      function handleMissingTranslation(element, key, lang) 
+      {
+        const fallback = getNestedTranslation(translations.en, key);
+        element.innerHTML = fallback || "[Translation missing]";
+        element.title = `Missing: ${key}`;
+        element.classList.add("missing-translation");
+      }
 
-      <pre><code class="language-js code-snippet">
-// Updates the UI text content and styling based on the selected language
-function updateContent(lang) {
-  // Exit early if the selected language has no translations available
-  if (!translations[lang]) return;
+    // Language switcher logic
+    document.querySelectorAll("[data-lang]").forEach((btn) =>
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        updateContent(btn.getAttribute("data-lang"));
+      })
+    );
+        </code></pre>
 
-  // Remove the "active" class from all language selection elements
-  document.querySelectorAll("[data-lang]").forEach((el) => el.classList.remove("active"));
 
-  // For every element with a data-i18n attribute, update its inner HTML
-  // with the corresponding translation in the selected language
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.getAttribute("data-i18n");
-    if (translations[lang][key]) {
-      element.innerHTML = translations[lang][key];
-    }
-  });
 
-  // Update the visible language label in the UI
-  const currentLangSpan = document.querySelector(".current-lang");
-  if (lang === "en") {
-    currentLangSpan.textContent = "English";
-  } else if (lang === "nl") {
-    currentLangSpan.textContent = "Nederlands";
-  }
-
-  // Store the selected language in local storage for persistence
-  localStorage.setItem("preferredLanguage", lang);
-
-  // Call a function to update other dynamic content (e.g., age formatting)
-  updateAgeDisplay();
-}
-</code></pre>
-      <h3 data-i18n="projectPages.portfolio.error404.error404Page" class="GradiantTitle subtitle">Custom 404 Page</h3>
+      <h3 data-i18n="projectPages.portfolio.error404.error404PageTitle" class="GradiantTitle subtitle">Custom 404 Page
+      </h3>
       <p data-i18n="projectPages.portfolio.error404.error404PagePoint1" style="margin-bottom: 10px;">Lost visitors get a
         custom error page that displays
         a random
@@ -313,7 +303,7 @@ function updateContent(lang) {
       </div>
 
 
-      <h3 data-i18n="projectPages.portfolio.easterEggs.easterEggs" class="GradiantTitle subtitle">Easter Eggs</h3>
+      <h3 data-i18n="projectPages.portfolio.easterEggs.easterEggsTitle" class="GradiantTitle subtitle">Easter Eggs</h3>
       <p data-i18n="projectPages.portfolio.easterEggs.easterEggsPoint1" style=" margin-bottom: 16px;">Try to find them.
         No
         Time? click on the boxes below to reveal the
@@ -346,7 +336,8 @@ function updateContent(lang) {
 
       </ul>
 
-      <h3 data-i18n="projectPages.portfolio.technologies.technologies" class="GradiantTitle subtitle">Technologies Used
+      <h3 data-i18n="projectPages.portfolio.technologies.technologiesTitle" class="GradiantTitle subtitle">Technologies
+        Used
       </h3>
       <ul class="project-list">
         <li data-i18n="projectPages.portfolio.technologies.technologiesPoint1">HTML5 + semantic structure</li>
