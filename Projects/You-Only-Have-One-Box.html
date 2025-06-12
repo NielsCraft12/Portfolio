@@ -16,8 +16,13 @@
   <!-- Default Highlight.js css -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-  <!-- Remove old Highlight.js theme reference -->
-  <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
+
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script>
 
   <!-- External Resources -->
   <!-- jQuery library -->
@@ -56,10 +61,10 @@
       <label for="sidebar-active" class="close-sidebar-button">
         <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
-      <a data-i18n="home" class="home-link" href="/">Home</a>
-      <a data-i18n="projects" href="../?lang=#Projects">Projects</a>
-      <a data-i18n="experience" href="../?lang=#Experience">Experience</a>
-      <a data-i18n="contact" href="../?lang=#Contact">Contact</a>
+      <a data-i18n="nav.home" class="home-link" href="/">Home</a>
+      <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
+      <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
+      <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
       <div class="language-switcher">
         <button class="language-btn">
           <span class="current-lang">English</span>
@@ -78,20 +83,84 @@
     <!-- Project Description Section -->
     <div class="Main-Content">
       <h1 class="GradiantTitle title">You Only Have One Box</h1>
-      <h3 data-i18n="description" class="GradiantTitle subtitle">Description</h3>
-      <p data-i18n="oneBoxDescription">A challenging 2D platformer where your only tool is a single box. Guide both
+      <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
+      <p data-i18n="projectPages.yohob.description">A challenging 2D platformer where your only tool is a single box.
+        Guide
+        both
         yourself and your precious box through increasingly tricky obstacles. Lose it, and you'll have to start over!
         This game won 1st place in the GLU Game Jam, where it was created under the theme "You Only Have One".</p>
-      <h3 data-i18n="WhatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
-      <div data-i18n="oneBoxWhatIMadeText">
-        <p>I worked on key parts of the level design and enemy AI. Here’s what I did:</p>
-        <ul class="project-list">
-          <li>Tilemap: Implemented the tilemap, creating the structure of the game world.</li>
-          <li>Enemy AI: Programmed an enemy that moves left to right and turns around when it hits an obstacle, adding
-            dynamic challenge.</li>
-        </ul>
-      </div>
-      <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play
+      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
+      <h3 data-i18n="projectPages.yohob.levelDesign.levelDesignTitle" class="GradiantTitle subtitle">Level Design</h3>
+      <p data-i18n="projectPages.yohob.levelDesign.levelDesignIntro">
+        I created the level tilemap that forms the foundation of each challenge. The structure and pacing were designed
+        to encourage creative parkour.
+      </p>
+
+      <h3 data-i18n="projectPages.yohob.enemy.enemyTitle" class="GradiantTitle subtitle">Enemy AI — The Chicken</h3>
+      <p data-i18n="projectPages.yohob.enemy.enemyIntro">
+        I programmed the enemy logic for the chicken enemy, giving it simple but effective patrol and collision
+        behavior. It patrols back and forth, using raycasts to detect obstacles or edges, and turns upon encountering
+        any non-box or non-player object. The enemy can damage the player or be destroyed with the box.
+      </p>
+
+      <p data-i18n="projectPages.yohob.enemy.enemyCodeSnippet">Snippet: Chicken movement and collision detection</p>
+      <pre><code class="language-csharp">
+RaycastHit2D hit = Physics2D.Raycast(Pos, direction, .1f);
+if (hit && hit.collider.name != "Box" && hit.collider.name != "Player" && !hit.collider.CompareTag("Enemy"))
+{
+    Rotate();
+}
+  </code></pre>
+
+      <p data-i18n="projectPages.yohob.enemy.enemyBehaviorTitle">Behavior Highlights:</p>
+      <ul class="project-list">
+        <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint1">Uses raycasting to avoid walls and hazards.</li>
+        <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint2">Flips direction.</li>
+        <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint3">Damages the player on contact.</li>
+        <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint4">Gets destroyed when hit by the box.</li>
+      </ul>
+
+      <img src="/images/gif/YohobChickenwalk.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+      <img src="/images/gif/YohobEnemy.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+
+      <h3 data-i18n="projectPages.yohob.finish.finishTitle" class="GradiantTitle subtitle">Finish System</h3>
+      <p data-i18n="projectPages.yohob.finish.finishIntro">
+        I implemented the finish object that ends the level once the player reaches it. The system saves the player’s
+        current damage state and triggers an animation before transitioning to the next level.
+      </p>
+
+      <p data-i18n="projectPages.yohob.finish.finishCodeSippet">Snippet: Triggering level completion and transitioning
+        scenes</p>
+      <pre><code class="language-csharp">
+private void OnTriggerEnter2D(Collider2D collision)
+{
+    if (collision.gameObject.CompareTag("Player"))
+    {
+        StartCoroutine(NextLevel());
+        hasFinsihed = true;
+        endHP = PlayerInfo.Instance.DamagePoints;
+        animator.SetTrigger("IsPressed");
+    }
+}
+  </code></pre>
+
+      <p data-i18n="projectPages.yohob.finish.finishCodeSippet2">This coroutine waits briefly for an animation to play,
+        then loads the next scene:</p>
+      <pre><code class="language-csharp">
+IEnumerator NextLevel()
+{
+    yield return new WaitForSeconds(2f);
+    SceneManager.LoadScene(NextLevelName);
+    PlayerInfo.Instance.isPaused = true;
+}
+  </code></pre>
+
+      <img src="/images/gif/YohobEnd.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+      <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
+        class="GradiantTitle">Play
       </h1>
       <div class="itch-embed-container"
         style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
@@ -101,7 +170,8 @@
         </iframe>
       </div>
       <div class="mobile-message">
-        <p data-i18n="oneBoxMobileMessage">To play You Only Have One Box, please visit this page on a computer.</p>
+        <p data-i18n="projectPages.yohob.mobileMessage">To play You Only Have One Box, please visit this page on a
+          computer.</p>
       </div>
     </div>
 
@@ -118,7 +188,7 @@
     <!-- Sidebar Content -->
     <div class="SideBar" style="height: max-content">
       <!-- Trailer Section -->
-      <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
+      <h1 data-i18n="projectPages.trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
       <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
           src="https://www.youtube.com/embed/mR3u5qeEQoc?si=lvwrLVPt16mvQSvR" title="YouTube video player"
@@ -128,7 +198,8 @@
       </div>
 
       <!-- Screenshots Section -->
-      <h1 data-i18n="screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
+      <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">
+        Screenshots</h1>
       <picture>
         <source srcset="../images/webp/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot1.webp" type="image/webp" />
         <img class="ScreenShots" src="../images/png/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot1.png"
@@ -146,15 +217,14 @@
       </picture>
 
       <!-- Credits Section -->
-      <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">
+      <!-- <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">
         Credits</h1>
-      <!-- <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
+      <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
       <a class="credits" href="https://nielsdelaat.us.to" target="_blank" rel="noreferrer">Niels de Laat</a>
       <a class="credits" href="http://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">Joah van der
         Sloot</a>
       <a class="credits" href="https://sites.google.com/view/rodneywillems/home" target="_blank" rel="noreferrer">Rodney
-        Willems</a> -->
-
+        Willems</a>
       <ul class="cd-demo-chip-list">
         <li>
           <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
@@ -181,7 +251,7 @@
             </span>
           </a>
         </li>
-      </ul>
+      </ul>-->
     </div>
   </div>
 

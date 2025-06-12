@@ -68,16 +68,63 @@ export const en = {
 
         walch: {
             // WA-LCH
-            walchDescription: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon.",
-            walchMobileMessage: "To play WA-LCH, please visit this page on a computer.",
-            walchWhatIMadeText: '<ul class="project-list"><li>Map Generation: Implemented a procedural map generation system using a maze-based algorithm to create dynamic and unpredictable environments for each playthrough.</li><li>QTE System for Generators: Implemented a quick-time event (QTE) system for interacting with generators, requiring players to complete timed inputs to activate them successfully.</li><li>Pickup Spawning: Implemented a system for dynamically spawning collectible pickups throughout the map, ensuring variety and strategic placement.</li><li>Enemy Spawning: Implemented an adaptive enemy spawning mechanic that balances challenge by adjusting spawn locations and enemy density based on player progression.</li></ul><p>My contributions helped shape the core mechanics and gameplay experience, making the game more engaging, dynamic, and replayable.</p>',
-        },
+            description: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room " +
+                "thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon.",
+            mobileMessage: "To play WA-LCH, please visit this page on a computer.",
+            proceduralLevelGen: {
+                proceduralLevelGenTitle: "Procedural Level Generation",
+                proceduralLevelGenIntro: "Walch features a dynamic, grid-based dungeon generator that constructs levels using predefined room templates. Each level is made up of cells" +
+                    " that can contain different types of rooms including normal, generator, and special event rooms.",
+                keyConcepts: "Key Concepts",
+                proceduralLevelGenPoint1: "Rooms spawn based on custom spawn rules defined by coordinates and logic.",
+                proceduralLevelGenPoint2: "Adaptive grid size depending on player level.",
+                proceduralLevelGenPoint3: "Maze-like structure via backtracking algorithm.",
+            },
 
-        youOnlyHaveOneBox: {
+            qte: {
+                qteTitle: "Generator Activation via QTE",
+                qteIntro: "To activate power generators in the dungeon, players must complete Quick Time Events (QTEs). These are skill checks using keys (E, R, T or controller equivalents). "
+            },
+
+            cleaningPod: {
+                cleaningPodTitle: "Cleaning Pod Collection System",
+                cleaningPodIntro: "leaning pods are scattered throughout the level. When collected, they update the game state and trigger sound effects.",
+            },
+
+            dynamicRoomBehavior: {
+                dynamicRoomBehaviorTitle: "Dynamic Room Behavior",
+                dynamicRoomBehaviorIntro: "Each room updates its doors and walls based on neighboring connections.",
+            }
+
+
+
+        }, yohob: {
             // You Only Have One Box
-            oneBoxDescription: 'A challenging 2D platformer where your only tool is a single box. Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you\'ll have to start over! This game won 1st place in the GLU Game Jam, where it was created under the theme "You Only Have One".',
-            oneBoxMobileMessage: "To play You Only Have One Box, please visit this page on a computer.",
-            oneBoxWhatIMadeText: '<p>I worked on key parts of the level design and enemy AI. Here\'s what I did:</p><ul class="project-list"><li>Tilemap: Implemented the tilemap, creating the structure of the game world.</li><li>Enemy AI: Programmed an enemy that moves left to right and turns around when it hits anobstacle, adding dynamic challenge.</li></ul>',
+            description: 'A challenging 2D platformer where your only tool is a single box. Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you\'ll have to start over! This game won 1st place in the GLU Game Jam, where it was created under the theme "You Only Have One".',
+            mobileMessage: "To play You Only Have One Box, please visit this page on a computer.",
+
+            levelDesign: {
+                levelDesignTitle: "Level Design",
+                levelDesignIntro: "I created the level tilemap that forms the foundation of each challenge. The structure and pacing were designed to encourage creative parkour."
+            },
+
+            enemy: {
+                enemyTitle: "Enemy AI — The Chicken",
+                enemyIntro: "I programmed the enemy logic for the chicken enemy, giving it simple but effective patrol and collision behavior. It patrols back and forth, using raycasts to detect obstacles or edges, and turns upon encountering any non-box or non-player object. The enemy can damage the player or be destroyed with the box.",
+                enemyCodeSnippet: "Snippet: Chicken movement and collision detection",
+                enemyBehaviorTitle: "Behavior Highlights:",
+                enemyBehaviorPoint1: "Uses raycasting to avoid walls and hazards.",
+                enemyBehaviorPoint2: "Flips direction.",
+                enemyBehaviorPoint3: "Damages the player on contact.",
+                enemyBehaviorPoint4: "Gets destroyed when hit by the box."
+            },
+
+            finish: {
+                finishTitle: "Finish System",
+                finishIntro: "I implemented the finish object that ends the level once the player reaches it. The system saves the player's current damage state and triggers an animation before transitioning to the next level.",
+                finishCodeSippet: "Snippet: Triggering level completion and transitioning scenes",
+                finishCodeSippet2: "This coroutine waits briefly for an animation to play, then loads the next scene:"
+            }
         },
 
         walchOrigins: {

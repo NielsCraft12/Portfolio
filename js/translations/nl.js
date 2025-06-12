@@ -64,15 +64,58 @@ export const nl = {
         },
         walch: {
             // WA-LCH
-            walchDescription: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron. Je missie is om alles om je heen schoon te maken om te ontsnappen. Maak elke kamer grondig schoon om sleutelkaarten te verkrijgen die toegang geven tot het volgende gebied. Maar wees voorzichtig... kwaadaardige robots loeren in de schaduwen. Won tweede plaats op GluCon.",
-            walchMobileMessage: "Om WA-LCH te spelen, bezoek deze pagina op een computer.",
-            walchWhatIMadeText: '<p>Ik heb gewerkt aan procedurele kaartgeneratie, interactieve mechanismen en het spawnen van vijanden en voorwerpen. Dit is wat ik heb gedaan:</p><ul class="project-list"><li>Kaartgeneratie: Geïmplementeerd een procedureel kaartgeneratiesysteem met een doolhof-gebaseerd algoritme om dynamische en onvoorspelbare omgevingen te creëren voor elke speelbeurt.</li><li>QTE-systeem voor Generatoren: Geïmplementeerd een Quick-Time Event (QTE) systeem voor interactie met generatoren, waarbij spelers getimede invoeren moeten voltooien om ze succesvol te activeren.</li><li>Spawn van Verzamelobjecten: Geïmplementeerd een systeem voor het dynamisch spawnen van verzamelbare voorwerpen door de kaart heen, wat zorgt voor variatie en strategische plaatsing.</li><li>Vijand Spawning: Geïmplementeerd een adaptief vijandenspawn-mechanisme dat de uitdaging in balans brengt door spawnlocaties en vijandendichtheid aan te passen op basis van de voortgang van de speler.</li></ul><p>Mijn bijdragen hebben geholpen bij het vormgeven van de kernmechanieken en spelervaring, waardoor het spel boeiender, dynamischer en herspeelbaarder werd.</p>',
-        },
-        oneBox: {
+            description: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron. Je missie is om alles om je heen schoon te maken om te ontsnappen. Maak elke kamer grondig schoon om sleutelkaarten te verkrijgen die toegang geven tot het volgende gebied. Maar wees voorzichtig... kwaadaardige robots loeren in de schaduwen. Won tweede plaats op GluCon.",
+            mobileMessage: "Om WA-LCH te spelen, bezoek deze pagina op een computer.",
+            proceduralLevelGen: {
+                proceduralLevelGenTitle: "Procedurele Level Generatie",
+                proceduralLevelGenIntro: "Walch heeft een dynamische, grid-gebaseerde dungeon generator die levels bouwt met voorgedefinieerde kamer templates. Elke level bestaat uit cellen die verschillende soorten kamers kunnen bevatten, waaronder normale kamers, generator kamers en speciale event kamers.",
+                keyConcepts: "Key Concepts",
+                proceduralLevelGenPoint1: "Kamers spawnen op basis van aangepaste spawn regels gedefinieerd door coördinaten en logica.",
+                proceduralLevelGenPoint2: "Aanpasbare grid grootte afhankelijk van het speler level.",
+                proceduralLevelGenPoint3: "Doolhof-achtige structuur via backtracking algoritme.",
+            },
+
+            qte: {
+                qteTitle: "Generator Activatie via QTE",
+                qteIntro: "Om energie generators in de dungeon te activeren moeten spelers Quick Time Events (QTE's) voltooien. Dit zijn vaardigheidstoetsen die gebruik maken van toetsen (E, R, T of controller equivalenten). "
+            },
+
+            cleaningPod: {
+                cleaningPodTitle: "Cleaning Pod Verzamelsysteem",
+                cleaningPodIntro: "Cleaning pods zijn verspreid door het level. Wanneer verzameld, updaten ze de game state en activeren geluidseffecten.",
+            },
+
+            dynamicRoomBehavior: {
+                dynamicRoomBehaviorTitle: "Dynamisch Kamergedrag",
+                dynamicRoomBehaviorIntro: "Elke kamer past zijn deuren en muren aan op basis van naburige verbindingen.",
+            }
+        }, yohob: {
             // You Only Have One Box
-            oneBoxDescription: 'Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je kostbare doos door steeds lastiger obstakels. Verlies je het, dan moet je opnieuw beginnen! Dit spel won de 1e plaats in de GLU Game Jam, waar het werd gemaakt onder het thema "You Only Have One".',
-            MobileMessage: "Om You Only Have One Box te spelen, bezoek deze pagina op een computer.",
-            oneBoxWhatIMadeText: '<p>Ik heb gewerkt aan belangrijke onderdelen van het levelontwerp en vijand-AI. Dit is wat ik deed:</p><ul class="project-list"><li>Tilemap: Geïmplementeerd de tilemap, waardoor de structuur van de spelwereld werd gecreëerd.</li><li>Vijand-AI: Geprogrammeerd een vijand die van links naar rechts beweegt en omdraait wanneer hij een obstakel raakt, wat een dynamische uitdaging toevoegt.</li></ul>',
+            description: 'Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je kostbare doos door steeds lastiger obstakels. Verlies je het, dan moet je opnieuw beginnen! Dit spel won de 1e plaats in de GLU Game Jam, waar het werd gemaakt onder het thema "You Only Have One".',
+            mobileMessage: "Om You Only Have One Box te spelen, bezoek deze pagina op een computer.",
+
+            levelDesign: {
+                levelDesignTitle: "Level Ontwerp",
+                levelDesignIntro: "Ik heb de level tilemap gemaakt die de basis vormt van elke uitdaging. De structuur en pacing waren ontworpen om creatieve parkour aan te moedigen."
+            },
+
+            enemy: {
+                enemyTitle: "Vijand AI — De Kip",
+                enemyIntro: "Ik heb de vijandlogica voor de kip geprogrammeerd, waardoor het eenvoudig maar effectief patrouille- en botsingsgedrag kreeg. Het patrouilleert heen en weer, gebruikt raycasts om obstakels of randen te detecteren, en draait om wanneer het een niet-doos of niet-speler object tegenkomt. De vijand kan de speler beschadigen of vernietigd worden door de doos.",
+                enemyCodeSnippet: "Snippet: Kip beweging en botsingsdetectie",
+                enemyBehaviorTitle: "Gedrag Hoogtepunten:",
+                enemyBehaviorPoint1: "Gebruikt raycasting om muren en gevaren te vermijden.",
+                enemyBehaviorPoint2: "Draait richting om.",
+                enemyBehaviorPoint3: "Beschadigt de speler bij contact.",
+                enemyBehaviorPoint4: "Wordt vernietigd wanneer geraakt door de doos."
+            },
+
+            finish: {
+                finishTitle: "Finish Systeem",
+                finishIntro: "Ik heb het finish object geïmplementeerd dat het level beëindigt zodra de speler het bereikt. Het systeem slaat de huidige schade staat van de speler op en activeert een animatie voordat het overgaat naar het volgende level.",
+                finishCodeSippet: "Snippet: Level voltooiing activeren en scene overgangen",
+                finishCodeSippet2: "Deze coroutine wacht kort op een animatie, laadt dan de volgende scene:"
+            }
         },
 
         walchOrigins: {

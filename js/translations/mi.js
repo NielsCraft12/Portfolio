@@ -63,15 +63,59 @@ export const mi = {
         },
         walch: {
             // WA-LCH
-            walchDescription: "To nama lch, a vandad bot ben awakens da fey de hibernation bey nan itism ribnip.  Tu upospa tis da bono midoo woeod to da lexsax.  Bono seeko bys oyrug da bysbod keycards pak kid discue da ta rod hara. Pelo be kegpya. evil robots lurk een ta shadows.  Lib mobdak lugo ka glucon",
-            walchMobileMessage: "Da hopa wa-lch, radbad ods ba piplo en a doegob",
-            walchWhatIMadeText: '<p>Ka mobla en filava don de ta spaghetti, woplog com lap gameplay yee ui. Here\'s Whaaat? ka deep:</p><ul class="project-list"><li>Map Generashun: ka bodib ta procedureal map generashun system using a maze-based algorithm da ka bodib da dynamic yee unpredicable environments pak each playthrough</li><li>QTE System for Generators: ka bodib ta quick-time event (QTE) system pak interactin com generators, requirng piplo da complete timed inputs pak activate dem successfully</li><li>Pickup Spawning: ka bodib ta system pak dynamically spawning collectable pickups thru da map, jindab variety yee strategic placement</li><li>Enemy Spawning: ka bodib ta adaptive enemy spawning mechanic dat balances challenge by adjusting spawn locations yee enemy density based on player progression</li></ul><p>Ka mobla en filava don de ta spaghetti, woplog com lap gameplay yee ui. Here\'s Whaaat? ka deep:</p>',
-        },
-        oneBox: {
+            description: "To nama lch, a vandad bot ben awakens da fey de hibernation bey nan itism ribnip.  Tu upospa tis da bono midoo woeod to da lexsax.  Bono seeko bys oyrug da bysbod keycards pak kid discue da ta rod hara. Pelo be kegpya. evil robots lurk een ta shadows.  Lib mobdak lugo ka glucon",
+            mobileMessage: "Da hopa wa-lch, radbad ods ba piplo en a doegob",
+            proceduralLevelGen: {
+                proceduralLevelGenTitle: "Oilton rod danguy",
+                proceduralLevelGenIntro: "walch megxu a namcox, grid-based dungeon capatt pak constructs eldtye tug predefined bys zephut.  Seeko rod tis mobla aka de poi" +
+                    " pak pudum vawsop filava waw de rem ownmoa hawram, capatt, yee tikka hes rem. ",
+                keyConcepts: "Mis oursay",
+                proceduralLevelGenPoint1: "Rem spawn sh en tiefun spawn qua thohon bey nussel yee gee",
+                proceduralLevelGenPoint2: "Adaptive go sibo feehaj en kidhaw rod",
+                proceduralLevelGenPoint3: "Maze-like egglox piu backtracking uheta",
+            },
+
+            qte: {
+                qteTitle: "Capatt eonpea piu qte",
+                qteIntro: "Da activate meyay lezeta een ta dungeon, toetwo miklo slempo ars veela gatwed (qtes).  Les nama sh andred tug is (e, r, t sif fanay equivalents) "
+            },
+
+            cleaningPod: {
+                cleaningPodTitle: "Vandad pod aedig tiklop",
+                cleaningPodIntro: "leaning pods nama munpod fadtaw ta rod.  Kan agsrax, feila nabens ta spaghetti plato yee nibyep suka ememil",
+            },
+
+            dynamicRoomBehavior: {
+                dynamicRoomBehaviorTitle: "Namcox bys jotat",
+                dynamicRoomBehaviorIntro: "Seeko bys totsim ti tun yee eld sh en mogjoy utehex",
+            }
+        }, yohob: {
             // You Only Have One Box
-            oneBoxDescription: 'A lotkaf 2d platformer donde tu solo taj tis a puplox caro.  Nah lap ki yee tu revoho caro thru jabpur tricky vimapp.  Bed pik, yee to\'ll kaylay da quok fino! ba spaghetti lib biz lugo een ta glu spaghetti gum gum, donde pik tos bodib sumo ta ref "you solo kaylay da"',
-            oneBoxMobileMessage: "Da hopa to solo kaylay da caro, radbad ods ba piplo en a doegob",
-            oneBoxWhatIMadeText: '<p>Ka mobla en filava don de ta spaghetti, woplog com lap gameplay yee ui. Here\'s Whaaat? ka deep:</p><ul class="project-list"><li>Tilemap: ka bodib ta tilemap, jindab da structure de ta spaghetti world</li><li>Enemy AI: ka mobla an enemy dat moves left to right yee turns around when it hits anobstacle, adding dynamic challenge</li></ul>',
+            description: 'A lotkaf 2d platformer donde tu solo taj tis a puplox caro. Nah lap ki yee tu revoho caro thru jabpur tricky vimapp. Bed pik, yee to\'ll kaylay da quok fino! ba spaghetti lib biz lugo een ta glu spaghetti gum gum, donde pik tos bodib sumo ta ref "you solo kaylay da"',
+            mobileMessage: "Da hopa to solo kaylay da caro, radbad ods ba piplo en a doegob",
+
+            levelDesign: {
+                levelDesignTitle: "Rod Vumdap",
+                levelDesignIntro: "Ka bodib ta rod tilemap pak forms ta irkfon de seeko hado. Ta egglox yee pacing momu vumdap da voxgru creative parkour."
+            },
+
+            enemy: {
+                enemyTitle: "Bowsi AI — Ta Kiphew",
+                enemyIntro: "Ka gowmen ta bowsi gee nunu ta kiphew bowsi, lindab pik puplox pelo ememil patrol yee collision jotat. Pik patrols bura yee goin, tug raycasts da detect vimapp sif edges, yee turns upon wokoy eny non-caro sif non-kidhaw uboct. Ta bowsi pudum damage ta kidhaw sif be vumdab com ta caro.",
+                enemyCodeSnippet: "Snippet: Kiphew yenhod yee souvar gemgam",
+                enemyBehaviorTitle: "Jotat Highlights:",
+                enemyBehaviorPoint1: "Uses raycasting da avoid eld yee biofig",
+                enemyBehaviorPoint2: "Flips yukcep",
+                enemyBehaviorPoint3: "Damages ta kidhaw en contact",
+                enemyBehaviorPoint4: "Gets vumdab kan moopog bey ta caro"
+            },
+
+            finish: {
+                finishTitle: "Finish Tiklop",
+                finishIntro: "Ka implemented ta finish uboct pak ends ta rod waka ta kidhaw reaches pik. Ta tiklop saves ta kidhaw's current damage plato yee triggers nen animation lirfap transitioning da ta rod rod.",
+                finishCodeSippet: "Snippet: Triggering rod completion yee transitioning scenes",
+                finishCodeSippet2: "Ba coroutine waits briefly nunu nen animation da hopa, weyn loads ta rod scene:"
+            }
         },
         walchOrigins: {
             //WA-LCH Origins
