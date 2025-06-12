@@ -1,3 +1,44 @@
+/* Ensure modal covers the entire viewport and is always clickable */
+#imageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+#imageModal[style*="display: block"] {
+  display: flex !important;
+}
+
+#imageModal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 0 24px #000;
+  cursor: auto;
+}
+/* Prevent interaction with all content except modal when modal is open */
+body.modal-open > *:not(#imageModal):not(script):not(style) {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+#imageModal,
+#imageModal * {
+  pointer-events: auto !important;
+}
+/* Modal open state disables pointer events for nav and overlay */
+body.modal-open nav,
+body.modal-open #overlay {
+  pointer-events: none !important;
+  user-select: none !important;
+  opacity: 0.5;
+}
 * {
   margin: 0;
   padding: 0;
