@@ -12,7 +12,7 @@
    user-scalable=no, target-densitydpi=device-dpi"
     />
     <meta name="description" content="Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!" />
-    <title>Slimetastic Punchout</title>
+    <title>Merge Packing</title>
 
     <!-- External Resources -->
     <!-- jQuery library -->
@@ -79,130 +79,9 @@
       <div class="Main-Content">
         <h1 class="GradiantTitle title">Slimetastic Punchout</h1>
         <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
-        <p data-i18n="projectPages.slimetasticPunchout.description">Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!</p>
+        <p data-i18n="projectPages.mergePacking.description">Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!</p>
         <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
-        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinTitle" class="GradiantTitle subtitle">Custom Player Join System</h3>
-        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinIntro">I built a join system from scratch, allowing players to:</p>
-        <ul class="project-list">
-          <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint1">Dynamically join the game</li>
-          <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint2">Customize slime color and hats</li>
-          <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint3">Indicate when they're ready</li>
-          <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint4">Prevent duplicate colors via a locking system</li>
-        </ul>
-
-        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.howItWorks" class="GradiantTitle subtitle">How it works:</h3>
-
-        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.howitworksIntro"> Players spawn into the join UI and navigate using directional inputs. Here’s a snippet of the navigation system:</p>
-
-        <pre><code class="language-csharp">
-public void NavigateMenu(InputAction.CallbackContext context)
-{
-    Vector2 moveDir = context.ReadValue<Vector2>();
-    if (moveDir == new Vector2(0, 1)) { selected++; }
-    else if (moveDir == new Vector2(0, -1)) { selected--; }
-    
-    rectTransform.localPosition = PlayerMenuChilds[selected].transform.localPosition;
-    UpdateReadyText();
-}
-        </code></pre>
-        <p>[Image Placeholder: Screenshot of the 4-player selection screen with hats and colors]</p>
-
-        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.colorTitle" class="GradiantTitle subtitle">Color Selection & Locking System</h3>
-        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.colorIntro">Each player picks a unique color from a shared palette. If a color is taken, a lock icon appears and the player is prevented from readying up with that color.</p>
-        <pre><code class="language-csharp">
-          public void CheckIfColorUsed()
-{
-    foreach (ColorTracker tracker in menuManager.takenColors)
-    {
-        if (tracker.Color == colorSelected && tracker.PlayerName != transform.parent.name)
-        {
-            // Lock the color
-            shouldShowLock = true;
-        }
-    }
-    Locks.ForEach(lockIcon => lockIcon.GetComponent&lt;Image&lt;().enabled = shouldShowLock);
-}
-        </code></pre>
-
-        <p>[Gif Placeholder: Player changing colors with another color showing locked icon]</p>
-
-        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.hatTitle" class="GradiantTitle subtitle">Cosmetic (Hat) Selection</h3>
-        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.hatIntro">Slimes can be customized with various hats that reflect their personality. Hats are chosen using arrow navigation, and the visual updates immediately:</p>
-        <pre><code class="language-csharp">
-          if (selected == 0) // Cosmetic selection
-{
-    cosmeticSelected += (collision.gameObject.name == "Right Arrow") ? 1 : -1;
-    images[0].GetComponent&lt;Image&lt;().sprite = menuManager.Cosmetics[cosmeticSelected];
-    UpdateCosmetic();
-}
-        </code></pre>
-        <p>[Image Placeholder: Player selecting a hat]</p> 
-
-        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.readyTitle" class="GradiantTitle subtitle">Player Ready System</h3>
-
-        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyIntro">When a player finishes customizing, they hit a button to toggle their ready state. The game only starts when all joined players are ready.</p>
-        <pre><code class="language-csharp">
-          if (isReady && menuManager.takenColors[GetIndex].first)
-{
-    ReadyText.text = "Ready";
-    ReadyText.color = Color.green;
-}
-else
-{
-    ReadyText.text = "Not Ready...";
-    ReadyText.color = Color.red;
-}
-          </code></pre>
-          <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyCodeSnippet">Once everyone is ready, the MenuManager checks and starts the game:</p>
-        <pre><code class="language-csharp">
-          if (canStart)
-{
-    gameManager.canStart = true;
-    foreach (GameObject player in playerSelectors)
-    {
-        player.GetComponent<MenuPlayer>().enabled = false;
-    }
-    // Move slimes to spawn points
-    slimes[i].transform.position = playerSpawns[i].transform.position;
-}
-        </code></pre>
-        <p>[Image Placeholder: All players ready, game starting]</p>
-
-        <h3 data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementTitle" class="GradiantTitle subtitle">Player Movement</h3>
-        <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementInto">Each slime uses a physics-based movement system with:</p>
-        <ul class="project-list">
-          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint1">Full Rigidbody control</li>
-          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint2">Smooth rotation toward velocity</li>
-          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint3">Jumping with air control</li>
-          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint4">Movement dampening when no input is given</li>
-        </ul>
-        <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementCodeSnippet">This snippet preserves vertical velocity while allowing grounded or aerial movement with different strengths.</p>
-        <pre><code class="language-csharp">
-         rb.velocity = new Vector3(
-    lastMoveDirection.x * currentSpeed,
-    yVelocity,
-    lastMoveDirection.y * currentSpeed
-);
-        </code></pre>
-        <p>[Gif Placeholder: Player moving around the map]</p>
-
-        <h3 data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringTitle" class="GradiantTitle subtitle">Tile Coloring</h3>
-        <p data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringIntro">Each floor tile tracks the last player that touched it and changes to their selected team color.</p>
-        <pre><code class="language-csharp">
-          if (other.gameObject.CompareTag("Floor"))
-{
-    foreach (Transform child in other.gameObject.transform)
-    {
-        if (child.gameObject.name == "Tile Color")
-        {
-            child.GetComponent<Renderer>().material.color = colors[colorSelected];
-        }
-    }
-    other.GetComponent<Tile>().lastPlayer = playerNum;
-}
-        </code></pre>
-        <p>[Image Placeholder: Tile changing color after player touches it]</p>
-
+       
         <!-- Play -->
         <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1>
         <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
@@ -211,7 +90,7 @@ else
           </iframe>
         </div>
         <div class="mobile-message">
-          <p data-i18n="projectPages.slimetasticPunchout.mobileMessage">To play Slimetastic Punchout, please visit this page on a computer.</p>
+          <p data-i18n="projectPages.mergepacking.mobileMessage">To play Slimetastic Punchout, please visit this page on a computer.</p>
         </div>
       </div>
 
