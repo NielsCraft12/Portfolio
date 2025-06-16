@@ -3,11 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
-  <meta name="viewport" content="height=device-height, 
- width=device-width, initial-scale=1.0, 
- minimum-scale=1.0, maximum-scale=1.0, 
- user-scalable=no, target-densitydpi=device-dpi" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta name="description" content="Hello, I'm Niels de Laat I'm a developer who loves to create entertaining games. I bring my ideas to life using
  Unity and C# and I enjoy learning new and innovative approaches. When I'm not programming I am playing">
@@ -15,16 +11,15 @@
 
 
   <title>Portfolio Niels de Laat</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!--foogle fonts-->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
   <!--Style sheets-->
-  <link href="css/style.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/Home.css" />
+  <link href="../css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/Home.css" />
   <!-- <link rel="stylesheet" href="css/Aboutme.css" /> -->
-  <link rel="stylesheet" href="css/Experience.css" />
-  <link rel="stylesheet" href="css/Projects.css" />
-  <link rel="stylesheet" href="css/Contact.css" />
+  <link rel="stylesheet" href="../css/Experience.css" />
+  <link rel="stylesheet" href="../css/Projects.css" />
+  <link rel="stylesheet" href="../css/Contact.css" />
   <!--Fontawesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -68,11 +63,22 @@
   </nav>
 
   <section id="Home"></section>
+  <!-- 
+  MARK: HOME
+    -->
   <div class="container">
     <div class="Picture">
-      <picture>
+      <!-- <picture>
         <source srcset="images/webp/me.webp" type="image/webp" />
         <img src="images/png/me.jpg" alt="Profile picture" />
+      </picture> -->
+
+      <picture>
+        <source media="(min-width: 1301px)" srcset="images/webp/me-medium.webp" type="image/webp">
+        <source media="(min-width: 451px)" srcset="images/webp/me-medium.webp" type="image/webp">
+        <source media="(max-width: 450px)" srcset="images/webp/me-small3.webp" type="image/webp">
+        <source srcset="images/webp/me.webp" type="image/webp">
+        <img src="images/png/me.jpg" alt="Profile picture">
       </picture>
       <!-- <img src="images/webp/me.webp" srcset="images/png/me.jpg" alt="" /> -->
     </div>
@@ -83,9 +89,9 @@
       <p data-i18n="aboutMe.aboutMe">I'm a developer who loves to create entertaining games. I bring my ideas to life
         using
         Unity and C# and I enjoy learning new and innovative approaches. When I'm not programming I am playing <a
-          href="https://infinitebacklog.net/users/nielscraft12" target="" _blank"" rel="noreferrer"
+          href="https://infinitebacklog.net/users/nielscraft12" target="_blank" rel="noreferrer"
           style="text-decoration: none; color: #fffffff9">games</a> or watching <a
-          href="https://trakt.tv/users/nielscraft12" target="" _blank"" rel="noreferrer"
+          href="https://trakt.tv/users/nielscraft12" target="_blank" rel="noreferrer"
           style="text-decoration: none; color: #fffffff9">movies</a>.</p>
       <h1 data-i18n="aboutMe.skills" style="text-align: center">Skills</h1>
       <ul class="cd-demo-chip-list">
@@ -172,7 +178,9 @@
       </ul>
     </div>
   </div>
-
+  <!-- 
+  MARK: PROJECTS
+   -->
   <section id="Projects">
     <h1 data-i18n="nav.projects" class="hidden" style="margin-top: 0; padding-top: 0">Projects</h1>
 
@@ -282,7 +290,54 @@
         </div>
       </a>
 
+      <a href="projects/merge-packing.html">
+        <div class="blog-box hidden">
 
+          <div class="blog-img">
+            <picture>
+              <source srcset="images/webp/mergePacking.webp" type="image/webp" />
+              <img alt="blog" src="images/png/mergePacking.jpg" />
+            </picture>
+          </div>
+
+          <div class="blog-text">
+            <span>2025</span>
+            <a href="projects/merge-packing.html" class="blog-title">Merge Packing</a>
+            <a href="projects/merge-packing.html">
+              <p data-i18n="projects.descriptionGame3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Cupiditate facilis modi veritatis adipisci
+                omnis
+                perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur
+                dolorum
+                distinctio minima voluptate quae?</p>
+              <p style="color: black;">Technologies:</p>
+              <ul class="cd-demo-chip-list" style=" justify-content: left;">
+                <li>
+                  <span class="chip">
+                    <picture>
+                      <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+                    </picture>
+                    <i class="chip__label">C#</i>
+                  </span>
+                </li>
+
+                <li>
+                  <span class="chip">
+                    <picture>
+                      <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
+                      <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
+                    </picture>
+                    <i class="chip__label">Unity</i>
+                  </span>
+                </li>
+              </ul>
+            </a>
+            <a href="projects/merge-packing.html" class="blog-readmore">See More</a>
+
+          </div>
+        </div>
+      </a>
 
       <a href="projects/wa-lch.html">
         <div class="blog-box hidden">
@@ -299,7 +354,8 @@
             <span>2024</span>
             <a href="projects/wa-lch.html" class="blog-title">WA-LCH</a>
             <a href="projects/wa-lch.html">
-              <p data-i18n="projects.descriptionGame3">You are LCH, a cleaning bot who awakens from years of hibernation
+              <p data-i18n="projects.descriptionGame4">You are LCH, a cleaning bot who awakens from years of
+                hibernation
                 by an
                 unknown source.</p>
               <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
@@ -347,7 +403,8 @@
             <span>2024</span>
             <a href="projects/you-only-have-one-box.html" class="blog-title">You Only Have One Box</a>
             <a href="projects/you-only-have-one-box.html">
-              <p data-i18n="projects.descriptionGame4">A challenging 2D platformer where your only tool is a single box.
+              <p data-i18n="projects.descriptionGame5">A challenging 2D platformer where your only tool is a
+                single box.
                 Guide
                 both yourself and your</p>
               <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
@@ -395,7 +452,8 @@
             <span>2024</span>
             <a href="projects/slimetastic-punchout.html" class="blog-title">Slimetastic Punchout</a>
             <a href="projects/slimetastic-punchout.html">
-              <p data-i18n="projects.descriptionGame5">Slimetastic Punchout is a chaotic and fun local multiplayer game
+              <p data-i18n="projects.descriptionGame6">Slimetastic Punchout is a chaotic and fun local multiplayer
+                game
                 where you
                 take control</p>
               <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
@@ -423,89 +481,21 @@
                 </li>
               </ul>
             </a>
-            <a data-i18n="projects.seeMore" href="projects/slimetastic-punchout.html" class="blog-readmore">See More</a>
+            <a data-i18n="projects.seeMore" href="projects/slimetastic-punchout.html" class="blog-readmore">See
+              More</a>
           </div>
         </div>
       </a>
 
-      <!-- <a href="#">
-        <div class="blog-box hidden">
 
-          <div class="blog-img">
-            <img alt="blog" src="images/onlyOneblock.png" />
-          </div>
 
-          <div class="blog-text">
-            <span>2024</span>
-            <a href="#" class="blog-title">You have only one block</a>
-            <a href="#">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci
-                omnis
-                perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur
-                dolorum
-                distinctio minima voluptate quae?</p>
-              <p style="color: black;">Technologies:</p>
-              <ul class="cd-demo-chip-list" style=" justify-content: left;">
-                <li>
-                  <span class="chip">
-                    <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" />
-                    <i class="chip__label">C#</i>
-                  </span>
-                </li>
-
-                <li>
-                  <span class="chip">
-                    <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" />
-                    <i class="chip__label">Unity</i>
-                  </span>
-                </li>
-              </ul>
-            </a>
-            <a href="#" class="blog-readmore">See More</a>
-          </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class="blog-box hidden">
-
-          <div class="blog-img">
-            <img alt="blog" src="images/onlyOneblock.png" />
-          </div>
-
-          <div class="blog-text">
-            <span>2024</span>
-            <a href="#" class="blog-title">You have only one block</a>
-            <a href="#">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis adipisci
-                omnis
-                perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum perspiciatis consequuntur
-                dolorum
-                distinctio minima voluptate quae?</p>
-              <p style="color: black;">Technologies:</p>
-              <ul class="cd-demo-chip-list" style=" justify-content: left;">
-                <li>
-                  <span class="chip">
-                    <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" />
-                    <i class="chip__label">C#</i>
-                  </span>
-                </li>
-
-                <li>
-                  <span class="chip">
-                    <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" />
-                    <i class="chip__label">Unity</i>
-                  </span>
-                </li>
-              </ul>
-            </a>
-            <a href="#" class="blog-readmore">See More</a>
-          </div>
-        </div>
-      </a> -->
     </div>
   </section>
 
   <hr class="rounded" />
+  <!-- 
+   MARK: EXPERIENCE
+   -->
   <section id="Experience">
     <h1 data-i18n="nav.experience">Experience</h1>
     <div class="experience-container">
@@ -681,6 +671,9 @@
     </div>
   </section>
   <hr class="rounded" style="margin-bottom: 3px" />
+  <!--
+  MARK: CONTACT
+   -->
   <section id="Contact">
     <h1 data-i18n="contact.contactTitle">Contact Me</h1>
     <div class="socal-media-buttons">
@@ -689,14 +682,19 @@
       <a href="https://nielscraft12.itch.io/" target="”_blank”" rel="noreferrer" class="fa fa-itch-io fa-2xl icon"></a>
       <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”" rel="noreferrer"
         class="fa fa-linkedin fa-2xl icon"></a>
+      <!-- <a href="/images/gif/MergePackingalien.gif" download target="”_blank”" rel="noreferrer"
+        class="fa fa-file-lines fa-2xl icon"></a> -->
+
+
     </div>
+
   </section>
+
   <script type="module" defer src="js/translate.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/animation.js"></script>
   <script defer src="js/Experience.js"></script>
   <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 <footer>
   <div class="footer" style="display: flex; align-items: center; position: relative;">

@@ -155,6 +155,10 @@
   #Projects h1 {
     font-size: 30px;
   }
+
+  .blog-box:hover {
+    transform: scale(1);
+  }
 }
 
 /* .hidden {

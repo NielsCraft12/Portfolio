@@ -4,11 +4,7 @@
 <head>
   <!-- Character encoding and viewport settings -->
   <meta charset="UTF-8" />
-  <!-- Custom viewport settings to prevent scaling on mobile devices -->
-  <meta name="viewport" content="height=device-height, 
-   width=device-width, initial-scale=1.0, 
-   minimum-scale=1.0, maximum-scale=1.0, 
-   user-scalable=no, target-densitydpi=device-dpi" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="A challenging 2D platformer where your only tool is a single box. Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you'll have to start over! This game won 1st place in the GLU Game Jam, where it was created under the theme You Only Have One." />
   <title>You Only Have One Box</title>
@@ -18,11 +14,11 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
 
   <!-- Prism.js for syntax highlighting -->
-  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
 
   <!-- External Resources -->
   <!-- jQuery library -->
@@ -34,6 +30,7 @@
   <link href="../css/style.css" rel="stylesheet" />
   <link href="../css/ProjectPage.css" rel="stylesheet" />
   <link href="../css/Home.css" rel="stylesheet" />
+  <link href="../css/prism.css" rel="stylesheet" />
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -89,7 +86,7 @@
         both
         yourself and your precious box through increasingly tricky obstacles. Lose it, and you'll have to start over!
         This game won 1st place in the GLU Game Jam, where it was created under the theme "You Only Have One".</p>
-      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
+      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
       <h3 data-i18n="projectPages.yohob.levelDesign.levelDesignTitle" class="GradiantTitle subtitle">Level Design</h3>
       <p data-i18n="projectPages.yohob.levelDesign.levelDesignIntro">
         I created the level tilemap that forms the foundation of each challenge. The structure and pacing were designed
@@ -120,10 +117,19 @@ if (hit && hit.collider.name != "Box" && hit.collider.name != "Player" && !hit.c
         <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint4">Gets destroyed when hit by the box.</li>
       </ul>
 
-      <img src="/images/gif/YohobChickenwalk.gif" alt=""
+      <!-- <img src="/images/gif/Yohob/YohobChickenwalk.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-      <img src="/images/gif/YohobEnemy.gif" alt=""
+      <img src="/images/gif/Yohob/YohobEnemy.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto"> -->
+
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="../videos/webm/Yohob/YohobChickenwalk.webm" type="video/webm">
+      </video>
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="../videos/webm/Yohob/YohobEnemy.webm" type="video/webm">
+      </video>
 
       <h3 data-i18n="projectPages.yohob.finish.finishTitle" class="GradiantTitle subtitle">Finish System</h3>
       <p data-i18n="projectPages.yohob.finish.finishIntro">
@@ -157,8 +163,12 @@ IEnumerator NextLevel()
 }
   </code></pre>
 
-      <img src="/images/gif/YohobEnd.gif" alt=""
+      <!-- <img src="/images/gif/Yohob/YohobEnd.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto"> -->
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="../videos/webm/Yohob/YohobEnd.webm" type="video/webm">
+      </video>
       <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
         class="GradiantTitle">Play
       </h1>
@@ -263,10 +273,13 @@ IEnumerator NextLevel()
 
   <script defer src="../js/imagezoom.js"></script>
   <script type="module" defer src="../js/translate.js"></script>
+  <script type="module" defer src="../js/prism.js"></script>
   <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <script>
-    hljs.configure({ languages: ["javascript"] });
-    hljs.highlightAll();
+    // Initialize Prism.js syntax highlighting
+    if (typeof Prism !== 'undefined') {
+      Prism.highlightAll();
+    }
   </script>
 </body>
 <footer>

@@ -21,7 +21,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  padding-top: 60px; /* Add padding equal to navbar height */
+  padding-top: 60px;
+  /* Add padding equal to navbar height */
 }
 
 .Picture {
@@ -34,7 +35,7 @@
   /* width: 100%; */
   margin: 0;
   border-radius: 10%;
-  height: 90vh;
+  height: 80vh;
   margin: 0 auto;
   border: #1e1e1e;
 }
@@ -203,19 +204,23 @@ nav a:hover {
 
 @media screen and (max-width: 1300px) {
   .age-location {
-    margin-top: 10px; /* Reduced since container now has padding */
+    margin-top: 10px;
+    /* Reduced since container now has padding */
     display: block;
     position: relative;
-    z-index: 1; /* Ensure it's above other elements if needed */
+    z-index: 1;
+    /* Ensure it's above other elements if needed */
   }
 }
 
 @media screen and (max-hight: 800px) {
   .age-location {
-    margin-top: 0px; /* Reduced since container now has padding */
+    margin-top: 0px;
+    /* Reduced since container now has padding */
     display: block;
     position: relative;
-    z-index: 1; /* Ensure it's above other elements if needed */
+    z-index: 1;
+    /* Ensure it's above other elements if needed */
   }
 }
 
@@ -358,11 +363,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked ~ .links-container {
+  #sidebar-active:checked~.links-container {
     right: 0;
   }
 
-  #sidebar-active:checked ~ #overlay {
+  #sidebar-active:checked~#overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -371,11 +376,11 @@ nav a:hover {
     z-index: 9;
   }
 
-  #sidebar-active:checked ~ .open-sidebar-button {
+  #sidebar-active:checked~.open-sidebar-button {
     display: none;
   }
 
-  #sidebar-active:checked ~ .links-container .close-sidebar-button {
+  #sidebar-active:checked~.links-container .close-sidebar-button {
     display: block;
     position: absolute;
     top: 10px;
@@ -383,7 +388,7 @@ nav a:hover {
     z-index: 11;
   }
 
-  #sidebar-active:not(:checked) ~ .close-sidebar-button {
+  #sidebar-active:not(:checked)~.close-sidebar-button {
     display: none;
   }
 

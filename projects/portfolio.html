@@ -4,11 +4,7 @@
 <head>
   <!-- Character encoding and viewport settings -->
   <meta charset="UTF-8" />
-  <!-- Custom viewport settings to prevent scaling on mobile devices -->
-  <meta name="viewport" content="height=device-height, 
-   width=device-width, initial-scale=1.0, 
-   minimum-scale=1.0, maximum-scale=1.0, 
-   user-scalable=no, target-densitydpi=device-dpi" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta name="description"
     content="Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad." />
@@ -30,6 +26,7 @@
   <link href="../css/style.css" rel="stylesheet" />
   <link href="../css/ProjectPage.css" rel="stylesheet" />
   <link href="../css/Home.css" rel="stylesheet" />
+  <link href="../css/prism.css" rel="stylesheet" />
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -43,10 +40,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
 
-  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script> -->
+  <!-- <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script> -->
 
 
   <style>
@@ -185,7 +182,7 @@
         multi-language
         developer portfolio showcasing my game development projects, skills, and personality. It's built from the ground
         up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.</p>
-      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
+      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
       <p data-i18n="projectPages.portfolio.whatIMadeStart">This project wasn’t just about creating a static site—it’s a
         full
         experience. Here's what I built:</p>
@@ -206,7 +203,7 @@
             const dayDifference = today.getDate() - birthDate.getDate();
 
             // Adjust age if today's date is before the birthday this year
-            if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+            if (monthDifference &lt 0 || (monthDifference === 0 && dayDifference &lt 0)) {
               age--;
             }
 
@@ -233,10 +230,16 @@
           <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint34">Playable game (if supported)</li>
         </ul>
 
-      </ul> <img src="../images/gif/ScreenshotShow.gif" alt="Screenshot demonstration"
-        style="width: 100%; max-width: 600px; height: auto;" />
-      <img src="../images/gif/ProjectCard.gif" alt="Project card animation"
-        style="width: 100%; max-width: 300px; height: auto; margin-top: 10px;" />
+      </ul>
+
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="width: 100%; max-width: 600px; height: auto;">
+        <source src="../videos/webm/Portfolio/ScreenshotShow.webm" type="video/webm" alt="Screenshot demonstration">
+      </video>
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="width: 100%; max-width: 300px; height: auto; margin-top: 10px;">
+        <source src="../videos/webm/Portfolio/ProjectCard.webm" type="video/webm" alt="Project card animation">
+      </video>
 
 
 
@@ -254,7 +257,10 @@
         <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint3">Translations are structured and
           nested for modularity</li>
       </ul>
-      <img src="../images/gif/Taranslate.gif" alt="" style="display: block; margin: 20px auto; width: 80%;">
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="../videos/webm/Portfolio/Taranslate.webm" type="video/webm" alt="translate demonstration">
+      </video>
       <pre><code class="language-js">
       // handling translations
       function handleMissingTranslation(element, key, lang) 
@@ -419,6 +425,7 @@
 
   <script defer src="../js/imagezoom.js"></script>
   <script type="module" defer src="../js/translate.js"></script>
+  <script defer src="../js/prism.js"></script>
   <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 <footer>

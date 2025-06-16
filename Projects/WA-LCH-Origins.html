@@ -1,48 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<!-- Prism.js for syntax highlighting -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
 
 <head>
   <!-- Character encoding and viewport settings -->
   <meta charset="UTF-8" />
-  <!-- Custom viewport settings to prevent scaling on mobile devices -->
-  <meta name="viewport" content="height=device-height, 
-   width=device-width, initial-scale=1.0, 
-   minimum-scale=1.0, maximum-scale=1.0, 
-   user-scalable=no, target-densitydpi=device-dpi" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta name="description"
     content="Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad." />
-  <title>WA-LCH</title>
-
-  <!-- Default Highlight.js css -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-  <!-- Remove old Highlight.js theme reference -->
-  <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
+  <title>WA-LCH Origins</title>
 
   <!-- External Resources -->
   <!-- jQuery library
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <!-- Google Fonts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --> <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
+  <!-- Preload critical resources -->
+  <link rel="preload" href="../css/style.css" as="style">
+  <link rel="preload" href="../css/ProjectPage.css" as="style">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://itch.io">
+
   <!-- Prism.js for syntax highlighting -->
-  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
   <!-- Stylesheet Links -->
   <link href="../css/style.css" rel="stylesheet" />
   <link href="../css/ProjectPage.css" rel="stylesheet" />
   <link href="../css/Home.css" rel="stylesheet" />
-
+  <link href="../css/prism.css" rel="stylesheet" />
+  <!-- Prism.js - load early to prevent visual jump -->
+  <script src="../js/prism.js"></script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
 
   <!-- Favicon Settings for various platforms -->
   <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
@@ -86,14 +91,16 @@
     <!-- Project Description Section -->
     <div class="Main-Content">
       <h1 class="GradiantTitle title">WA-LCH Origins</h1>
+      <!--#region main  -->
       <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
       <p data-i18n="projectPages.walchOrigins.description">Made in ~30 hours during a game jam (theme:
-        “”Bubbles”) — built with Unity and C#. WA-LCH Origins
+        “Bubbles”) — built with Unity and C#. WA-LCH Origins
         is a chaotic
         mini-cleanup adventure where you play as a janitor scrubbing away trash and trapping rogue rats using
         bubble-based tools. Built entirely under game jam pressure, it features player-controlled physics movement,
         animated doors, trap-based rat removal, and a bubbly cleaning mechanic.</p>
-      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I made</h3>
+      <!--#endregion -->
+      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
       <h3 data-i18n="projectPages.walchOrigins.playerMovement.playerMovementTitle" class="GradiantTitle subtitle">Player
         Movement</h3>
       <p data-i18n="projectPages.walchOrigins.playerMovement.playerMovementPoint1">Handled via Rigidbody for responsive
@@ -108,8 +115,10 @@
     moveDirection.x * maxSpeed
 );
       </code></pre>
-      <img src="../images/gif/walchOriginsMovement.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto" />
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="../videos/webm/WalchOrigins/WalchorginsMovement.webm" type="video/webm">
+      </video>
       <h3 data-i18n="projectPages.walchOrigins.cleaningMechanic.cleaningMechanicTitle" class="GradiantTitle subtitle">
         Cleaning mechanic</h3>
       <p data-i18n="projectPages.walchOrigins.cleaningMechanic.cleaningMechanicPoint1">When activated, the cleaning
@@ -122,23 +131,30 @@ Collider[] hitColliders = Physics.OverlapSphere(
     cleaningpoint.transform.position,
     cleaningRadius
 );
-</code></pre>
-      <img src="../images/gif/walchOriginsCleaning.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 100%; height: auto" />
+</code></pre> <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="../videos/webm/WalchOrigins/walchOriginsCleaning.webm" type="video/webm">
+      </video>
+      <!-- <img src="../images/gif/WalchOrigins/walchOriginsCleaning.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 100%; height: auto" loading="lazy" /> -->
       <h3 data-i18n="projectPages.walchOrigins.trapLaunching.trapLaunchingTitle" class="GradiantTitle subtitle">Trap
         Launching</h3>
       <p data-i18n="projectPages.walchOrigins.trapLaunching.trapLaunchingPoint1">The player shoots traps on cooldown to
         deal with
         fast-moving rats.</p>
       <pre><code class="language-csharp">
-        if (trapcooldownTimer <= 0)
+        if (trapcooldownTimer &lt= 0)
         {
            Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
            trapcooldownTimer = trapcooldown;
         }
         </code></pre>
-      <img src="../images/gif/walchOriginsTraps.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 100%; height: auto" />
+      <!-- <img src="../images/gif/WalchOrigins/walchOriginsTraps.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 100%; height: auto" loading="lazy" />  -->
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="/videos/webm/WalchOrigins/walchOriginsTraps.webm" type="video/webm">
+      </video>
       <h3 data-i18n="projectPages.walchOrigins.doorSystem.doorSystemTitle" class="GradiantTitle subtitle">Doors
       </h3>
       <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint1">Doors open and close automatically when the
@@ -147,14 +163,17 @@ Collider[] hitColliders = Physics.OverlapSphere(
         coroutine-like update
         loop in.</p>
       <pre><code class="language-csharp">
-          if (!other.gameObject.GetComponent<DoorOpen>().Moving)
+          if (!other.gameObject.GetComponent&ltDoorOpen>().Moving)
             {
-                other.gameObject.GetComponent<DoorOpen>().Moving = true;
+                other.gameObject.GetComponent&ltDoorOpen>().Moving = true;
             }
         </code></pre>
-
-      <img src="../images/gif/walchOriginsDoor.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto" />
+      <!-- <img src="../images/gif/WalchOrigins/walchOriginsDoor.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy" /> -->
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif"
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="/videos/webm/WalchOrigins/walchOriginsDoor.webm" type="video/webm">
+      </video>
       <h3 data-i18n="projectPages.walchOrigins.customTrailer.customTrailerTitle" class="GradiantTitle subtitle">Custom
         Trailer</h3>
       <p data-i18n="projectPages.walchOrigins.customTrailer.customTrailerPoint1">I also created a custom trailer to
@@ -162,7 +181,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
         mechanics, vibe, and loop of the game. (Created after the game jam)</p>
       <div style="display: flex; justify-content: center; margin: 20px 0;">
         <iframe src="https://www.youtube.com/embed/z1rAx_g-JZI?si=0YFK9OWODCBqPLqU" title="YouTube video player"
-          frameborder="0"
+          frameborder="0" loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
           style="max-width: 100%; width: 80%; aspect-ratio: 16/9;"></iframe>
@@ -174,7 +193,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <div class="itch-embed-container"
         style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
-          src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="">
+          src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="" loading="lazy">
           <a href="https://joahvds.itch.io/walch-origins">Play WA-LCH Origins on itch.io</a>
         </iframe>
       </div>
@@ -201,7 +220,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
           src="https://www.youtube.com/embed/z1rAx_g-JZI?si=OWBI3CY6Af5n6Iyw" title="YouTube video player"
-          frameborder="0"
+          frameborder="0" loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
       </div>
@@ -212,17 +231,17 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <picture>
         <source srcset="../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot1.webp" type="image/webp" />
         <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot1.png"
-          alt="Profile picture" />
+          alt="WA-LCH Origins Screenshot 1" loading="lazy" />
       </picture>
       <picture>
         <source srcset="../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot2.webp" type="image/webp" />
         <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot2.png"
-          alt="Profile picture" />
+          alt="WA-LCH Origins Screenshot 2" loading="lazy" />
       </picture>
       <picture>
         <source srcset="../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot3.webp" type="image/webp" />
         <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot3.png"
-          alt="Profile picture" />
+          alt="WA-LCH Origins Screenshot 3" loading="lazy" />
       </picture>
 
       <!-- Credits Section -->
@@ -281,10 +300,29 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <span class="modal-close">&times;</span>
       <img class="modal-content" id="modalImg" />
     </div>
-
     <script defer src="../js/imagezoom.js"></script>
-    <script type="module" defer src="../js/translate.js"></script>
+    <script type="module" src="../js/translate.js"></script>
     <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+      // Lightweight video lazy loading
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const video = entry.target;
+            if (video.paused) {
+              video.play().catch(e => console.log('Video autoplay failed:', e));
+            }
+            videoObserver.unobserve(video);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      // Observe all videos on the page
+      document.querySelectorAll('video[autoplay]').forEach(video => {
+        video.pause(); // Pause initially
+        videoObserver.observe(video);
+      });
+    </script>
 </body>
 <footer>
   <div class="footer" style="display: flex; align-items: center; position: relative">

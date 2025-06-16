@@ -22,8 +22,9 @@
   box-shadow: 0 0 24px #000;
   cursor: auto;
 }
+
 /* Prevent interaction with all content except modal when modal is open */
-body.modal-open > *:not(#imageModal):not(script):not(style) {
+body.modal-open>*:not(#imageModal):not(script):not(style) {
   pointer-events: none !important;
   user-select: none !important;
 }
@@ -32,6 +33,7 @@ body.modal-open > *:not(#imageModal):not(script):not(style) {
 #imageModal * {
   pointer-events: auto !important;
 }
+
 /* Modal open state disables pointer events for nav and overlay */
 body.modal-open nav,
 body.modal-open #overlay {
@@ -39,6 +41,7 @@ body.modal-open #overlay {
   user-select: none !important;
   opacity: 0.5;
 }
+
 * {
   margin: 0;
   padding: 0;

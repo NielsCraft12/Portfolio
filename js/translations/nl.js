@@ -22,11 +22,10 @@ export const nl = {
     technologies: "Technologieën",
     descriptionGame1: "Stap in de rol van een toegewijde schoonmaakrobot, net als in de originele WA-LCH. Maar dit",
     descriptionGame2: "Dit is de website die je nu bekijkt — een volledig op maat gemaakte, meertalige ontwikkelaarsportfolio",
-    descriptionGame3: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron.",
-    descriptionGame4: "Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je",
-    descriptionGame5: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over ",
-    // descriptionGame5:"fhjhgh",
-    // descriptionGame6:"fhjhgh",
+    descriptionGame3: "Merge Packing is een snelle, eigenaardige mobiele game gebouwd in een paar dagen met Unity en C#.",
+    descriptionGame4: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron.",
+    descriptionGame5: "Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je",
+    descriptionGame6: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over ",
   },
 
   experience: {
@@ -172,11 +171,27 @@ export const nl = {
       doorSystem: {
         doorSystemTitle: "Deuren",
         doorSystemPoint1: "Deuren openen en sluiten automatisch wanneer de speler een trigger zone in gaat. Beheerd met een coroutine-achtige update loop.",
-      },
-
-      customTrailer: {
+      }, customTrailer: {
         customTrailerTitle: "Zelfgemaakte Trailer",
         customTrailerPoint1: "Ik heb ook een aangepaste trailer gemaakt om de kernmechanieken, sfeer en gameplay loop van de game te laten zien. (Gemaakt na de game jam)",
+      },
+    },
+
+    mergePacking: {
+      // Merge Packing
+      description: "Merge Packing is een snelle, eigenaardige mobiele game gebouwd in een paar dagen met Unity en C#. Het heeft een unieke samenvoegingsmechaniek geïnspireerd door puzzelspellen zoals Suika Game, met een alien twist: een vrolijke alien laat willekeurige verpakkingspinda's vallen terwijl je probeert ze te combineren tot grotere items.",
+
+      mergingLogic: {
+        mergingLogicTitle: "Samenvoegings logica",
+        mergingLogicIntro: "Merge Packing's primaire mechaniek draait om het combineren van twee identieke items tot een hoger-tier object. Dit wordt afgehandeld in het ObjectManager script:",
+      },
+
+      mergingLogicEnd: "Het samenvoegingssysteem controleert op overeenkomende sprite-types, zorgt ervoor dat slechts één van de botsende objecten het nieuwe item spawnt, en verhoogt de score.",
+
+      alien: {
+        alienTitle: "De alien",
+        alienIntro: "De alien is een zwevend alien wezen dat periodiek over het scherm zweeft en verpakkingspinda's laat vallen. Zijn beweging is punt-naar-punt, met gladde richtingsovergangen en dynamisch gedrag.",
+        alienCodeSnippet: "Het pad van de alien wordt gereset na elke score mijlpaal, wat een ritmische gameplay loop creëert. Pinda's worden gedropt met behulp van een coroutine:",
       },
     },
 

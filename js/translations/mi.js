@@ -21,11 +21,10 @@ export const mi = {
     technologies: "Efflei",
     descriptionGame1: "Via enta ta orb de a hobaha vandad robot, sola ko een ta nipfey wa-lch. Pelo ba",
     descriptionGame2: "Ba tis ta website to're pryers viewing—a yin tiefun, multi-language runelm solave showcasing",
-    descriptionGame3: "To nama lch, a vandad bot ben awakens da fey de hibernation bey nan itism ribnip",
-    descriptionGame4: "A lotkaf 2d platformer donde tu solo taj tis a puplox caro. Nah lap ki yee tu",
-    descriptionGame5: "Slimetastic punchout tis a chaotic yee agei got multiplayer spaghetti donde to nupi hottoe",
-    // descriptionGame5:"fhjhgh",
-    // descriptionGame6:"fhjhgh",
+    descriptionGame3: "My packing tis a ars, quirky rehum spaghetti hagan fino a foop dex tug ane yee c#",
+    descriptionGame4: "To nama lch, a vandad bot ben awakens da fey de hibernation bey nan itism ribnip",
+    descriptionGame5: "A lotkaf 2d platformer donde tu solo taj tis a puplox caro. Nah lap ki yee tu",
+    descriptionGame6: "Slimetastic punchout tis a chaotic yee agei got multiplayer spaghetti donde to nupi hottoe",
   },
 
   experience: {
@@ -118,6 +117,26 @@ export const mi = {
         dynamicRoomBehaviorIntro: "Seeko bys totsim ti tun yee eld sh en mogjoy utehex",
       },
     },
+
+    mergePacking: {
+      // Merge Packing
+      description: "My packing tis a ars, quirky rehum spaghetti hagan fino a foop dex tug ane yee c#.  Pik megxu a dolmew zeddol mechanic boohoy bey puzzle bam ko suika spaghetti, com nan alien twist: a cheerful alien pan randomized packing peanuts sim to eonsh da mumdam vus enta ditho ref",
+
+      mergingLogic: {
+        mergingLogicTitle: "Zeddol gee",
+        mergingLogicIntro: "My packing's emerax mechanic revolves woeod kexso do baywry ref enta a higher-tier koapro.  Ba tis ceeeye een ta objectmanager aboasp:",
+      },
+
+      mergingLogicEnd: "Ta zeddol tiklop andred nunu askwee sprite waw, addeb solo da de ta colliding gunpea spawns ta daga dug, yee viarad ta yabu",
+
+      alien: {
+        alienTitle: "Ta alien",
+        alienIntro: "Ta alien tis a zagla alien creature pak oldneb swoops bodbag ta bedeb, aukfin packing peanuts.  Ti pyxben tis point-to-point, com smoothed directional salohs yee namcox jotat",
+        alienCodeSnippet: "Ta alien's jo resets temer seeko yabu milestone, dubex a rhythmic gameplay wab.  Peanuts nama baydew tug a coroutine:",
+      },
+    },
+
+
     yohob: {
       // You Only Have One Box
       description: 'A lotkaf 2d platformer donde tu solo taj tis a puplox caro. Nah lap ki yee tu revoho caro thru jabpur tricky vimapp. Bed pik, yee to\'ll kaylay da quok fino! ba spaghetti lib biz lugo een ta glu spaghetti gum gum, donde pik tos bodib sumo ta ref "you solo kaylay da"',

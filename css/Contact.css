@@ -160,6 +160,12 @@
   color: white;
 }
 
+.fa-file-lines {
+  border-radius: 20px;
+  background: #55acee;
+  color: white;
+}
+
 .socal-media-buttons {
   font-size: 30px;
   gap: 20px;
