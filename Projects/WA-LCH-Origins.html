@@ -158,15 +158,49 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <h3 data-i18n="projectPages.walchOrigins.doorSystem.doorSystemTitle" class="GradiantTitle subtitle">Doors
       </h3>
       <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint1">Doors open and close automatically when the
-        player
-        enters a trigger zone. Managed with a
-        coroutine-like update
-        loop in.</p>
-      <pre><code class="language-csharp">
-          if (!other.gameObject.GetComponent&ltDoorOpen>().Moving)
+      when player or npc's enters a trigger zone. It tells the door to change the door state to open.</p>
+
+        <pre><code class="language-csharp">
+            if (other.gameObject.CompareTag("Door"))
+         {
+            if (other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving == false)
             {
-                other.gameObject.GetComponent&ltDoorOpen>().Moving = true;
+                other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving = true;
             }
+         }
+        </code></pre>
+      <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint2">The door then moves to the open position and
+        waits for a certain amount of time before closing again.</p>
+      <pre><code class="language-csharp">
+        void MoveDoor(Vector3 goalPos)
+        {
+            float dist = Vector3.Distance(transform.position, goalPos);
+            if (dist >= 0.001f)
+            {
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    goalPos,
+                    speed * Time.deltaTime
+                );
+            }
+            else
+            {
+                if (opening)
+                {
+                    delay += Time.deltaTime;
+                    if (delay > openTime)
+                    {
+                        opening = false;
+                        delay = 0.0f;
+                    }
+                }
+                else
+                {
+                    moving = false;
+                    opening = true;
+                }
+            }
+        }
         </code></pre>
       <!-- <img src="../images/gif/WalchOrigins/walchOriginsDoor.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy" /> -->
@@ -301,7 +335,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <img class="modal-content" id="modalImg" />
     </div>
     <script defer src="../js/imagezoom.js"></script>
-    <script type="module" src="../js/translate.js"></script>
+    <!-- <script type="module" src="../js/translate.js"></script> -->
     <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script>
       // Lightweight video lazy loading

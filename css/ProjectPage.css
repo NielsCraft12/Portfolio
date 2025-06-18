@@ -170,12 +170,12 @@ hr.roundedv {
   }
 
   /* Mobile general list fixes */
-  ul:not(.project-list),
+  /* ul:not(.project-list),
   ol {
     padding-left: 1.2em;
     margin-left: 0;
     margin-right: 0;
-  }
+  } */
 }
 
 .ScreenShots {
@@ -359,13 +359,13 @@ body {
   }
 
   /* Ensure long text doesn't break layout */
-  p,
+  /* p,
   li,
   div {
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
-  }
+  } */
 
   /* Make sure inline code doesn't break out */
   code:not(pre code) {
@@ -596,7 +596,6 @@ pre code {
   }
 }
 
-
 .make-gif {
   pointer-events: none;
   /* disables all interaction */
@@ -605,14 +604,14 @@ pre code {
 }
 
 /* Text content overflow fixes */
-p,
+/* p,
 li,
 div {
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 100%;
-}
+} */
 
 /* Ensure code snippets have proper scrolling */
 .language-csharp,
@@ -636,19 +635,19 @@ code:not(pre code) {
 }
 
 /* General ul/li styles to prevent cut-off */
-ul:not(.project-list) {
+/* ul:not(.project-list) {
   max-width: 100%;
   overflow-wrap: break-word;
   word-wrap: break-word;
   padding-left: 1.5em;
   margin-left: 0;
   box-sizing: border-box;
-}
+} */
 
-li {
+/* li {
   max-width: 100%;
   overflow-wrap: break-word;
   word-wrap: break-word;
   margin-bottom: 8px;
   line-height: 1.6;
-}
+} */

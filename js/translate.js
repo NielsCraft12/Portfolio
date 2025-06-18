@@ -1,5 +1,5 @@
 // Translation module - simplified and modular
-import { translations } from './translations/index.js';
+import { translations } from "./translations/index.js";
 
 /**
  * Language configuration
@@ -7,7 +7,7 @@ import { translations } from './translations/index.js';
 const LANGUAGE_CONFIG = {
   en: { name: "English", default: true },
   nl: { name: "Nederlands" },
-  mi: { name: "Minionese" }
+  mi: { name: "Minionese" },
 };
 
 /**
@@ -25,24 +25,21 @@ function updateContent(lang) {
   let successCount = 0;
 
   // Remove active class from all language elements
-  document.querySelectorAll("[data-lang]").forEach((el) =>
-    el.classList.remove("active")
-  );
+  document.querySelectorAll("[data-lang]").forEach((el) => el.classList.remove("active"));
 
   // Add active class to selected language element
   const selectedLangElement = document.querySelector(`[data-lang="${lang}"]`);
   if (selectedLangElement) {
     selectedLangElement.classList.add("active");
-  }
-  // Update all translatable elements
+  } // Update all translatable elements
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
     const value = getNestedTranslation(translations[lang], key);
     if (value) {
       element.innerHTML = value;
       // Remove any previous missing translation styling
-      element.classList.remove('missing-translation');
-      element.removeAttribute('data-missing-key');
+      element.classList.remove("missing-translation");
+      element.removeAttribute("data-missing-key");
       successCount++;
     } else {
       // Handle missing translation
@@ -50,25 +47,44 @@ function updateContent(lang) {
       missingCount++;
     }
   });
+
+  // Update all elements with translatable titles
+  document.querySelectorAll("[data-i18n-title]").forEach((element) => {
+    const key = element.getAttribute("data-i18n-title");
+    const value = getNestedTranslation(translations[lang], key);
+    if (value) {
+      element.title = value;
+      successCount++;
+    } else {
+      // Fallback to English if available
+      const fallbackValue = getNestedTranslation(translations.en, key);
+      if (fallbackValue && lang !== "en") {
+        element.title = fallbackValue;
+      }
+      missingCount++;
+    }
+  });
   console.log(`Translation update complete: ${successCount} successful, ${missingCount} missing`);
 
   // Update current language display
   updateLanguageDisplay(lang);
-
   // Update CSS custom properties for translated content
   updateCSSTranslations(lang);
+
+  // Update CV link
+  updateCVLink(lang);
 
   // Save preference and update age display
   localStorage.setItem("preferredLanguage", lang);
 
   // Call updateAgeDisplay if it exists (defined in main.js)
-  if (typeof updateAgeDisplay === 'function') {
+  if (typeof updateAgeDisplay === "function") {
     updateAgeDisplay();
   }
 }
 
 function getNestedTranslation(obj, key) {
-  return key.split('.').reduce((o, k) => o && o[k], obj);
+  return key.split(".").reduce((o, k) => o && o[k], obj);
 }
 
 /**
@@ -81,25 +97,40 @@ function handleMissingTranslation(element, key, lang) {
   console.warn(`Missing translation: "${key}" for language "${lang}"`);
 
   // Add visual styling to indicate missing translation
-  element.classList.add('missing-translation');
-  element.setAttribute('data-missing-key', key);
+  element.classList.add("missing-translation");
+  element.setAttribute("data-missing-key", key);
 
   // Show the missing key in development mode (you can toggle this)
-  const showMissingKeys = localStorage.getItem('showMissingTranslations') === 'true';
+  const showMissingKeys = localStorage.getItem("showMissingTranslations") === "true";
 
   if (showMissingKeys) {
     element.innerHTML = `[MISSING: ${key}]`;
   } else {
     // Fallback to English if available, otherwise show a generic message
     const fallbackValue = getNestedTranslation(translations.en, key);
-    if (fallbackValue && lang !== 'en') {
+    if (fallbackValue && lang !== "en") {
       element.innerHTML = fallbackValue;
-      element.setAttribute('title', `Missing translation for "${lang}" - showing English fallback`);
+      element.setAttribute("title", `Missing translation for "${lang}" - showing English fallback`);
     } else {
       element.innerHTML = `[Translation missing]`;
-      element.setAttribute('title', `Missing translation key: ${key}`);
+      element.setAttribute("title", `Missing translation key: ${key}`);
     }
   }
+}
+
+/**
+ * Updates the CV link and title based on the current language
+ * @param {string} lang - Language code
+ */
+function updateCVLink(lang) {
+  const cvLink = document.querySelector("[data-cv-link]");
+  if (!cvLink || !translations[lang] || !translations[lang].cv) return;
+
+  // Update the href attribute
+  cvLink.href = translations[lang].cv.filePath;
+
+  // Update the title attribute
+  cvLink.title = translations[lang].cv.title;
 }
 
 /**
@@ -110,9 +141,9 @@ function updateCSSTranslations(lang) {
   if (!translations[lang]) return;
 
   // Update spoiler tooltip text
-  const spoilerTooltip = getNestedTranslation(translations[lang], 'projectPages.portfolio.easterEggs.spoilerTooltip');
+  const spoilerTooltip = getNestedTranslation(translations[lang], "projectPages.portfolio.easterEggs.spoilerTooltip");
   if (spoilerTooltip) {
-    document.documentElement.style.setProperty('--spoiler-tooltip-text', `"${spoilerTooltip}"`);
+    document.documentElement.style.setProperty("--spoiler-tooltip-text", `"${spoilerTooltip}"`);
   }
 }
 
@@ -158,19 +189,19 @@ window.updateContent = updateContent;
 
 // Debug utilities for missing translations
 window.toggleMissingTranslationDisplay = function () {
-  const currentState = localStorage.getItem('showMissingTranslations') === 'true';
-  localStorage.setItem('showMissingTranslations', !currentState);
-  console.log(`Missing translation display ${!currentState ? 'enabled' : 'disabled'}`);
+  const currentState = localStorage.getItem("showMissingTranslations") === "true";
+  localStorage.setItem("showMissingTranslations", !currentState);
+  console.log(`Missing translation display ${!currentState ? "enabled" : "disabled"}`);
   // Re-run translation to apply the change
   const currentLang = localStorage.getItem("preferredLanguage") || "en";
   updateContent(currentLang);
 };
 
-window.findMissingTranslations = function (lang = 'all') {
+window.findMissingTranslations = function (lang = "all") {
   const missing = [];
-  const languages = lang === 'all' ? Object.keys(translations) : [lang];
+  const languages = lang === "all" ? Object.keys(translations) : [lang];
 
-  languages.forEach(language => {
+  languages.forEach((language) => {
     if (!translations[language]) {
       console.warn(`Language '${language}' not found`);
       return;

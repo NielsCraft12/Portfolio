@@ -136,7 +136,6 @@ export const mi = {
       },
     },
 
-
     yohob: {
       // You Only Have One Box
       description: 'A lotkaf 2d platformer donde tu solo taj tis a puplox caro. Nah lap ki yee tu revoho caro thru jabpur tricky vimapp. Bed pik, yee to\'ll kaylay da quok fino! ba spaghetti lib biz lugo een ta glu spaghetti gum gum, donde pik tos bodib sumo ta ref "you solo kaylay da"',
@@ -253,5 +252,11 @@ export const mi = {
     gaylien: "Mac mublai packing peanuts baydew nunu to da ploma ba piplo!",
     dino: "Piplo bidlev, pelo bida! a dino!",
     returnHome: "Dogsip camion",
+  },
+
+  // CV file configuration
+  cv: {
+    filePath: "/Documents/CV_Niels_de_Laat_portfolio_MI.pdf", // Using English version for Minionese
+    title: "Tugmep mi CV",
   },
 };

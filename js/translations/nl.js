@@ -171,7 +171,8 @@ export const nl = {
       doorSystem: {
         doorSystemTitle: "Deuren",
         doorSystemPoint1: "Deuren openen en sluiten automatisch wanneer de speler een trigger zone in gaat. Beheerd met een coroutine-achtige update loop.",
-      }, customTrailer: {
+      },
+      customTrailer: {
         customTrailerTitle: "Zelfgemaakte Trailer",
         customTrailerPoint1: "Ik heb ook een aangepaste trailer gemaakt om de kernmechanieken, sfeer en gameplay loop van de game te laten zien. (Gemaakt na de game jam)",
       },
@@ -253,5 +254,11 @@ export const nl = {
     gaylien: "Te veel inpakpinda's gedropt om deze pagina te bereiken!",
     dino: "Pagina ontbreekt, maar kijk! Een Dino!",
     returnHome: "terug naar thuis",
+  },
+
+  // CV file configuration
+  cv: {
+    filePath: "/Documents/CV_Niels_de_Laat_portfolio_NL.pdf",
+    title: "Download mijn CV",
   },
 };
