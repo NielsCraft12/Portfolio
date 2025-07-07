@@ -1,108 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Character encoding and viewport settings -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!" />
+    <title>Slimetastic Punchout</title>
 
-<head>
-  <!-- Character encoding and viewport settings -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!" />
-  <title>Slimetastic Punchout</title>
+    <!-- External Resources -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
-  <!-- External Resources -->
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+    <!-- Stylesheet Links -->
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/ProjectPage.css" rel="stylesheet" />
+    <link href="../css/Home.css" rel="stylesheet" />
+    <link href="../css/prism.css" rel="stylesheet" />
 
-  <!-- Stylesheet Links -->
-  <link href="../css/style.css" rel="stylesheet" />
-  <link href="../css/ProjectPage.css" rel="stylesheet" />
-  <link href="../css/Home.css" rel="stylesheet" />
-  <link href="../css/prism.css" rel="stylesheet" />
-
-
-
-  <!-- Prism.js for syntax highlighting -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
+    <!-- Prism.js for syntax highlighting -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  <!-- Favicon Settings for various platforms -->
-  <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
-  <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../images/Favicon/site.webmanifest" />
-</head>
+    <!-- Favicon Settings for various platforms -->
+    <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+  </head>
 
-<body>
-  <!-- Navigation Menu -->
-  <nav>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+  <body>
+    <!-- Navigation Menu -->
+    <nav>
+      <input type="checkbox" id="sidebar-active" />
+      <label for="sidebar-active" class="open-sidebar-button">
+        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
       </label>
-      <a data-i18n="nav.home" class="home-link" href="../">Home</a>
-      <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en">English</a></li>
-          <li><a href="#" data-lang="nl">Nederlands</a></li>
-        </ul>
+      <label id="overlay" for="sidebar-active"></label>
+      <div class="links-container">
+        <label for="sidebar-active" class="close-sidebar-button">
+          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+        </label>
+        <a data-i18n="nav.home" class="home-link" href="../">Home</a>
+        <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
+        <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
+        <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
+        <div class="language-switcher">
+          <button class="language-btn">
+            <span class="current-lang">English</span>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <ul class="language-menu">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="nl">Nederlands</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Main Content Container -->
-  <div class="containerProject">
-    <!-- Project Description Section -->
-    <div class="Main-Content">
-      <h1 class="GradiantTitle title">Slimetastic Punchout</h1>
-      <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
-      <p data-i18n="projectPages.slimetasticPunchout.description">Slimetastic Punchout is a chaotic and fun local
-        multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The
-        goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the
-        way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game.
-        Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!</p>
-      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinTitle" class="GradiantTitle subtitle">Custom
-        Player Join System</h3>
-      <p data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinIntro">I built a join system from scratch,
-        allowing players to:</p>
-      <ul class="project-list">
-        <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint1">Dynamically join the game</li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint2">Customize slime color and hats</li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint3">Indicate when they're ready</li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint4">Prevent duplicate colors via a
-          locking system</li>
-      </ul>
+    <!-- Main Content Container -->
+    <div class="containerProject">
+      <!-- Project Description Section -->
+      <div class="Main-Content">
+        <h1 class="GradiantTitle title">Slimetastic Punchout</h1>
+        <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
+        <p data-i18n="projectPages.slimetasticPunchout.description">Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It’s slimy chaos at its best!</p>
+        <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
+        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinTitle" class="GradiantTitle subtitle">Custom Player Join System</h3>
+        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinIntro">I built a join system from scratch, allowing players to:</p>
+        <ul class="project-list">
+          <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint1">Dynamically join the game</li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint2">Customize slime color and hats</li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint3">Indicate when they're ready</li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerJoin.playerJoinPoint4">Prevent duplicate colors via a locking system</li>
+        </ul>
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.howItWorks" class="GradiantTitle subtitle">How it
-        works:</h3>
+        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.howItWorks" class="GradiantTitle subtitle">How it works:</h3>
 
-      <p data-i18n="projectPages.slimetasticPunchout.playerJoin.howitworksIntro"> Players spawn into the join UI and
-        navigate using directional inputs. Here’s a snippet of the navigation system:</p>
-      <pre><code class="language-csharp">
+        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.howitworksIntro">Players spawn into the join UI and navigate using directional inputs. Here’s a snippet of the navigation system:</p>
+        <pre><code class="language-csharp">
 public void NavigateMenu(InputAction.CallbackContext context)
 {
     Vector2 moveDir = context.ReadValue&lt;Vector2&gt;();
@@ -113,19 +98,14 @@ public void NavigateMenu(InputAction.CallbackContext context)
     UpdateReadyText();
 }
         </code></pre>
-      <picture>
-        <source srcset="../images/webp/ProjectImages/SlimetasicPunchout/SlimeTasticpunchoutPlayerJoin.webp"
-          type="image/webp" />
-        <img src="../images/png/ProjectImages/SlimetasicPunchout/SlimeTasticpunchoutPlayerJoin.png"
-          alt="Profile picture" style="display: block; margin: 20px auto; max-width: 70%; height: auto" />
-      </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectImages/SlimetasicPunchout/SlimeTasticpunchoutPlayerJoin.webp" type="image/webp" />
+          <img src="../images/png/ProjectImages/SlimetasicPunchout/SlimeTasticpunchoutPlayerJoin.png" alt="Profile picture" style="display: block; margin: 20px auto; max-width: 70%; height: auto" />
+        </picture>
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.colorTitle" class="GradiantTitle subtitle">Color
-        Selection & Locking System</h3>
-      <p data-i18n="projectPages.slimetasticPunchout.playerJoin.colorIntro">Each player picks a unique color from a
-        shared palette. If a color is taken, a lock icon appears and the player is prevented from readying up with that
-        color.</p>
-      <pre><code class="language-csharp">
+        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.colorTitle" class="GradiantTitle subtitle">Color Selection & Locking System</h3>
+        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.colorIntro">Each player picks a unique color from a shared palette. If a color is taken, a lock icon appears and the player is prevented from readying up with that color.</p>
+        <pre><code class="language-csharp">
           public void CheckIfColorUsed()
 {
     foreach (ColorTracker tracker in menuManager.takenColors)
@@ -140,19 +120,16 @@ public void NavigateMenu(InputAction.CallbackContext context)
 }
         </code></pre>
 
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto">
-        <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutColorChange.webm" type="video/webm">
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy" style="display: block; margin: 20px auto; max-width: 50%; height: auto">
+          <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutColorChange.webm" type="video/webm" />
+        </video>
 
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutColorChange.gif" alt=""
+        <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutColorChange.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.hatTitle" class="GradiantTitle subtitle">Cosmetic (Hat)
-        Selection</h3>
-      <p data-i18n="projectPages.slimetasticPunchout.playerJoin.hatIntro">Slimes can be customized with various hats
-        that reflect their personality. Hats are chosen using arrow navigation, and the visual updates immediately:</p>
-      <pre><code class="language-csharp">
+        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.hatTitle" class="GradiantTitle subtitle">Cosmetic (Hat) Selection</h3>
+        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.hatIntro">Slimes can be customized with various hats that reflect their personality. Hats are chosen using arrow navigation, and the visual updates immediately:</p>
+        <pre><code class="language-csharp">
           if (selected == 0) // Cosmetic selection
 {
     cosmeticSelected += (collision.gameObject.name == "Right Arrow") ? 1 : -1;
@@ -160,19 +137,16 @@ public void NavigateMenu(InputAction.CallbackContext context)
     UpdateCosmetic();
 }
         </code></pre>
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutHatChange.gif" alt=""
+        <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutHatChange.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto">
-        <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutHatChange.webm" type="video/webm">
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy" style="display: block; margin: 20px auto; max-width: 50%; height: auto">
+          <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutHatChange.webm" type="video/webm" />
+        </video>
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.readyTitle" class="GradiantTitle subtitle">Player Ready
-        System</h3>
+        <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.readyTitle" class="GradiantTitle subtitle">Player Ready System</h3>
 
-      <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyIntro">When a player finishes customizing, they hit
-        a button to toggle their ready state. The game only starts when all joined players are ready.</p>
-      <pre><code class="language-csharp">
+        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyIntro">When a player finishes customizing, they hit a button to toggle their ready state. The game only starts when all joined players are ready.</p>
+        <pre><code class="language-csharp">
           if (isReady && menuManager.takenColors[GetIndex].first)
 {
     ReadyText.text = "Ready";
@@ -184,9 +158,8 @@ else
     ReadyText.color = Color.red;
 }
           </code></pre>
-      <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyCodeSnippet">Once everyone is ready, the
-        MenuManager checks and starts the game:</p>
-      <pre><code class="language-csharp">
+        <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyCodeSnippet">Once everyone is ready, the MenuManager checks and starts the game:</p>
+        <pre><code class="language-csharp">
           if (canStart)
 {
     gameManager.canStart = true;
@@ -198,47 +171,37 @@ else
     slimes[i].transform.position = playerSpawns[i].transform.position;
 }
         </code></pre>
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutReady.gif" alt=""
+        <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutReady.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto">
-        <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutReady.webm" type="video/webm">
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy" style="display: block; margin: 20px auto; max-width: 50%; height: auto">
+          <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutReady.webm" type="video/webm" />
+        </video>
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementTitle"
-        class="GradiantTitle subtitle">Player Movement</h3>
-      <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementInto">Each slime uses a physics-based
-        movement system with:</p>
-      <ul class="project-list">
-        <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint1">Full Rigidbody control</li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint2">Smooth rotation toward
-          velocity</li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint3">Jumping with air control
-        </li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint4">Movement dampening when no
-          input is given</li>
-      </ul>
-      <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementCodeSnippet">This snippet preserves
-        vertical velocity while allowing grounded or aerial movement with different strengths.</p>
-      <pre><code class="language-csharp">
+        <h3 data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementTitle" class="GradiantTitle subtitle">Player Movement</h3>
+        <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementInto">Each slime uses a physics-based movement system with:</p>
+        <ul class="project-list">
+          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint1">Full Rigidbody control</li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint2">Smooth rotation toward velocity</li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint3">Jumping with air control</li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint4">Movement dampening when no input is given</li>
+        </ul>
+        <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementCodeSnippet">This snippet preserves vertical velocity while allowing grounded or aerial movement with different strengths.</p>
+        <pre><code class="language-csharp">
          rb.velocity = new Vector3(
     lastMoveDirection.x * currentSpeed,
     yVelocity,
     lastMoveDirection.y * currentSpeed
 );
         </code></pre>
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutMove.gif" alt=""
+        <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutMove.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto">
-        <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutMove.webm" type="video/webm">
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy" style="display: block; margin: 20px auto; max-width: 50%; height: auto">
+          <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutMove.webm" type="video/webm" />
+        </video>
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringTitle" class="GradiantTitle subtitle">
-        Tile Coloring</h3>
-      <p data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringIntro">Each floor tile tracks the last
-        player that touched it and changes to their selected team color.</p>
-      <pre><code class="language-csharp">          if (other.gameObject.CompareTag("Floor"))
+        <h3 data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringTitle" class="GradiantTitle subtitle">Tile Coloring</h3>
+        <p data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringIntro">Each floor tile tracks the last player that touched it and changes to their selected team color.</p>
+        <pre><code class="language-csharp">          if (other.gameObject.CompareTag("Floor"))
 {
     foreach (Transform child in other.gameObject.transform)
     {
@@ -250,76 +213,63 @@ else
     other.GetComponent&lt;Tile&gt;().lastPlayer = playerNum;
 }
         </code></pre>
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutColor.gif" alt=""
+        <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutColor.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
 
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto">
-        <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutColor.webm" type="video/webm">
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy" style="display: block; margin: 20px auto; max-width: 50%; height: auto">
+          <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutColor.webm" type="video/webm" />
+        </video>
 
-      <!-- Play -->
-      <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
-        class="GradiantTitle">Play</h1>
-      <div class="itch-embed-container"
-        style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
-          src="https://itch.io/embed-upload/12639739?color=1E1E1E" allowfullscreen="">
-          <a href="https://nielscraft12.itch.io/slimetastic-punchout">Play Slimetastic Punchout on itch.io</a>
-        </iframe>
-      </div>
-      <div class="mobile-message">
-        <p data-i18n="projectPages.slimetasticPunchout.mobileMessage">To play Slimetastic Punchout, please visit this
-          page on a computer.</p>
-      </div>
-    </div>
-
-    <!-- Visual Divider -->
-    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
-      <hr class="roundedv" style="height: 100%; margin: 0" />
-      <!-- <hr class="roundedv mobile-divider" /> -->
-    </div>
-
-    <div class="divider mobile-divider">
-      <hr class="roundedv" />
-    </div>
-
-    <!-- Sidebar Content -->
-    <div class="SideBar" style="height: max-content">
-      <!-- Trailer Section -->
-      <h1 data-i18n="projectPages.trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
-      <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
-          src="https://www.youtube.com/embed/zgEdaaWe3JQ?si=Uud4DAc4EJKVmMVA" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+        <!-- Play -->
+        <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1>
+        <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/12639739?color=1E1E1E" allowfullscreen="">
+            <a href="https://nielscraft12.itch.io/slimetastic-punchout">Play Slimetastic Punchout on itch.io</a>
+          </iframe>
+        </div>
+        <div class="mobile-message">
+          <p data-i18n="projectPages.slimetasticPunchout.mobileMessage">To play Slimetastic Punchout, please visit this page on a computer.</p>
+        </div>
       </div>
 
-      <!-- Screenshots Section -->
-      <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">
-        Screenshots</h1>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot1.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/SlimetasticPunchout/Screenshot1.png"
-          alt="Profile picture" />
-      </picture>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot2.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/SlimetasticPunchout/Screenshot2.png"
-          alt="Profile picture" />
-      </picture>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot3.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/SlimetasticPunchout/Screenshot3.png"
-          alt="Profile picture" />
-      </picture>
-      <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot1.png" alt="screen shot of the game" /> -->
-      <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot2.png" alt="screen shot of the game" /> -->
-      <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot3.png" alt="screen shot of the game" /> -->
+      <!-- Visual Divider -->
+      <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
+        <hr class="roundedv" style="height: 100%; margin: 0" />
+        <!-- <hr class="roundedv mobile-divider" /> -->
+      </div>
 
-      <!-- Credits Section -->
-      <!-- <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Credits</h1>
+      <div class="divider mobile-divider">
+        <hr class="roundedv" />
+      </div>
+
+      <!-- Sidebar Content -->
+      <div class="SideBar" style="height: max-content">
+        <!-- Trailer Section -->
+        <h1 data-i18n="projectPages.trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
+        <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="https://www.youtube.com/embed/zgEdaaWe3JQ?si=Uud4DAc4EJKVmMVA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+        </div>
+
+        <!-- Screenshots Section -->
+        <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
+        <picture>
+          <source srcset="../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot1.webp" type="image/webp" />
+          <img class="ScreenShots" src="../images/png/ProjectScreenShots/SlimetasticPunchout/Screenshot1.png" alt="Profile picture" />
+        </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot2.webp" type="image/webp" />
+          <img class="ScreenShots" src="../images/png/ProjectScreenShots/SlimetasticPunchout/Screenshot2.png" alt="Profile picture" />
+        </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot3.webp" type="image/webp" />
+          <img class="ScreenShots" src="../images/png/ProjectScreenShots/SlimetasticPunchout/Screenshot3.png" alt="Profile picture" />
+        </picture>
+        <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot1.png" alt="screen shot of the game" /> -->
+        <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot2.png" alt="screen shot of the game" /> -->
+        <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot3.png" alt="screen shot of the game" /> -->
+
+        <!-- Credits Section -->
+        <!-- <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Credits</h1>
 
 
         <ul class="cd-demo-chip-list">
@@ -367,32 +317,33 @@ else
           </li>
         </ul>
       </div> -->
-    </div> <!-- Image Modal for Screenshots -->
-    <div id="imageModal" class="modal">
-      <span class="modal-close">&times;</span>
-      <img class="modal-content" id="modalImg" />
+      </div>
+      <!-- Image Modal for Screenshots -->
+      <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImg" />
+      </div>
     </div>
-  </div>
 
-  <!-- Modal functionality script -->
-  <script defer src="../js/imagezoom.js"></script>
-  <script type="module" defer src="../js/translate.js"></script>
-  <script type="module" defer src="../js/prism.js"></script>
-  <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  <script>
-    // Initialize Prism.js syntax highlighting
-    if (typeof Prism !== 'undefined') {
-      Prism.highlightAll();
-    }
-  </script>
-</body>
-<footer>
-  <div class="footer" style="display: flex; align-items: center; position: relative">
-    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
-        preserveAspectRatio="xMidYMid meet" class="mi-icon">
-        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+    <!-- Modal functionality script -->
+    <script defer src="../js/imagezoom.js"></script>
+    <script type="module" defer src="../js/translate.js"></script>
+    <script type="module" defer src="../js/prism.js"></script>
+    <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+      // Initialize Prism.js syntax highlighting
+      if (typeof Prism !== "undefined") {
+        Prism.highlightAll();
+      }
+    </script>
+  </body>
+  <footer>
+    <div class="footer" style="display: flex; align-items: center; position: relative">
+      <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
+          <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+            <path
+              d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
             -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
             -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
             -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
@@ -403,15 +354,15 @@ else
             316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
             123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
             c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-            -1440 483 -149 19 -562 27 -710 15z" />
-        </g>
-      </svg>
-    </a>
-    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-    <script>
-      document.getElementById("copyright-year").textContent = new Date().getFullYear();
-    </script>
-  </div>
-</footer>
-
+            -1440 483 -149 19 -562 27 -710 15z"
+            />
+          </g>
+        </svg>
+      </a>
+      <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+      <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+      </script>
+    </div>
+  </footer>
 </html>

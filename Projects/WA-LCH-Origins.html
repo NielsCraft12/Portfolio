@@ -94,9 +94,9 @@
       <!--#region main  -->
       <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
       <p data-i18n="projectPages.walchOrigins.description">Made in ~30 hours during a game jam (theme:
-        “Bubbles”) — built with Unity and C#. WA-LCH Origins
+        “Bubbles”). Built with Unity and C#. WA-LCH Origins
         is a chaotic
-        mini-cleanup adventure where you play as a janitor scrubbing away trash and trapping rogue rats using
+        mini-cleanup adventure where you play as a janitor robot scrubbing away trash and trapping rogue rats using
         bubble-based tools. Built entirely under game jam pressure, it features player-controlled physics movement,
         animated doors, trap-based rat removal, and a bubbly cleaning mechanic.</p>
       <!--#endregion -->
@@ -193,11 +193,6 @@ Collider[] hitColliders = Physics.OverlapSphere(
                         opening = false;
                         delay = 0.0f;
                     }
-                }
-                else
-                {
-                    moving = false;
-                    opening = true;
                 }
             }
         }
@@ -335,7 +330,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <img class="modal-content" id="modalImg" />
     </div>
     <script defer src="../js/imagezoom.js"></script>
-    <!-- <script type="module" src="../js/translate.js"></script> -->
+    <script type="module" src="../js/translate.js"></script>
     <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script>
       // Lightweight video lazy loading

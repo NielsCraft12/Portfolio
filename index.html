@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
     <!--Style sheets-->
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/Home.css" />
     <!-- <link rel="stylesheet" href="css/Aboutme.css" /> -->
     <link rel="stylesheet" href="../css/Experience.css" />
     <link rel="stylesheet" href="../css/Projects.css" />
@@ -29,10 +29,13 @@
     <link rel="shortcut icon" href="images/Favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/Favicon/apple-touch-icon.png" />
     <link rel="manifest" href="images/Favicon/site.webmanifest" />
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   </head>
 
   <body>
     <nav>
+      <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
       <input type="checkbox" id="sidebar-active" />
       <label for="sidebar-active" class="open-sidebar-button">
         <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
@@ -42,7 +45,7 @@
         <label for="sidebar-active" class="close-sidebar-button">
           <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
         </label>
-        <a data-i18n="nav.home" class="home-link" href="#Home">Home</a>
+        <a data-i18n="nav.home" id="nav" class="home-link" href="#Home">Home</a>
         <a data-i18n="nav.projects" href="#Projects">Projects</a>
         <a data-i18n="nav.experience" href="#Experience">Experience</a>
         <a data-i18n="nav.contact" href="#Contact">Contact</a>
@@ -75,7 +78,7 @@
           <source media="(min-width: 451px)" srcset="images/webp/me-medium.webp" type="image/webp" />
           <source media="(max-width: 450px)" srcset="images/webp/me-small3.webp" type="image/webp" />
           <source srcset="images/webp/me.webp" type="image/webp" />
-          <img src="images/png/me.jpg" alt="Profile picture" />
+          <img src="images/png/me.jpg" alt="Profile picture" loading="lazy" />
         </picture>
         <!-- <img src="images/webp/me.webp" srcset="images/png/me.jpg" alt="" /> -->
       </div>
@@ -89,7 +92,7 @@
             <span class="chip">
               <picture>
                 <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+                <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" loading="lazy" />
               </picture>
               <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
               <i class="chip__label">C#</i>
@@ -100,7 +103,7 @@
             <span class="chip">
               <picture>
                 <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
+                <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" loading="lazy" />
               </picture>
               <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
               <i class="chip__label">Unity</i>
@@ -118,7 +121,7 @@
             <span class="chip">
               <picture>
                 <source srcset="images/webp/htmlLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/htmlLogo.png" alt="Profile picture" />
+                <img class="chip__img" src="images/png/htmlLogo.png" alt="Profile picture" loading="lazy" />
               </picture>
               <i class="chip__label">HTML</i>
             </span>
@@ -128,7 +131,7 @@
               <!-- <img class="chip__img" src="images/cssLogo2.png" alt="Picture of Paul Brown" /> -->
               <!-- <picture>
               <source srcset="images/webp/cssLogo2.webp" type="image/webp" /> -->
-              <img class="chip__img" src="images/png/cssLogo2.png" alt="Profile picture" />
+              <img class="chip__img" src="images/png/cssLogo2.png" alt="Profile picture" loading="lazy" />
               <!-- </picture> -->
               <i class="chip__label">CSS</i>
             </span>
@@ -137,7 +140,7 @@
             <span class="chip">
               <picture>
                 <source srcset="images/webp/GithubLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/GithubLogo.png" alt="Profile picture" />
+                <img class="chip__img" src="images/png/GithubLogo.png" alt="Profile picture" loading="lazy" />
               </picture>
               <!-- <img class="chip__img" src="images/GithubLogo.png" alt="Git Logo" /> -->
               <i class="chip__label">Git</i>
@@ -148,7 +151,7 @@
             <span class="chip">
               <picture>
                 <source srcset="images/webp/PythonLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/PythonLogo.png" alt="Profile picture" />
+                <img class="chip__img" src="images/png/PythonLogo.png" alt="Profile picture" loading="lazy" />
               </picture>
               <!-- <img class="chip__img" src="images/PythonLogo.png" alt="Ptyhon Logo" /> -->
               <i class="chip__label">Python</i>
@@ -159,10 +162,20 @@
             <span class="chip">
               <picture>
                 <source srcset="images/webp/TrelloLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/TrelloLogo.png" alt="Trello Logo" />
+                <img class="chip__img" src="images/png/TrelloLogo.png" alt="Trello Logo" loading="lazy" />
               </picture>
               <!-- <img class="chip__img" src="images/TrelloLogo.png" alt="Trello Logo" /> -->
               <i class="chip__label">Scrum</i>
+            </span>
+          </li>
+          <li>
+            <span class="chip">
+              <picture>
+                <source srcset="images/webp/CrealityLogo.jpg" type="image/jpg" />
+                <img class="chip__img" src="images/png/TrelloLogo.png" alt="Creality Logo" loading="lazy" />
+              </picture>
+              <!-- <img class="chip__img" src="images/TrelloLogo.png" alt="Trello Logo" /> -->
+              <i class="chip__label">Creality Print</i>
             </span>
           </li>
         </ul>
@@ -174,13 +187,22 @@
     <section id="Projects">
       <h1 data-i18n="nav.projects" class="hidden" style="margin-top: 0; padding-top: 0">Projects</h1>
 
+      <!-- Project Tabs -->
+      <div class="project-tabs">
+        <!-- <button class="tab-button active" data-tab="all" data-i18n="projects.allProjects">All Projects</button> -->
+        <button class="tab-button active" data-tab="games" data-i18n="projects.games">Games</button>
+        <button class="tab-button" data-tab="web" data-i18n="projects.webProjects">Web</button>
+        <!-- <button class="tab-button" data-tab="recent" data-i18n="projects.recent">Recent</button> -->
+        <button class="tab-button" data-tab="3dPrinting">3D Printing</button>
+      </div>
+
       <div class="blog-container">
         <a href="projects/wa-lch-origins.html">
-          <div class="blog-box hidden">
+          <div class="blog-box hidden project-item" data-category="games" data-year="2025">
             <div class="blog-img">
               <picture>
                 <source srcset="images/webp/WalchOrgins.webp" type="image/webp" />
-                <img alt="blog" src="images/WalchOrgins.png" />
+                <img alt="blog" src="images/WalchOrgins.png" loading="lazy" />
               </picture>
             </div>
 
@@ -219,11 +241,11 @@
         </a>
 
         <a href="projects/portfolio.html">
-          <div class="blog-box hidden">
+          <div class="blog-box hidden project-item" data-category="web" data-year="2025">
             <div class="blog-img">
               <picture>
                 <source srcset="images/webp/Portfolio.webp" type="image/webp" />
-                <img alt="blog" src="images/png/Portfolio.png" />
+                <img alt="blog" src="images/png/Portfolio.png" loading="lazy" />
               </picture>
             </div>
 
@@ -271,11 +293,11 @@
         </a>
 
         <a href="projects/merge-packing.html">
-          <div class="blog-box hidden">
+          <div class="blog-box hidden project-item" data-category="games" data-year="2025">
             <div class="blog-img">
               <picture>
                 <source srcset="images/webp/mergePacking.webp" type="image/webp" />
-                <img alt="blog" src="images/png/mergePacking.jpg" />
+                <img alt="blog" src="images/png/mergePacking.jpg" loading="lazy" />
               </picture>
             </div>
 
@@ -313,12 +335,12 @@
         </a>
 
         <a href="projects/wa-lch.html">
-          <div class="blog-box hidden">
+          <div class="blog-box hidden project-item" data-category="games" data-year="2024">
             <!--img---->
             <div class="blog-img">
               <picture>
                 <source srcset="images/webp/WA-LCH.webp" type="image/webp" />
-                <img alt="blog" src="images/png/WA-LCH.png" />
+                <img alt="blog" src="images/png/WA-LCH.png" loading="lazy" />
               </picture>
               <!-- <img alt="blog" src="images/WA-LCH.png" /> -->
             </div>
@@ -359,12 +381,12 @@
         </a>
 
         <a href="projects/you-only-have-one-box.html">
-          <div class="blog-box hidden">
+          <div class="blog-box hidden project-item" data-category="games" data-year="2024">
             <!--img---->
             <div class="blog-img">
               <picture>
                 <source srcset="images/webp/onlyOneblock.webp" type="image/webp" />
-                <img alt="blog" src="images/png/onlyOneblock.png" />
+                <img alt="blog" src="images/png/onlyOneblock.png" loading="lazy" />
               </picture>
               <!-- <img alt="blog" src="images/onlyOneblock.png" /> -->
             </div>
@@ -404,12 +426,12 @@
           </div>
         </a>
         <a href="projects/slimetastic-punchout.html">
-          <div class="blog-box hidden">
+          <div class="blog-box hidden project-item" data-category="games" data-year="2024">
             <!--img---->
             <div class="blog-img">
               <picture>
                 <source srcset="images/webp/SlimetasticPunchout.webp" type="image/webp" />
-                <img alt="blog" src="images/SlimetasticPunchout.png" />
+                <img alt="blog" src="images/SlimetasticPunchout.png" loading="lazy" />
               </picture>
               <!-- <img alt="blog" src="images/SlimetasticPunchout.png" /> -->
             </div>
@@ -448,6 +470,58 @@
             </div>
           </div>
         </a>
+
+        <a href="projects/3d-printing.html">
+          <div class="blog-box hidden project-item" data-category="3dPrinting" data-year="2025">
+            <div class="blog-img">
+              <picture>
+                <source srcset="images/webp/3dPrinting.webp" type="image/webp" />
+                <img alt="blog" src="images/png/3dPrinting.png" loading="lazy" />
+              </picture>
+            </div>
+
+            <div class="blog-text">
+              <span>2025</span>
+              <a href="projects/3d-printing.html" class="blog-title">Test 3D Printing</a>
+              <a href="projects/3d-printing.html">
+                <p data-i18n="projects.descriptionGame2">Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this</p>
+                <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
+                <ul class="cd-demo-chip-list" style="justify-content: left">
+                  <li>
+                    <span class="chip">
+                      <picture>
+                        <source srcset="images/webp/htmlLogo.webp" type="image/webp" />
+                        <img class="chip__img" src="images/png/" alt="Html Logo" loading="lazy" />
+                      </picture>
+
+                      <i class="chip__label">Creality</i>
+                    </span>
+                  </li>
+
+                  <!-- <li>
+                    <span class="chip">
+                      <picture>
+                        <source srcset="images/webp/cssLogo2.webp" type="image/webp" />
+                        <img class="chip__img" src="images/png/cssLogo2.png" alt="Css Logo" />
+                      </picture>
+                      <i class="chip__label">CSS</i>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="chip">
+                      <picture>
+                        <source srcset="images/webp/JavaScriptLogo.webp" type="image/webp" />
+                        <img class="chip__img" src="images/png/JavaScriptLogo.png" alt="JavaScript Logo" />
+                      </picture>
+                      <i class="chip__label">JavaScript</i>
+                    </span>
+                  </li> -->
+                </ul>
+              </a>
+              <a href="projects/3d-printing.html" data-i18n="projects.seeMore" class="blog-readmore">See More</a>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -478,7 +552,7 @@
                 <div class="title">GLU Game Developer</div>
                 <div class="badges">
                   <div class="skill" data-i18n="experience.education">education</div>
-                  <div class="skill">MBO</div>
+                  <div class="skill">MBO 4</div>
                 </div>
               </div>
               <div class="date">08.2023 - <span data-i18n="experience.present">Present</span></div>
@@ -495,28 +569,28 @@
                 <div class="badge">
                   <picture>
                     <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                    <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
+                    <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" loading="lazy" />
                   </picture>
                   Unity
                 </div>
                 <div class="badge">
                   <picture>
                     <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                    <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
+                    <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" loading="lazy" />
                   </picture>
                   C#
                 </div>
                 <div class="badge">
                   <picture>
                     <source srcset="images/webp/TrelloLogo.webp" type="image/webp" />
-                    <img class="chip__img" src="images/png/TrelloLogo.png" alt="Profile picture" />
+                    <img class="chip__img" src="images/png/TrelloLogo.png" alt="Profile picture" loading="lazy" />
                   </picture>
                   Scrum
                 </div>
                 <div class="badge">
                   <picture>
                     <source srcset="images/webp/GithubLogo.webp" type="image/webp" />
-                    <img class="chip__img" src="images/png/GithubLogo.png" alt="Profile picture" />
+                    <img class="chip__img" src="images/png/GithubLogo.png" alt="Profile picture" loading="lazy" />
                   </picture>
                   Git
                 </div>
@@ -631,7 +705,7 @@
         <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#105;&#101;&#108;&#115;&#100;&#101;&#108;&#97;&#97;&#116;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" class="fa fa-envelope fa-2xl icon"></a>
         <a href="https://nielscraft12.itch.io/" target="”_blank”" rel="noreferrer" class="fa fa-itch-io fa-2xl icon"></a>
         <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”" rel="noreferrer" class="fa fa-linkedin fa-2xl icon"></a>
-        <a href="/Documents/CV_Niels_de_Laat_portfolio.pdf" target="_blank" rel="noreferrer" title="Download my cv" class="fa fa-file-lines fa-2xl icon" data-cv-link data-i18n-title="cv.title"></a>
+        <a href="/Documents/Cv_Niels_de_Laat_Portfolio_EN.pdf" target="_blank" rel="noreferrer" title="Download my cv" class="fa fa-file-lines fa-2xl icon" data-cv-link data-i18n-title="cv.title"></a>
       </div>
     </section>
 
@@ -639,6 +713,7 @@
     <script defer src="js/main.js"></script>
     <script defer src="js/animation.js"></script>
     <script defer src="js/Experience.js"></script>
+    <script defer src="js/navbar-color-changer.js"></script>
     <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
   <footer>

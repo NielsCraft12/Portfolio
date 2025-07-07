@@ -19,8 +19,12 @@ export const mi = {
     //Projects
     seeMore: "Verlo mas",
     technologies: "Efflei",
+    allProjects: "Thyyou Kee",
+    games: "Spaghetti",
+    webProjects: "Website Thyyou",
+    recent: "Nuppan",
     descriptionGame1: "Via enta ta orb de a hobaha vandad robot, sola ko een ta nipfey wa-lch. Pelo ba",
-    descriptionGame2: "Ba tis ta website to're pryers viewing—a yin tiefun, multi-language runelm solave showcasing",
+    descriptionGame2: "Ba tis ta website to're pryers viewing a yin tiefun, multi-language runelm solave showcasing",
     descriptionGame3: "My packing tis a ars, quirky rehum spaghetti hagan fino a foop dex tug ane yee c#",
     descriptionGame4: "To nama lch, a vandad bot ben awakens da fey de hibernation bey nan itism ribnip",
     descriptionGame5: "A lotkaf 2d platformer donde tu solo taj tis a puplox caro. Nah lap ki yee tu",
@@ -53,7 +57,7 @@ export const mi = {
     whatIMadeTitle: "Whaat? ka mobla",
     slimetasticPunchout: {
       // Slimetastic Punchout
-      description: "Slimetastic punchout tis a chaotic yee agei got multiplayer spaghetti donde to nupi hottoe de colorful, squishy slimes yee uketav pik kapee een fast-paced arenas.  Ta up? coplo sim mublai tiles sim to pudum weebo sliding, bouncing, yee splattering tu via bodbag ta mopa.  Ghi ta via, to pudum briko tem ark punches da shove tu cutaa kapee de ta way—or sola gul vus dak tus spaghetti.  Alga ant tis unpredictable, lemo de laughter, yee a messy fipe nunu hottoe.  It's slimy elm ka ti obe!",
+      description: "Slimetastic punchout tis a chaotic yee agei got multiplayer spaghetti donde to nupi hottoe de colorful, squishy slimes yee uketav pik kapee een fast-paced arenas.  Ta up? coplo sim mublai tiles sim to pudum weebo sliding, bouncing, yee splattering tu via bodbag ta mopa.  Ghi ta via, to pudum briko tem ark punches da shove tu cutaa kapee de ta way or sola gul vus dak tus spaghetti.  Alga ant tis unpredictable, lemo de laughter, yee a messy fipe nunu hottoe.  It's slimy elm ka ti obe!",
       mobileMessage: "Da hopa slimetastic punchout, radbad ods ba piplo en a doegob",
 
       playerJoin: {
@@ -127,7 +131,7 @@ export const mi = {
         mergingLogicIntro: "My packing's emerax mechanic revolves woeod kexso do baywry ref enta a higher-tier koapro.  Ba tis ceeeye een ta objectmanager aboasp:",
       },
 
-      mergingLogicEnd: "Ta zeddol tiklop andred nunu askwee sprite waw, addeb solo da de ta colliding gunpea spawns ta daga dug, yee viarad ta yabu",
+      mergingLogicEnd: "Ta zeddol tiklop andred nunu askwee sprite waw, addeb solo da de ta colliding gunpea spawns ta daga dug een ta yidoka de ta 2 gunpea, yee viarad ta yabu",
 
       alien: {
         alienTitle: "Ta alien",
@@ -166,7 +170,7 @@ export const mi = {
     },
     walchOrigins: {
       //WA-LCH Origins
-      description: "made een ~30 als engvim a spaghetti gum gum (theme:“bubbles”) — hagan com ane yee c#.  " + "wa-lch origins tis a chaotic mini-cleanup adventure donde to hopa sim a janitor scrubbing cos hay yee trapping rogue moc tug bubble-based ha.  " + "built tabatt sumo spaghetti gum gum belyak, pik megxu player-controlled pubany yenhod, fasami tun, trap-based rat jibrip, yee a bubbly vandad mechanic. ",
+      description: "made een ~30 als engvim a spaghetti gum gum (theme:“bubbles”). Hagan com ane yee c#.  " + "wa-lch origins tis a chaotic mini-cleanup adventure donde to hopa sim a janitor scrubbing cos hay yee trapping rogue moc tug bubble-based ha.  " + "built tabatt sumo spaghetti gum gum belyak, pik megxu player-controlled pubany yenhod, fasami tun, trap-based rat jibrip, yee a bubbly vandad mechanic. ",
       mobileMessage: "Da hopa wa-lch origins, radbad ods ba piplo en a doegob",
 
       playerMovement: {
@@ -186,7 +190,8 @@ export const mi = {
 
       doorSystem: {
         doorSystemTitle: "Tun",
-        doorSystemPoint1: "Tun mac yee subo oseyag kan ta kidhaw layfor a nibyep al.  Prolab com a coroutine-like nabens wab een",
+        doorSystemPoint1: "Tun mac yee subo oseyag kan ta kan kidhaw sif npc's layfor a nibyep al.  Pik hmm ta gar da greebo ta gar plato da mac",
+        doorSystemPoint2: "Ta gar pen gin da ta mac yetsag yee waits nunu a ickfey wowhod de veela bidom tegli unama",
       },
 
       customTrailer: {
@@ -197,8 +202,8 @@ export const mi = {
 
     portfolio: {
       //Portfolio
-      portfolioDescription: "Ba tis ta website to're pryers viewing—a yin tiefun, " + "multi-language runelm solave showcasing mi spaghetti bahany thyyou, disell, yee amisex.  " + "it's hagan da ta atand aka tug html, css, yee javascript, com a err en interactivity, accessibility, yee a rod de coy",
-      whatIMadeStart: "Ba yoref wasn’t sola cama dubex a pepsuk site—it’s a lemo ayeboo.  Aca's Whaaat? ka hagan:",
+      portfolioDescription: "Ba tis ta website to're pryers viewing a yin tiefun, " + "multi-language runelm solave showcasing mi spaghetti bahany thyyou, disell, yee amisex.  " + "it's hagan da ta atand aka tug html, css, yee javascript, com a err en interactivity, accessibility, yee a rod de coy",
+      whatIMadeStart: "Ba yoref wasn’t sola cama dubex a pepsuk site, it’s a lemo ayeboo.  Aca's Whaaat? ka hagan:",
       homepage: {
         homePageTitle: "Camion piplo",
         homePagePoint1: "Bono marlex com bophid pinto, namcox shh mobpsi, yee disell listo",
@@ -216,7 +221,7 @@ export const mi = {
       },
       languageSupport: {
         languageSupportTitle: "Lingu amold",
-        languageSupportStart: "this website efpal lapwye yee zas, tug a lightweight tiefun sackae tiklop pak" + "totsim tadda zin wawurn piu data-i18n kisgam — no piplo reloads. ",
+        languageSupportStart: "this website efpal lapwye yee zas, tug a lightweight tiefun sackae tiklop pak" + "totsim tadda zin wawurn piu data-i18n kisgam. No piplo reloads. ",
         languageSupportPoint1: "Sixpoh lingu tis orkos een localstorage",
         languageSupportPoint2: "Bidlev is ahh bok da lapwye yee nama lobwar nunu jarfub",
         languageSupportPoint3: "Translations nama nogkex yee nested nunu modularity",
@@ -256,7 +261,7 @@ export const mi = {
 
   // CV file configuration
   cv: {
-    filePath: "/Documents/CV_Niels_de_Laat_portfolio_MI.pdf", // Using English version for Minionese
+    filePath: "/Documents/Cv_Niels_de_Laat_Portfolio_MI.pdf", // Using English version for Minionese
     title: "Tugmep mi CV",
   },
 };

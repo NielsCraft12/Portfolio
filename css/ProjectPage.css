@@ -55,12 +55,10 @@ body {
   margin-top: 0;
   padding-top: 0;
   text-decoration: none;
-  /* color: #fff; */
   color: #ff7e5f;
 }
 
 .credits:hover {
-  /* color: #ff7e5f; */
   color: #feb47b;
 }
 
@@ -88,13 +86,10 @@ h3 {
 }
 
 hr.roundedv {
-  /* display: flex;
-    justify-content: center; */
   border: none;
   /* Remove the border to show the gradient background */
   width: 4px;
   /* Set the width to match the previous border */
-  /* height: 80vh; */
   height: 1300px;
   /* Set the height to a vertical size */
   background: linear-gradient(to bottom, #ff7e5f, #feb47b);
@@ -168,14 +163,6 @@ hr.roundedv {
     white-space: pre-wrap;
     font-size: 14px;
   }
-
-  /* Mobile general list fixes */
-  /* ul:not(.project-list),
-  ol {
-    padding-left: 1.2em;
-    margin-left: 0;
-    margin-right: 0;
-  } */
 }
 
 .ScreenShots {
@@ -237,18 +224,6 @@ hr.roundedv {
 
 .modal-close:hover {
   color: #ff7e5f;
-}
-
-.GradiantTitle {
-  color: #ffffff;
-  /* Fallback */
-  /* background: -webkit-linear-gradient(#ff7e5f, #feb47b); */
-  /* background: -moz-linear-gradient(#ff7e5f, #feb47b); */
-  background: linear-gradient(#ff7e5f, #feb47b);
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 body {
@@ -357,15 +332,6 @@ body {
     font-size: 14px;
     line-height: 1.4;
   }
-
-  /* Ensure long text doesn't break layout */
-  /* p,
-  li,
-  div {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-width: 100%;
-  } */
 
   /* Make sure inline code doesn't break out */
   code:not(pre code) {
@@ -603,16 +569,6 @@ pre code {
   /* prevents text selection (if any) */
 }
 
-/* Text content overflow fixes */
-/* p,
-li,
-div {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  max-width: 100%;
-} */
-
 /* Ensure code snippets have proper scrolling */
 .language-csharp,
 .language-js,
@@ -633,21 +589,3 @@ code:not(pre code) {
   word-break: break-all;
   white-space: pre-wrap;
 }
-
-/* General ul/li styles to prevent cut-off */
-/* ul:not(.project-list) {
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  padding-left: 1.5em;
-  margin-left: 0;
-  box-sizing: border-box;
-} */
-
-/* li {
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  margin-bottom: 8px;
-  line-height: 1.6;
-} */

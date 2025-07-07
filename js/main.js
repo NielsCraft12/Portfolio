@@ -19,5 +19,134 @@ function updateAgeDisplay() {
   ageElement.textContent = calculateAge(birthday);
 }
 
+// Project Tab Functionality
+function initProjectTabs() {
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const projectItems = document.querySelectorAll(".project-item");
+  const blogContainer = document.querySelector(".blog-container");
+
+  // Immediately hide all projects to prevent flash
+  projectItems.forEach((item) => {
+    item.style.display = "none";
+  });
+
+  function filterProjects(category) {
+    let visibleCount = 0;
+    const maxProjects = 6;
+
+    projectItems.forEach((item) => {
+      const itemCategory = item.getAttribute("data-category");
+      const itemYear = parseInt(item.getAttribute("data-year"));
+      const currentYear = new Date().getFullYear();
+
+      let shouldShow = false;
+
+      if (category === "all") {
+        shouldShow = true;
+      } else if (category === "recent") {
+        shouldShow = itemYear >= currentYear - 1; // Show projects from current year and last year
+      } else {
+        shouldShow = itemCategory === category;
+      }
+
+      // Limit to maximum 6 projects
+      if (shouldShow && visibleCount < maxProjects) {
+        item.classList.remove("hidden-filter", "hidden");
+        item.classList.add("show");
+        item.style.display = "block";
+        item.style.transform = ""; // Clear any inline transform styles
+        visibleCount++;
+      } else {
+        item.classList.add("hidden-filter");
+        item.classList.remove("show");
+        item.style.display = "none";
+      }
+    });
+
+    // Handle single item centering with a direct approach
+    if (visibleCount === 1) {
+      // Set fixed width on the container for one item
+      blogContainer.style.maxWidth = "400px"; // Width of one card + some margin
+      blogContainer.style.margin = "0 auto"; // No top margin on container
+
+      // Find the visible anchor that contains the project
+      const visibleItems = Array.from(projectItems).filter((item) => !item.classList.contains("hidden-filter"));
+      if (visibleItems.length === 1) {
+        const parentLink = visibleItems[0].closest("a");
+        const projectItem = visibleItems[0];
+        if (parentLink) {
+          parentLink.style.width = "100%";
+          // Align with tabs with multiple cards by removing top margin
+          parentLink.style.marginTop = "-20px"; // Negative margin to compensate for the project-item's margin
+        }
+        if (projectItem) {
+          projectItem.style.marginTop = "5"; // Remove top margin on the project item
+        }
+      }
+    } else {
+      // Reset to normal layout for multiple items
+      blogContainer.style.maxWidth = "1560px";
+      blogContainer.style.margin = "20px auto";
+
+      // Reset any item-specific styles
+      document.querySelectorAll(".blog-container > a").forEach((link) => {
+        link.style.width = "";
+        link.style.marginTop = "";
+
+        // Also reset the project item styles
+        const projectItem = link.querySelector(".project-item");
+        if (projectItem) {
+          projectItem.style.marginTop = "";
+          projectItem.style.transform = ""; // Clear any inline transform
+        }
+
+        // Reset any transform styles on the blog-box
+        const blogBox = link.querySelector(".blog-box");
+        if (blogBox) {
+          blogBox.style.transform = ""; // Clear any inline transform to allow hover effects
+        }
+      });
+    }
+  }
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Remove active class from all buttons
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+
+      // Add active class to clicked button
+      button.classList.add("active");
+
+      // Filter projects based on selected tab
+      const category = button.getAttribute("data-tab");
+      filterProjects(category);
+    });
+  });
+
+  // Initialize with 'games' projects shown immediately
+  filterProjects("games");
+}
+//
+//
+//
+// navbar chang color on scroll
+//
+//
+//
+//
+
+// Function to walk up and find the first non-transparent background color
+
 // Update age display when the page loads
-window.onload = updateAgeDisplay;
+window.onload = function () {
+  updateAgeDisplay();
+  // Use requestAnimationFrame to ensure DOM is ready and make filtering instant
+  requestAnimationFrame(() => {
+    initProjectTabs();
+  });
+
+  //
+  //
+  //
+  //
+};

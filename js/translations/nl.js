@@ -12,7 +12,7 @@ export const nl = {
     // Home / about me
     welcome: "Hoi, ik ben Niels de Laat",
     ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, Nederland',
-    aboutMe: 'Ik ben een ontwikkelaar die ervan houdt om vermakelijke games te maken. Ik breng mijn ideeën tot leven met behulp van Unity en C# en ik geniet ervan om nieuwe en innovatieve benaderingen te leren. Als ik niet aan het programmeren ben, speel ik <a href="https://infinitebacklog.net/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">games</a> of kijk ik <a href="https://trakt.tv/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">films</a>.',
+    aboutMe: "Ik ben een spel ontwikkelaar die ervan houdt om vermakelijke games te maken. Ideeën worden tot leven gebracht met Unity en C#, en het leren van nieuwe en innovatieve benaderingen is iets wat boeiend blijft. Buiten het programmeren om gaat de tijd vaak naar games of films.",
     skills: "Vaardigheden",
   },
 
@@ -20,8 +20,12 @@ export const nl = {
     //Projects
     seeMore: "Bekijk meer",
     technologies: "Technologieën",
+    allProjects: "Alle Projecten",
+    games: "Games",
+    webProjects: "Web Projecten",
+    recent: "Recent",
     descriptionGame1: "Stap in de rol van een toegewijde schoonmaakrobot, net als in de originele WA-LCH. Maar dit",
-    descriptionGame2: "Dit is de website die je nu bekijkt — een volledig op maat gemaakte, meertalige ontwikkelaarsportfolio",
+    descriptionGame2: "Dit is de website die je nu bekijkt een volledig op maat gemaakte, meertalige ontwikkelaarsportfolio",
     descriptionGame3: "Merge Packing is een snelle, eigenaardige mobiele game gebouwd in een paar dagen met Unity en C#.",
     descriptionGame4: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron.",
     descriptionGame5: "Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je",
@@ -55,7 +59,7 @@ export const nl = {
     whatIMadeTitle: "Wat ik heb gemaakt",
     slimetasticPunchout: {
       // Slimetastic Punchout
-      description: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het uitvecht in snelle arena's. Het doel? Bedek zoveel mogelijk tegels terwijl je over de kaart glijdt, stuitert en spettert. Onderweg kun je wat stevige stoten landen om je tegenstanders uit de weg te duwen - of ze gewoon van hun stuk te brengen. Elke wedstrijd is onvoorspelbaar, zit vol met gelach en is een rommelige strijd om de controle. Het is slijmerige chaos op zijn best!",
+      description: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het uitvecht in snelle arena's. Het doel? Bedek zoveel mogelijk tegels terwijl je over de kaart glijdt, stuitert en spettert. Onderweg kun je wat stevige stoten landen om je tegenstanders uit de weg te duwen of ze gewoon van hun stuk te brengen. Elke wedstrijd is onvoorspelbaar, zit vol met gelach en is een rommelige strijd om de controle. Het is slijmerige chaos op zijn best!",
       mobileMessage: "Om Slimetastic Punchout te spelen, bezoek deze pagina op een computer.",
 
       playerJoin: {
@@ -150,7 +154,7 @@ export const nl = {
 
     walchOrigins: {
       //WA-LCH Origins
-      description: 'Gemaakt in ~30 uur tijdens een game jam (thema: "Bubbles") — gebouwd met Unity en C#. WA-LCH Origins is een chaotisch mini-opruimavontuur waarin je een schoonmaakrobot speelt die rommel' + "wegschrobt en ontsnapte ratten vangt met bubble-gereedschap. Volledig gemaakt onder game jam druk, met door de speler bestuurbare physics beweging, geanimeerde deuren, val-gebaseerde rattenverwijdering" + "en een bubbelige schoonmaakmechaniek.",
+      description: 'Gemaakt in ~30 uur tijdens een game jam (thema: "Bubbles"). Gebouwd met Unity en C#. WA-LCH Origins is een chaotisch mini-opruimavontuur waarin je een schoonmaakrobot speelt die rommel' + "wegschrobt en ontsnapte ratten vangt met bubble-gereedschap. Volledig gemaakt onder game jam druk, met door de speler bestuurbare physics beweging, geanimeerde deuren, val-gebaseerde rattenverwijdering" + "en een bubbelige schoonmaakmechaniek.",
       mobileMessage: "Om WA-LCH Origins te spelen, bezoek deze pagina op een computer.",
 
       playerMovement: {
@@ -170,7 +174,8 @@ export const nl = {
 
       doorSystem: {
         doorSystemTitle: "Deuren",
-        doorSystemPoint1: "Deuren openen en sluiten automatisch wanneer de speler een trigger zone in gaat. Beheerd met een coroutine-achtige update loop.",
+        doorSystemPoint1: "Deuren openen en sluiten automatisch wanneer de speler of NPC's een trigger zone betreden. Dit vertelt de deur om de deurstatus naar open te veranderen.",
+        doorSystemPoint2: "De deur beweegt dan naar de open positie en wacht een bepaalde tijd voordat hij weer sluit.",
       },
       customTrailer: {
         customTrailerTitle: "Zelfgemaakte Trailer",
@@ -187,7 +192,7 @@ export const nl = {
         mergingLogicIntro: "Merge Packing's primaire mechaniek draait om het combineren van twee identieke items tot een hoger-tier object. Dit wordt afgehandeld in het ObjectManager script:",
       },
 
-      mergingLogicEnd: "Het samenvoegingssysteem controleert op overeenkomende sprite-types, zorgt ervoor dat slechts één van de botsende objecten het nieuwe item spawnt, en verhoogt de score.",
+      mergingLogicEnd: "Het merge systeem controleert op overeenkomende sprite types, zorgt ervoor dat slechts één van de botsende objecten het nieuwe item spawnt in het midden van de 2 objecten, en verhoogt de score.",
 
       alien: {
         alienTitle: "De alien",
@@ -198,8 +203,8 @@ export const nl = {
 
     portfolio: {
       //Portfolio
-      portfolioDescription: "Dit is de website die je nu bekijkt — een volledig op maat gemaakte, meertalige ontwikkelaarsportfolio waarin ik mijn spelontwikkelingsprojecten," + "vaardigheden en persoonlijkheid laat zien.Deze is volledig zelf gebouwd met HTML, CSS en JavaScript, met de nadruk op interactiviteit, toegankelijkheid en een beetje humor.",
-      whatIMadeStart: "Dit project was meer dan alleen een statische website maken — het is een hele ervaring. Dit is wat ik heb gemaakt:",
+      portfolioDescription: "Dit is de website die je nu bekijkt een volledig op maat gemaakte, meertalige ontwikkelaarsportfolio waarin ik mijn spelontwikkelingsprojecten," + "vaardigheden en persoonlijkheid laat zien.Deze is volledig zelf gebouwd met HTML, CSS en JavaScript, met de nadruk op interactiviteit, toegankelijkheid en een beetje humor.",
+      whatIMadeStart: "Dit project was meer dan alleen een statische website maken, het is een hele ervaring. Dit is wat ik heb gemaakt:",
       homepage: {
         homePageTitle: "Thuispagina",
         homePagePoint1: "Overzichtelijke layout met profielfoto, dynamische leeftijdsweergave en vaardighedenlijst.",
@@ -217,7 +222,7 @@ export const nl = {
       },
       languageSupport: {
         languageSupportTitle: "Taalondersteuning",
-        languageSupportStart: "Deze website ondersteunt Engels en Nederlands, met een lichtgewicht zelfgemaakt vertalingssysteem dat alle " + "tekst direct bijwerkt via data-i18n attributen — zonder de pagina opnieuw te laden.",
+        languageSupportStart: "Deze website ondersteunt Engels en Nederlands, met een lichtgewicht zelfgemaakt vertalingssysteem dat alle " + "tekst direct bijwerkt via data-i18n attributen Zonder de pagina opnieuw te laden.",
         languageSupportPoint1: "Actieve taal wordt opgeslagen in localStorage",
         languageSupportPoint2: "Ontbrekende sleutels vallen terug op Engels en worden gemarkeerd voor debugging",
         languageSupportPoint3: "Vertalingen zijn gestructureerd en genest voor modulariteit",
@@ -258,7 +263,7 @@ export const nl = {
 
   // CV file configuration
   cv: {
-    filePath: "/Documents/CV_Niels_de_Laat_portfolio_NL.pdf",
+    filePath: "/Documents/Cv_Niels_de_Laat_Portfolio_NL.pdf",
     title: "Download mijn CV",
   },
 };

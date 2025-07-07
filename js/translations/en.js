@@ -20,8 +20,12 @@ export const en = {
     //Projects
     seeMore: "See More",
     technologies: "Technologies",
+    allProjects: "All Projects",
+    games: "Games",
+    webProjects: "Web",
+    recent: "Recent",
     descriptionGame1: "Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this",
-    descriptionGame2: "This is the website you're currently viewing—a fully custom, multi-language developer",
+    descriptionGame2: "This is the website you're currently viewing a fully custom, multi-language developer",
     descriptionGame3: "Merge Packing is a quick, quirky mobile game built over a few days using Unity and C#.",
     descriptionGame4: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source.",
     descriptionGame5: "A challenging 2D platformer where your only tool is a single box. Guide both yourself and your",
@@ -56,7 +60,7 @@ export const en = {
 
     slimetasticPunchout: {
       // Slimetastic Punchout
-      description: "Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It's slimy chaos at its best!",
+      description: "Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It's slimy chaos at its best!",
       mobileMessage: "To play Slimetastic Punchout, please visit this page on a computer.",
 
       playerJoin: {
@@ -152,7 +156,7 @@ export const en = {
 
     walchOrigins: {
       //WA-LCH Origins
-      description: "Made in ~30 hours during a game jam (theme:“Bubbles”) — built with Unity and C#. " + "WA-LCH Origins is a chaotic mini-cleanup adventure where you play as a janitor scrubbing away trash and trapping rogue rats using bubble-based tools. " + "Built entirely under game jam pressure, it features player-controlled physics movement, animated doors, trap-based rat removal, and a bubbly cleaning mechanic.",
+      description: "Made in ~30 hours during a game jam (theme:“Bubbles”). Built with Unity and C#. " + "WA-LCH Origins is a chaotic mini-cleanup adventure where you play as a janitor scrubbing away trash and trapping rogue rats using bubble-based tools. " + "Built entirely under game jam pressure, it features player-controlled physics movement, animated doors, trap-based rat removal, and a bubbly cleaning mechanic.",
       mobileMessage: "To play WA-LCH Origins, please visit this page on a computer.",
 
       playerMovement: {
@@ -172,7 +176,8 @@ export const en = {
 
       doorSystem: {
         doorSystemTitle: "Doors",
-        doorSystemPoint1: "Doors open and close automatically when the player enters a trigger zone. Managed with a coroutine-like update loop in.",
+        doorSystemPoint1: "Doors open and close automatically when the when player or npc's enters a trigger zone. It tells the door to change the door state to open.",
+        doorSystemPoint2: "The door then moves to the open position and waits for a certain amount of time before closing again.",
       },
       customTrailer: {
         customTrailerTitle: "Custom Trailer",
@@ -189,7 +194,7 @@ export const en = {
         mergingLogicIntro: "Merge Packing's primary mechanic revolves around combining two identical items into a higher-tier object. This is handled in the ObjectManager script:",
       },
 
-      mergingLogicEnd: "The merging system checks for matching sprite types, ensures only one of the colliding objects spawns the new item, and increases the score.",
+      mergingLogicEnd: "The merging system checks for matching sprite types, ensures only one of the colliding objects spawns the new item in the middle of the 2 objects, and increases the score.",
 
       alien: {
         alienTitle: "The alien",
@@ -200,8 +205,8 @@ export const en = {
 
     portfolio: {
       //Portfolio
-      portfolioDescription: "This is the website you're currently viewing—a fully custom, " + "multi-language developer portfolio showcasing my game development projects, skills, and personality. " + "It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.",
-      whatIMadeStart: "This project wasn’t just about creating a static site—it’s a full experience. Here's what I built:",
+      portfolioDescription: "This is the website you're currently viewing a fully custom, " + "multi-language developer portfolio showcasing my game development projects, skills, and personality. " + "It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.",
+      whatIMadeStart: "This project wasn’t just about creating a static site, it’s a full experience. Here's what I built:",
       homepage: {
         homePageTitle: "Home Page",
         homePagePoint1: "Clean layout with profile picture, dynamic age display, and skills list.",
@@ -219,7 +224,7 @@ export const en = {
       },
       languageSupport: {
         languageSupportTitle: "Language Support",
-        languageSupportStart: "This website supports English and Dutch, using a lightweight custom translation system " + "that updates all text instantly via data-i18n attributes — no page reloads.",
+        languageSupportStart: "This website supports English and Dutch, using a lightweight custom translation system " + "that updates all text instantly via data-i18n attributes. No page reloads.",
         languageSupportPoint1: "Active language is stored in localStorage",
         languageSupportPoint2: "Missing keys fall back to English and are highlighted for debugging",
         languageSupportPoint3: "Translations are structured and nested for modularity",
@@ -260,7 +265,7 @@ export const en = {
 
   // CV file configuration
   cv: {
-    filePath: "/Documents/CV_Niels_de_Laat_portfolio_EN.pdf",
+    filePath: "Documents/Cv_Niels_de_Laat_Portfolio_EN.pdf",
     title: "Download my CV",
   },
 };

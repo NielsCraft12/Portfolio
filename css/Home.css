@@ -145,14 +145,13 @@ nav {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
+  width: auto;
   height: 60px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   z-index: 1000;
   padding-right: 30px;
-  /* Add this line */
 }
 
 .links-container {
@@ -161,9 +160,8 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  width: 100%;
-  padding-right: 30px;
-  /* Add this line */
+  width: 88%;
+  padding-right: 0;
 }
 
 nav a {
@@ -243,6 +241,10 @@ nav a:hover {
     margin-top: 0px;
   }
 
+  nav {
+    width: auto;
+  }
+
   .links-container {
     flex-direction: column;
     align-items: center;
@@ -299,8 +301,8 @@ nav a:hover {
   }
 
   .language-btn .current-lang {
-    margin: 0 5px;
-    /* Add some space between text and icon */
+    margin: 0 1px 0 0;
+    /* Increased space between text and icon */
   }
 
   .language-menu {
@@ -363,11 +365,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked~.links-container {
+  #sidebar-active:checked ~ .links-container {
     right: 0;
   }
 
-  #sidebar-active:checked~#overlay {
+  #sidebar-active:checked ~ #overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -376,11 +378,11 @@ nav a:hover {
     z-index: 9;
   }
 
-  #sidebar-active:checked~.open-sidebar-button {
+  #sidebar-active:checked ~ .open-sidebar-button {
     display: none;
   }
 
-  #sidebar-active:checked~.links-container .close-sidebar-button {
+  #sidebar-active:checked ~ .links-container .close-sidebar-button {
     display: block;
     position: absolute;
     top: 10px;
@@ -388,7 +390,7 @@ nav a:hover {
     z-index: 11;
   }
 
-  #sidebar-active:not(:checked)~.close-sidebar-button {
+  #sidebar-active:not(:checked) ~ .close-sidebar-button {
     display: none;
   }
 
@@ -503,6 +505,10 @@ nav a:hover {
   min-width: fit-content;
   white-space: nowrap;
   padding-left: 20px;
+}
+
+.language-btn i.fa-caret-down {
+  margin-left: 8px; /* Additional spacing between text and arrow icon */
 }
 
 .language-menu li a {

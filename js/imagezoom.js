@@ -19,9 +19,9 @@ let lastFocusedElement = null;
 document.querySelectorAll(".ScreenShots").forEach((img) => {
   img.onclick = function () {
     lastFocusedElement = document.activeElement;
-    modal.style.display = "block";
+    modal.classList.add("show");
     modalImg.src = this.src;
-    modalImg.alt = this.alt || '';
+    modalImg.alt = this.alt || "";
     document.body.classList.add("modal-open"); // Prevent background scroll
     closeBtn.focus();
   };
@@ -29,9 +29,8 @@ document.querySelectorAll(".ScreenShots").forEach((img) => {
 
 // Close modal when clicking close button
 
-
 function closeModal() {
-  modal.style.display = "none";
+  modal.classList.remove("show");
   document.body.classList.remove("modal-open"); // Restore scroll
   if (lastFocusedElement) {
     lastFocusedElement.focus();
@@ -42,37 +41,41 @@ closeBtn.onclick = closeModal;
 
 // Close modal when clicking outside the image
 
-
 // Improved: close modal when clicking outside the image (even if modal has inner wrappers)
-modal.addEventListener('mousedown', function(event) {
-  // Only close if click is directly on the modal background, not on children (like the image or close button)
-  if (event.target === modal) {
-    closeModal();
+modal.addEventListener("mousedown", function (event) {
+  if (!modalImg.complete || modalImg.naturalWidth === 0) return;
+
+  const rect = modalImg.getBoundingClientRect();
+  const { naturalWidth, naturalHeight } = modalImg;
+  const elemAspect = rect.width / rect.height;
+  const imgAspect = naturalWidth / naturalHeight;
+
+  let left, right, top, bottom;
+  if (imgAspect > elemAspect) {
+    // Image fills width, letterbox top/bottom
+    const displayHeight = rect.width / imgAspect;
+    top = rect.top + (rect.height - displayHeight) / 2;
+    bottom = top + displayHeight;
+    left = rect.left;
+    right = rect.right;
+  } else {
+    // Image fills height, pillarbox left/right
+    const displayWidth = rect.height * imgAspect;
+    left = rect.left + (rect.width - displayWidth) / 2;
+    right = left + displayWidth;
+    top = rect.top;
+    bottom = rect.bottom;
   }
+
+  const { clientX: x, clientY: y } = event;
+  if (x < left || x > right || y < top || y > bottom) closeModal();
 });
 
 // Keyboard accessibility: ESC to close
-window.addEventListener('keydown', function(event) {
-  if (modal.style.display === "block") {
+window.addEventListener("keydown", function (event) {
+  if (modal.classList.contains("show")) {
     if (event.key === "Escape") {
       closeModal();
-    }
-    // Trap focus inside modal
-    if (event.key === "Tab") {
-      const focusable = [closeBtn];
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey) {
-        if (document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-      }
     }
   }
 });

@@ -12,19 +12,12 @@
   z-index: 2000;
 }
 
-#imageModal[style*="display: block"] {
+#imageModal.show {
   display: flex !important;
 }
 
-#imageModal img {
-  max-width: 90vw;
-  max-height: 90vh;
-  box-shadow: 0 0 24px #000;
-  cursor: auto;
-}
-
 /* Prevent interaction with all content except modal when modal is open */
-body.modal-open>*:not(#imageModal):not(script):not(style) {
+body.modal-open > *:not(#imageModal):not(script):not(style) {
   pointer-events: none !important;
   user-select: none !important;
 }
@@ -151,4 +144,16 @@ h6.missing-translation {
   white-space: nowrap;
   z-index: 1000;
   pointer-events: none;
+}
+
+.GradiantTitle {
+  color: #ffffff;
+  /* Fallback */
+  /* background: -webkit-linear-gradient(#ff7e5f, #feb47b); */
+  /* background: -moz-linear-gradient(#ff7e5f, #feb47b); */
+  background: linear-gradient(#ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

@@ -25,29 +25,32 @@
 
 .blog-container {
   max-width: 1560px;
-  /* Adjusted for 4 boxes of 350px + margins */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 20px auto;
   flex-wrap: wrap;
   gap: 20px;
 }
 
+/* Blog container styles are now handled dynamically by JavaScript */
+
+/* Style for the anchor elements (that contain blog-box) */
+/* Styling for anchor elements is now handled by JavaScript */
+
 .blog-box {
-  transition: transform 0.2s;
+  transition: transform 0.2s !important;
   /* Animation */
   width: 350px;
   background-color: #ffffff;
   border: 1px solid #ececec;
-  margin: 20px 20px;
   border-radius: 20px;
 }
 
 .blog-box:hover {
-  transition: transform 0.2s;
+  transition: transform 0.2s !important;
   /* Animation */
-  transform: scale(1.1);
+  transform: scale(1.1) !important;
 }
 
 .blog-img {
@@ -115,12 +118,82 @@
 
 .blog-text a:hover {
   color: #ff7e5f;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
+}
+
+/* Project Tabs */
+.project-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  background-color: transparent;
+  border: 2px solid #feb47b;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Baloo 2", cursive;
+  transition: all 0.5s ease;
+  outline: none;
+}
+
+.tab-button:hover {
+  background: linear-gradient(to left, #ff7e5f, #feb47b);
+  /* color: #1e1e1e; */
+  transform: translateY(-2px);
+}
+
+.tab-button.active {
+  background: linear-gradient(to left, #ff7e5f, #feb47b);
+  /* color: #1e1e1e; */
+  /* box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); */
+  box-shadow: 0 4px 5px #ff7e5f;
+}
+
+/* Project filtering */
+.project-item {
+  opacity: 1;
+  margin: 20px 20px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  visibility: visible;
+}
+
+.project-item.hidden-filter {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: scale(0.95);
+}
+
+/* Initial state - hide all projects until JavaScript loads */
+.project-item.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+}
+
+/* Show projects with smooth transition */
+.project-item.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 @media (max-width: 1250px) {
   .blog-box {
     width: 300px;
+  }
+
+  .blog-box:hover {
+    transform: scale(1); /* Disable scaling on hover for smaller screens */
   }
 
   #Projects {
@@ -131,6 +204,10 @@
 @media (max-width: 1100px) {
   .blog-box {
     width: 70%;
+  }
+
+  .blog-box:hover {
+    transform: scale(1); /* Disable scaling on hover for smaller screens */
   }
 
   #Projects {
@@ -144,6 +221,10 @@
     width: 100%;
   }
 
+  .blog-box:hover {
+    transform: scale(1); /* Disable scaling on hover for smallest screens */
+  }
+
   #blog {
     padding: 20px;
   }
@@ -154,10 +235,6 @@
 
   #Projects h1 {
     font-size: 30px;
-  }
-
-  .blog-box:hover {
-    transform: scale(1);
   }
 }
 
