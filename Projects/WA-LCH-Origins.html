@@ -4,7 +4,9 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
   <script
-    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    src="       <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
+      <a href="https://github.com/NielsCraft12" target="_blank" rel="noreferrer" class="fa fa-github fa-2xl icon"></a>   <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
+      <a href="https://github.com/NielsCraft12" target="_blank" rel="noreferrer" class="fa fa-github fa-2xl icon"></a>tps://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
 
 <head>
@@ -47,7 +49,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
   <!-- Favicon Settings for various platforms -->
   <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
@@ -108,13 +110,21 @@
         control. Rotation matches movement direction
         for an
         intuitive feel.</p>
-      <pre><code class="language-csharp">
-  rb.linearVelocity = new Vector3(
-    moveDirection.y * maxSpeed,
-    yVelocity,
-    moveDirection.x * maxSpeed
-);
-      </code></pre>
+
+      <div class="code-block">
+        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L106-#L117"
+          class="github-inline" target="_blank" title="View on GitHub">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">
+            rb.linearVelocity = new Vector3(
+              moveDirection.y * maxSpeed,
+              yVelocity,
+              moveDirection.x * maxSpeed
+          );
+                </code></pre>
+      </div>
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
         <source src="../videos/webm/WalchOrigins/WalchorginsMovement.webm" type="video/webm">
@@ -126,12 +136,19 @@
         particle effect and wipes nearby trash or rats from
         the scene.
         Using an OverlapSphere to detect the trash</p>
-      <pre><code class="language-csharp">
+      <div class="code-block">
+        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L205-L210"
+          class="github-inline" target="_blank" title="View on GitHub">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">
 Collider[] hitColliders = Physics.OverlapSphere(
     cleaningpoint.transform.position,
     cleaningRadius
 );
-</code></pre> <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+</code></pre>
+      </div> <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
         <source src="../videos/webm/WalchOrigins/walchOriginsCleaning.webm" type="video/webm">
       </video>
@@ -139,16 +156,24 @@ Collider[] hitColliders = Physics.OverlapSphere(
         style="display: block; margin: 20px auto; max-width: 100%; height: auto" loading="lazy" /> -->
       <h3 data-i18n="projectPages.walchOrigins.trapLaunching.trapLaunchingTitle" class="GradiantTitle subtitle">Trap
         Launching</h3>
-      <p data-i18n="projectPages.walchOrigins.trapLaunching.trapLaunchingPoint1">The player shoots traps on cooldown to
+      <p data-i18n="projectPages.walchOrigins.trapLaunching.trapLaunchingPoint1">The player shoots traps on cooldown
+        to
         deal with
         fast-moving rats.</p>
-      <pre><code class="language-csharp">
-        if (trapcooldownTimer &lt= 0)
+      <div class="code-block">
+        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L128-L137"
+          class="github-inline" target="_blank" title="View on GitHub">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">
+        if (trapcooldownTimer <= 0)
         {
            Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
            trapcooldownTimer = trapcooldown;
         }
         </code></pre>
+      </div>
       <!-- <img src="../images/gif/WalchOrigins/walchOriginsTraps.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 100%; height: auto" loading="lazy" />  -->
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
@@ -158,20 +183,34 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <h3 data-i18n="projectPages.walchOrigins.doorSystem.doorSystemTitle" class="GradiantTitle subtitle">Doors
       </h3>
       <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint1">Doors open and close automatically when the
-      when player or npc's enters a trigger zone. It tells the door to change the door state to open.</p>
+        when player or npc's enters a trigger zone. It tells the door to change the door state to open.</p>
 
+      <div class="code-block">
+        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L183-L193"
+          class="github-inline" target="_blank" title="View on GitHub">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
         <pre><code class="language-csharp">
             if (other.gameObject.CompareTag("Door"))
          {
-            if (other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving == false)
+            if (other.gameObject.GetComponent<DoorOpen>().Moving == false)
             {
-                other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving = true;
+                other.gameObject.GetComponent<DoorOpen>().Moving = true;
             }
          }
         </code></pre>
-      <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint2">The door then moves to the open position and
+      </div>
+      <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint2">The door then moves to the open position
+        and
         waits for a certain amount of time before closing again.</p>
-      <pre><code class="language-csharp">
+      <div class="code-block">
+        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/DoorOpen.cs#L39-L67"
+          class="github-inline" target="_blank" title="View on GitHub">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">
         void MoveDoor(Vector3 goalPos)
         {
             float dist = Vector3.Distance(transform.position, goalPos);
@@ -197,6 +236,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
             }
         }
         </code></pre>
+      </div>
       <!-- <img src="../images/gif/WalchOrigins/walchOriginsDoor.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy" /> -->
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif"
@@ -273,6 +313,10 @@ Collider[] hitColliders = Physics.OverlapSphere(
           alt="WA-LCH Origins Screenshot 3" loading="lazy" />
       </picture>
 
+      <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
+      <a href="https://github.com/NielsCraft12/ggj-walch2/tree/main/Assets/Scripts" target="”_blank”" rel="noreferrer"
+        class="fa fa-github fa-2xl icon"></a>
+
       <!-- Credits Section -->
       <!-- <h1 data-i18n="projectPages.credits" style="text-align: center; margin-top: 10px; margin-bottom: 0"
         class="GradiantTitle">Credits</h1>
@@ -323,62 +367,64 @@ Collider[] hitColliders = Physics.OverlapSphere(
       </ul>
     </div> -->
     </div>
-
-    <!-- Image Modal for Screenshots -->
-    <div id="imageModal" class="modal">
-      <span class="modal-close">&times;</span>
-      <img class="modal-content" id="modalImg" />
-    </div>
-    <script defer src="../js/imagezoom.js"></script>
-    <script type="module" src="../js/translate.js"></script>
-    <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-    <script>
-      // Lightweight video lazy loading
-      const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const video = entry.target;
-            if (video.paused) {
-              video.play().catch(e => console.log('Video autoplay failed:', e));
-            }
-            videoObserver.unobserve(video);
-          }
-        });
-      }, { threshold: 0.25 });
-
-      // Observe all videos on the page
-      document.querySelectorAll('video[autoplay]').forEach(video => {
-        video.pause(); // Pause initially
-        videoObserver.observe(video);
-      });
-    </script>
-</body>
-<footer>
-  <div class="footer" style="display: flex; align-items: center; position: relative">
-    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
-        preserveAspectRatio="xMidYMid meet" class="mi-icon">
-        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
-            -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
-            -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
-            -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
-            1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
-            0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
-            -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
-            -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
-            316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
-            123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
-            c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-            -1440 483 -149 19 -562 27 -710 15z" />
-        </g>
-      </svg>
-    </a>
-    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-    <script>
-      document.getElementById("copyright-year").textContent = new Date().getFullYear();
-    </script>
   </div>
-</footer>
+
+  <!-- Image Modal for Screenshots -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
+  <script defer src="../js/imagezoom.js"></script>
+  <script type="module" src="../js/translate.js"></script>
+  <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script>
+    // Lightweight video lazy loading
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          if (video.paused) {
+            video.play().catch(e => console.log('Video autoplay failed:', e));
+          }
+          videoObserver.unobserve(video);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    // Observe all videos on the page
+    document.querySelectorAll('video[autoplay]').forEach(video => {
+      video.pause(); // Pause initially
+      videoObserver.observe(video);
+    });
+  </script>
+
+  <footer>
+    <div class="footer" style="display: flex; align-items: center; position: relative">
+      <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
+          preserveAspectRatio="xMidYMid meet" class="mi-icon">
+          <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+            <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+                -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
+                -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
+                -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
+                1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
+                0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
+                -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
+                -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
+                316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
+                123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
+                c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
+                -1440 483 -149 19 -562 27 -710 15z" />
+          </g>
+        </svg>
+      </a>
+      <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+      <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+      </script>
+    </div>
+  </footer>
+</body>
 
 </html>

@@ -150,3 +150,12 @@ window.onload = function () {
   //
   //
 };
+
+
+
+
+var link = document.getElementById('email');
+link.onclick = function () {
+  this.href = "mailto:contact@nielsdelaat.com?subject=halloData&body=";
+  this.href += getBody();
+};

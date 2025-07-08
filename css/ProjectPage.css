@@ -25,14 +25,87 @@ body {
   padding: 20px;
   padding-top: 100px;
   min-width: 200px;
-  justify-content: left;
-  align-items: left;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .SideBar a {
   width: 100%;
   display: block;
   text-align: center;
+}
+
+/* Contact button styling for GitHub icon */
+.fa-github {
+  border-radius: 20px;
+  background: #551a8b !important;
+  color: white !important;
+}
+
+.icon {
+  padding: 20px;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.icon:hover {
+  opacity: 0.7;
+}
+
+.fa-linkedin {
+  border-radius: 20px;
+  background: #007bb5;
+  color: white;
+}
+
+.fa-itch-io {
+  border-radius: 20px;
+  background: #dd4a4a;
+  color: white;
+}
+
+.fa-envelope {
+  border-radius: 20px;
+  background: #55acee;
+  color: white;
+}
+
+.fa-file-lines {
+  border-radius: 20px;
+  background: #55acee;
+  color: white;
+}
+
+.socal-media-buttons {
+  font-size: 30px;
+  gap: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-divider {
+  width: 10vw;
+  margin-top: 20px;
+}
+
+/* Override SideBar width for icons to work properly */
+.SideBar a.icon {
+  width: 70px !important;
+  height: 70px !important;
+  display: inline-block !important;
+  margin: 0 auto;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
 }
 
 .divider {
@@ -422,6 +495,27 @@ pre code {
   word-wrap: normal;
 }
 
+.code-header {
+  background: #2d2d2d;
+  /* match Prism theme background */
+  color: #ccc;
+  padding: 0.4em 1em;
+  font-family: monospace;
+  font-size: 0.9em;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+.code-header a {
+  color: #58a6ff;
+  text-decoration: none;
+  float: right;
+}
+
+.code-header a:hover {
+  text-decoration: underline;
+}
+
 /* Mobile-optimized game container styles */
 .game-container {
   width: 100%;
@@ -588,4 +682,42 @@ pre code {
 code:not(pre code) {
   word-break: break-all;
   white-space: pre-wrap;
+}
+
+/* Container for positioning */
+.code-block {
+  position: relative;
+  margin: 1.5em 0;
+}
+
+/* GitHub button styling */
+.github-inline {
+  position: absolute;
+  top: 0.5em;
+  right: 0.8em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: #000;
+  /* solid black background */
+  color: #fff;
+  font-size: 0.75em;
+  font-family: monospace;
+  padding: 0.3em 0.7em;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Hover effect */
+.github-inline:hover {
+  background: #111;
+  transform: scale(1.05);
+}
+
+/* Font Awesome icon size */
+.github-inline i {
+  font-size: 1em;
 }

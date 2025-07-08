@@ -19,42 +19,28 @@
   <div class="container">
     <h1>404</h1>
     <picture>
-      <source id="webpSource" type="image/webp" onerror="this.srcset=''" />
-      <img id="myPicture" style="opacity: 0" alt="404 error image" />
+      <source id="webpSource" type="image/webp" />
+      <img id="myPicture" alt="404 error image" />
     </picture>
     <p class="message" id="randomText"></p>
     <a href="/" data-i18n="error404.returnHome">Return Home</a>
   </div>
 
   <script>
+    // Generate random number immediately
+    const randomNum = Math.floor(Math.random() * 8); // 8 images total
+
+    // Set up image paths
+    const myPixWebp = ["../images/webp/404Images/player-dead.webp", "../images/webp/404Images/player-sticker.webp", "../images/webp/404Images/roomba-bomb-sticker.webp", "../images/webp/404Images/slimeKing.webp", "../images/webp/404Images/slime.webp", "../images/webp/404Images/punchingslimes.webp", "../images/webp/404Images/Gayliensticker.webp", "../images/webp/404Images/DinoSticker.webp"];
+    const myPixPng = ["../images/png/404Images/player-dead.png", "../images/png/404Images/player-sticker.png", "../images/png/404Images/roomba-bomb-sticker.png", "../images/png/404Images/slimeKing.png", "../images/png/404Images/slime.png", "../images/png/404Images/punchingslimes.png", "../images/png/404Images/Gayliensticker.png", "../images/png/404Images/DinoSticker.png"];
+    const translate = ["error404.playerDead", "error404.player", "error404.roombaBomb", "error404.slimeKing", "error404.slime", "error404.punchingSlimes", "error404.gaylien", "error404.dino"];
+
+    // Set image sources immediately
+    document.getElementById("webpSource").srcset = myPixWebp[randomNum];
+    document.getElementById("myPicture").src = myPixPng[randomNum];
+
     document.addEventListener("DOMContentLoaded", function () {
-      const myPixWebp = ["../images/webp/404Images/player-dead.webp", "../images/webp/404Images/player-sticker.webp", "../images/webp/404Images/roomba-bomb-sticker.webp", "../images/webp/404Images/slimeKing.webp", "../images/webp/404Images/slime.webp", "../images/webp/404Images/punchingslimes.webp", "../images/webp/404Images/Gayliensticker.webp", "../images/webp/404Images/DinoSticker.webp"];
-
-      const myPixPng = ["../images/png/404Images/player-dead.png", "../images/png/404Images/player-sticker.png", "../images/png/404Images/roomba-bomb-sticker.png", "../images/png/404Images/slimeKing.png", "../images/png/404Images/slime.png", "../images/png/404Images/punchingslimes.png", "../images/png/404Images/Gayliensticker.png", "../images/png/404Images/DinoSticker.png"];
-
-      const translate = ["error404.playerDead", "error404.player", "error404.roombaBomb", "error404.slimeKing", "error404.slime", "error404.punchingSlimes", "error404.gaylien", "error404.dino"];
-
-      const randomNum = Math.floor(Math.random() * myPixWebp.length);
-      const webpSource = document.getElementById("webpSource");
-      const myPicture = document.getElementById("myPicture");
       const randomText = document.getElementById("randomText");
-
-      // Load both images to verify they exist
-      const webpImg = new Image();
-      const pngImg = new Image();
-
-      webpImg.onerror = function () {
-        // If WebP fails, ensure we use PNG
-        webpSource.srcset = "";
-        myPicture.src = myPixPng[randomNum];
-      };
-
-      webpImg.onload = function () {
-        webpSource.srcset = myPixWebp[randomNum];
-        myPicture.src = myPixPng[randomNum];
-      };      // Start loading WebP
-      webpImg.src = myPixWebp[randomNum];
-      myPicture.style.opacity = "1";
       randomText.setAttribute("data-i18n", translate[randomNum]);
 
       // Wait for translation module to load and then update content

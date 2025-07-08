@@ -130,6 +130,12 @@
   }
 }
 
+.fa-github {
+  border-radius: 20px;
+  background: #551a8b;
+  color: white;
+}
+
 .icon {
   padding: 20px;
   width: 30px;

@@ -1,184 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Character encoding and viewport settings -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad." />
-    <title>Portfolio</title>
+<head>
+  <!-- Character encoding and viewport settings -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Default Highlight.js css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-    <!-- Remove old Highlight.js theme reference -->
-    <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
+  <meta name="description"
+    content="Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad." />
+  <title>Portfolio</title>
 
-    <!-- External Resources -->
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <!-- Default Highlight.js css -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <!-- Remove old Highlight.js theme reference -->
+  <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
 
-    <!-- Stylesheet Links -->
-    <link href="../css/style.css" rel="stylesheet" />
-    <link href="../css/ProjectPage.css" rel="stylesheet" />
-    <link href="../css/Home.css" rel="stylesheet" />
-    <link href="../css/prism.css" rel="stylesheet" />
+  <!-- External Resources -->
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Stylesheet Links -->
+  <link href="../css/style.css" rel="stylesheet" />
+  <link href="../css/ProjectPage.css" rel="stylesheet" />
+  <link href="../css/Home.css" rel="stylesheet" />
+  <link href="../css/prism.css" rel="stylesheet" />
 
-    <!-- Favicon Settings for various platforms -->
-    <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
-    <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
+  <!-- Favicon Settings for various platforms -->
+  <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+
+  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script> -->
-    <!-- <script
+  <!-- <script
     src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script> -->
 
-    <style>
-      /* CSS custom property for the spoiler tooltip text */
-      :root {
-        --spoiler-tooltip-text: "Click to reveal spoiler";
-      }
+  <style>
+    /* CSS custom property for the spoiler tooltip text */
+    :root {
+      --spoiler-tooltip-text: "Click to reveal spoiler";
+    }
 
-      .spoiler-container {
-        position: relative;
-        display: inline-block;
-        margin-bottom: 16px;
-        /* Add gap between spoiler boxes */
-      }
+    .spoiler-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 16px;
+      /* Add gap between spoiler boxes */
+    }
 
-      .spoiler-cover {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-        cursor: pointer;
-        border-radius: 4px;
-        opacity: 1;
-        transition: opacity 0.5s ease;
-        pointer-events: auto;
-      }
+    .spoiler-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+      cursor: pointer;
+      border-radius: 4px;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      pointer-events: auto;
+    }
 
-      .spoiler-cover.hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
+    .spoiler-cover.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
 
-      /* Tooltip Styles */
-      .spoiler-cover::after {
-        content: var(--spoiler-tooltip-text);
-        position: absolute;
-        bottom: 110%;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #222;
-        color: #fff;
-        padding: 6px 10px;
-        font-size: 12px;
-        border-radius: 4px;
-        white-space: nowrap;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
+    /* Tooltip Styles */
+    .spoiler-cover::after {
+      content: var(--spoiler-tooltip-text);
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #222;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
 
-      .spoiler-cover:hover::after {
-        opacity: 1;
-      }
+    .spoiler-cover:hover::after {
+      opacity: 1;
+    }
 
-      /* Desktop layout for 404 images */
+    /* Desktop layout for 404 images */
+    .portfolio-404-images {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+
+    .portfolio-404-images picture {
+      flex: 1;
+      max-width: 33%;
+    }
+
+    .portfolio-404-images picture img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Mobile layout for 404 images */
+    @media (max-width: 768px) {
       .portfolio-404-images {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
-        gap: 20px;
-        flex-wrap: nowrap;
+        gap: 15px;
       }
 
       .portfolio-404-images picture {
-        flex: 1;
-        max-width: 33%;
+        width: 90%;
+        max-width: 768px;
       }
 
       .portfolio-404-images picture img {
-        width: 100%;
+        width: 100% !important;
         height: auto;
       }
+    }
+  </style>
+</head>
 
-      /* Mobile layout for 404 images */
-      @media (max-width: 768px) {
-        .portfolio-404-images {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 15px;
-        }
-
-        .portfolio-404-images picture {
-          width: 90%;
-          max-width: 768px;
-        }
-
-        .portfolio-404-images picture img {
-          width: 100% !important;
-          height: auto;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- Navigation Menu -->
-    <nav>
-      <input type="checkbox" id="sidebar-active" />
-      <label for="sidebar-active" class="open-sidebar-button">
-        <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+<body>
+  <!-- Navigation Menu -->
+  <nav>
+    <input type="checkbox" id="sidebar-active" />
+    <label for="sidebar-active" class="open-sidebar-button">
+      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+    </label>
+    <label id="overlay" for="sidebar-active"></label>
+    <div class="links-container">
+      <label for="sidebar-active" class="close-sidebar-button">
+        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
-      <label id="overlay" for="sidebar-active"></label>
-      <div class="links-container">
-        <label for="sidebar-active" class="close-sidebar-button">
-          <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
-        </label>
-        <a data-i18n="nav.home" class="home-link" href="../">Home</a>
-        <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
-        <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
-        <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
-        <div class="language-switcher">
-          <button class="language-btn">
-            <span class="current-lang">English</span>
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <ul class="language-menu">
-            <li><a href="#" data-lang="en">English</a></li>
-            <li><a href="#" data-lang="nl">Nederlands</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Main Content Container -->
-    <div class="containerProject">
-      <!-- Project Description Section -->
-      <div class="Main-Content">
-        <h1 class="GradiantTitle title">Portfolio</h1>
-        <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
-        <p data-i18n="projectPages.portfolio.portfolioDescription">This is the website you're currently viewing a fully custom, multi-language developer portfolio showcasing my game development projects, skills, and personality. It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.</p>
-        <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
-        <p data-i18n="projectPages.portfolio.whatIMadeStart">This project wasn’t just about creating a static site, it’s a full experience. Here's what I built:</p>
-        <h3 data-i18n="projectPages.portfolio.homepage.homePageTitle" class="GradiantTitle subtitle">Home Page</h3>
-        <ul class="project-list">
-          <li data-i18n="projectPages.portfolio.homepage.homePagePoint1">Clean layout with profile picture, dynamic age display, and skills list.</li>
-          <li data-i18n="projectPages.portfolio.homepage.homePagePoint2">Fully responsive design using Flexbox and custom media queries.</li>
+      <a data-i18n="nav.home" class="home-link" href="../">Home</a>
+      <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
+      <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
+      <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
+      <div class="language-switcher">
+        <button class="language-btn">
+          <span class="current-lang">English</span>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <ul class="language-menu">
+          <li><a href="#" data-lang="en">English</a></li>
+          <li><a href="#" data-lang="nl">Nederlands</a></li>
         </ul>
-        <pre><code class="language-js code-snippet">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <div class="containerProject">
+    <!-- Project Description Section -->
+    <div class="Main-Content">
+      <h1 class="GradiantTitle title">Portfolio</h1>
+      <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
+      <p data-i18n="projectPages.portfolio.portfolioDescription">This is the website you're currently viewing a fully
+        custom, multi-language developer portfolio showcasing my game development projects, skills, and personality.
+        It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and
+        a touch of humor.</p>
+      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
+      <p data-i18n="projectPages.portfolio.whatIMadeStart">This project wasn’t just about creating a static site, it’s a
+        full experience. Here's what I built:</p>
+      <h3 data-i18n="projectPages.portfolio.homepage.homePageTitle" class="GradiantTitle subtitle">Home Page</h3>
+      <ul class="project-list">
+        <li data-i18n="projectPages.portfolio.homepage.homePagePoint1">Clean layout with profile picture, dynamic age
+          display, and skills list.</li>
+        <li data-i18n="projectPages.portfolio.homepage.homePagePoint2">Fully responsive design using Flexbox and custom
+          media queries.</li>
+      </ul>
+      <pre><code class="language-js code-snippet">
           // JavaScript that dynamically calculates and displays my age
           function calculateAge(birthday) {
             const today = new Date();
@@ -195,37 +206,51 @@
             return age;
         }
 </code></pre>
-        <h3 data-i18n="projectPages.portfolio.projectsPage.projectsPageTitle" class="GradiantTitle subtitle">Projects Page</h3>
+      <h3 data-i18n="projectPages.portfolio.projectsPage.projectsPageTitle" class="GradiantTitle subtitle">Projects Page
+      </h3>
+      <ul class="project-list">
+        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint1">Each project is presented in a card
+          format with hover effects.</li>
+        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint2">Displays project year, title, thumbnail,
+          brief description, and tech stack.</li>
+        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint3">Clicking a project opens a detailed page
+          with:</li>
         <ul class="project-list">
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint1">Each project is presented in a card format with hover effects.</li>
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint2">Displays project year, title, thumbnail, brief description, and tech stack.</li>
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint3">Clicking a project opens a detailed page with:</li>
-          <ul class="project-list">
-            <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint31">Embedded trailer</li>
-            <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint32">Full description of my contributions</li>
-            <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint33">Screenshots that can be enlarged</li>
-            <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint34">Playable game (if supported)</li>
-          </ul>
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint31">Embedded trailer</li>
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint32">Full description of my contributions
+          </li>
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint33">Screenshots that can be enlarged</li>
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint34">Playable game (if supported)</li>
         </ul>
+      </ul>
 
-        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy" style="width: 100%; max-width: 600px; height: auto">
-          <source src="../videos/webm/Portfolio/ScreenshotShow.webm" type="video/webm" alt="Screenshot demonstration" />
-        </video>
-        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy" style="width: 100%; max-width: 300px; height: auto; margin-top: 10px">
-          <source src="../videos/webm/Portfolio/ProjectCard.webm" type="video/webm" alt="Project card animation" />
-        </video>
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="width: 100%; max-width: 600px; height: auto">
+        <source src="../videos/webm/Portfolio/ScreenshotShow.webm" type="video/webm" alt="Screenshot demonstration" />
+      </video>
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="width: 100%; max-width: 300px; height: auto; margin-top: 10px">
+        <source src="../videos/webm/Portfolio/ProjectCard.webm" type="video/webm" alt="Project card animation" />
+      </video>
 
-        <h3 data-i18n="projectPages.portfolio.languageSupport.languageSupportTitle" class="GradiantTitle subtitle">Language Support</h3>
-        <p data-i18n="projectPages.portfolio.languageSupport.languageSupportStart" style="margin-bottom: 10px">This website supports English and Dutch, using a lightweight custom translation system that updates all text instantly via data-i18n attributes. No page reloads.</p>
-        <ul class="project-list">
-          <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint1">Active language is stored in localStorage</li>
-          <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint2">Missing keys fall back to English and are highlighted for debugging</li>
-          <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint3">Translations are structured and nested for modularity</li>
-        </ul>
-        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy" style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-          <source src="../videos/webm/Portfolio/Taranslate.webm" type="video/webm" alt="translate demonstration" />
-        </video>
-        <pre><code class="language-js">
+      <h3 data-i18n="projectPages.portfolio.languageSupport.languageSupportTitle" class="GradiantTitle subtitle">
+        Language Support</h3>
+      <p data-i18n="projectPages.portfolio.languageSupport.languageSupportStart" style="margin-bottom: 10px">This
+        website supports English and Dutch, using a lightweight custom translation system that updates all text
+        instantly via data-i18n attributes. No page reloads.</p>
+      <ul class="project-list">
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint1">Active language is stored in
+          localStorage</li>
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint2">Missing keys fall back to English
+          and are highlighted for debugging</li>
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint3">Translations are structured and
+          nested for modularity</li>
+      </ul>
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+        <source src="../videos/webm/Portfolio/Taranslate.webm" type="video/webm" alt="translate demonstration" />
+      </video>
+      <pre><code class="language-js">
       // handling translations
       function handleMissingTranslation(element, key, lang) 
       {
@@ -244,25 +269,29 @@
     );
         </code></pre>
 
-        <h3 data-i18n="projectPages.portfolio.error404.error404PageTitle" class="GradiantTitle subtitle">Custom 404 Page</h3>
-        <p data-i18n="projectPages.portfolio.error404.error404PagePoint1" style="margin-bottom: 10px">Lost visitors get a custom error page that displays a random character from one of my games with a matching fun message. Images load in either WebP or fallback PNG formats based on browser support. <a href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">click here</a> to view the 404 page.</p>
+      <h3 data-i18n="projectPages.portfolio.error404.error404PageTitle" class="GradiantTitle subtitle">Custom 404 Page
+      </h3>
+      <p data-i18n="projectPages.portfolio.error404.error404PagePoint1" style="margin-bottom: 10px">Lost visitors get a
+        custom error page that displays a random character from one of my games with a matching fun message. Images load
+        in either WebP or fallback PNG formats based on browser support. <a href="../404-page-not-found.html"
+          rel="noopener noreferrer" class="credits">click here</a> to view the 404 page.</p>
 
-        <div class="portfolio-404-images">
-          <picture>
-            <source srcset="../images/webp/ProjectImages/Portfolio/404Image1.webp" type="image/webp" />
-            <img src="../images/png/ProjectImages/Portfolio/404Image1.png" alt="Profile picture" />
-          </picture>
-          <picture>
-            <source srcset="../images/webp/ProjectImages/Portfolio/404Image2.webp" type="image/webp" />
-            <img src="../images/png/ProjectImages/Portfolio/404Image2.png" alt="Profile picture" />
-          </picture>
-          <picture>
-            <source srcset="../images/webp/ProjectImages/Portfolio/404Image3.webp" type="image/webp" />
-            <img src="../images/png/ProjectImages/Portfolio/404Image3.png" alt="Profile picture" />
-          </picture>
-        </div>
+      <div class="portfolio-404-images">
+        <picture>
+          <source srcset="../images/webp/ProjectImages/Portfolio/404Image1.webp" type="image/webp" />
+          <img src="../images/png/ProjectImages/Portfolio/404Image1.png" alt="Profile picture" />
+        </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectImages/Portfolio/404Image2.webp" type="image/webp" />
+          <img src="../images/png/ProjectImages/Portfolio/404Image2.png" alt="Profile picture" />
+        </picture>
+        <picture>
+          <source srcset="../images/webp/ProjectImages/Portfolio/404Image3.webp" type="image/webp" />
+          <img src="../images/png/ProjectImages/Portfolio/404Image3.png" alt="Profile picture" />
+        </picture>
+      </div>
 
-        <!-- <h3 data-i18n="projectPages.portfolio.easterEggs.easterEggsTitle" class="GradiantTitle subtitle">Easter Eggs</h3>
+      <!-- <h3 data-i18n="projectPages.portfolio.easterEggs.easterEggsTitle" class="GradiantTitle subtitle">Easter Eggs</h3>
         <p data-i18n="projectPages.portfolio.easterEggs.easterEggsPoint1" style="margin-bottom: 16px">Try to find them. No Time? click on the boxes below to reveal the Easter eggs.</p>
         <ul class="project-list">
           <div class="spoiler-container" onclick="toggleSpoiler(this)">
@@ -280,60 +309,65 @@
           </div>
         </ul> -->
 
-        <h3 data-i18n="projectPages.portfolio.technologies.technologiesTitle" class="GradiantTitle subtitle">Technologies Used</h3>
-        <ul class="project-list">
-          <li data-i18n="projectPages.portfolio.technologies.technologiesPoint1">HTML5 + semantic structure</li>
-          <li data-i18n="projectPages.portfolio.technologies.technologiesPoint2">Custom CSS (no frameworks)</li>
-          <li data-i18n="projectPages.portfolio.technologies.technologiesPoint3">JavaScript (vanilla ES6)</li>
-          <li data-i18n="projectPages.portfolio.technologies.technologiesPoint4">The <code class="language-html" style="font-size: 20px">&lt;picture&gt;</code> element enables format-aware image loading.</li>
-        </ul>
-      </div>
+      <h3 data-i18n="projectPages.portfolio.technologies.technologiesTitle" class="GradiantTitle subtitle">Technologies
+        Used</h3>
+      <ul class="project-list">
+        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint1">HTML5 + semantic structure</li>
+        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint2">Custom CSS (no frameworks)</li>
+        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint3">JavaScript (vanilla ES6)</li>
+        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint4">The <code class="language-html"
+            style="font-size: 20px">&lt;picture&gt;</code> element enables format-aware image loading.</li>
+      </ul>
+    </div>
 
-      <!-- <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1> -->
-      <!-- <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden"> -->
-      <!-- <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="">
+    <!-- <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1> -->
+    <!-- <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden"> -->
+    <!-- <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="">
             <a href="https://joahvds.itch.io/walch-origins">Play WA-LCH Origins on itch.io</a>
           </iframe> -->
-      <!-- </div> -->
-      <!-- <div class="mobile-message">
+    <!-- </div> -->
+    <!-- <div class="mobile-message">
           <p data-i18n="walchOriginsMobileMessage">To play WA-LCH Origins, please visit this page on a computer.</p>
         </div> -->
 
-      <!-- Visual Divider -->
-      <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
-        <hr class="roundedv" style="height: 100%; margin: 0" />
-        <!-- <hr class="roundedv mobile-divider" /> -->
-      </div>
+    <!-- Visual Divider -->
+    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
+      <hr class="roundedv" style="height: 100%; margin: 0" />
+      <!-- <hr class="roundedv mobile-divider" /> -->
+    </div>
 
-      <div class="divider mobile-divider">
-        <hr class="roundedv" />
-      </div>
+    <div class="divider mobile-divider">
+      <hr class="roundedv" />
+    </div>
 
-      <!-- Sidebar Content -->
-      <div class="SideBar" style="height: max-content">
-        <!-- Trailer Section -->
-        <!-- <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
+    <!-- Sidebar Content -->
+    <div class="SideBar" style="height: max-content">
+      <!-- Trailer Section -->
+      <!-- <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
         <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
           <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="https://www.youtube.com/embed/z1rAx_g-JZI?si=OWBI3CY6Af5n6Iyw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
         </div> -->
 
-        <!-- Screenshots Section -->
-        <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">Screenshots</h1>
-        <picture>
-          <source srcset="../images/webp/Portfolio.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/Portfolio.png" alt="Profile picture" />
-        </picture>
-        <picture>
-          <source srcset="../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot1.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/ProjectScreenShots/Portfolio/portfolioScreenshot1.png" alt="Profile picture" />
-        </picture>
-        <picture>
-          <source srcset="../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot2.webp" type="image/webp" />
-          <img class="ScreenShots" src="../images/png/ProjectScreenShots/Portfolio/portfolioScreenshot2.png" alt="Profile picture" />
-        </picture>
+      <!-- Screenshots Section -->
+      <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">
+        Screenshots</h1>
+      <picture>
+        <source srcset="../images/webp/Portfolio.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/Portfolio.png" alt="Profile picture" />
+      </picture>
+      <picture>
+        <source srcset="../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot1.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/Portfolio/portfolioScreenshot1.png"
+          alt="Profile picture" />
+      </picture>
+      <picture>
+        <source srcset="../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot2.webp" type="image/webp" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/Portfolio/portfolioScreenshot2.png"
+          alt="Profile picture" />
+      </picture>
 
-        <!-- Credits Section -->
-        <!-- <ul class="cd-demo-chip-list">
+      <!-- Credits Section -->
+      <!-- <ul class="cd-demo-chip-list">
         <li>
           <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
             <span class="chip">
@@ -343,27 +377,27 @@
           </a>
         </li>
       </ul>  -->
-      </div>
     </div>
+  </div>
 
-    <!-- Image Modal for Screenshots -->
-    <div id="imageModal" class="modal">
-      <span class="modal-close">&times;</span>
-      <img class="modal-content" id="modalImg" />
-    </div>
+  <!-- Image Modal for Screenshots -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
 
-    <script defer src="../js/imagezoom.js"></script>
-    <script type="module" defer src="../js/translate.js"></script>
-    <script defer src="../js/prism.js"></script>
-    <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  </body>
-  <footer>
-    <div class="footer" style="display: flex; align-items: center; position: relative">
-      <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
-          <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-            <path
-              d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+  <script defer src="../js/imagezoom.js"></script>
+  <script type="module" defer src="../js/translate.js"></script>
+  <script defer src="../js/prism.js"></script>
+  <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+<footer>
+  <div class="footer" style="display: flex; align-items: center; position: relative">
+    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
+      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
+        preserveAspectRatio="xMidYMid meet" class="mi-icon">
+        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
             -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
             -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
             -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
@@ -374,21 +408,21 @@
             316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
             123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
             c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-            -1440 483 -149 19 -562 27 -710 15z"
-            />
-          </g>
-        </svg>
-      </a>
-      <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-      <script>
-        document.getElementById("copyright-year").textContent = new Date().getFullYear();
-      </script>
-      <script>
-        function toggleSpoiler(container) {
-          const cover = container.querySelector(".spoiler-cover");
-          cover.classList.toggle("hidden");
-        }
-      </script>
-    </div>
-  </footer>
+            -1440 483 -149 19 -562 27 -710 15z" />
+        </g>
+      </svg>
+    </a>
+    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+    <script>
+      document.getElementById("copyright-year").textContent = new Date().getFullYear();
+    </script>
+    <script>
+      function toggleSpoiler(container) {
+        const cover = container.querySelector(".spoiler-cover");
+        cover.classList.toggle("hidden");
+      }
+    </script>
+  </div>
+</footer>
+
 </html>
