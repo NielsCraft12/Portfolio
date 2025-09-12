@@ -1,3 +1,36 @@
+/* CSS Custom Properties (Variables) */
+:root {
+  /* Primary Colors */
+  --primary-bg: #1e1e1e;
+  --primary-text: #ffffff;
+  --secondary-text: #fff;
+
+  /* Gradient Colors */
+  --gradient-start: #ff7e5f;
+  --gradient-end: #feb47b;
+
+  /* Icon Colors */
+  --icon-default: #1b1b1b;
+  --icon-active: #ffffff;
+
+  /* Modal Colors */
+  --modal-bg: rgba(0, 0, 0, 0.85);
+  --modal-disabled-opacity: 0.5;
+
+  /* Scrollbar Colors */
+  --scrollbar-track: transparent;
+
+  /* Error/Missing Translation Colors */
+  --error-bg: rgba(255, 0, 0, 0.2);
+  --error-border: #ff4444;
+  --error-text: #ff6666;
+  --error-icon: #ff4444;
+
+  /* Tooltip Colors */
+  --tooltip-bg: #333;
+  --tooltip-text: white;
+}
+
 /* iOS Safari viewport fixes */
 html {
   overflow-x: hidden;
@@ -9,7 +42,7 @@ html {
 }
 
 body {
-  background-color: #1e1e1e;
+  background-color: var(--primary-bg);
   overflow-x: hidden;
   font-family: "Baloo 2", cursive;
   overflow: hidden;
@@ -56,7 +89,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--modal-bg);
   display: none;
   justify-content: center;
   align-items: center;
@@ -68,7 +101,7 @@ body {
 }
 
 /* Prevent interaction with all content except modal when modal is open */
-body.modal-open>*:not(#imageModal):not(script):not(style) {
+body.modal-open > *:not(#imageModal):not(script):not(style) {
   pointer-events: none !important;
   user-select: none !important;
 }
@@ -83,7 +116,7 @@ body.modal-open nav,
 body.modal-open #overlay {
   pointer-events: none !important;
   user-select: none !important;
-  opacity: 0.5;
+  opacity: var(--modal-disabled-opacity);
 }
 
 * {
@@ -93,7 +126,7 @@ body.modal-open #overlay {
 
 p,
 .project-list {
-  color: #fff;
+  color: var(--secondary-text);
   font-size: 22px;
   word-spacing: 2px;
 }
@@ -105,7 +138,7 @@ hr.rounded {
   /* Remove the border to show the gradient background */
   height: 8px;
   /* Set the height to match the previous border */
-  background: linear-gradient(to left, #ff7e5f, #feb47b);
+  background: linear-gradient(to left, var(--gradient-start), var(--gradient-end));
   /* Gradient from left to right */
   border-radius: 5px;
   width: 80vw;
@@ -114,13 +147,13 @@ hr.rounded {
 }
 
 .mi-icon {
-  color: #1b1b1b;
+  color: var(--icon-default);
 }
 
 [data-lang="mi"].active .mi-icon,
 [data-lang="mi"].active path {
-  color: #ffffff;
-  fill: #ffffff !important;
+  color: var(--icon-active);
+  fill: var(--icon-active) !important;
 }
 
 ::-webkit-scrollbar {
@@ -128,19 +161,19 @@ hr.rounded {
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to left, #ff7e5f, #feb47b);
+  background: linear-gradient(to left, var(--gradient-start), var(--gradient-end));
   border-radius: 10px;
 }
 
 /* Missing Translation Styles */
 .missing-translation {
-  background: rgba(255, 0, 0, 0.2) !important;
-  border: 2px dashed #ff4444 !important;
-  color: #ff6666 !important;
+  background: var(--error-bg) !important;
+  border: 2px dashed var(--error-border) !important;
+  color: var(--error-text) !important;
   padding: 2px 4px !important;
   border-radius: 4px !important;
   position: relative !important;
@@ -152,7 +185,7 @@ hr.rounded {
 .missing-translation::before {
   content: "⚠️ ";
   font-size: 0.8em;
-  color: #ff4444 !important;
+  color: var(--error-icon) !important;
 }
 
 /* Specific styling for heading tags */
@@ -175,8 +208,8 @@ h6.missing-translation {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #333;
-  color: white;
+  background: var(--tooltip-bg);
+  color: var(--tooltip-text);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
@@ -186,11 +219,11 @@ h6.missing-translation {
 }
 
 .GradiantTitle {
-  color: #ffffff;
+  color: var(--primary-text);
   /* Fallback */
-  /* background: -webkit-linear-gradient(#ff7e5f, #feb47b); */
-  /* background: -moz-linear-gradient(#ff7e5f, #feb47b); */
-  background: linear-gradient(#ff7e5f, #feb47b);
+  /* background: -webkit-linear-gradient(var(--gradient-start), var(--gradient-end)); */
+  /* background: -moz-linear-gradient(var(--gradient-start), var(--gradient-end)); */
+  background: linear-gradient(var(--gradient-start), var(--gradient-end));
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;

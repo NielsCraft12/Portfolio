@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
 
   <!-- Favicon Settings for various platforms -->
   <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
@@ -81,7 +81,7 @@
   <div class="containerProject">
     <!-- Project Description Section -->
     <div class="Main-Content">
-      <h1 class="GradiantTitle title">WA-LCH</h1>
+      <h1 class="GradiantTitle title">Mage With Rage</h1>
       <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
       <p data-i18n="projectPages.walch.description">You are LCH, a cleaning bot who awakens from years of hibernation
         by an unknown source. Your
@@ -106,11 +106,6 @@
         <li data-i18n="projectPages.walch.proceduralLevelGen.proceduralLevelGenPoint3">Maze-like structure via
           backtracking algorithm.</li>
       </ul>
-              <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L10-L34" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
       <pre><code class="language-csharp">
           public class Cell
           {
@@ -136,19 +131,10 @@
                   return x >= minPosition.x && x &lt;= maxPosition.x && y >= minPosition.y && y &lt;= maxPosition.y;
     }
 }</code></pre>
-      </div>
-              <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L105-L109" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
-      <pre><code class="language-csharp">
-    if (generatorRooms == 0 && j == size.y && i == size.x) {
-    int randomGenRoom = UnityEngine.Random.Range(3, 5);
-    newRoom = Instantiate(rooms[randomGenRoom].room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
-}</code></pre>
-      </div>
- <img src="/images/png/ProjectImages/Walch/walchGen.png" alt=""
+
+      <pre><code class="language-csharp">if (generatorRooms == 0 && j == size.y && i == size.x) {
+    // Force generator room at the end
+}</code></pre> <img src="/images/png/ProjectImages/Walch/walchGen.png" alt=""
         style="display: block; margin: 20px auto; max-width: 60%; height: auto" loading="lazy">
 
       <h3 data-i18n="projectPages.walch.qte.qteTitle" class="GradiantTitle subtitle">Generator Activation via QTE</h3>
@@ -157,21 +143,9 @@
           (QTEs)</strong>.
         These are skill checks using keys (E, R, T or controller equivalents).
       </p>
-                    <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L177-L180" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
       <pre><code class="language-csharp">if ((qteGen == 1 && key == "E") || (qteGen == 2 && key == "R") || (qteGen == 3 && key == "T")) {
     correctKey = 1;
 }</code></pre>
-      </div>
-
-                    <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L224-L244" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
 
       <pre><code class="language-csharp">IEnumerator CountDown()
 {
@@ -182,7 +156,6 @@
         active = false;
     }
 }</code></pre>
-      </div>
       <!-- <img src="/images/gif/Walch/walchQte.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy"> -->
 
@@ -197,14 +170,7 @@
         When collected, they update the game state and
         trigger sound
         effects.</p>
-
-                <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/CleanigPod.cs#L16-L24" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
-      <pre><code class="language-csharp">
-        private void OnTriggerEnter(Collider other)
+      <pre><code class="language-csharp">private void OnTriggerEnter(Collider other)
 {
     if (other.gameObject.CompareTag("Player"))
     {
@@ -213,7 +179,6 @@
         gameManagerScript.cleanigPodsPickedUp++;
     }
 }</code></pre>
-      </div>
       <!-- <img src="/images/gif/Walch/walchCLean.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy"> -->
 
@@ -226,13 +191,7 @@
         Dynamic Room Behavior</h3>
       <p data-i18n="projectPages.walch.dynamicRoomBehavior.dynamicRoomBehaviorIntro">Each room updates its doors and
         walls based on neighboring connections.</p>
-                <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/RoomBehaviour.cs#L11-L22" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
-      <pre><code class="language-csharp">
-        public void UpdateRoom(bool[] status)
+      <pre><code class="language-csharp">public void UpdateRoom(bool[] status)
 {
     for (int i = 0; i &lt; status.Length; i++)
     {
@@ -240,7 +199,6 @@
         walls[i].SetActive(!status[i]);
     }
 }</code></pre>
-      </div>
       <!-- <img src="/images/gif/Walch/walchRooms.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy"> -->
 
@@ -304,10 +262,6 @@
         <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot3.png"
           alt="Profile picture" />
       </picture>
-
-                   <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
-      <a href="https://github.com/NielsCraft12/WA-LCH/tree/main/Assets/Developers/Niels" target="”_blank”" rel="noreferrer"
-        class="fa fa-github fa-2xl icon"></a>
       <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot1.png" alt="screen shot of the game" />
         <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot2.png" alt="screen shot of the game" />
         <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot3.png" alt="screen shot of the game" /> -->
