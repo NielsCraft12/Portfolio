@@ -1,7 +1,13 @@
 /* Global overflow prevention */
-html,
+html {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  max-width: 100%;
+}
+
 body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
   max-width: 100%;
 }
 
@@ -15,9 +21,9 @@ body {
   grid-template-areas: "Main-Content divider SideBar";
   gap: 20px;
   padding: 20px;
-  height: 100%;
+  min-height: auto;
   max-width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .SideBar {
@@ -118,7 +124,7 @@ body {
   padding-left: 5%;
   padding-right: 5%;
   max-width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .credits {
@@ -172,71 +178,7 @@ hr.roundedv {
   margin-bottom: 0;
 }
 
-@media screen and (max-width: 768px) {
-  .containerProject {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "Main-Content"
-      "divider"
-      "SideBar";
-    padding: 10px;
-  }
-
-  .Main-Content {
-    padding-left: 5%;
-    padding-right: 5%;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
-  .SideBar {
-    padding: 20px;
-    padding-top: 20px;
-    /* Center sidebar content on mobile */
-    text-align: center;
-    margin: 0 auto;
-    width: 90%;
-    /* Control width on mobile */
-  }
-
-  hr.roundedv {
-    width: 80%;
-    height: 4px;
-    margin: 20px auto;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-  }
-
-  /* Mobile code block optimizations */
-  pre {
-    padding: 0.8rem;
-    margin: 1rem 0;
-    font-size: 14px;
-    border-radius: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  pre code {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-
-  /* Ensure long text doesn't break layout */
-  p,
-  li,
-  div {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-width: 100%;
-  }
-
-  /* Make sure inline code doesn't break out */
-  code:not(pre code) {
-    word-break: break-all;
-    white-space: pre-wrap;
-    font-size: 14px;
-  }
-}
+/* Duplicate mobile styles removed - consolidated into main mobile media query below */
 
 .ScreenShots {
   width: 100%;
@@ -304,6 +246,21 @@ body {
   margin: 0 auto;
 }
 
+/* Mobile-first responsive body width */
+@media screen and (max-width: 768px) {
+  body {
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+}
+
 .mobile-message {
   display: none;
   text-align: center;
@@ -359,29 +316,63 @@ body {
   }
 
   .containerProject {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "Main-Content"
-      "divider"
-      "SideBar";
+    display: block;
     padding: 10px;
+    gap: 0;
   }
 
   .Main-Content {
+    grid-area: unset;
     padding-left: 5%;
     padding-right: 5%;
     max-width: 100%;
-    overflow-x: auto;
+    overflow-x: hidden;
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    grid-area: unset;
+    padding-top: 0;
   }
 
   .SideBar {
+    grid-area: unset;
     padding: 20px;
     padding-top: 20px;
     /* Center sidebar content on mobile */
     text-align: center;
     margin: 0 auto;
-    width: 90%;
-    /* Control width on mobile */
+    width: 100%;
+    /* Full width on mobile */
+    max-width: 100%;
+    min-width: unset;
+    /* Remove min-width constraint on mobile */
+  }
+
+  /* Ensure iframe responsiveness on mobile */
+  .SideBar iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure all potentially wide elements are contained */
+  img,
+  video,
+  iframe,
+  embed,
+  object {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Force container elements to not exceed viewport */
+  .containerProject,
+  .Main-Content,
+  .SideBar,
+  .divider {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
   }
 
   hr.roundedv {
@@ -404,6 +395,15 @@ body {
   pre code {
     font-size: 14px;
     line-height: 1.4;
+  }
+
+  /* Ensure long text doesn't break layout */
+  p,
+  li,
+  div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 
   /* Make sure inline code doesn't break out */
@@ -483,14 +483,16 @@ pre {
   margin: 1rem 0;
   border-radius: 8px;
   background-color: #1e1e1e;
+  /* Prevent code blocks from affecting page layout */
+  contain: layout;
 }
 
 pre code {
   overflow-x: auto;
   white-space: pre;
   display: block;
-  width: max-content;
-  min-width: 100%;
+  width: 100%;
+  min-width: auto;
   min-height: 100px;
   word-wrap: normal;
 }
