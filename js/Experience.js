@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let touchEndX = 0;
   const sections = Array.from(contentSections);
   const positions = [];
-  const container = document.querySelector('.experience-container'); // Add this line
+  const container = document.querySelector(".experience-container"); // Add this line
 
   // Create slider points based on content sections
   sections.forEach((section, index) => {
@@ -92,36 +92,48 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleTouchMove(e) {
-    touchEndX = e.touches[0].clientX;
-    // Prevent scrolling while swiping
-    if (Math.abs(touchEndX - touchStartX) > 10) {
+    const touch = e.touches[0];
+    touchEndX = touch.clientX;
+    const currentY = touch.clientY;
+    // Determine horizontal vs vertical intent
+    const deltaX = touchEndX - touchStartX;
+    // Store initial Y on first move
+    if (typeof handleTouchMove.startY === "undefined") {
+      handleTouchMove.startY = currentY;
+    }
+    const deltaY = currentY - handleTouchMove.startY;
+    // Only prevent default when it's a horizontal swipe (reduces blocking vertical scroll)
+    if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
       e.preventDefault();
     }
   }
 
   function handleTouchEnd() {
     const swipeDistance = touchEndX - touchStartX;
-    if (Math.abs(swipeDistance) > 50) { // Minimum swipe distance
+    // Reset stored startY for next gesture
+    delete handleTouchMove.startY;
+    if (Math.abs(swipeDistance) > 50) {
+      // Minimum swipe distance
       if (swipeDistance > 0) {
-        navigateSlider('prev'); // Swipe right goes to previous
+        navigateSlider("prev"); // Swipe right goes to previous
       } else {
-        navigateSlider('next'); // Swipe left goes to next
+        navigateSlider("next"); // Swipe left goes to next
       }
     }
   }
 
   // Add touch events to both slider and container if they exist
-  [slider, container].filter(Boolean).forEach(element => {
-    element.addEventListener('touchstart', handleTouchStart);
-    element.addEventListener('touchmove', handleTouchMove);
-    element.addEventListener('touchend', handleTouchEnd);
+  [slider, container].filter(Boolean).forEach((element) => {
+    element.addEventListener("touchstart", handleTouchStart);
+    element.addEventListener("touchmove", handleTouchMove);
+    element.addEventListener("touchend", handleTouchEnd);
   });
 
   // Add touch events to content sections as well
-  contentSections.forEach(section => {
-    section.addEventListener('touchstart', handleTouchStart);
-    section.addEventListener('touchmove', handleTouchMove);
-    section.addEventListener('touchend', handleTouchEnd);
+  contentSections.forEach((section) => {
+    section.addEventListener("touchstart", handleTouchStart);
+    section.addEventListener("touchmove", handleTouchMove);
+    section.addEventListener("touchend", handleTouchEnd);
   });
 
   certificateIcons.forEach((icon) => {
@@ -160,20 +172,20 @@ document.addEventListener("DOMContentLoaded", function () {
     contentSections.forEach((section, i) => {
       if (i === index) {
         // Remove any existing slide classes
-        section.classList.remove('slide-left', 'slide-right');
+        section.classList.remove("slide-left", "slide-right");
         // Add the appropriate slide class based on navigation direction
-        section.classList.add(previousIndex > index ? 'slide-right' : 'slide-left');
+        section.classList.add(previousIndex > index ? "slide-right" : "slide-left");
 
         // Force a reflow to ensure the animation plays
         void section.offsetWidth;
 
         // Add active class and remove slide class
         section.classList.add("active");
-        section.classList.remove('slide-left', 'slide-right');
+        section.classList.remove("slide-left", "slide-right");
       } else {
         // Slide out in the opposite direction
-        if (section.classList.contains('active')) {
-          section.classList.add(previousIndex > index ? 'slide-left' : 'slide-right');
+        if (section.classList.contains("active")) {
+          section.classList.add(previousIndex > index ? "slide-left" : "slide-right");
         }
         section.classList.remove("active");
       }

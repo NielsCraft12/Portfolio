@@ -45,7 +45,7 @@ body {
   background-color: var(--primary-bg);
   overflow-x: hidden;
   font-family: "Baloo 2", cursive;
-  overflow: hidden;
+  overflow-y: auto;
   /* Fix for iOS Safari white space */
   position: relative;
   min-height: 100vh;
@@ -63,6 +63,7 @@ body {
 /* Additional iOS viewport fixes */
 @media screen and (max-device-width: 480px) {
   body {
+    overflow-y: auto;
     -webkit-text-size-adjust: none;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -75,6 +76,7 @@ body {
   /* Prevent iOS Safari from adding extra space */
   html,
   body {
+    overflow-y: auto;
     overflow-x: hidden;
     position: relative;
     width: 100%;

@@ -123,6 +123,9 @@
 
   .socal-media-buttons {
     margin-bottom: 20px;
+    gap: 15px;
+    font-size: 25px;
+    flex-wrap: wrap;
   }
 
   #Contact h1 {
