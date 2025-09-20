@@ -1,3 +1,23 @@
+/* Layout Shift Prevention */
+* {
+  /* Prevent unexpected layout changes */
+  box-sizing: border-box;
+}
+
+/* Prevent layout shifts from font loading */
+body {
+  font-display: swap;
+}
+
+/* Reserve space for common elements that cause layout shifts */
+img,
+video,
+iframe {
+  /* Provide dimensions to prevent layout shifts */
+  max-width: 100%;
+  height: auto;
+}
+
 /* CSS Custom Properties (Variables) */
 :root {
   /* Primary Colors */
@@ -159,16 +179,57 @@ hr.rounded {
 }
 
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 15px !important;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
+  background: #1e1e1e !important;
+  background-color: #1e1e1e !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to left, var(--gradient-start), var(--gradient-end));
-  border-radius: 10px;
+  background: linear-gradient(to left, #ff7e5f, #feb47b) !important;
+  background-color: #ff7e5f !important;
+  border-radius: 10px !important;
+}
+
+/* Ensure rounded corners for scrollbar on mobile and tablet */
+@media (max-width: 1024px) {
+  * ::-webkit-scrollbar-thumb,
+  html ::-webkit-scrollbar-thumb,
+  body ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to left, #ff7e5f, #feb47b) !important;
+    border-radius: 10px !important;
+    background-clip: padding-box !important;
+    border: 3px solid transparent !important;
+  }
+
+  * ::-webkit-scrollbar,
+  html ::-webkit-scrollbar,
+  body ::-webkit-scrollbar,
+  ::-webkit-scrollbar {
+    width: 15px !important;
+  }
+}
+
+/* Add universal fallback for scrollbar styles */
+@media (max-width: 1024px) {
+  html {
+    scrollbar-width: thin !important;
+    scrollbar-color: linear-gradient(to left, #ff7e5f, #feb47b) #1e1e1e !important;
+  }
+
+  * {
+    scrollbar-width: thin !important;
+    scrollbar-color: linear-gradient(to left, #ff7e5f, #feb47b) #1e1e1e !important;
+  }
+}
+
+/* Fallback for Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #ff7e5f #1e1e1e;
 }
 
 /* Missing Translation Styles */

@@ -18,10 +18,10 @@ export const mi = {
   projects: {
     //Projects
     seeMore: "Verlo mas",
-    technologies: "Efflei",
+    technologies: "Efflei:",
     allProjects: "Thyyou Kee",
     games: "Spaghetti",
-    webProjects: "Website Thyyou",
+    webProjects: "Web",
     recent: "Nuppan",
     descriptionGame1: "Via enta ta orb de a hobaha vandad robot, sola ko een ta nipfey wa-lch. Pelo ba",
     descriptionGame2: "Ba tis ta website to're pryers viewing a yin tiefun, multi-language runelm solave showcasing",
@@ -55,6 +55,7 @@ export const mi = {
     developers: "Nitaye",
     artists: "Bowale",
     whatIMadeTitle: "Whaat? ka mobla",
+    viewOnGitHub: '<i class="fab fa-github"></i> Eel en github',
     slimetasticPunchout: {
       // Slimetastic Punchout
       description: "Slimetastic punchout tis a chaotic yee agei got multiplayer spaghetti donde to nupi hottoe de colorful, squishy slimes yee uketav pik kapee een fast-paced arenas.  Ta up? coplo sim mublai tiles sim to pudum weebo sliding, bouncing, yee splattering tu via bodbag ta mopa.  Ghi ta via, to pudum briko tem ark punches da shove tu cutaa kapee de ta way or sola gul vus dak tus spaghetti.  Alga ant tis unpredictable, lemo de laughter, yee a messy fipe nunu hottoe.  It's slimy elm ka ti obe!",

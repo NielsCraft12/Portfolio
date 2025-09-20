@@ -10,35 +10,269 @@
     content="You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon." />
   <title>WA-LCH</title>
 
-  <!-- Default Highlight.js css -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-  <!-- Remove old Highlight.js theme reference -->
-  <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
-  <!-- External Resources -->
-  <!-- jQuery library -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
+  <!-- Google Fonts - async loaded -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+  </noscript>
 
-  <!-- Prism.js for syntax highlighting -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
+  <!-- Lightweight CSS loading polyfill -->
+  <script>
+    if (!('onload' in document.createElement('link'))) {
+      document.querySelectorAll('link[media="print"]').forEach(l => l.media = 'all');
+    }
+  </script>
 
-  <!-- Stylesheet Links -->
-  <link href="../css/style.css" rel="stylesheet" />
-  <link href="../css/ProjectPage.css" rel="stylesheet" />
-  <link href="../css/Home.css" rel="stylesheet" />
-  <link href="../css/prism.css" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
+  <!-- Critical CSS inlined for faster rendering -->
+  <style>
+    /* Critical above-the-fold styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-bg: #1e1e1e;
+      --primary-text: #ffffff;
+      --gradient-start: #ff7e5f;
+      --gradient-end: #feb47b;
+    }
+
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--primary-bg);
+      overflow-x: hidden;
+      font-family: "Baloo 2", cursive;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      color: var(--primary-text);
+    }
+
+    /* Critical navigation styles */
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: auto;
+      height: 60px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 1000;
+      padding-right: 30px;
+    }
+
+    /* Critical container layout styles */
+    .containerProject {
+      display: grid;
+      grid-template-columns: 3fr min-content 1fr;
+      grid-template-areas: "Main-Content divider SideBar";
+      gap: 20px;
+      padding: 20px;
+      margin-top: 60px;
+      min-height: calc(100vh - 60px);
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .Main-Content {
+      grid-area: Main-Content;
+    }
+
+    .SideBar {
+      grid-area: SideBar;
+      padding: 20px;
+      padding-top: 100px;
+      min-width: 200px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .links-container {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      width: 88%;
+      padding-right: 0;
+    }
+
+    .GradiantTitle {
+      background: linear-gradient(to left, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    /* iOS safe area support */
+    @supports (-webkit-touch-callout: none) {
+      nav {
+        padding-top: env(safe-area-inset-top);
+        padding-right: max(30px, env(safe-area-inset-right));
+        top: 0;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        right: auto;
+        justify-content: flex-end;
+      }
+    }
+
+    /* Critical mobile responsive styles */
+    @media screen and (max-width: 950px) {
+      .containerProject {
+        display: block;
+        padding: 10px;
+        gap: 0;
+        margin-top: 60px;
+      }
+
+      .Main-Content {
+        grid-area: unset;
+        padding-left: 5%;
+        padding-right: 5%;
+        max-width: 100%;
+        overflow-x: hidden;
+        margin-bottom: 20px;
+      }
+
+      .SideBar {
+        grid-area: unset;
+        padding: 20px;
+        padding-top: 20px;
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        min-width: unset;
+      }
+    }
+
+    /* Critical text and layout styles */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--primary-text);
+      font-family: "Baloo 2", cursive;
+      margin: 1rem 0;
+    }
+
+    p {
+      color: var(--primary-text);
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    a {
+      color: var(--primary-text);
+      text-decoration: none;
+    }
+
+    /* Ensure images don't cause layout shifts */
+    img,
+    video,
+    iframe {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Basic button and link styles */
+    .icon {
+      padding: 20px;
+      width: 70px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border-radius: 20px;
+    }
+  </style>
+
+  <!-- Non-critical stylesheets loaded asynchronously -->
+  <link href="../css/style.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="../css/ProjectPage.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="../css/Home.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="../css/prism.css" rel="stylesheet" media="print" onload="this.media='all'" />
+
+  <!-- Noscript fallbacks -->
+  <noscript>
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/ProjectPage.css" rel="stylesheet" />
+    <link href="../css/Home.css" rel="stylesheet" />
+    <link href="../css/prism.css" rel="stylesheet" />
+  </noscript>
+
+  <!-- Font Awesome Icons - loaded asynchronously -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+
+  <!-- Highlight.js - lazy loaded when code blocks are visible -->
+  <script>
+    // Lazy load highlight.js only when code blocks are visible
+    const loadHighlightJS = () => {
+      if (window.hljs) return; // Already loaded
+
+      // Load CSS
+      const cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css';
+      document.head.appendChild(cssLink);
+
+      // Load JS
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js';
+      script.onload = () => {
+        if (window.hljs) {
+          window.hljs.highlightAll();
+        }
+      };
+      document.head.appendChild(script);
+    };
+
+    // Intersection Observer for lazy loading
+    const codeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadHighlightJS();
+          codeObserver.disconnect(); // Only load once
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    // Observe code blocks when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const codeBlocks = document.querySelectorAll('pre code, .language-');
+      if (codeBlocks.length > 0) {
+        codeBlocks.forEach(block => codeObserver.observe(block));
+      }
+    });
+  </script>
 
   <!-- Favicon Settings for various platforms -->
   <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
@@ -61,9 +295,9 @@
         <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
       <a data-i18n="nav.home" class="home-link" href="../">Home</a>
-      <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
+      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
+      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
+      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
       <div class="language-switcher">
         <button class="language-btn">
           <span class="current-lang">English</span>
@@ -218,6 +452,7 @@
         </iframe>
       </div>
       <div class="mobile-message">
+        <i class="fas fa-desktop mobile-message-icon"></i>
         <p data-i18n="projectPages.walch.mobileMessage">To play WA-LCH, please visit this page on a computer.</p>
       </div>
     </div>
@@ -327,16 +562,64 @@
       <img class="modal-content" id="modalImg" />
     </div>
 
-    <!-- Modal functionality script -->
-    <script defer src="../js/imagezoom.js"></script>
-    <script type="module" defer src="../js/translate.js"></script>
-    <script type="module" defer src="../js/prism.js"></script>
-    <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <!-- Lazy load image zoom functionality -->
     <script>
-      // Initialize Prism.js syntax highlighting
-      if (typeof Prism !== 'undefined') {
-        Prism.highlightAll();
-      }
+      // Lazy load image zoom only when images are clicked
+      let imageZoomLoaded = false;
+      const loadImageZoom = async () => {
+        if (imageZoomLoaded) return;
+        imageZoomLoaded = true;
+        const script = document.createElement('script');
+        script.src = '../js/imagezoom.js';
+        document.head.appendChild(script);
+      };
+
+      // Load on first image click
+      document.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG' || e.target.closest('.modal')) {
+          loadImageZoom();
+        }
+      }, { once: true });
+    </script>
+
+    <!-- Lazy load translation module on first interaction -->
+    <script>
+      // Lazy load translations only when needed
+      let translationsLoaded = false;
+      const loadTranslations = async () => {
+        if (translationsLoaded) return;
+        translationsLoaded = true;
+        try {
+          await import('../js/translate.js');
+        } catch (e) {
+          console.warn('Failed to load translations:', e);
+        }
+      };
+
+      // Load translations on first user interaction
+      const events = ['mousedown', 'touchstart', 'keydown', 'scroll'];
+      const loadOnInteraction = () => {
+        events.forEach(event => document.removeEventListener(event, loadOnInteraction));
+        loadTranslations();
+      };
+
+      events.forEach(event => document.addEventListener(event, loadOnInteraction, { once: true, passive: true }));
+
+      // Fallback: load after 3 seconds if no interaction
+      setTimeout(loadTranslations, 3000);
+    </script>
+
+    <!-- Load analytics after page is fully loaded -->
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const script = document.createElement('script');
+          script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
+          script.src = '//gc.zgo.at/count.js';
+          script.async = true;
+          document.head.appendChild(script);
+        }, 1000); // Delay by 1 second after load
+      });
     </script>
 </body>
 <footer>

@@ -79,3 +79,8 @@ window.addEventListener("keydown", function (event) {
     }
   }
 });
+
+// Ensure modal-open class is removed on page load
+window.onload = function () {
+  document.body.classList.remove("modal-open");
+};

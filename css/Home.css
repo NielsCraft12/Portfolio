@@ -90,7 +90,8 @@ body {
 
 .container {
   background: linear-gradient(to left, #bb7a45, #ae445a);
-  min-width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   max-height: max-content;
   min-height: 100vh;
   display: flex;
@@ -102,6 +103,7 @@ body {
   /* iOS Safari fixes */
   position: relative;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .Picture {
@@ -111,12 +113,16 @@ body {
 }
 
 .Picture img {
-  /* width: 100%; */
   margin: 0;
   border-radius: 10%;
-  height: 80vh;
+  max-width: min(70vh, 500px);
+  width: 100%;
+  height: auto;
   margin: 0 auto;
   border: #1e1e1e;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1600 / 2107;
 }
 
 .Text {
@@ -139,6 +145,7 @@ body {
   color: white;
   text-align: center;
   max-width: 80%;
+  margin: 0 auto;
 }
 
 .age-location {
@@ -229,7 +236,7 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  z-index: 1000;
+  z-index: 10000;
   padding-right: 30px;
 }
 
@@ -276,7 +283,7 @@ nav {
 }
 
 nav a {
-  height: 100%;
+  height: 00%;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -299,7 +306,7 @@ nav a:hover {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 1001;
+  z-index: 10001;
   color: white;
 }
 
@@ -333,41 +340,82 @@ nav a:hover {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
   .container {
-    padding-top: 60px;
+    padding: 60px 10px 10px 10px;
     min-height: 100vh;
+    max-width: 100vw;
+    width: 100%;
     /* Ensure full height on mobile */
     flex-direction: column;
     align-items: center;
     justify-content: center;
     /* Better centering on mobile */
+    margin: 0;
+    box-sizing: border-box;
   }
 
   /* iOS specific container fixes */
   @supports (-webkit-touch-callout: none) {
     .container {
       min-height: calc(var(--vh, 1vh) * 100);
-      padding-top: calc(60px + env(safe-area-inset-top));
+      padding: calc(60px + env(safe-area-inset-top)) 10px 10px 10px;
+      margin: 0;
+      box-sizing: border-box;
     }
   }
 
+  .Picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   .Picture img {
-    height: 40vh;
+    max-width: min(60vh, 350px);
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 1600 / 2107;
+  }
+
+  .Text {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .Text p {
     max-width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .Text h1 {
     font-size: 8vw;
     text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .age-location {
     font-size: 15px;
-    margin-top: 0px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
   }
 
   nav {
@@ -384,7 +432,7 @@ nav a:hover {
     right: -100%;
     z-index: 10;
     width: 300px;
-    height: 100%;
+    height: 200%;
     background-color: #1e1e1e;
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
     transition: 0.75s ease-out;
@@ -573,6 +621,25 @@ nav a:hover {
   }
 }
 
+/* Tablet-specific adjustments for portrait orientation */
+@media (min-width: 451px) and (max-width: 1024px) and (orientation: portrait) {
+  .Picture img {
+    max-width: min(65vh, 450px);
+    width: 80%;
+    /* Larger size for tablets */
+  }
+
+  .Text h1 {
+    font-size: 6vw;
+    /* Slightly smaller font size for tablets */
+  }
+
+  .age-location {
+    font-size: 18px;
+    /* Slightly larger for tablets */
+  }
+}
+
 .footer {
   color: white;
   text-align: center;
@@ -596,6 +663,7 @@ nav a:hover {
 
 .container div {
   margin: 10px;
+  margin-left: -2px;
   text-align: center;
 }
 

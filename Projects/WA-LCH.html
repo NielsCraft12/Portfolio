@@ -10,35 +10,89 @@
     content="You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon." />
   <title>WA-LCH</title>
 
-  <!-- Default Highlight.js css -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-  <!-- Remove old Highlight.js theme reference -->
-  <!-- <link rel="stylesheet" href="./highlightjs/dracula.css" /> -->
-  <!-- External Resources -->
-  <!-- jQuery library -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
+  <!-- Critical CSS - Inline above-the-fold styles -->
+  <style>
+    /* Critical CSS for immediate rendering */
+    body {
+      font-family: "Baloo 2", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--primary-bg);
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
 
-  <!-- Prism.js for syntax highlighting -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
+    .navbar {
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
 
-  <!-- Stylesheet Links -->
-  <link href="../css/style.css" rel="stylesheet" />
-  <link href="../css/ProjectPage.css" rel="stylesheet" />
-  <link href="../css/Home.css" rel="stylesheet" />
-  <link href="../css/prism.css" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
+    .content-container {
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+    .project-header {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .project-title {
+      font-size: 3rem;
+      color: #4CAF50;
+      margin-bottom: 1rem;
+    }
+
+    .project-description {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* iOS safe area support */
+    @supports(padding: max(0px)) {
+      .navbar {
+        padding-top: max(env(safe-area-inset-top), 10px);
+      }
+
+      .content-container {
+        margin-top: max(calc(80px + env(safe-area-inset-top)), 80px);
+      }
+    }
+  </style>
+
+  <!-- Non-critical CSS loaded asynchronously -->
+  <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../css/ProjectPage.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../css/Home.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../css/prism.css" media="print" onload="this.media='all'">
+
+  <!-- Load Font Awesome synchronously for GitHub buttons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    crossorigin="anonymous">
+
+  <!-- Async load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
+    onload="this.media='all'">
+
+  <!-- Fallback for browsers that don't support onload -->
+  <noscript>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/ProjectPage.css">
+    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+  </noscript>
 
   <!-- Favicon Settings for various platforms -->
   <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
@@ -61,9 +115,9 @@
         <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
       <a data-i18n="nav.home" class="home-link" href="../">Home</a>
-      <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
+      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
+      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
+      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
       <div class="language-switcher">
         <button class="language-btn">
           <span class="current-lang">English</span>
@@ -106,12 +160,15 @@
         <li data-i18n="projectPages.walch.proceduralLevelGen.proceduralLevelGenPoint3">Maze-like structure via
           backtracking algorithm.</li>
       </ul>
-              <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L10-L34" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
-      <pre><code class="language-csharp">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L10-L34"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">
           public class Cell
           {
               public bool visited = false;
@@ -137,18 +194,21 @@
     }
 }</code></pre>
       </div>
-              <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L105-L109" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
-      <pre><code class="language-csharp">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L105-L109"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">
     if (generatorRooms == 0 && j == size.y && i == size.x) {
     int randomGenRoom = UnityEngine.Random.Range(3, 5);
     newRoom = Instantiate(rooms[randomGenRoom].room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
 }</code></pre>
       </div>
- <img src="/images/png/ProjectImages/Walch/walchGen.png" alt=""
+      <img src="/images/png/ProjectImages/Walch/walchGen.png" alt=""
         style="display: block; margin: 20px auto; max-width: 60%; height: auto" loading="lazy">
 
       <h3 data-i18n="projectPages.walch.qte.qteTitle" class="GradiantTitle subtitle">Generator Activation via QTE</h3>
@@ -157,23 +217,29 @@
           (QTEs)</strong>.
         These are skill checks using keys (E, R, T or controller equivalents).
       </p>
-                    <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L177-L180" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
-      <pre><code class="language-csharp">if ((qteGen == 1 && key == "E") || (qteGen == 2 && key == "R") || (qteGen == 3 && key == "T")) {
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L177-L180"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">if ((qteGen == 1 && key == "E") || (qteGen == 2 && key == "R") || (qteGen == 3 && key == "T")) {
     correctKey = 1;
 }</code></pre>
       </div>
 
-                    <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L224-L244" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L224-L244"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
 
-      <pre><code class="language-csharp">IEnumerator CountDown()
+        <pre><code class="language-csharp">IEnumerator CountDown()
 {
     yield return new WaitForSeconds(timeoutTime);
     if (countingDown == 1)
@@ -198,12 +264,15 @@
         trigger sound
         effects.</p>
 
-                <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/CleanigPod.cs#L16-L24" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
-      <pre><code class="language-csharp">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/CleanigPod.cs#L16-L24"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">
         private void OnTriggerEnter(Collider other)
 {
     if (other.gameObject.CompareTag("Player"))
@@ -226,12 +295,15 @@
         Dynamic Room Behavior</h3>
       <p data-i18n="projectPages.walch.dynamicRoomBehavior.dynamicRoomBehaviorIntro">Each room updates its doors and
         walls based on neighboring connections.</p>
-                <div class="code-block">
-          <a href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/RoomBehaviour.cs#L11-L22" class="github-inline" target="_blank" title="View on GitHub">
-            <i class="fab fa-github"></i>
-            View on GitHub
-          </a>
-      <pre><code class="language-csharp">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/RoomBehaviour.cs#L11-L22"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+          <i class="fab fa-github"></i>
+          View on GitHub
+        </a>
+        <pre><code class="language-csharp">
         public void UpdateRoom(bool[] status)
 {
     for (int i = 0; i &lt; status.Length; i++)
@@ -252,14 +324,14 @@
       <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
         class="GradiantTitle">Play
       </h1>
-      <div class="itch-embed-container"
-        style="position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 20px; overflow: hidden">
+      <div class="itch-embed-container">
         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
           src="https://itch.io/embed-upload/10784145?color=1E1E1E" allowfullscreen="">
           <a href="https://joahvds.itch.io/wa-lch">Play WA-LCH on itch.io</a>
         </iframe>
       </div>
       <div class="mobile-message">
+        <i class="fas fa-desktop mobile-message-icon"></i>
         <p data-i18n="projectPages.walch.mobileMessage">To play WA-LCH, please visit this page on a computer.</p>
       </div>
     </div>
@@ -278,10 +350,18 @@
     <div class="SideBar" style="height: max-content">
       <!-- Trailer Section -->
       <h1 data-i18n="projectPages.trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
-      <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+      <!-- <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
         <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
           src="https://www.youtube.com/embed/D95I2jfcv_Q?si=lCGYlfrblu8t_9Bj" title="YouTube video player"
           frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+      </div> -->
+
+      <div class="trailer-box" style="position: relative; padding-top: 56.25%;  border-radius: 20px; overflow: hidden">
+        <iframe style="position: absolute; top: 0; left: 0;  height: 100%; aspect-ratio: 16/9;"
+          src="https://www.youtube.com/embed/D95I2jfcv_Q?si=lCGYlfrblu8t_9Bj" title="YouTube video player"
+          frameborder="0" loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
       </div>
@@ -305,9 +385,9 @@
           alt="Profile picture" />
       </picture>
 
-                   <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
-      <a href="https://github.com/NielsCraft12/WA-LCH/tree/main/Assets/Developers/Niels" target="”_blank”" rel="noreferrer"
-        class="fa fa-github fa-2xl icon"></a>
+      <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
+      <a href="https://github.com/NielsCraft12/WA-LCH/tree/main/Assets/Developers/Niels" target="”_blank”"
+        rel="noreferrer" class="fab fa-github fa-2xl icon"></a>
       <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot1.png" alt="screen shot of the game" />
         <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot2.png" alt="screen shot of the game" />
         <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot3.png" alt="screen shot of the game" /> -->
@@ -372,17 +452,54 @@
       <span class="modal-close">&times;</span>
       <img class="modal-content" id="modalImg" />
     </div>
+    <script src="../js/imagezoom.js" defer></script>
+    <script src="../js/translate.js" defer></script>
 
-    <!-- Modal functionality script -->
-    <script defer src="../js/imagezoom.js"></script>
-    <script type="module" defer src="../js/translate.js"></script>
-    <script type="module" defer src="../js/prism.js"></script>
-    <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script>
-      // Initialize Prism.js syntax highlighting
-      if (typeof Prism !== 'undefined') {
-        Prism.highlightAll();
-      }
+
+      // Lazy load syntax highlighting
+      document.addEventListener('DOMContentLoaded', () => {
+        const codeBlocks = document.querySelectorAll('pre code, .language-');
+        if (codeBlocks.length > 0) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                import('../js/prism.js').then(() => {
+                  if (typeof Prism !== "undefined") {
+                    Prism.highlightAll();
+                  }
+                });
+                observer.disconnect();
+              }
+            });
+          });
+          codeBlocks.forEach(block => observer.observe(block));
+        }
+      });
+
+      // Defer analytics to reduce main thread blocking
+      setTimeout(() => {
+        const script = document.createElement('script');
+        script.src = '//gc.zgo.at/count.js';
+        script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
+        script.async = true;
+        document.head.appendChild(script);
+      }, 3000);
+
+      // Conditionally load the itch.io embed only for "Merge Packing"
+      document.addEventListener('DOMContentLoaded', () => {
+        const project = document.body.getAttribute('data-project');
+        if (project === 'Merge Packing') {
+          const embedContainer = document.querySelector('.itch-embed-container');
+          const iframe = document.createElement('iframe');
+          iframe.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%';
+          iframe.frameBorder = '0';
+          iframe.src = 'https://itch.io/embed-upload/12639739?color=1E1E1E';
+          iframe.allowFullscreen = true;
+          embedContainer.innerHTML = ''; // Clear the placeholder
+          embedContainer.appendChild(iframe);
+        }
+      });
     </script>
 </body>
 <footer>

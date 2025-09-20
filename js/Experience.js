@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const positions = [];
   const container = document.querySelector(".experience-container"); // Add this line
 
+  // Check if slider elements exist before proceeding
+  if (!sliderPointsContainer) {
+    //  console.log("Slider elements not found - experience section running in simplified mode");
+    return;
+  }
+
   // Create slider points based on content sections
   sections.forEach((section, index) => {
     const position = index * (100 / (sections.length - 1));
@@ -56,35 +62,43 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize
   updateSlider(0);
 
-  // Event listeners
-  prevBtn.addEventListener("click", () => {
-    navigateSlider("prev");
-  });
+  // Event listeners - only add if elements exist
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      navigateSlider("prev");
+    });
+  }
 
-  nextBtn.addEventListener("click", () => {
-    navigateSlider("next");
-  });
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      navigateSlider("next");
+    });
+  }
 
-  slider.addEventListener("click", (e) => {
-    if (e.target.classList.contains("slider-point")) return; // Already handled
+  if (slider) {
+    slider.addEventListener("click", (e) => {
+      if (e.target.classList.contains("slider-point")) return; // Already handled
 
-    const rect = slider.getBoundingClientRect();
-    const position = ((e.clientX - rect.left) / rect.width) * 100;
-    const closestIndex = findClosestPosition(position);
-    updateSlider(closestIndex);
-  });
-
-  sliderThumb.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    document.addEventListener("mousemove", handleDrag);
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
-      document.removeEventListener("mousemove", handleDrag);
-      // Snap to closest position
-      const closestIndex = findClosestPosition(currentPosition);
+      const rect = slider.getBoundingClientRect();
+      const position = ((e.clientX - rect.left) / rect.width) * 100;
+      const closestIndex = findClosestPosition(position);
       updateSlider(closestIndex);
     });
-  });
+  }
+
+  if (sliderThumb) {
+    sliderThumb.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      document.addEventListener("mousemove", handleDrag);
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+        document.removeEventListener("mousemove", handleDrag);
+        // Snap to closest position
+        const closestIndex = findClosestPosition(currentPosition);
+        updateSlider(closestIndex);
+      });
+    });
+  }
 
   // Replace existing touch event listeners with these new ones
   function handleTouchStart(e) {
@@ -155,18 +169,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const previousIndex = positions.indexOf(currentPosition);
     currentPosition = positions[index];
 
-    // Update slider visuals
-    sliderTrack.style.width = `${currentPosition}%`;
-    sliderThumb.style.left = `${currentPosition}%`;
+    // Update slider visuals - only if elements exist
+    if (sliderTrack) {
+      sliderTrack.style.width = `${currentPosition}%`;
+    }
+    if (sliderThumb) {
+      sliderThumb.style.left = `${currentPosition}%`;
+    }
 
-    // Update active points
-    sliderPoints.forEach((point, i) => {
-      if (i <= index) {
-        point.classList.add("active");
-      } else {
-        point.classList.remove("active");
-      }
-    });
+    // Update active points - only if they exist
+    if (sliderPoints.length > 0) {
+      sliderPoints.forEach((point, i) => {
+        if (i <= index) {
+          point.classList.add("active");
+        } else {
+          point.classList.remove("active");
+        }
+      });
+    }
 
     // Show corresponding content section with animation
     contentSections.forEach((section, i) => {
@@ -212,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleDrag(e) {
-    if (!isDragging) return;
+    if (!isDragging || !slider) return;
 
     const rect = slider.getBoundingClientRect();
     let position = ((e.clientX - rect.left) / rect.width) * 100;
@@ -221,18 +241,24 @@ document.addEventListener("DOMContentLoaded", function () {
     position = Math.max(0, Math.min(100, position));
     currentPosition = position;
 
-    sliderTrack.style.width = `${position}%`;
-    sliderThumb.style.left = `${position}%`;
+    if (sliderTrack) {
+      sliderTrack.style.width = `${position}%`;
+    }
+    if (sliderThumb) {
+      sliderThumb.style.left = `${position}%`;
+    }
 
     // Update active points based on current position
     const closestIndex = findClosestPosition(position, false); // Don't snap yet
-    sliderPoints.forEach((point, i) => {
-      if (positions[i] <= position) {
-        point.classList.add("active");
-      } else {
-        point.classList.remove("active");
-      }
-    });
+    if (sliderPoints.length > 0) {
+      sliderPoints.forEach((point, i) => {
+        if (positions[i] <= position) {
+          point.classList.add("active");
+        } else {
+          point.classList.remove("active");
+        }
+      });
+    }
   }
 
   function findClosestPosition(position, snap = true) {
@@ -273,13 +299,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showTooltip(event, text) {
-    tooltip.textContent = text;
-    tooltip.style.opacity = 1;
-    tooltip.style.left = `${event.pageX + 10}px`;
-    tooltip.style.top = `${event.pageY + 10}px`;
+    if (tooltip) {
+      tooltip.textContent = text;
+      tooltip.style.opacity = 1;
+      tooltip.style.left = `${event.pageX + 10}px`;
+      tooltip.style.top = `${event.pageY + 10}px`;
+    }
   }
 
   function hideTooltip() {
-    tooltip.style.opacity = 0;
+    if (tooltip) {
+      tooltip.style.opacity = 0;
+    }
   }
 });

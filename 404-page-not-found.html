@@ -48,7 +48,7 @@
 
       // Check if updateContent is available, if not wait for it
       function tryUpdateContent() {
-        if (window.updateContent && typeof window.updateContent === 'function') {
+        if (window.updateContent && typeof window.updateContent === "function") {
           updateContent(savedLang);
         } else {
           // Wait a bit and try again

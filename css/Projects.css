@@ -15,8 +15,17 @@
   flex-direction: column;
 }
 
-#Projects a {
+#Projects a.blog-box {
   text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure no text decoration on any text inside blog box links */
+#Projects a.blog-box * {
+  text-decoration: none !important;
 }
 
 #Projects ul {
@@ -24,13 +33,25 @@
 }
 
 .blog-container {
-  max-width: 1560px;
+  max-width: 1200px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 20px auto;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px 32px;
+  margin: 32px auto 0 auto;
+}
+
+/* Center single items */
+.blog-container:has(.blog-box:only-child) {
+  justify-content: center;
+}
+
+/* Desktop mode - increase max-width for better centering */
+@media (min-width: 1101px) {
+  .blog-container {
+    max-width: 1250px !important;
+  }
 }
 
 /* Blog container styles are now handled dynamically by JavaScript */
@@ -40,11 +61,21 @@
 
 .blog-box {
   transition: transform 0.2s !important;
-  /* Animation */
-  width: 350px;
+  width: 340px;
+  min-width: 340px;
+  max-width: 340px;
   background-color: #ffffff;
   border: 1px solid #ececec;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .blog-box:hover {
@@ -55,7 +86,7 @@
 
 .blog-img {
   width: 100%;
-  height: auto;
+  height: 200px;
 }
 
 .blog-img img {
@@ -68,27 +99,29 @@
 }
 
 .blog-text {
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.blog-text span {
+.blog-year {
+  padding-bottom: 0 !important;
   color: #ff7e5f;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   display: inline-flex;
   align-items: center;
   flex-wrap: nowrap;
 }
 
-.blog-box .blog-text span {
+/* .blog-box .blog-text span {
   color: #f33c3c;
   font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   flex-wrap: nowrap;
-}
+} */
 
 .blog-text .blog-title {
   font-size: 1.3rem;
@@ -109,16 +142,27 @@
 }
 
 .blog-readmore {
-  margin-bottom: 10px;
+  margin-bottom: 0 !important;
+  color: #000000 !important;
+  font-weight: 500 !important;
 }
 
-.blog-text a {
-  color: #0f0f0f;
+.blog-box:hover .blog-readmore {
+  color: #ff7e5f !important;
+  transition: all ease 0.2s !important;
 }
 
-.blog-text a:hover {
-  color: #ff7e5f;
-  transition: all ease 0.5s;
+.blog-title {
+  padding-top: 0 !important;
+  margin-top: -8px !important;
+  font-size: 1.3rem !important;
+  color: #0f0f0f !important;
+  text-decoration: none;
+}
+
+.blog-box:hover .blog-title {
+  color: #ff7e5f !important;
+  transition: all ease 0.2s !important;
 }
 
 /* Project Tabs */
@@ -160,7 +204,7 @@
 /* Project filtering */
 .project-item {
   opacity: 1;
-  margin: 20px 20px;
+  margin: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
   visibility: visible;
 }
@@ -187,7 +231,7 @@
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1250px) and (min-width: 1101px) {
   .blog-box {
     width: 300px;
   }
@@ -201,9 +245,49 @@
   }
 }
 
-@media (max-width: 1100px) {
+/* Vertical tablets - 2 columns */
+@media (max-width: 1100px) and (min-width: 769px) {
+  .blog-container {
+    max-width: 800px !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 20px !important;
+  }
+
+  .blog-box {
+    width: calc(50% - 10px) !important;
+    max-width: 350px !important;
+    margin: 10px 0 !important;
+  }
+
+  .blog-box:hover {
+    transform: scale(1) !important; /* Slightly reduced scaling for tablets */
+  }
+
+  #Projects {
+    height: max-content;
+  }
+
+  .project-item {
+    margin: 10px 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-container {
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
   .blog-box {
     width: 70%;
+    max-width: 400px;
   }
 
   .blog-box:hover {
@@ -216,9 +300,19 @@
 }
 
 @media (max-width: 550px) {
+  .blog-container {
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
   .blog-box {
-    margin: 0px 10px;
-    width: 100%;
+    margin: 0;
+    width: 90%;
+    max-width: 350px;
   }
 
   .blog-box:hover {

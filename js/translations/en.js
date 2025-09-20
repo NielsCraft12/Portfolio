@@ -19,7 +19,7 @@ export const en = {
   projects: {
     //Projects
     seeMore: "See More",
-    technologies: "Technologies",
+    technologies: "Technologies:",
     allProjects: "All Projects",
     games: "Games",
     webProjects: "Web",
@@ -57,6 +57,7 @@ export const en = {
     developers: "Developers",
     artists: "Artists",
     whatIMadeTitle: "What I Made",
+    viewOnGitHub: '<i class="fab fa-github"></i> View on GitHub',
 
     slimetasticPunchout: {
       // Slimetastic Punchout

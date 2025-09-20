@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!-- Prism.js for syntax highlighting -->
-<!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script
-    src="       <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
-      <a href="https://github.com/NielsCraft12" target="_blank" rel="noreferrer" class="fa fa-github fa-2xl icon"></a>   <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
-      <a href="https://github.com/NielsCraft12" target="_blank" rel="noreferrer" class="fa fa-github fa-2xl icon"></a>tps://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
 
 <head>
   <!-- Character encoding and viewport settings -->
@@ -23,11 +15,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --> <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
+    onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+  </noscript>
 
-  <!-- Preload critical resources -->
-  <link rel="preload" href="../css/style.css" as="style">
-  <link rel="preload" href="../css/ProjectPage.css" as="style">
+  <!-- Lightweight CSS loading polyfill -->
+  <script>
+    // Minimal polyfill for CSS loading - runs only if needed
+    if (!('onload' in document.createElement('link'))) {
+      document.querySelectorAll('link[media="print"]').forEach(l => l.media = 'all');
+    }
+  </script>
+
+  <!-- Preload critical Google Fonts to reduce CLS -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/baloo2/v23/wXK0E3kTposypRydzVT2F97YShqpkEjp.woff2" as="font"
+    type="font/woff2" crossorigin>
+
+  <!-- Only preconnect to external domains -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://itch.io">
@@ -37,18 +43,258 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script> -->
-  <!-- Stylesheet Links -->
-  <link href="../css/style.css" rel="stylesheet" />
-  <link href="../css/ProjectPage.css" rel="stylesheet" />
-  <link href="../css/Home.css" rel="stylesheet" />
-  <link href="../css/prism.css" rel="stylesheet" />
-  <!-- Prism.js - load early to prevent visual jump -->
-  <script src="../js/prism.js"></script>
-  <!-- Font Awesome Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script> -->
+  <!-- Critical CSS inlined for faster rendering -->
+  <style>
+    /* Critical above-the-fold styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-bg: #1e1e1e;
+      --primary-text: #ffffff;
+      --gradient-start: #ff7e5f;
+      --gradient-end: #feb47b;
+    }
+
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    body {
+      background-color: var(--primary-bg);
+      overflow-x: hidden;
+      font-family: "Baloo 2", cursive;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      color: var(--primary-text);
+      width: 100%;
+    }
+
+    /* Critical navigation styles */
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: auto;
+      height: 60px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 1000;
+      padding-right: 15px;
+    }
+
+    /* Critical container layout styles */
+    .containerProject {
+      display: grid;
+      grid-template-columns: 3fr min-content 1fr;
+      grid-template-areas: "Main-Content divider SideBar";
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      margin-top: 60px;
+      min-height: calc(100vh - 60px);
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .Main-Content {
+      grid-area: Main-Content;
+    }
+
+    .SideBar {
+      grid-area: SideBar;
+      padding: 20px;
+      padding-top: 100px;
+      min-width: 200px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .links-container {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      width: 88%;
+      padding-right: 0;
+    }
+
+    /* iOS safe area support */
+    @supports (-webkit-touch-callout: none) {
+      nav {
+        padding-top: env(safe-area-inset-top);
+        padding-right: max(30px, env(safe-area-inset-right));
+        top: 0;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        right: auto;
+        justify-content: flex-end;
+      }
+    }
+
+    /* Critical mobile responsive styles */
+    @media screen and (max-width: 950px) {
+
+      html,
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      .containerProject {
+        display: block;
+        padding: 0;
+        gap: 0;
+        margin-top: 60px;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .Main-Content {
+        grid-area: unset;
+        padding-left: 5px;
+        padding-right: 5px;
+        max-width: 100%;
+        overflow-x: hidden;
+        margin-bottom: 20px;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .SideBar {
+        grid-area: unset;
+        padding: 5px;
+        padding-top: 20px;
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        min-width: unset;
+      }
+    }
+
+    .GradiantTitle {
+      background: linear-gradient(to left, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    /* Critical text and layout styles */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--primary-text);
+      font-family: "Baloo 2", cursive;
+      margin: 1rem 0;
+    }
+
+    p {
+      color: var(--primary-text);
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    a {
+      color: var(--primary-text);
+      text-decoration: none;
+    }
+
+    /* Ensure images don't cause layout shifts */
+    img,
+    video,
+    iframe {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Basic button and link styles */
+    .icon {
+      padding: 20px;
+      width: 70px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border-radius: 20px;
+    }
+  </style>
+
+  <!-- Non-critical stylesheets loaded asynchronously -->
+  <link href="../css/style.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="../css/ProjectPage.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="../css/Home.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="../css/prism.css" rel="stylesheet" media="print" onload="this.media='all'" />
+
+  <!-- Noscript fallbacks for users without JavaScript -->
+  <noscript>
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/ProjectPage.css" rel="stylesheet" />
+    <link href="../css/Home.css" rel="stylesheet" />
+    <link href="../css/prism.css" rel="stylesheet" />
+  </noscript>
+  <!-- Prism.js - lazy loaded only when code blocks are visible -->
+  <script>
+    // Lazy load Prism.js only when code blocks are visible
+    const loadPrism = () => {
+      if (window.Prism) return; // Already loaded
+      const script = document.createElement('script');
+      script.src = '../js/prism.js';
+      script.onload = () => window.Prism?.highlightAll();
+      document.head.appendChild(script);
+    };
+
+    // Intersection Observer for lazy loading
+    const codeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadPrism();
+          codeObserver.disconnect(); // Only load once
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    // Observe code blocks when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const codeBlocks = document.querySelectorAll('pre code');
+      if (codeBlocks.length > 0) {
+        codeBlocks.forEach(block => codeObserver.observe(block));
+      }
+    });
+  </script>
+  <!-- Font Awesome Icons - loaded asynchronously -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
   <!-- Favicon Settings for various platforms -->
@@ -72,9 +318,9 @@
         <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
       </label>
       <a data-i18n="nav.home" class="home-link" href="../">Home</a>
-      <a data-i18n="nav.projects" href="../?lang=#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../?lang=#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../?lang=#Contact">Contact</a>
+      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
+      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
+      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
       <div class="language-switcher">
         <button class="language-btn">
           <span class="current-lang">English</span>
@@ -111,9 +357,11 @@
         for an
         intuitive feel.</p>
 
-      <div class="code-block">
-        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L106-#L117"
-          class="github-inline" target="_blank" title="View on GitHub">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L106-#L117"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
           <i class="fab fa-github"></i>
           View on GitHub
         </a>
@@ -136,9 +384,11 @@
         particle effect and wipes nearby trash or rats from
         the scene.
         Using an OverlapSphere to detect the trash</p>
-      <div class="code-block">
-        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L205-L210"
-          class="github-inline" target="_blank" title="View on GitHub">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L205-L210"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
           <i class="fab fa-github"></i>
           View on GitHub
         </a>
@@ -160,14 +410,16 @@ Collider[] hitColliders = Physics.OverlapSphere(
         to
         deal with
         fast-moving rats.</p>
-      <div class="code-block">
-        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L128-L137"
-          class="github-inline" target="_blank" title="View on GitHub">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L128-L137"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
           <i class="fab fa-github"></i>
           View on GitHub
         </a>
         <pre><code class="language-csharp">
-        if (trapcooldownTimer <= 0)
+        if (trapcooldownTimer &lt;= 0)
         {
            Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
            trapcooldownTimer = trapcooldown;
@@ -185,18 +437,20 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint1">Doors open and close automatically when the
         when player or npc's enters a trigger zone. It tells the door to change the door state to open.</p>
 
-      <div class="code-block">
-        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L183-L193"
-          class="github-inline" target="_blank" title="View on GitHub">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L183-L193"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
           <i class="fab fa-github"></i>
           View on GitHub
         </a>
         <pre><code class="language-csharp">
             if (other.gameObject.CompareTag("Door"))
          {
-            if (other.gameObject.GetComponent<DoorOpen>().Moving == false)
+            if (other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving == false)
             {
-                other.gameObject.GetComponent<DoorOpen>().Moving = true;
+                other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving = true;
             }
          }
         </code></pre>
@@ -204,9 +458,11 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint2">The door then moves to the open position
         and
         waits for a certain amount of time before closing again.</p>
-      <div class="code-block">
-        <a href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/DoorOpen.cs#L39-L67"
-          class="github-inline" target="_blank" title="View on GitHub">
+      <div class="code-block" style="position: relative !important;">
+        <a data-i18n="projectPages.viewOnGitHub"
+          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/DoorOpen.cs#L39-L67"
+          class="github-inline" target="_blank" title="View on GitHub"
+          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
           <i class="fab fa-github"></i>
           View on GitHub
         </a>
@@ -227,7 +483,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
                 if (opening)
                 {
                     delay += Time.deltaTime;
-                    if (delay > openTime)
+                    if (delay &lt; openTime)
                     {
                         opening = false;
                         delay = 0.0f;
@@ -248,12 +504,12 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <p data-i18n="projectPages.walchOrigins.customTrailer.customTrailerPoint1">I also created a custom trailer to
         showcase the core
         mechanics, vibe, and loop of the game. (Created after the game jam)</p>
-      <div style="display: flex; justify-content: center; margin: 20px 0;">
+      <div style="display: flex; justify-content: center; margin: 20px 0; ">
         <iframe src="https://www.youtube.com/embed/z1rAx_g-JZI?si=0YFK9OWODCBqPLqU" title="YouTube video player"
           frameborder="0" loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-          style="max-width: 100%; width: 80%; aspect-ratio: 16/9;"></iframe>
+          style="max-width: 100%; width: 80%; aspect-ratio: 16/9; border-radius: 20px;"></iframe>
       </div>
 
 
@@ -267,6 +523,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
         </iframe>
       </div>
       <div class="mobile-message">
+        <i class="fas fa-desktop mobile-message-icon"></i>
         <p data-i18n="projectPages.walchOrigins.mobileMessage">To play WA-LCH Origins, please visit this
           page on a computer.</p>
       </div>
@@ -283,11 +540,11 @@ Collider[] hitColliders = Physics.OverlapSphere(
     </div>
 
     <!-- Sidebar Content -->
-    <div class="SideBar" style="height: max-content">
+    <div class="SideBar" style="height: max-content;">
       <!-- Trailer Section -->
       <h1 data-i18n="projectPages.trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
-      <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+      <div class="trailer-box" style="position: relative; padding-top: 56.25%;  border-radius: 20px; overflow: hidden">
+        <iframe style="position: absolute; top: 0; left: 0;  height: 100%; aspect-ratio: 16/9;"
           src="https://www.youtube.com/embed/z1rAx_g-JZI?si=OWBI3CY6Af5n6Iyw" title="YouTube video player"
           frameborder="0" loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -315,7 +572,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
 
       <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
       <a href="https://github.com/NielsCraft12/ggj-walch2/tree/main/Assets/Scripts" target="”_blank”" rel="noreferrer"
-        class="fa fa-github fa-2xl icon"></a>
+        class="fab fa-github fa-2xl icon"></a>
 
       <!-- Credits Section -->
       <!-- <h1 data-i18n="projectPages.credits" style="text-align: center; margin-top: 10px; margin-bottom: 0"
@@ -374,27 +631,60 @@ Collider[] hitColliders = Physics.OverlapSphere(
     <span class="modal-close">&times;</span>
     <img class="modal-content" id="modalImg" />
   </div>
-  <script defer src="../js/imagezoom.js"></script>
-  <script type="module" src="../js/translate.js"></script>
-  <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  <script>
-    // Lightweight video lazy loading
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const video = entry.target;
-          if (video.paused) {
-            video.play().catch(e => console.log('Video autoplay failed:', e));
-          }
-          videoObserver.unobserve(video);
-        }
-      });
-    }, { threshold: 0.25 });
+  <!-- Lazy load image zoom functionality -->
+  <script src="../js/imagezoom.js" defer></script>
+  <script src="../js/translate.js" defer></script>
 
-    // Observe all videos on the page
-    document.querySelectorAll('video[autoplay]').forEach(video => {
-      video.pause(); // Pause initially
-      videoObserver.observe(video);
+
+
+  <!-- Load analytics after page is fully loaded -->
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const script = document.createElement('script');
+        script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
+        script.src = '//gc.zgo.at/count.js';
+        script.async = true;
+        document.head.appendChild(script);
+      }, 1000); // Delay by 1 second after load
+    });
+  </script>
+  <script>
+    // Efficient video lazy loading - only if videos exist
+    document.addEventListener('DOMContentLoaded', () => {
+      const videos = document.querySelectorAll('video[autoplay]');
+      if (videos.length === 0) return; // Skip if no videos
+
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const video = entry.target;
+            video.paused && video.play().catch(() => { }); // Silent fail
+            videoObserver.unobserve(video);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      videos.forEach(video => {
+        video.pause();
+        videoObserver.observe(video);
+      });
+    }, { once: true });
+
+
+    // Conditionally load the itch.io embed only for "Merge Packing"
+    document.addEventListener('DOMContentLoaded', () => {
+      const project = document.body.getAttribute('data-project');
+      if (project === 'Merge Packing') {
+        const embedContainer = document.querySelector('.itch-embed-container');
+        const iframe = document.createElement('iframe');
+        iframe.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%';
+        iframe.frameBorder = '0';
+        iframe.src = 'https://itch.io/embed-upload/12701195?color=1E1E1E';
+        iframe.allowFullscreen = true;
+        embedContainer.innerHTML = ''; // Clear the placeholder
+        embedContainer.appendChild(iframe);
+      }
     });
   </script>
 

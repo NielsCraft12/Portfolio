@@ -1,5 +1,5 @@
-// Translation module - simplified and modular
-import { translations } from "./translations/index.js";
+// Translation module - optimized with lazy loading
+// Remove global import to avoid loading all translations upfront
 
 /**
  * Language configuration
@@ -11,16 +11,64 @@ const LANGUAGE_CONFIG = {
 };
 
 /**
+ * Cache for loaded translations to avoid re-fetching
+ */
+const translationCache = new Map();
+
+/**
+ * Dynamically loads translation file for a specific language
+ * @param {string} lang - Language code (en, nl, mi)
+ * @returns {Promise<Object>} The translation object for the language
+ */
+async function loadTranslation(lang) {
+  // Check if already cached
+  if (translationCache.has(lang)) {
+    return translationCache.get(lang);
+  }
+
+  try {
+    //  console.log(`Loading translation for language: ${lang}`);
+    // Always use the regular (non-minified) version
+    const filename = `${lang}.js`;
+    const module = await import(`./translations/${filename}`);
+    const translations = module[lang]; // Extract the named export
+
+    // Cache the loaded translation
+    translationCache.set(lang, translations);
+    return translations;
+  } catch (error) {
+    console.error(`Failed to load translation for language '${lang}':`, error);
+    // Fallback to English if available and not already trying English
+    if (lang !== "en" && !translationCache.has("en")) {
+      try {
+        // Always use the regular (non-minified) version for fallback
+        const fallbackFilename = "en.js";
+        const fallbackModule = await import(`./translations/${fallbackFilename}`);
+        const fallbackTranslations = fallbackModule.en;
+        translationCache.set("en", fallbackTranslations);
+        return fallbackTranslations;
+      } catch (fallbackError) {
+        console.error("Failed to load fallback English translation:", fallbackError);
+        return {};
+      }
+    }
+    return translationCache.get("en") || {};
+  }
+}
+
+/**
  * Updates the content of elements with data-i18n attributes
  * @param {string} lang - Language code (en, nl, mi)
  */
-function updateContent(lang) {
-  if (!translations[lang]) {
-    console.warn(`Translation for language '${lang}' not found`);
+async function updateContent(lang) {
+  const translations = await loadTranslation(lang);
+
+  if (!translations) {
+    console.warn(`Translation for language '${lang}' not found or failed to load`);
     return;
   }
 
-  console.log(`Updating content to language: ${lang}`);
+  //console.log(`Updating content to language: ${lang}`);
   let missingCount = 0;
   let successCount = 0;
 
@@ -31,10 +79,12 @@ function updateContent(lang) {
   const selectedLangElement = document.querySelector(`[data-lang="${lang}"]`);
   if (selectedLangElement) {
     selectedLangElement.classList.add("active");
-  } // Update all translatable elements
+  }
+
+  // Update all translatable elements
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
-    const value = getNestedTranslation(translations[lang], key);
+    const value = getNestedTranslation(translations, key);
     if (value) {
       element.innerHTML = value;
       // Remove any previous missing translation styling
@@ -51,28 +101,34 @@ function updateContent(lang) {
   // Update all elements with translatable titles
   document.querySelectorAll("[data-i18n-title]").forEach((element) => {
     const key = element.getAttribute("data-i18n-title");
-    const value = getNestedTranslation(translations[lang], key);
+    const value = getNestedTranslation(translations, key);
     if (value) {
       element.title = value;
       successCount++;
     } else {
-      // Fallback to English if available
-      const fallbackValue = getNestedTranslation(translations.en, key);
-      if (fallbackValue && lang !== "en") {
-        element.title = fallbackValue;
+      // Fallback to English if available and not already using English
+      if (lang !== "en") {
+        const fallbackTranslations = translationCache.get("en");
+        if (fallbackTranslations) {
+          const fallbackValue = getNestedTranslation(fallbackTranslations, key);
+          if (fallbackValue) {
+            element.title = fallbackValue;
+          }
+        }
       }
       missingCount++;
     }
   });
-  console.log(`Translation update complete: ${successCount} successful, ${missingCount} missing`);
+
+  //console.log(`Translation update complete: ${successCount} successful, ${missingCount} missing`);
 
   // Update current language display
   updateLanguageDisplay(lang);
   // Update CSS custom properties for translated content
-  updateCSSTranslations(lang);
+  await updateCSSTranslations(lang);
 
   // Update CV link
-  updateCVLink(lang);
+  await updateCVLink(lang);
 
   // Save preference and update age display
   localStorage.setItem("preferredLanguage", lang);
@@ -93,7 +149,7 @@ function getNestedTranslation(obj, key) {
  * @param {string} key - The translation key that's missing
  * @param {string} lang - The current language
  */
-function handleMissingTranslation(element, key, lang) {
+async function handleMissingTranslation(element, key, lang) {
   console.warn(`Missing translation: "${key}" for language "${lang}"`);
 
   // Add visual styling to indicate missing translation
@@ -107,10 +163,16 @@ function handleMissingTranslation(element, key, lang) {
     element.innerHTML = `[MISSING: ${key}]`;
   } else {
     // Fallback to English if available, otherwise show a generic message
-    const fallbackValue = getNestedTranslation(translations.en, key);
-    if (fallbackValue && lang !== "en") {
-      element.innerHTML = fallbackValue;
-      element.setAttribute("title", `Missing translation for "${lang}" - showing English fallback`);
+    if (lang !== "en") {
+      const fallbackTranslations = await loadTranslation("en");
+      const fallbackValue = getNestedTranslation(fallbackTranslations, key);
+      if (fallbackValue) {
+        element.innerHTML = fallbackValue;
+        element.setAttribute("title", `Missing translation for "${lang}" - showing English fallback`);
+      } else {
+        element.innerHTML = `[Translation missing]`;
+        element.setAttribute("title", `Missing translation key: ${key}`);
+      }
     } else {
       element.innerHTML = `[Translation missing]`;
       element.setAttribute("title", `Missing translation key: ${key}`);
@@ -122,26 +184,30 @@ function handleMissingTranslation(element, key, lang) {
  * Updates the CV link and title based on the current language
  * @param {string} lang - Language code
  */
-function updateCVLink(lang) {
+async function updateCVLink(lang) {
   const cvLink = document.querySelector("[data-cv-link]");
-  if (!cvLink || !translations[lang] || !translations[lang].cv) return;
+  if (!cvLink) return;
+
+  const translations = await loadTranslation(lang);
+  if (!translations || !translations.cv) return;
 
   // Update the href attribute
-  cvLink.href = translations[lang].cv.filePath;
+  cvLink.href = translations.cv.filePath;
 
   // Update the title attribute
-  cvLink.title = translations[lang].cv.title;
+  cvLink.title = translations.cv.title;
 }
 
 /**
  * Updates CSS custom properties for translated content
  * @param {string} lang - Language code
  */
-function updateCSSTranslations(lang) {
-  if (!translations[lang]) return;
+async function updateCSSTranslations(lang) {
+  const translations = await loadTranslation(lang);
+  if (!translations) return;
 
   // Update spoiler tooltip text
-  const spoilerTooltip = getNestedTranslation(translations[lang], "projectPages.portfolio.easterEggs.spoilerTooltip");
+  const spoilerTooltip = getNestedTranslation(translations, "projectPages.portfolio.easterEggs.spoilerTooltip");
   if (spoilerTooltip) {
     document.documentElement.style.setProperty("--spoiler-tooltip-text", `"${spoilerTooltip}"`);
   }
@@ -191,37 +257,50 @@ window.updateContent = updateContent;
 window.toggleMissingTranslationDisplay = function () {
   const currentState = localStorage.getItem("showMissingTranslations") === "true";
   localStorage.setItem("showMissingTranslations", !currentState);
-  console.log(`Missing translation display ${!currentState ? "enabled" : "disabled"}`);
+  //console.log(`Missing translation display ${!currentState ? "enabled" : "disabled"}`);
   // Re-run translation to apply the change
   const currentLang = localStorage.getItem("preferredLanguage") || "en";
   updateContent(currentLang);
 };
 
-window.findMissingTranslations = function (lang = "all") {
+window.findMissingTranslations = async function (lang = "all") {
   const missing = [];
-  const languages = lang === "all" ? Object.keys(translations) : [lang];
+  const languages = lang === "all" ? Object.keys(LANGUAGE_CONFIG) : [lang];
 
-  languages.forEach((language) => {
-    if (!translations[language]) {
+  for (const language of languages) {
+    const translations = await loadTranslation(language);
+    if (!translations) {
       console.warn(`Language '${language}' not found`);
-      return;
+      continue;
     }
 
     document.querySelectorAll("[data-i18n]").forEach((element) => {
       const key = element.getAttribute("data-i18n");
-      const value = getNestedTranslation(translations[language], key);
+      const value = getNestedTranslation(translations, key);
       if (!value) {
         missing.push({ language, key, element: element.tagName });
       }
     });
-  });
+  }
 
   console.table(missing);
   return missing;
 };
 
-// Auto-initialize when DOM is ready
-document.addEventListener("DOMContentLoaded", function () {
+// Auto-initialize when DOM is ready OR when module is imported
+function initializeTranslationSystem() {
   setupLanguageSwitcher();
   initTranslation();
-});
+}
+
+// Initialize on DOMContentLoaded (for pages that load translate.js normally)
+document.addEventListener("DOMContentLoaded", initializeTranslationSystem);
+
+// Also initialize immediately if DOM is already loaded (for lazy-loaded imports)
+if (document.readyState === "loading") {
+  // DOM still loading, wait for DOMContentLoaded
+  document.addEventListener("DOMContentLoaded", initializeTranslationSystem);
+} else {
+  // DOM already loaded, initialize immediately
+  initializeTranslationSystem();
+}

@@ -19,10 +19,10 @@ export const nl = {
   projects: {
     //Projects
     seeMore: "Bekijk meer",
-    technologies: "Technologieën",
+    technologies: "Technologieën:",
     allProjects: "Alle Projecten",
-    games: "Games",
-    webProjects: "Web Projecten",
+    games: "Spellen",
+    webProjects: "Web",
     recent: "Recent",
     descriptionGame1: "Stap in de rol van een toegewijde schoonmaakrobot, net als in de originele WA-LCH. Maar dit",
     descriptionGame2: "Dit is de website die je nu bekijkt een volledig op maat gemaakte, meertalige ontwikkelaarsportfolio",
@@ -57,6 +57,7 @@ export const nl = {
     developers: "Ontwikkelaars",
     artists: "Artiesten",
     whatIMadeTitle: "Wat ik heb gemaakt",
+    viewOnGitHub: ' <i class="fab fa-github"></i> Bekijk op GitHub',
     slimetasticPunchout: {
       // Slimetastic Punchout
       description: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het uitvecht in snelle arena's. Het doel? Bedek zoveel mogelijk tegels terwijl je over de kaart glijdt, stuitert en spettert. Onderweg kun je wat stevige stoten landen om je tegenstanders uit de weg te duwen of ze gewoon van hun stuk te brengen. Elke wedstrijd is onvoorspelbaar, zit vol met gelach en is een rommelige strijd om de controle. Het is slijmerige chaos op zijn best!",
