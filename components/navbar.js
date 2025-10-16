@@ -64,10 +64,39 @@ class NavBar extends HTMLElement {
         // Initialize dropdown functionality after DOM is set
         this.initializeDropdown();
 
+        // Initialize mobile navigation functionality
+        this.initializeMobileNavigation();
+
         // Set initial active language based on saved preference
         const savedLang = localStorage.getItem("preferredLanguage") || "en";
         this.updateActiveLanguage(savedLang);
         this.updateCurrentLanguageDisplay(savedLang);
+    }
+
+    initializeMobileNavigation() {
+        // Get all navigation links (excluding language menu links)
+        const navigationLinks = this.shadowRoot.querySelectorAll('.links-container > a');
+        const sidebarCheckbox = this.shadowRoot.querySelector('#sidebar-active');
+
+        // Add click event listeners to close mobile menu when navigation links are clicked
+        navigationLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Close the mobile menu by unchecking the sidebar checkbox
+                if (sidebarCheckbox) {
+                    sidebarCheckbox.checked = false;
+                }
+            });
+        });
+
+        // Also close menu when clicking the overlay
+        const overlay = this.shadowRoot.querySelector('#overlay');
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                if (sidebarCheckbox) {
+                    sidebarCheckbox.checked = false;
+                }
+            });
+        }
     }
 
     initializeDropdown() {
@@ -162,6 +191,8 @@ class NavBar extends HTMLElement {
                 currentLangSpan.textContent = "English";
             } else if (lang === "nl") {
                 currentLangSpan.textContent = "Nederlands";
+            } else if (lang === "mi") {
+                currentLangSpan.textContent = "Minionese";
             }
         }
     }
