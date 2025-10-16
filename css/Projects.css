@@ -2,7 +2,7 @@
   text-align: center;
   font-size: 50px;
   color: #fff;
-  padding-top: 30px;
+  padding-top: 43px;
 }
 
 #Projects {
@@ -161,6 +161,14 @@
 }
 
 .blog-box:hover .blog-title {
+  color: #ff7e5f !important;
+  transition: all ease 0.2s !important;
+}
+
+.technologies {
+  color: #000000 !important;
+}
+.blog-box:hover .technologies {
   color: #ff7e5f !important;
   transition: all ease 0.2s !important;
 }
@@ -327,9 +335,9 @@
     height: max-content;
   }
 
-  #Projects h1 {
+  /* #Projects h1 {
     font-size: 30px;
-  }
+  } */
 }
 
 /* .hidden {

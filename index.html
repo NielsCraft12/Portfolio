@@ -5,10 +5,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <meta name="description" content="Hello, I'm Niels de Laat I'm a developer who loves to create entertaining games. I bring my ideas to life using
- Unity and C# and I enjoy learning new and innovative approaches. When I'm not programming I am playing" />
+  <meta name="description"
+    content="Niels de Laat - Game Developer specializing in Unity and C#. Explore my portfolio of entertaining games, web projects, and learn about my experience in game development." />
+  <meta name="author" content="Niels de Laat" />
+  <meta name="keywords" content="Game Developer, Unity, C#, Portfolio, Game Development, Web Development, Utrecht" />
 
-  <title>Portfolio Niels de Laat</title>
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Niels de Laat - Game Developer Portfolio" />
+  <meta property="og:description"
+    content="Game Developer specializing in Unity and C#. Explore my portfolio of entertaining games and web projects." />
+  <meta property="og:image" content="images/webp/me-medium.webp" />
+  <meta property="og:url" content="https://nielsdelaat.com" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Niels de Laat - Game Developer Portfolio" />
+  <meta name="twitter:description"
+    content="Game Developer specializing in Unity and C#. Explore my portfolio of entertaining games and web projects." />
+  <meta name="twitter:image" content="images/webp/me-medium.webp" />
+
+  <title>Niels de Laat - Game Developer Portfolio</title>
 
   <!-- Critical CSS for LCP optimization -->
   <style>
@@ -39,17 +56,17 @@
     }
   </style>
 
-  <!--foogle fonts-->
+  <!-- Google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
-  <!--Style sheets-->
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/Home.css" />
-  <link rel="stylesheet" defer href="../css/Experience.css" />
-  <link rel="stylesheet" defer href="../css/Projects.css" />
-  <link rel="stylesheet" defer href="../css/Contact.css" />
-  <!--Fontawesome-->
+  <!-- Style sheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/Home.css" />
+  <link rel="stylesheet" href="css/Experience.css" />
+  <link rel="stylesheet" href="css/Projects.css" />
+  <link rel="stylesheet" href="css/Contact.css" />
+  <!-- Font Awesome -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style"
     onload="this.onload=null;this.rel='stylesheet'"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -63,14 +80,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </noscript>
 
-  <!--Resource hints for better performance-->
+  <!-- Resource hints for better performance -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="//gc.zgo.at">
   <link rel="modulepreload" href="js/translate.js">
   <link rel="preload" as="image" href="images/webp/me-medium.webp" media="(min-width: 451px)" type="image/webp">
   <link rel="preload" as="image" href="images/webp/me-small3.webp" media="(max-width: 450px)" type="image/webp">
 
-  <!--Favicon-->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/Favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="images/Favicon/favicon.svg" />
   <link rel="shortcut icon" href="images/Favicon/favicon.ico" />
@@ -79,175 +96,165 @@
 </head>
 
 <body>
-  <nav>
-    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+  <nav aria-label="Main navigation">
+    <div class="nav-brand">
+      <a href="#Home" class="nav-logo">
+        <img src="images/Favicon/favicon.svg" alt="Logo" />
+      </a>
+      <a href="#Home" class="nav-title">Niels de Laat</a>
+    </div>
+    <input type="checkbox" id="sidebar-active" aria-label="Toggle navigation menu" />
+    <label for="sidebar-active" class="open-sidebar-button" aria-label="Open navigation menu">
+      <div class="hamburger-icon">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </div>
     </label>
-    <label id="overlay" for="sidebar-active"></label>
+    <label id="overlay" for="sidebar-active" aria-label="Close navigation overlay"></label>
     <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+      <label for="sidebar-active" class="close-sidebar-button" aria-label="Close navigation menu">
+        <div class="hamburger-icon">
+          <span class="bar bar1"></span>
+          <span class="bar bar2"></span>
+          <span class="bar bar3"></span>
+        </div>
       </label>
-      <a data-i18n="nav.home" id="nav" class="home-link" href="#Home">Home</a>
       <a data-i18n="nav.projects" href="#Projects">Projects</a>
       <a data-i18n="nav.experience" href="#Experience">Experience</a>
       <a data-i18n="nav.contact" href="#Contact">Contact</a>
       <div class="language-switcher">
-        <button class="language-btn">
+        <button type="button" class="language-btn">
           <span class="current-lang">English</span>
           <i class="fa fa-caret-down"></i>
         </button>
         <ul class="language-menu">
-          <li><a href="#" data-lang="en">English</a></li>
-          <li><a href="#" data-lang="nl">Nederlands</a></li>
+          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
+          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <section id="Home"></section>
-  <!-- MARK: HOME-->
-
-  <div class="container">
-    <div class="Picture">
-      <!-- <picture>
-        <source srcset="images/webp/me.webp" type="image/webp" />
-        <img src="images/png/me.jpg" alt="Profile picture" />
-      </picture> -->
-
-      <picture>
-        <source media="(min-width: 1301px)" srcset="images/webp/me-medium.webp" type="image/webp" />
-        <source media="(min-width: 451px)" srcset="images/webp/me-medium.webp" type="image/webp" />
-        <source media="(max-width: 450px)" srcset="images/webp/me-small3.webp" type="image/webp" />
-        <source srcset="images/webp/me.webp" type="image/webp" />
-        <img src="images/png/me.jpg" alt="Profile picture" fetchpriority="high" />
-      </picture>
-      <!-- <img src="images/webp/me.webp" srcset="images/png/me.jpg" alt="" /> -->
-    </div>
-    <div class="Text">
-      <p data-i18n="aboutMe.ageLocation" class="age-location">🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands
-      </p>
-      <h1 data-i18n="aboutMe.welcome" style="word-spacing: -1px">Hello, I'm Niels de Laat</h1>
-      <p data-i18n="aboutMe.aboutMe">I'm a developer who loves to create entertaining games. I bring my ideas to life
-        using Unity and C# and I enjoy learning new and innovative approaches. When I'm not programming I am playing <a
-          href="https://infinitebacklog.net/users/nielscraft12" target="_blank" rel="noreferrer"
-          style="text-decoration: none; color: #fffffff9">games</a> or watching <a
-          href="https://trakt.tv/users/nielscraft12" target="_blank" rel="noreferrer"
-          style="text-decoration: none; color: #fffffff9">movies</a>.</p>
-      <h1 data-i18n="aboutMe.skills" style="text-align: center">Skills</h1>
-      <ul class="cd-demo-chip-list">
-        <li>
-          <span class="chip">
-            <picture>
-              <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-              <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" loading="lazy" />
-            </picture>
-            <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
-            <i class="chip__label">C#</i>
-          </span>
-        </li>
-
-        <li>
-          <span class="chip">
-            <picture>
-              <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-              <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" loading="lazy" />
-            </picture>
-            <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
-            <i class="chip__label">Unity</i>
-          </span>
-        </li>
-
-        <!-- <li>
-          <span class="chip">
-            <img class="chip__img" src="images/JavaScriptLogo.png" alt="Picture of Marta Rossi" />
-            <i class="chip__label">JavaScript</i>
-          </span>
-        </li> -->
-
-        <li>
-          <span class="chip">
-            <picture>
-              <source srcset="images/webp/htmlLogo.webp" type="image/webp" />
-              <img class="chip__img" src="images/png/htmlLogo.png" alt="Profile picture" loading="lazy" />
-            </picture>
-            <i class="chip__label">HTML</i>
-          </span>
-        </li>
-        <li>
-          <span class="chip">
-            <!-- <img class="chip__img" src="images/cssLogo2.png" alt="Picture of Paul Brown" /> -->
-            <picture>
-              <source srcset="images/webp/cssLogo2.webp" type="image/webp" />
-              <img class="chip__img" src="images/png/cssLogo2.png" alt="Profile picture" loading="lazy" />
-            </picture>
-            <i class="chip__label">CSS</i>
-          </span>
-        </li>
-        <li>
-          <span class="chip">
-            <picture>
-              <source srcset="images/webp/GithubLogo.webp" type="image/webp" />
-              <img class="chip__img" src="images/png/GithubLogo.png" alt="Profile picture" loading="lazy" />
-            </picture>
-            <!-- <img class="chip__img" src="images/GithubLogo.png" alt="Git Logo" /> -->
-            <i class="chip__label">Git</i>
-          </span>
-        </li>
-
-        <!-- <li>
+  <!-- Home Section -->
+  <section id="Home">
+    <div class="container">
+      <div class="Picture">
+        <picture>
+          <source media="(min-width: 1301px)" srcset="images/webp/me-medium.webp" type="image/webp" />
+          <source media="(min-width: 451px)" srcset="images/webp/me-medium.webp" type="image/webp" />
+          <source media="(max-width: 450px)" srcset="images/webp/me-small3.webp" type="image/webp" />
+          <source srcset="images/webp/me.webp" type="image/webp" />
+          <img src="images/png/me.jpg" alt="Niels de Laat - Game Developer" fetchpriority="high" width="1600"
+            height="2107" />
+        </picture>
+      </div>
+      <div class="Text">
+        <p data-i18n="aboutMe.ageLocation" class="age-location">🎂 <span id="age"></span>⠀| 📍 Utrecht, The Netherlands
+        </p>
+        <h1 data-i18n="aboutMe.welcome" style="word-spacing: -1px;">
+          <span style="white-space: nowrap;">Hello, I'm</span><wbr> <span style="white-space: nowrap;">Niels de
+            Laat</span>
+        </h1>
+        <p data-i18n="aboutMe.aboutMe">
+          I'm a developer who loves to create entertaining games. I bring my ideas to life using Unity and C# and I
+          enjoy learning new and innovative approaches. When I'm not programming I am playing
+          <a href="https://infinitebacklog.net/users/nielscraft12" target="_blank" rel="noopener noreferrer"
+            class="external-link">games</a>
+          or watching
+          <a href="https://trakt.tv/users/nielscraft12" target="_blank" rel="noopener noreferrer"
+            class="external-link">movies</a>.
+        </p>
+        <h1 data-i18n="aboutMe.skills" style="text-align: center;">Skills</h1>
+        <ul class="cd-demo-chip-list">
+          <li>
             <span class="chip">
               <picture>
-                <source srcset="images/webp/PythonLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/PythonLogo.png" alt="Profile picture" loading="lazy" />
+                <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
+                <img class="chip__img" src="images/png/CSharpLogo.png" alt="C# Logo" loading="lazy" width="100"
+                  height="100" />
               </picture>
-              <i class="chip__label">Python</i>
+              <i class="chip__label">C#</i>
             </span>
-          </li> -->
+          </li>
 
-        <li>
-          <span class="chip">
-            <picture>
-              <source srcset="images/webp/TrelloLogo.webp" type="image/webp" />
-              <img class="chip__img" src="images/png/TrelloLogo.png" alt="Trello Logo" loading="lazy" />
-            </picture>
-            <!-- <img class="chip__img" src="images/TrelloLogo.png" alt="Trello Logo" /> -->
-            <i class="chip__label">Scrum</i>
-          </span>
-        </li>
-        <!-- <li>
+          <li>
             <span class="chip">
               <picture>
-                <source srcset="images/webp/CrealityLogo.jpg" type="image/jpg" />
-                <img class="chip__img" src="images/png/TrelloLogo.png" alt="Creality Logo" loading="lazy" />
+                <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
+                <img class="chip__img" src="images/png/UnityLogo.png" alt="Unity Logo" loading="lazy" width="100"
+                  height="100" />
               </picture>
-              <i class="chip__label">Creality Print</i> -->
-      </ul>
+              <i class="chip__label">Unity</i>
+            </span>
+          </li>
+
+          <li>
+            <span class="chip">
+              <picture>
+                <source srcset="images/webp/htmlLogo.webp" type="image/webp" />
+                <img class="chip__img" src="images/png/htmlLogo.png" alt="HTML Logo" loading="lazy" width="100"
+                  height="100" />
+              </picture>
+              <i class="chip__label">HTML</i>
+            </span>
+          </li>
+          <li>
+            <span class="chip">
+              <picture>
+                <source srcset="images/webp/cssLogo2.webp" type="image/webp" />
+                <img class="chip__img" src="images/png/cssLogo2.png" alt="CSS Logo" loading="lazy" width="100"
+                  height="100" />
+              </picture>
+              <i class="chip__label">CSS</i>
+            </span>
+          </li>
+          <li>
+            <span class="chip">
+              <picture>
+                <source srcset="images/webp/GithubLogo.webp" type="image/webp" />
+                <img class="chip__img" src="images/png/GithubLogo.png" alt="Git Logo" loading="lazy" width="100"
+                  height="100" />
+              </picture>
+              <i class="chip__label">Git</i>
+            </span>
+          </li>
+
+          <li>
+            <span class="chip">
+              <picture>
+                <source srcset="images/webp/TrelloLogo.webp" type="image/webp" />
+                <img class="chip__img" src="images/png/TrelloLogo.png" alt="Scrum/Trello Logo" loading="lazy"
+                  width="100" height="100" />
+              </picture>
+              <i class="chip__label">Scrum</i>
+            </span>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <!-- 
-  MARK: PROJECTS
-   -->
+  </section>
+
+  <!-- Projects Section -->
   <section id="Projects">
-    <h1 data-i18n="nav.projects" class="hidden" style="margin-top: 0; padding-top: 0">Projects</h1>
+    <h1 data-i18n="nav.projects">Projects</h1>
 
     <!-- Project Tabs -->
-    <div class="project-tabs">
-      <!-- <button class="tab-button active" data-tab="all" data-i18n="projects.allProjects">All Projects</button> -->
-      <button class="tab-button active" data-tab="games" data-i18n="projects.games">Games</button>
-      <button class="tab-button" data-tab="web" data-i18n="projects.webProjects">Web</button>
-      <!-- <button class="tab-button" data-tab="recent" data-i18n="projects.recent">Recent</button> -->
-      <!-- <button class="tab-button" data-tab="3dPrinting">3D Printing</button> -->
+    <div class="project-tabs" role="tablist" aria-label="Project categories">
+      <button class="tab-button active" data-tab="games" data-i18n="projects.games" role="tab" aria-selected="true"
+        aria-controls="projects-panel">Games</button>
+      <button class="tab-button" data-tab="web" data-i18n="projects.webProjects" role="tab" aria-selected="false"
+        aria-controls="projects-panel">Web</button>
     </div>
 
-    <div class="blog-container">
-      <a href="projects/wa-lch-origins.html" class="blog-box project-item" data-category="games" data-year="2025">
+    <div class="blog-container" id="projects-panel" role="tabpanel">
+      <a href="projects/wa-lch-origins.html" class="blog-box project-item" data-category="games" data-year="2025"
+        aria-label="WA-LCH Origins project details">
         <div class="blog-img">
           <picture>
             <source srcset="images/webp/WalchOrgins.webp" type="image/webp" />
-            <img alt="blog" src="images/WalchOrgins.png" loading="lazy" />
+            <img alt="WA-LCH Origins game screenshot" src="images/png/WalchOrgins.png" loading="lazy" width="800"
+              height="450" />
           </picture>
         </div>
         <div class="blog-text">
@@ -255,7 +262,7 @@
           <span class="blog-title">WA-LCH Origins</span>
           <p data-i18n="projects.descriptionGame1">Step into the role of a dedicated cleaning robot, just like in the
             original WA-LCH. But this</p>
-          <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
+          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
           <ul class="cd-demo-chip-list" style="justify-content: left">
             <li>
               <span class="chip">
@@ -280,11 +287,13 @@
         </div>
       </a>
 
-      <a href="projects/portfolio.html" class="blog-box project-item" data-category="web" data-year="2025">
+      <a href="projects/portfolio.html" class="blog-box project-item" data-category="web" data-year="2025"
+        aria-label="Portfolio project details">
         <div class="blog-img">
           <picture>
             <source srcset="images/webp/Portfolio.webp" type="image/webp" />
-            <img alt="blog" src="images/png/Portfolio.png" loading="lazy" />
+            <img alt="Portfolio website screenshot" src="images/png/Portfolio.png" loading="lazy" width="800"
+              height="450" />
           </picture>
         </div>
         <div class="blog-text">
@@ -292,7 +301,7 @@
           <span class="blog-title">Portfolio</span>
           <p data-i18n="projects.descriptionGame2">Step into the role of a dedicated cleaning robot, just like in the
             original WA-LCH. But this</p>
-          <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
+          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
           <ul class="cd-demo-chip-list" style="justify-content: left">
             <li>
               <span class="chip">
@@ -326,11 +335,13 @@
         </div>
       </a>
 
-      <a href="projects/merge-packing.html" class="blog-box project-item" data-category="games" data-year="2025">
+      <a href="projects/merge-packing.html" class="blog-box project-item" data-category="games" data-year="2025"
+        aria-label="Merge Packing project details">
         <div class="blog-img">
           <picture>
             <source srcset="images/webp/mergePacking.webp" type="image/webp" />
-            <img alt="blog" src="images/png/mergePacking.jpg" loading="lazy" />
+            <img alt="Merge Packing game screenshot" src="images/png/mergePacking.jpg" loading="lazy" width="800"
+              height="450" />
           </picture>
         </div>
         <div class="blog-text">
@@ -338,7 +349,7 @@
           <span class="blog-title">Merge Packing</span>
           <p data-i18n="projects.descriptionGame3">Merge Packing is a quick, quirky mobile game built over a few
             days using Unity and C#...</p>
-          <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
+          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
           <ul class="cd-demo-chip-list" style="justify-content: left">
             <li>
               <span class="chip">
@@ -363,22 +374,20 @@
         </div>
       </a>
 
-      <a href="projects/wa-lch.html" class="blog-box project-item" data-category="games" data-year="2024">
-        <!--img---->
+      <a href="projects/wa-lch.html" class="blog-box project-item" data-category="games" data-year="2024"
+        aria-label="WA-LCH project details">
         <div class="blog-img">
           <picture>
             <source srcset="images/webp/WA-LCH.webp" type="image/webp" />
-            <img alt="blog" src="images/png/WA-LCH.png" loading="lazy" />
+            <img alt="WA-LCH game screenshot" src="images/png/WA-LCH.png" loading="lazy" width="800" height="450" />
           </picture>
-          <!-- <img alt="blog" src="images/WA-LCH.png" /> -->
         </div>
-        <!--text--->
         <div class="blog-text">
           <span class="blog-year">2024</span>
           <span class="blog-title">WA-LCH</span>
           <p data-i18n="projects.descriptionGame4">You are LCH, a cleaning bot who awakens from years of hibernation
             by an unknown source.</p>
-          <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
+          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
           <ul class="cd-demo-chip-list" style="justify-content: left">
             <li>
               <span class="chip">
@@ -442,23 +451,21 @@
         </div>
       </a> -->
 
-      <a href="projects/you-only-have-one-box.html" class="blog-box project-item" data-category="games"
-        data-year="2024">
-        <!--img---->
+      <a href="projects/you-only-have-one-box.html" class="blog-box project-item" data-category="games" data-year="2024"
+        aria-label="You Only Have One Box project details">
         <div class="blog-img">
           <picture>
             <source srcset="images/webp/onlyOneblock.webp" type="image/webp" />
-            <img alt="blog" src="images/png/onlyOneblock.png" loading="lazy" />
+            <img alt="You Only Have One Box game screenshot" src="images/png/onlyOneblock.png" loading="lazy"
+              width="800" height="450" />
           </picture>
-          <!-- <img alt="blog" src="images/onlyOneblock.png" /> -->
         </div>
-        <!--text--->
         <div class="blog-text">
           <span class="blog-year">2024</span>
           <span class="blog-title">You Only Have One Box</span>
           <p data-i18n="projects.descriptionGame5">A challenging 2D platformer where your only tool is a single box.
             Guide both yourself and your</p>
-          <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
+          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
           <ul class="cd-demo-chip-list" style="justify-content: left">
             <li>
               <span class="chip">
@@ -484,22 +491,21 @@
           <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
         </div>
       </a>
-      <a href="projects/slimetastic-punchout.html" class="blog-box project-item" data-category="games" data-year="2024">
-        <!--img---->
+      <a href="projects/slimetastic-punchout.html" class="blog-box project-item" data-category="games" data-year="2024"
+        aria-label="Slimetastic Punchout project details">
         <div class="blog-img">
           <picture>
             <source srcset="images/webp/SlimetasticPunchout.webp" type="image/webp" />
-            <img alt="blog" src="images/SlimetasticPunchout.png" loading="lazy" />
+            <img alt="Slimetastic Punchout game screenshot" src="images/png/SlimetasticPunchout.png" loading="lazy"
+              width="800" height="450" />
           </picture>
-          <!-- <img alt="blog" src="images/SlimetasticPunchout.png" /> -->
         </div>
-        <!--text--->
         <div class="blog-text">
           <span class="blog-year">2024</span>
           <span class="blog-title">Slimetastic Punchout</span>
           <p data-i18n="projects.descriptionGame6">Slimetastic Punchout is a chaotic and fun local multiplayer game
             where you take control</p>
-          <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
+          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
           <ul class="cd-demo-chip-list" style="justify-content: left">
             <li>
               <span class="chip">
@@ -525,63 +531,17 @@
           <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
         </div>
       </a>
-
-      <!-- <a href="projects/3d-printing.html">
-          <div class="blog-box hidden project-item" data-category="3dPrinting" data-year="2025">
-            <div class="blog-img">
-              <picture>
-                <source srcset="images/webp/3dPrinting.webp" type="image/webp" />
-                <img alt="blog" src="images/png/3dPrinting.png" loading="lazy" />
-              </picture>
-            </div>
-
-            <div class="blog-text">
-              <span>2025</span>
-              <a href="projects/3d-printing.html" class="blog-title">Test 3D Printing</a>
-              <a href="projects/3d-printing.html">
-                <p data-i18n="projects.descriptionGame2">Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this</p>
-                <p data-i18n="projects.technologies" style="color: black">Technologies:</p>
-                <ul class="cd-demo-chip-list" style="justify-content: left">
-                  <li>
-                    <span class="chip">
-                      <picture>
-                        <source srcset="images/webp/htmlLogo.webp" type="image/webp" />
-                        <img class="chip__img" src="images/png/" alt="Html Logo" loading="lazy" />
-                      </picture>
-
-                      <i class="chip__label">Creality</i>
-                    </span>
-                  </li>
-                </ul>
-              </a>
-              <a href="projects/3d-printing.html" data-i18n="projects.seeMore" class="blog-readmore">See More</a>
-            </div>
-          </div>
-        </a> -->
     </div>
   </section>
 
-  <hr class="rounded" />
-  <!-- 
-   MARK: EXPERIENCE
-   -->
+  <hr class="rounded" style="margin-top: 30px;" />
+
+  <!-- Experience Section -->
   <section id="Experience">
     <h1 data-i18n="nav.experience">Experience</h1>
     <div class="experience-container">
-      <div class="tooltip" id="tooltip"></div>
+      <div class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></div>
       <div class="timeline-container">
-        <!-- <div class="controls">
-          <button id="prev-btn">◀</button>
-          <div class="slider" id="slider">
-            <div class="slider-track" id="slider-track"></div>
-            <div class="slider-points"> -->
-        <!-- Points dynamically created by JS -->
-        <!-- </div>
-            <div class="slider-thumb" id="slider-thumb"></div>
-          </div>
-          <button id="next-btn">▶</button>
-        </div> -->
-
         <div class="content-section active" data-index="0">
           <div class="header">
             <div class="title-container">
@@ -598,148 +558,49 @@
             <p data-i18n="experience.gluDescription">The Game Development program at Grafisch Lyceum Utrecht teaches
               game design, coding, and collaboration between programmers and artists. Through practical projects we
               learn the skills needed to fun games.</p>
-            <h1 style="text-align: left; font-size: 40px" data-i18n="experience.skillsLearned">Skills Learned:</h1>
+            <h2 style="text-align: left; font-size: 40px" data-i18n="experience.skillsLearned">Skills Learned:</h2>
             <div class="skills">
-              <!-- <div class="skill" data-skill="frontend">Frontend</div>
-              <div class="skill" data-skill="backend">Backend</div>
-              <div class="skill" data-skill="devops">DevOps</div> -->
-
               <div class="badge">
                 <picture>
                   <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" loading="lazy" />
+                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Unity Logo" loading="lazy" width="40"
+                    height="40" />
                 </picture>
                 Unity
               </div>
               <div class="badge">
                 <picture>
                   <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" loading="lazy" />
+                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="C# Logo" loading="lazy" width="40"
+                    height="40" />
                 </picture>
                 C#
               </div>
               <div class="badge">
                 <picture>
                   <source srcset="images/webp/TrelloLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/TrelloLogo.png" alt="Profile picture" loading="lazy" />
+                  <img class="chip__img" src="images/png/TrelloLogo.png" alt="Scrum/Trello Logo" loading="lazy"
+                    width="40" height="40" />
                 </picture>
                 Scrum
               </div>
               <div class="badge">
                 <picture>
                   <source srcset="images/webp/GithubLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/GithubLogo.png" alt="Profile picture" loading="lazy" />
+                  <img class="chip__img" src="images/png/GithubLogo.png" alt="Git Logo" loading="lazy" width="40"
+                    height="40" />
                 </picture>
                 Git
               </div>
             </div>
-
-            <div class="skill-content" id="frontend-content">
-              <h3>Frontend Skills</h3>
-              <p>The frontend portion covered React, Redux, TypeScript, CSS frameworks, and modern JavaScript features.
-                I built several interactive applications and learned about responsive design principles.</p>
-            </div>
-
-            <div class="skill-content" id="backend-content">
-              <h3>Backend Skills</h3>
-              <p>Backend development included Node.js, Express, MongoDB, GraphQL, and RESTful API design. I implemented
-                authentication, authorization, and database integration.</p>
-            </div>
-
-            <div class="skill-content" id="devops-content">
-              <h3>DevOps Skills</h3>
-              <p>The DevOps section covered CI/CD pipelines, containerization with Docker, testing strategies, and
-                deployment to cloud platforms like Heroku and AWS.</p>
-            </div>
           </div>
         </div>
-
-        <!-- <div class="content-section" data-index="1">
-          <div class="header">
-            <div class="title-container">
-              <div class="title">React Advanced</div>
-              <div class="badge">Workshop</div>
-            </div>
-            <div class="date">01.2024 - 03.2024</div>
-          </div>
-
-          <div class="content">
-            <p>Participated in an intensive React Advanced workshop focusing on performance optimization, custom hooks,
-              advanced state management patterns, and integrating with modern backend technologies.</p>
-
-            <div class="skills">
-          <div class="skill" data-skill="react">React</div>
-              <div class="skill" data-skill="typescript">TypeScript</div>
-              <div class="skill"  data-skill="performance" >Performance</div>
-        <div class="skill">Unity</div>
-        <div class="skill">C#</div>
-      </div>
-    </div>
-
-    <div class="skill-content" id="react-content">
-      <h3>React Skills</h3>
-      <p>Mastered advanced React patterns including render props, compound components, and custom hooks.
-        Implemented context API for complex state management.</p>
-    </div>
-
-    <div class="skill-content" id="typescript-content">
-      <h3>TypeScript Integration</h3>
-      <p>Applied TypeScript to React projects with proper typing of props, state, and event handlers. Created
-        reusable typed components and custom type definitions.</p>
-    </div>
-
-    <div class="skill-content" id="performance-content">
-      <h3>Performance Optimization</h3>
-      <p>Learned techniques for React performance optimization including memoization, code splitting, lazy
-        loading, and preventing unnecessary re-renders.</p>
-    </div>
-
-    </div>
-    </div>  -->
-
-        <!-- <div class="content-section" data-index="2">
-        <div class="header">
-          <div class="title-container">
-            <div class="title">Cloud Architecture</div>
-            <div class="badge">Certification</div>
-          </div>
-          <div class="date">05.2024 - 10.2024</div>
-        </div>
-        
-        <div class="content">
-          <p>Completed comprehensive cloud architecture certification covering AWS, Azure, and GCP. Focused on scalable infrastructure design, serverless architecture, and security best practices.</p>
-          
-          <div class="skills">
-            <div class="skill" data-skill="aws">AWS</div>
-            <div class="skill" data-skill="serverless">Serverless</div>
-            <div class="skill" data-skill="security">Security</div>
-          </div>
-          
-          <div class="skill-content" id="aws-content">
-            <h3>AWS Cloud Services</h3>
-            <p>Deep dive into AWS services including EC2, S3, Lambda, DynamoDB, and CloudFormation for infrastructure as code. Created and deployed full-stack applications.</p>
-          </div>
-          
-          <div class="skill-content" id="serverless-content">
-            <h3>Serverless Architecture</h3>
-            <p>Implemented serverless applications using AWS Lambda and API Gateway, focusing on scalability, cost optimization, and event-driven architecture.</p>
-          </div>
-          
-          <div class="skill-content" id="security-content">
-            <h3>Cloud Security</h3>
-            <p>Applied security best practices for cloud environments including IAM policies, encryption, VPC configuration, and compliance with industry standards.</p>
-          </div>
-          
-        </div>
-      </div>
-    </div> -->
       </div>
     </div>
   </section>
   <hr class="rounded" style="margin-bottom: 3px" />
-  <!--
-  MARK: CONTACT
-   -->
+
+  <!-- Contact Section -->
   <section id="Contact">
     <h1 data-i18n="contact.contactTitle">Contact Me</h1>
     <div class="socal-media-buttons">
@@ -760,22 +621,25 @@
   <!-- Critical scripts loaded for immediate execution -->
   <script type="module" src="js/translate.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/project-ordering.js"></script>
 
   <!-- Non-critical scripts with lower priority -->
   <script defer src="js/animation.js"></script>
   <script defer src="js/Experience.js"></script>
   <script defer src="js/ios-viewport-fix.js"></script>
+  <script defer src="js/mobile-optimizations.js"></script>
 
   <!-- Analytics loaded asynchronously -->
   <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-<footer>
-  <div class="footer" style="display: flex; align-items: center; position: relative">
-    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
-        preserveAspectRatio="xMidYMid meet" class="mi-icon">
-        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+  <footer>
+    <div class="footer" style="display: flex; align-items: center; position: relative;">
+      <button type="button" data-lang="mi"
+        style="position: absolute; left: 10px; cursor: pointer; background: none; border: none; padding: 0;"
+        aria-label="Switch to Māori language">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
+          preserveAspectRatio="xMidYMid meet" class="mi-icon">
+          <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+            <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
           -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
           -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
           -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
@@ -787,14 +651,15 @@
           123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
           c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
           -1440 483 -149 19 -562 27 -710 15z" />
-        </g>
-      </svg>
-    </a>
-    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-    <script>
-      document.getElementById("copyright-year").textContent = new Date().getFullYear();
-    </script>
-  </div>
-</footer>
+          </g>
+        </svg>
+      </button>
+      <p style="flex: 1; text-align: center; margin: 0;">© <span id="copyright-year"></span> Niels de Laat</p>
+      <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+      </script>
+    </div>
+  </footer>
+</body>
 
 </html>

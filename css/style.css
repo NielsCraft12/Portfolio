@@ -284,11 +284,22 @@ h6.missing-translation {
 .GradiantTitle {
   color: var(--primary-text);
   /* Fallback */
-  /* background: -webkit-linear-gradient(var(--gradient-start), var(--gradient-end)); */
-  /* background: -moz-linear-gradient(var(--gradient-start), var(--gradient-end)); */
   background: linear-gradient(var(--gradient-start), var(--gradient-end));
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* External link styling */
+.external-link {
+  text-decoration: none;
+  color: #fffffff9;
+  transition: opacity 0.2s ease;
+}
+
+.external-link:hover,
+.external-link:focus {
+  opacity: 0.8;
+  text-decoration: underline;
 }

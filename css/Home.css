@@ -230,14 +230,81 @@ Component
 nav {
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
-  width: auto;
+  width: 100%;
   height: 60px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  z-index: 10000;
+  z-index: 999999999999;
+  padding-left: 30px;
   padding-right: 30px;
+  background: rgba(30, 30, 30, 0.5);
+  margin: 0;
+  box-sizing: border-box;
+  /* backdrop-filter: blur(10px); */
+}
+
+/* Navigation Brand (Logo + Title) */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Navigation Logo */
+.nav-logo {
+  display: flex !important;
+  align-items: center;
+  height: 40px !important;
+  width: 40px !important;
+  transition: transform 0.3s ease;
+  padding: 0 !important;
+}
+
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Navigation Title */
+.nav-title {
+  display: flex !important;
+  align-items: center;
+  height: auto !important;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: 0 !important;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: opacity 0.3s ease;
+}
+
+.nav-title:hover {
+  opacity: 0.8;
+  background-color: transparent !important;
+}
+
+nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  z-index: -1;
 }
 
 /* iOS specific navbar fixes */
@@ -245,13 +312,15 @@ nav {
   nav {
     /* Use safe area insets for iOS devices with notch */
     padding-top: env(safe-area-inset-top);
+    padding-left: max(30px, env(safe-area-inset-left));
     padding-right: max(30px, env(safe-area-inset-right));
     top: 0;
     position: fixed;
     width: 100%;
     left: 0;
-    right: auto;
-    justify-content: flex-end;
+    justify-content: space-between;
+    background: rgba(30, 30, 30, 0.9);
+    /* backdrop-filter: blur(10px); */
   }
 }
 
@@ -278,17 +347,21 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  width: 88%;
   padding-right: 0;
 }
 
 nav a {
-  height: 00%;
+  height: 100%;
   padding: 0 20px;
   display: flex;
   align-items: center;
   text-decoration: none;
   color: white;
+}
+
+/* Exclude nav-brand links from general nav a styles */
+.nav-brand a {
+  padding: 0;
 }
 
 nav a:hover {
@@ -316,6 +389,54 @@ nav a:hover {
 
 .close-sidebar-button {
   display: none;
+}
+
+/* Animated Hamburger Icon */
+.hamburger-icon {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-icon .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+}
+
+/* Default hamburger state */
+.open-sidebar-button .hamburger-icon .bar1 {
+  transform: translateY(0) rotate(0deg);
+}
+
+.open-sidebar-button .hamburger-icon .bar2 {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.open-sidebar-button .hamburger-icon .bar3 {
+  transform: translateY(0) rotate(0deg);
+}
+
+/* Hamburger to X animation when sidebar is active */
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar1 {
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar3 {
+  transform: translateY(-10.5px) rotate(-45deg);
 }
 
 @media screen and (max-width: 1300px) {
@@ -419,7 +540,17 @@ nav a:hover {
   }
 
   nav {
-    width: auto;
+    width: 100%;
+    background: rgba(30, 30, 30, 0.5);
+    /* backdrop-filter: blur(10px); */
+  }
+
+  nav::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backdrop-filter: blur(10px);
   }
 
   .links-container {
@@ -432,14 +563,28 @@ nav a:hover {
     right: -100%;
     z-index: 10;
     width: 300px;
-    height: 200%;
-    background-color: #1e1e1e;
+    height: 200vh;
+    min-height: 100vh;
+    background: rgba(30, 30, 30, 0.5); /* Reduced opacity to make blur more visible */
+    /* -webkit-backdrop-filter: blur(10px); */
+    /* backdrop-filter: blur(10px); */
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
     transition: 0.75s ease-out;
     padding-top: 80px;
     gap: 10px;
     padding-right: 0;
-    /* Reset padding for mobile view */
+  }
+
+  .links-container::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    backdrop-filter: blur(10px);
   }
 
   nav a {
@@ -455,6 +600,33 @@ nav a:hover {
     /* Center text */
   }
 
+  .nav-logo {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+  }
+
+  .nav-title {
+    font-size: 16px;
+  }
+
+  .nav-brand {
+    gap: 10px;
+  }
+}
+
+/* Extra small screens - hide title if needed */
+@media (max-width: 360px) {
+  .nav-title {
+    display: none !important;
+  }
+
+  .nav-brand {
+    gap: 0;
+  }
+}
+
+@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
   .language-switcher {
     padding: 0 25px;
     margin-top: 10px;
@@ -464,9 +636,9 @@ nav a:hover {
   }
 
   .language-btn {
-    width: 100%;
+    width: 100% !important;
     padding: 10px 0;
-    justify-content: center;
+    justify-content: center !important;
     /* Changed from flex-start to center */
     text-align: center;
     /* Add text centering */
@@ -475,35 +647,60 @@ nav a:hover {
     /* Ensure flex display */
     align-items: center;
     /* Center items vertically */
+    transition: background-color 0.2s ease;
+  }
+
+  .language-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .language-btn .current-lang {
     margin: 0 1px 0 0;
     /* Increased space between text and icon */
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
   }
 
   .language-menu {
-    position: relative;
+    display: none;
+    position: absolute;
+    background: rgba(30, 30, 30, 0.95); /* Match navbar background */
+    /* backdrop-filter: blur(10px); Match navbar blur */
     width: 100%;
-    margin-top: 45px;
-    background-color: #2e2e2e;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
     border-radius: 5px;
+    margin-top: 0px;
+    padding-top: 5px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
   }
 
   .language-menu li a {
-    color: white;
-    font-size: 1.2rem;
-    padding: 15px 20px;
-    text-align: center;
+    color: white; /* Match navbar link color */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
   .language-menu li a:hover {
-    background-color: #3e3e3e;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay on hover */
+    transform: translateX(3px);
   }
 
-  .current-lang {
-    font-size: 1.2rem;
-    font-weight: 700;
+  .language-menu li a.active {
+    background: linear-gradient(to right, rgba(187, 122, 69, 0.3), rgba(174, 68, 90, 0.3)); /* Gradient tint for active */
+    font-weight: 600;
   }
 
   .language-switcher {
@@ -514,20 +711,49 @@ nav a:hover {
     display: flex;
     justify-content: center;
     /* Center language switcher */
+    position: relative;
   }
 
   .language-menu {
-    position: relative;
-    width: 100%;
+    display: none;
+    position: absolute;
+    width: calc(100% - 50px);
+    top: 100%;
     margin-top: 5px;
+    left: 25px;
+    right: 25px;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .language-switcher.active .language-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   .language-btn {
     width: 100%;
     padding: 10px 0;
-    justify-content: flex-start;
+    justify-content: center;
     font-size: 1.2rem;
     /* Match link text size */
+    transition: background-color 0.2s ease;
+  }
+
+  .language-btn i {
+    transition: transform 0.3s ease;
+  }
+
+  .language-switcher.active .language-btn i {
+    transform: rotate(180deg);
+  }
+
+  .language-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   nav a li ul {
@@ -547,24 +773,25 @@ nav a:hover {
   }
 
   #sidebar-active:checked ~ #overlay {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 9;
+    cursor: pointer;
   }
 
   #sidebar-active:checked ~ .open-sidebar-button {
-    display: none;
+    /* Keep the button visible so animation shows */
+    display: block;
   }
 
   #sidebar-active:checked ~ .links-container .close-sidebar-button {
-    display: block;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 11;
+    /* Hide the close button since we're using the animated open button */
+    display: none;
   }
 
   #sidebar-active:not(:checked) ~ .close-sidebar-button {
@@ -600,6 +827,11 @@ nav a:hover {
     align-items: center;
     text-align: center;
     font-size: 1.2rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .language-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .language-btn i {
@@ -618,6 +850,19 @@ nav a:hover {
     justify-content: flex-start;
     /* padding-left: 40px; */
     /* Add some left padding for better visual appearance */
+  }
+}
+
+/* Additional mobile menu viewport coverage fix */
+@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+  .links-container {
+    height: 100vh;
+    min-height: 100vh;
+    /* Fallback for older browsers */
+    height: 100dvh;
+    /* Modern dynamic viewport height for mobile browsers */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
 }
 
@@ -680,53 +925,116 @@ nav a:hover {
 .language-menu {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 100%;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: rgba(30, 30, 30, 0.95); /* Match navbar background */
+  backdrop-filter: blur(10px); /* Match navbar blur */
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
   z-index: 1;
   list-style: none;
   padding: 0;
   margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  border-radius: 10px;
+  overflow: hidden; /* Clips child elements to rounded corners */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  right: 5px;
 }
 
 .language-btn {
   background-color: transparent;
   color: white;
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding: 0 20px;
+  padding-left: 20px;
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  /* width: auto; */
-  min-width: fit-content;
+  justify-content: center;
+  width: 130px;
   white-space: nowrap;
-  padding-left: 20px;
+  height: 100%;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  position: relative;
 }
 
-.language-btn i.fa-caret-down {
-  margin-left: 8px;
-  /* Additional spacing between text and arrow icon */
+.language-btn i {
+  transition: transform 0.3s ease;
+}
+
+.language-btn:hover {
+  background-color: var(--accent-color);
+}
+
+.language-btn .current-lang {
+  margin-right: 5px;
+  /* Space between text and arrow */
 }
 
 .language-menu li a {
-  color: black;
-  padding: 12px 16px;
+  color: white; /* Match navbar link color */
+  padding: 12px 0px;
   text-decoration: none;
   display: block;
-  width: 260px;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.language-menu li:first-child a {
+  /* Add extra top padding to first item for visual spacing */
+  padding-top: 12px;
 }
 
 .language-menu li a:hover {
-  background-color: #ddd;
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay on hover */
 }
 
-.language-switcher:hover .language-menu {
+.language-menu li a.active {
+  /* background: linear-gradient(to right, rgba(187, 122, 69, 0.3), rgba(174, 68, 90, 0.3)); */
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  font-weight: 600;
+}
+
+.language-menu li:first-child a {
+  border-radius: 10px 10px 0 0; /* Round top corners for first item */
+}
+
+.language-menu li:last-child a {
+  border-radius: 0 0 10px 10px; /* Round bottom corners for last item */
+}
+
+/* Desktop: use hover (only on devices with fine pointer like mouse) */
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+  .language-switcher:hover .language-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .language-switcher:hover .language-btn i {
+    transform: rotate(180deg);
+  }
+}
+
+/* Mobile and touch devices: use click/active class only */
+.language-switcher.active .language-menu {
   display: block;
 }
 
 .current-lang {
   font-family: "Baloo 2", cursive;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+  .links-container {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }

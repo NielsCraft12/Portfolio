@@ -12,7 +12,13 @@
 
   <!-- External Resources -->
   <!-- jQuery library
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --> <!-- Google Fonts -->
+  <script src="https://ajax.googleapis.com/ajax/      <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
+      <a href="https://github.com/NielsCraft12/ggj-walch2/tree/main/Assets/Scripts" target="_blank" rel="noreferrer"
+        class="fab fa-github fa-2xl icon"></a>
+
+      <!-- Credits Section -->
+  <h1 data-i18n="projectPages.credits" style="text-align: center; margin-top: 10px; margin-bottom: 0"
+    class="GradiantTitle">Credits</h1>uery/3.5.1/jquery.min.js"></script> --> <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
@@ -82,14 +88,30 @@
     nav {
       position: fixed;
       top: 0;
+      left: 0;
       right: 0;
-      width: auto;
+      width: 100vw;
       height: 60px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      padding-right: 15px;
+      padding-left: 30px;
+      padding-right: 30px;
+      background: rgba(30, 30, 30, 0.5);
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    nav::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      z-index: -1;
     }
 
     /* Critical container layout styles */
@@ -308,16 +330,31 @@
 <body>
   <!-- Navigation Menu -->
   <nav>
+    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
+    <div class="nav-brand">
+      <a href="../" class="nav-logo">
+        <img src="../images/Favicon/favicon.svg" alt="Logo" />
+      </a>
+      <a href="../" class="nav-title">Niels de Laat</a>
+    </div>
     <input type="checkbox" id="sidebar-active" />
     <label for="sidebar-active" class="open-sidebar-button">
-      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+      <div class="hamburger-icon">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </div>
     </label>
     <label id="overlay" for="sidebar-active"></label>
     <div class="links-container">
       <label for="sidebar-active" class="close-sidebar-button">
-        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+        <div class="hamburger-icon">
+          <span class="bar bar1"></span>
+          <span class="bar bar2"></span>
+          <span class="bar bar3"></span>
+        </div>
       </label>
-      <a data-i18n="nav.home" class="home-link" href="../">Home</a>
+      <!-- <a data-i18n="nav.home" class="home-link" href="../">Home</a> -->
       <a data-i18n="nav.projects" href="../#Projects">Projects</a>
       <a data-i18n="nav.experience" href="../#Experience">Experience</a>
       <a data-i18n="nav.contact" href="../#Contact">Contact</a>
@@ -327,13 +364,13 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <ul class="language-menu">
-          <li><a href="#" data-lang="en">English</a></li>
-          <li><a href="#" data-lang="nl">Nederlands</a></li>
+          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
+          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
         </ul>
       </div>
     </div>
   </nav>
-
+  <div style="height: 50px;"></div>
   <!-- Main Content Container -->
   <div class="containerProject">
     <!-- Project Description Section -->
@@ -430,7 +467,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
         style="display: block; margin: 20px auto; max-width: 100%; height: auto" loading="lazy" />  -->
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="/videos/webm/WalchOrigins/walchOriginsTraps.webm" type="video/webm">
+        <source src="../videos/webm/WalchOrigins/walchOriginsTraps.webm" type="video/webm">
       </video>
       <h3 data-i18n="projectPages.walchOrigins.doorSystem.doorSystemTitle" class="GradiantTitle subtitle">Doors
       </h3>
@@ -497,7 +534,7 @@ Collider[] hitColliders = Physics.OverlapSphere(
         style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy" /> -->
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="/videos/webm/WalchOrigins/walchOriginsDoor.webm" type="video/webm">
+        <source src="../videos/webm/WalchOrigins/walchOriginsDoor.webm" type="video/webm">
       </video>
       <h3 data-i18n="projectPages.walchOrigins.customTrailer.customTrailerTitle" class="GradiantTitle subtitle">Custom
         Trailer</h3>
@@ -622,79 +659,79 @@ Collider[] hitColliders = Physics.OverlapSphere(
           </a>
         </li>
       </ul>
-    </div> -->
     </div>
   </div>
 
   <!-- Image Modal for Screenshots -->
-  <div id="imageModal" class="modal">
-    <span class="modal-close">&times;</span>
-    <img class="modal-content" id="modalImg" />
-  </div>
-  <!-- Lazy load image zoom functionality -->
-  <script src="../js/imagezoom.js" defer></script>
-  <script src="../js/translate.js" defer></script>
+      <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImg" />
+      </div>
+      <!-- Lazy load image zoom functionality -->
+      <script src="../js/imagezoom.js" defer></script>
+      <script src="../js/translate.js" defer></script>
+      <script src="../js/mobile-optimizations.js" defer></script>
 
 
 
-  <!-- Load analytics after page is fully loaded -->
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const script = document.createElement('script');
-        script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
-        script.src = '//gc.zgo.at/count.js';
-        script.async = true;
-        document.head.appendChild(script);
-      }, 1000); // Delay by 1 second after load
-    });
-  </script>
-  <script>
-    // Efficient video lazy loading - only if videos exist
-    document.addEventListener('DOMContentLoaded', () => {
-      const videos = document.querySelectorAll('video[autoplay]');
-      if (videos.length === 0) return; // Skip if no videos
+      <!-- Load analytics after page is fully loaded -->
+      <script>
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            const script = document.createElement('script');
+            script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
+            script.src = '//gc.zgo.at/count.js';
+            script.async = true;
+            document.head.appendChild(script);
+          }, 1000); // Delay by 1 second after load
+        });
+      </script>
+      <script>
+        // Efficient video lazy loading - only if videos exist
+        document.addEventListener('DOMContentLoaded', () => {
+          const videos = document.querySelectorAll('video[autoplay]');
+          if (videos.length === 0) return; // Skip if no videos
 
-      const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const video = entry.target;
-            video.paused && video.play().catch(() => { }); // Silent fail
-            videoObserver.unobserve(video);
+          const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const video = entry.target;
+                video.paused && video.play().catch(() => { }); // Silent fail
+                videoObserver.unobserve(video);
+              }
+            });
+          }, { threshold: 0.25 });
+
+          videos.forEach(video => {
+            video.pause();
+            videoObserver.observe(video);
+          });
+        }, { once: true });
+
+
+        // Conditionally load the itch.io embed only for "Merge Packing"
+        document.addEventListener('DOMContentLoaded', () => {
+          const project = document.body.getAttribute('data-project');
+          if (project === 'Merge Packing') {
+            const embedContainer = document.querySelector('.itch-embed-container');
+            const iframe = document.createElement('iframe');
+            iframe.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%';
+            iframe.frameBorder = '0';
+            iframe.src = 'https://itch.io/embed-upload/12701195?color=1E1E1E';
+            iframe.allowFullscreen = true;
+            embedContainer.innerHTML = ''; // Clear the placeholder
+            embedContainer.appendChild(iframe);
           }
         });
-      }, { threshold: 0.25 });
+      </script>
 
-      videos.forEach(video => {
-        video.pause();
-        videoObserver.observe(video);
-      });
-    }, { once: true });
-
-
-    // Conditionally load the itch.io embed only for "Merge Packing"
-    document.addEventListener('DOMContentLoaded', () => {
-      const project = document.body.getAttribute('data-project');
-      if (project === 'Merge Packing') {
-        const embedContainer = document.querySelector('.itch-embed-container');
-        const iframe = document.createElement('iframe');
-        iframe.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%';
-        iframe.frameBorder = '0';
-        iframe.src = 'https://itch.io/embed-upload/12701195?color=1E1E1E';
-        iframe.allowFullscreen = true;
-        embedContainer.innerHTML = ''; // Clear the placeholder
-        embedContainer.appendChild(iframe);
-      }
-    });
-  </script>
-
-  <footer>
-    <div class="footer" style="display: flex; align-items: center; position: relative">
-      <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
-          preserveAspectRatio="xMidYMid meet" class="mi-icon">
-          <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-            <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+      <footer>
+        <div class="footer" style="display: flex; align-items: center; position: relative">
+          <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+              viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
+              <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
                 -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
                 -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
                 -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
@@ -706,15 +743,15 @@ Collider[] hitColliders = Physics.OverlapSphere(
                 123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
                 c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
                 -1440 483 -149 19 -562 27 -710 15z" />
-          </g>
-        </svg>
-      </a>
-      <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-      <script>
-        document.getElementById("copyright-year").textContent = new Date().getFullYear();
-      </script>
-    </div>
-  </footer>
+              </g>
+            </svg>
+          </a>
+          <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+          <script>
+            document.getElementById("copyright-year").textContent = new Date().getFullYear();
+          </script>
+        </div>
+      </footer>
 </body>
 
 </html>

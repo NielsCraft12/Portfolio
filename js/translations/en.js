@@ -10,7 +10,7 @@ export const en = {
 
   aboutMe: {
     // Home about me
-    welcome: "Hello, I'm Niels de Laat",
+    welcome: '<span style="white-space: nowrap;">Hello, I\'m</span><wbr> <span style="white-space: nowrap;">Niels de Laat</span>',
     ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, The Netherlands',
     aboutMe: 'I\'m a developer who loves to create entertaining games. I bring my ideas to life using Unity and C# and I enjoy learning new and innovative approaches. When I\'m not programming I am playing <a href="https://infinitebacklog.net/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">games</a> or watching <a href="https://trakt.tv/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">movies</a>.',
     skills: "Skills",

@@ -9,7 +9,8 @@ export const mi = {
   },
   aboutMe: {
     // Home about me
-    welcome: "Bello, ka'm Niels de Laat",
+    // welcome: "Bello, ka'm Niels de Laat",
+    welcome: '<span style="white-space: nowrap;">Bello, ka\'m</span><wbr> <span style="white-space: nowrap;">Niels de Laat</span>',
     ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, ta peebam',
     aboutMe: 'ka\'m a runelm ben loves da maynoo entertaining bam.  Ka toka mi cwm da levo tug ane yee c# yee ka loka rahrap daga yee hubkif rimfil.  Kan ka\'m non hutelm ka am maenae <a href="https://infinitebacklog.net/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">bam</a> sif coryea <a href="https://trakt.tv/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">gnuour</a>',
     skills: "Disell",

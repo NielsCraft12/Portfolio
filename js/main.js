@@ -63,11 +63,18 @@ function initProjectTabs() {
       }
     });
 
+    // Apply custom ordering after filtering, but don't change tabs
+    if (window.projectOrdering) {
+      setTimeout(() => {
+        window.projectOrdering.applyOrderingOnly();
+      }, 10);
+    }
+
     // Handle single item centering with a direct approach
     if (visibleCount === 1) {
       // Set fixed width on the container for one item
       blogContainer.style.maxWidth = "400px"; // Width of one card + some margin
-      blogContainer.style.margin = "0 auto"; // No top margin on container
+      blogContainer.style.margin = "32px auto 0 auto"; // Keep consistent top margin
 
       // Find the visible anchor that contains the project
       const visibleItems = Array.from(projectItems).filter((item) => !item.classList.contains("hidden-filter"));
@@ -76,17 +83,17 @@ function initProjectTabs() {
         const projectItem = visibleItems[0];
         if (parentLink) {
           parentLink.style.width = "100%";
-          // Align with tabs with multiple cards by removing top margin
-          parentLink.style.marginTop = "-20px"; // Negative margin to compensate for the project-item's margin
+          // Keep consistent alignment with multiple items
+          parentLink.style.marginTop = "0"; // Remove negative margin
         }
         if (projectItem) {
-          projectItem.style.marginTop = "5"; // Remove top margin on the project item
+          projectItem.style.marginTop = "0"; // Keep consistent margins
         }
       }
     } else {
       // Reset to normal layout for multiple items
       blogContainer.style.maxWidth = "1560px";
-      blogContainer.style.margin = "20px auto";
+      blogContainer.style.margin = "32px auto 0 auto"; // Keep consistent top margin
 
       // Reset any item-specific styles
       document.querySelectorAll(".blog-container > a").forEach((link) => {
@@ -123,8 +130,19 @@ function initProjectTabs() {
     });
   });
 
-  // Initialize with 'games' projects shown immediately
-  filterProjects("games");
+  // Initialize with 'games' projects shown immediately, unless URL ordering overrides it
+  const urlParams = new URLSearchParams(window.location.search);
+  const hasOrderParam = urlParams.get("order");
+
+  if (!hasOrderParam) {
+    // Only initialize with games if there's no URL ordering at all
+    filterProjects("games");
+  }
+  // If there IS an order param, let the project ordering system handle initialization
+  // It will call filterProjects if the order is invalid and no stored order exists
+
+  // Make filterProjects globally available for the ordering system
+  window.filterProjects = filterProjects;
 }
 //
 //

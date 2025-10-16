@@ -212,6 +212,7 @@ hr.roundedv {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000000 !important;
 }
 
 .modal-content {
@@ -225,6 +226,7 @@ hr.roundedv {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 1000000 !important;
   transform: translate(-50%, -50%);
 }
 
@@ -1218,7 +1220,7 @@ pre code {
     border-radius: 4px !important;
     text-decoration: none !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
-    z-index: 9999 !important;
+    z-index: 10 !important;
     transition: background 0.3s, transform 0.2s !important;
     min-width: 100px !important;
     min-height: 24px !important;
@@ -1583,4 +1585,52 @@ pre code {
     min-height: 480px !important;
     border: none !important;
   }
+}
+
+/* Animated Hamburger Icon for Project Pages */
+.hamburger-icon {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-icon .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+}
+
+/* Default hamburger state */
+.open-sidebar-button .hamburger-icon .bar1 {
+  transform: translateY(0) rotate(0deg);
+}
+
+.open-sidebar-button .hamburger-icon .bar2 {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.open-sidebar-button .hamburger-icon .bar3 {
+  transform: translateY(0) rotate(0deg);
+}
+
+/* Hamburger to X animation when sidebar is active */
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar1 {
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar3 {
+  transform: translateY(-10.5px) rotate(-45deg);
 }

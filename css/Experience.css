@@ -93,7 +93,7 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: left 0.3s;
-  z-index: 10;
+  z-index: 1;
 }
 
 .slider-points {
@@ -115,7 +115,7 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
-  z-index: 5;
+  z-index: 0;
 }
 
 .slider-point.active {
@@ -135,8 +135,8 @@
   background-color: #1e1e1e;
   color: white;
   position: sticky;
-  top: 0;
-  z-index: 10;
+  top: 10px;
+  z-index: 1;
   background-color: #1e1e1e;
 }
 
@@ -248,5 +248,5 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s;
-  z-index: 100;
+  z-index: 0;
 }

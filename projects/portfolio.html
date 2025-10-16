@@ -103,9 +103,24 @@
       background-color: #333;
       position: fixed;
       top: 0;
-      width: 100%;
+      left: 0;
+      right: 0;
+      width: 100vw;
       z-index: 1000;
       transition: all 0.3s ease;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .navbar::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      z-index: -1;
     }
 
     .content-container {
@@ -247,16 +262,31 @@
 <body>
   <!-- Navigation Menu -->
   <nav>
+    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
+    <div class="nav-brand">
+      <a href="../" class="nav-logo">
+        <img src="../images/Favicon/favicon.svg" alt="Logo" />
+      </a>
+      <a href="../" class="nav-title">Niels de Laat</a>
+    </div>
     <input type="checkbox" id="sidebar-active" />
     <label for="sidebar-active" class="open-sidebar-button">
-      <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff"></i>
+      <div class="hamburger-icon">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </div>
     </label>
     <label id="overlay" for="sidebar-active"></label>
     <div class="links-container">
       <label for="sidebar-active" class="close-sidebar-button">
-        <i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff"></i>
+        <div class="hamburger-icon">
+          <span class="bar bar1"></span>
+          <span class="bar bar2"></span>
+          <span class="bar bar3"></span>
+        </div>
       </label>
-      <a data-i18n="nav.home" class="home-link" href="../">Home</a>
+      <!-- <a data-i18n="nav.home" class="home-link" href="../">Home</a> -->
       <a data-i18n="nav.projects" href="../#Projects">Projects</a>
       <a data-i18n="nav.experience" href="../#Experience">Experience</a>
       <a data-i18n="nav.contact" href="../#Contact">Contact</a>
@@ -266,13 +296,13 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <ul class="language-menu">
-          <li><a href="#" data-lang="en">English</a></li>
-          <li><a href="#" data-lang="nl">Nederlands</a></li>
+          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
+          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
         </ul>
       </div>
     </div>
   </nav>
-
+  <div style="height: 50px;"></div>
   <!-- Main Content Container -->
   <div class="containerProject">
     <!-- Project Description Section -->
@@ -512,6 +542,7 @@ document.querySelectorAll("[data-i18n]").forEach((element) => {
   </div>
   <script src="../js/imagezoom.js" defer></script>
   <script src="../js/translate.js" defer></script>
+  <script src="../js/mobile-optimizations.js" defer></script>
 
   <script>
 

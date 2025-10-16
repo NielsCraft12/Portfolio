@@ -10,7 +10,8 @@ export const nl = {
 
   aboutMe: {
     // Home / about me
-    welcome: "Hoi, ik ben Niels de Laat",
+    // welcome: "Hoi, ik ben Niels de Laat",
+    welcome: '<span style="white-space: nowrap;">Hoi, ik ben</span><wbr> <span style="white-space: nowrap;">Niels de Laat</span>',
     ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, Nederland',
     aboutMe: "Ik ben een spel ontwikkelaar die ervan houdt om vermakelijke games te maken. Ideeën worden tot leven gebracht met Unity en C#, en het leren van nieuwe en innovatieve benaderingen is iets wat boeiend blijft. Buiten het programmeren om gaat de tijd vaak naar games of films.",
     skills: "Vaardigheden",
