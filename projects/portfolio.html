@@ -257,51 +257,16 @@
       }
     }
   </style>
+
+  <!-- components -->
+  <script type="module" src="../components/navbar.js" defer></script>
+  <script type="module" src="../components/code-block.js" defer></script>
 </head>
 
 <body>
   <!-- Navigation Menu -->
-  <nav>
-    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
-    <div class="nav-brand">
-      <a href="../" class="nav-logo">
-        <img src="../images/Favicon/favicon.svg" alt="Logo" />
-      </a>
-      <a href="../" class="nav-title">Niels de Laat</a>
-    </div>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <div class="hamburger-icon">
-        <span class="bar bar1"></span>
-        <span class="bar bar2"></span>
-        <span class="bar bar3"></span>
-      </div>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <div class="hamburger-icon">
-          <span class="bar bar1"></span>
-          <span class="bar bar2"></span>
-          <span class="bar bar3"></span>
-        </div>
-      </label>
-      <!-- <a data-i18n="nav.home" class="home-link" href="../">Home</a> -->
-      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
-          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- components -->
+  <nav-bar></nav-bar>
   <div style="height: 50px;"></div>
   <!-- Main Content Container -->
   <div class="containerProject">
@@ -323,46 +288,45 @@
         <li data-i18n="projectPages.portfolio.homepage.homePagePoint2">Fully responsive design using Flexbox and custom
           media queries.</li>
       </ul>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/Portfolio/blob/main/js/main.js#L1-L14" class="github-inline"
-          target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-js code-snippet">
-          // JavaScript that dynamically calculates and displays my age
-          function calculateAge(birthday) {
-            const today = new Date();
-            const birthDate = new Date(birthday);
-            let age = today.getFullYear() - birthDate.getFullYear();
-            const monthDifference = today.getMonth() - birthDate.getMonth();
-            const dayDifference = today.getDate() - birthDate.getDate();
 
-            // Adjust age if today's date is before the birthday this year
-            if (monthDifference &lt 0 || (monthDifference === 0 && dayDifference &lt 0)) {
-              age--;
-            }
+      <code-block href="https://github.com/NielsCraft12/Portfolio/blob/main/js/main.js#L1-L14" language="javascript"
+        code="
+        // JavaScript that dynamically calculates and displays my age
+        function calculateAge(birthday) {
+          const today = new Date();
+          const birthDate = new Date(birthday);
+          let age = today.getFullYear() - birthDate.getFullYear();
+          const monthDifference = today.getMonth() - birthDate.getMonth();
+          const dayDifference = today.getDate() - birthDate.getDate();
 
-            return age;
+          // Adjust age if today's date is before the birthday this year
+          if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+            age--;
+          }
+          return age;
         }
-</code></pre>
-      </div>
-      <h3 data-i18n="projectPages.portfolio.projectsPage.projectsPageTitle" class="GradiantTitle subtitle">Projects Page
+      ">
+      </code-block>
+
+      <h3 data-i18n="projectPages.portfolio.projectsPage.projectsPageTitle" class="GradiantTitle subtitle">Projects
+        Page
       </h3>
       <ul class="project-list">
         <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint1">Each project is presented in a card
           format with hover effects.</li>
-        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint2">Displays project year, title, thumbnail,
+        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint2">Displays project year, title,
+          thumbnail,
           brief description, and tech stack.</li>
-        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint3">Clicking a project opens a detailed page
+        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint3">Clicking a project opens a detailed
+          page
           with:</li>
         <ul class="project-list">
           <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint31">Embedded trailer</li>
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint32">Full description of my contributions
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint32">Full description of my
+            contributions
           </li>
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint33">Screenshots that can be enlarged</li>
+          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint33">Screenshots that can be enlarged
+          </li>
           <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint34">Playable game (if supported)</li>
         </ul>
       </ul>
@@ -384,7 +348,8 @@
       <ul class="project-list">
         <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint1">Active language is stored in
           localStorage</li>
-        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint2">Missing keys fall back to English
+        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint2">Missing keys fall back to
+          English
           and are highlighted for debugging</li>
         <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint3">Translations are structured and
           nested for modularity</li>
@@ -394,37 +359,36 @@
         <source src="../videos/webm/Portfolio/Taranslate.webm" type="video/webm" alt="translate demonstration" />
       </video>
 
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/Portfolio/blob/main/js/translate.js#L35-L49" class="github-inline"
-          target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-js">
-// Update all elements with a translation key
-document.querySelectorAll("[data-i18n]").forEach((element) => {
-  const key = element.getAttribute("data-i18n"); // get key
-  const value = getNestedTranslation(translations[lang], key); // lookup translation
+      <code-block href="https://github.com/NielsCraft12/Portfolio/blob/main/js/translate.js#L35-L49"
+        language="javascript" code="
+                // JavaScript that dynamically calculates and displays my age
+        function calculateAge(birthday) {
+          const today = new Date();
+          // Update all elements with a translation key
+          document.querySelectorAll(&quot;[data-i18n]&quot;).forEach((element)=> {
+          const key = element.getAttribute(&quot;data-i18n&quot;); // get key
+          const value = getNestedTranslation(translations[lang], key); // lookup translation
 
-  if (value) {
-    element.innerHTML = value; // apply translation
-    element.classList.remove("missing-translation");
-    element.removeAttribute("data-missing-key");
-  } else {
-          // Handle missing translation
-      handleMissingTranslation(element, key, lang);
-      missingCount++;
-  }
-});
-        </code></pre>
-      </div>
+          if (value) {
+            element.innerHTML = value; // apply translation
+            element.classList.remove(&quot;missing-translation&quot;);
+            element.removeAttribute(&quot;data-missing-key&quot;);
+          } else {
+            // Handle missing translation
+            handleMissingTranslation(element, key, lang);
+            missingCount++;
+          }
+        });
+      }
+        "></code-block>
 
-      <h3 data-i18n="projectPages.portfolio.error404.error404PageTitle" class="GradiantTitle subtitle">Custom 404 Page
+      <h3 data-i18n="projectPages.portfolio.error404.error404PageTitle" class="GradiantTitle subtitle">Custom 404
+        Page
       </h3>
-      <p data-i18n="projectPages.portfolio.error404.error404PagePoint1" style="margin-bottom: 10px">Lost visitors get a
-        custom error page that displays a random character from one of my games with a matching fun message. Images load
+      <p data-i18n="projectPages.portfolio.error404.error404PagePoint1" style="margin-bottom: 10px">Lost visitors
+        get a
+        custom error page that displays a random character from one of my games with a matching fun message. Images
+        load
         in either WebP or fallback PNG formats based on browser support. <a href="../404-page-not-found.html"
           rel="noopener noreferrer" class="credits">click here</a> to view the 404 page.</p>
 
@@ -461,7 +425,8 @@ document.querySelectorAll("[data-i18n]").forEach((element) => {
           </div>
         </ul> -->
 
-      <h3 data-i18n="projectPages.portfolio.technologies.technologiesTitle" class="GradiantTitle subtitle">Technologies
+      <h3 data-i18n="projectPages.portfolio.technologies.technologiesTitle" class="GradiantTitle subtitle">
+        Technologies
         Used</h3>
       <ul class="project-list">
         <li data-i18n="projectPages.portfolio.technologies.technologiesPoint1">HTML5 + semantic structure</li>

@@ -7,7 +7,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 40px 0;
+  padding: 20px 0;
 }
 
 #Experience h1 {
@@ -172,6 +172,8 @@
   height: 20px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .date {
@@ -180,13 +182,19 @@
 }
 
 .content {
-  padding: 25px;
+  padding: 15px;
   background-color: #1e1e1e;
   color: white;
   border-top: 1px solid #222;
   line-height: 1.6;
   overflow-y: visible;
   height: auto;
+}
+
+.content p {
+  font-size: 20px;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .skills {

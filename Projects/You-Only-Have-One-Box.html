@@ -114,55 +114,17 @@
   <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+
+  <!-- components -->
+  <script type="module" src="../components/navbar.js" defer></script>
+  <script type="module" src="../components/code-block.js" defer></script>
 </head>
 
 <body>
   <!-- Navigation Menu -->
-  <nav>
-    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
-    <div class="nav-brand">
-      <a href="../" class="nav-logo">
-        <img src="../images/Favicon/favicon.svg" alt="Logo" />
-      </a>
-      <a href="../" class="nav-title">Niels de Laat</a>
-    </div>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <div class="hamburger-icon">
-        <span class="bar bar1"></span>
-        <span class="bar bar2"></span>
-        <span class="bar bar3"></span>
-      </div>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <div class="hamburger-icon">
-          <span class="bar bar1"></span>
-          <span class="bar bar2"></span>
-          <span class="bar bar3"></span>
-        </div>
-      </label>
-      <!-- <a data-i18n="nav.home" class="home-link" href="/">Home</a> -->
-      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
-          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <nav-bar></nav-bar>
 
   <div style="height: 50px;"></div>
-
-
   <!-- Main Content Container -->
   <div class="containerProject">
     <!-- Project Description Section -->
@@ -185,24 +147,17 @@
         player or be destroyed with the box.</p>
 
       <p data-i18n="projectPages.yohob.enemy.enemyCodeSnippet">Snippet: Chicken movement and collision detection</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/BasicEnemy.cs#L40-L45"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre>
-            <code class="language-csharp">
-              RaycastHit2D hit = Physics2D.Raycast(Pos, direction, .1f);
-              if (hit && hit.collider.name != "Box" && hit.collider.name != "Player" && !hit.collider.CompareTag("Enemy"))
-              {
-                  Rotate();
-              }
-            </code>
-          </pre>
-      </div>
+
+      <code-block
+        href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/BasicEnemy.cs#L40-L45"
+        language="csharp" code="
+        RaycastHit2D hit = Physics2D.Raycast(Pos, direction, .1f);
+        if (hit && hit.collider.name != &quot;Box&quot; && hit.collider.name != &quot;Player&quot; && !hit.collider.CompareTag(&quot;Enemy&quot;))
+        {
+          Rotate();
+        }
+        ">
+      </code-block>
 
       <p data-i18n="projectPages.yohob.enemy.enemyBehaviorTitle">Behavior Highlights:</p>
       <ul class="project-list">
@@ -233,47 +188,34 @@
 
       <p data-i18n="projectPages.yohob.finish.finishCodeSippet">Snippet: Triggering level completion and transitioning
         scenes</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/Finish.cs#L26-L35"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-private void OnTriggerEnter2D(Collider2D collision)
-{
-    if (collision.gameObject.CompareTag("Player"))
-    {
-        StartCoroutine(NextLevel());
-        hasFinsihed = true;
-        endHP = PlayerInfo.Instance.DamagePoints;
-        animator.SetTrigger("IsPressed");
-    }
-}
-  </code></pre>
-      </div>
+
+      <code-block href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/Finish.cs#L26-L35"
+        language="csharp" code="
+              private void OnTriggerEnter2D(Collider2D collision) {
+              if (collision.gameObject.CompareTag(&quot;Player&quot;)) {
+                StartCoroutine(NextLevel());
+                hasFinsihed = true;
+                endHP = PlayerInfo.Instance.DamagePoints;
+                animator.SetTrigger(&quot;IsPressed&quot;);
+              }
+            }
+        ">
+
+      </code-block>
 
       <p data-i18n="projectPages.yohob.finish.finishCodeSippet2">This coroutine waits briefly for an animation to play,
         then loads the next scene:</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/Finish.cs#L37-L42"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-IEnumerator NextLevel()
-{
-    yield return new WaitForSeconds(2f);
-    SceneManager.LoadScene(NextLevelName);
-    PlayerInfo.Instance.isPaused = true;
-}
-  </code></pre>
-      </div>
+
+      <code-block href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/Finish.cs#L37-L42"
+        language="csharp" code="
+        IEnumerator NextLevel()
+        {
+          yield return new WaitForSeconds(2f);
+          SceneManager.LoadScene(NextLevelName);
+          PlayerInfo.Instance.isPaused = true;
+        }
+        ">
+      </code-block>
 
       <!-- <img src="/images/gif/Yohob/YohobEnd.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto"> -->

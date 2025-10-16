@@ -331,51 +331,15 @@
   <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+
+  <!-- components -->
+  <script type="module" src="../components/navbar.js" defer></script>
+  <script type="module" src="../components/code-block.js" defer></script>
 </head>
 
 <body>
   <!-- Navigation Menu -->
-  <nav>
-    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
-    <div class="nav-brand">
-      <a href="../" class="nav-logo">
-        <img src="../images/Favicon/favicon.svg" alt="Logo" />
-      </a>
-      <a href="../" class="nav-title">Niels de Laat</a>
-    </div>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <div class="hamburger-icon">
-        <span class="bar bar1"></span>
-        <span class="bar bar2"></span>
-        <span class="bar bar3"></span>
-      </div>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <div class="hamburger-icon">
-          <span class="bar bar1"></span>
-          <span class="bar bar2"></span>
-          <span class="bar bar3"></span>
-        </div>
-      </label>
-      <!-- <a data-i18n="nav.home" class="home-link" href="../">Home</a> -->
-      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
-          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <nav-bar></nav-bar>
   <div style="height: 50px;"></div>
   <!-- Main Content Container -->
   <div class="containerProject">
@@ -438,7 +402,7 @@ public void NavigateMenu(InputAction.CallbackContext context)
       <p data-i18n="projectPages.slimetasticPunchout.playerJoin.colorIntro">Each player picks a unique color from a
         shared palette. If a color is taken, a lock icon appears and the player is prevented from readying up with that
         color.</p>
-      <div class="code-block" style="position: relative !important;">
+      <!-- <div class="code-block" style="position: relative !important;">
         <a data-i18n="projectPages.viewOnGitHub"
           href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Player.cs#L327-L353"
           class="github-inline" target="_blank" title="View on GitHub"
@@ -460,7 +424,23 @@ public void NavigateMenu(InputAction.CallbackContext context)
     Locks.ForEach(lockIcon =&gt; lockIcon.GetComponent&lt;Image&gt;().enabled = shouldShowLock);
 }
         </code></pre>
-      </div>
+      </div> -->
+
+      <code-block
+        href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Player.cs#L327-L353"
+        language="csharp" code="
+          // JavaScript that dynamically calculates and displays my age
+        public void CheckIfColorUsed() {
+          foreach(ColorTracker tracker in menuManager.takenColors) {
+            if (tracker.Color == colorSelected && tracker.PlayerName != transform.parent.name) {
+              // Lock the color
+              shouldShowLock = true;
+            }
+          }
+          Locks.ForEach(lockIcon = &gt; lockIcon.GetComponent &lt;Image&gt;
+            ().enabled = shouldShowLock);
+        }
+      "> </code-block>
 
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 50%; height: auto">
@@ -470,19 +450,21 @@ public void NavigateMenu(InputAction.CallbackContext context)
       <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutColorChange.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.hatTitle" class="GradiantTitle subtitle">Cosmetic (Hat)
+      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.hatTitle" class="GradiantTitle subtitle">Cosmetic
+        (Hat)
         Selection</h3>
       <p data-i18n="projectPages.slimetasticPunchout.playerJoin.hatIntro">Slimes can be customized with various hats
-        that reflect their personality. Hats are chosen using arrow navigation, and the visual updates immediately:</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Player.cs#L313-L318"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
+        that reflect their personality. Hats are chosen using arrow navigation, and the visual updates immediately:
+      </p>
+      <!-- <div class="code-block" style="position: relative !important;">
+          <a data-i18n="projectPages.viewOnGitHub"
+            href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Player.cs#L313-L318"
+            class="github-inline" target="_blank" title="View on GitHub"
+            style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+            <i class="fab fa-github"></i>
+            View on GitHub
+          </a>
+          <pre><code class="language-csharp">
           if (selected == 0) // Cosmetic selection
 {
     cosmeticSelected += (collision.gameObject.name == "Right Arrow") ? 1 : -1;
@@ -490,20 +472,31 @@ public void NavigateMenu(InputAction.CallbackContext context)
     UpdateCosmetic();
 }
         </code></pre>
-      </div>
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutHatChange.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
+        </div> -->
+
+      <code-block
+        href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Player.cs#L313-L318"
+        language="csharp" code="
+        if (selected == 0) // Cosmetic selection
+        {
+          cosmeticSelected += (collision.gameObject.name == &quot;Right Arrow&quot;) ? 1 : -1; images[0].GetComponent&lt; Image &gt;
+          ().sprite=menuManager.Cosmetics[cosmeticSelected]; UpdateCosmetic(); 
+        }"> </code-block>
+      <!-- <img src=" /images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutHatChange.gif" alt=""
+          style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif hat-change-video" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 50%; height: auto">
         <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutHatChange.webm" type="video/webm" />
       </video>
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.readyTitle" class="GradiantTitle subtitle">Player Ready
+      <h3 data-i18n="projectPages.slimetasticPunchout.playerJoin.readyTitle" class="GradiantTitle subtitle">Player
+        Ready
         System</h3>
 
-      <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyIntro">When a player finishes customizing, they hit
+      <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyIntro">When a player finishes customizing, they
+        hit
         a button to toggle their ready state. The game only starts when all joined players are ready.</p>
-      <div class="code-block" style="position: relative !important;">
+      <!-- <div class="code-block" style="position: relative !important;">
         <a data-i18n="projectPages.viewOnGitHub"
           href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Player.cs#L213-L223"
           class="github-inline" target="_blank" title="View on GitHub"
@@ -523,10 +516,25 @@ else
     ReadyText.color = Color.red;
 }
           </code></pre>
-      </div>
+      </div> -->
+
+      <code-block
+        href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Player.cs#L213-L223"
+        language="csharp" code="
+                 if (isReady && menuManager.takenColors[GetIndex].first)
+{
+    ReadyText.text = &quot;Ready&quot;;
+    ReadyText.color = Color.green;
+}
+else
+{
+    ReadyText.text = &quot;Not Ready...&quot;;
+    ReadyText.color = Color.red;
+}
+        "></code-block>
       <p data-i18n="projectPages.slimetasticPunchout.playerJoin.readyCodeSnippet">Once everyone is ready, the
         MenuManager checks and starts the game:</p>
-      <div class="code-block" style="position: relative !important;">
+      <!-- <div class="code-block" style="position: relative !important;">
         <a data-i18n="projectPages.viewOnGitHub"
           href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Manager.cs#L112-L130"
           class="github-inline" target="_blank" title="View on GitHub"
@@ -546,65 +554,85 @@ else
     slimes[i].transform.position = playerSpawns[i].transform.position;
 }
         </code></pre>
-      </div>
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutReady.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto">
-        <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutReady.webm" type="video/webm" />
-      </video>
+      </div> -->
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementTitle"
-        class="GradiantTitle subtitle">Player Movement</h3>
-      <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementInto">Each slime uses a physics-based
-        movement system with:</p>
-      <ul class="project-list">
-        <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint1">Full Rigidbody control</li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint2">Smooth rotation toward
-          velocity</li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint3">Jumping with air control
-        </li>
-        <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint4">Movement dampening when no
-          input is given</li>
-      </ul>
-      <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementCodeSnippet">This snippet preserves
-        vertical velocity while allowing grounded or aerial movement with different strengths.</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/PlayerController.cs#L74-L82"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
+      <code-block
+        href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/Menu%20Manager.cs#L112-L130"
+        language="csharp" code="
+if (canStart)
+{
+    gameManager.canStart = true;
+    foreach (GameObject player in playerSelectors)
+    {
+        player.GetComponent&lt;MenuPlayer&gt;().enabled = false;
+    }
+    // Move slimes to spawn points
+    slimes[i].transform.position = playerSpawns[i].transform.position;
+}
+        ">
+        <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutReady.gif" alt=""
+        style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+          style="display: block; margin: 20px auto; max-width: 50%; height: auto">
+          <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutReady.webm" type="video/webm" />
+        </video>
+
+        <h3 data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementTitle"
+          class="GradiantTitle subtitle">Player Movement</h3>
+        <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementInto">Each slime uses a
+          physics-based
+          movement system with:</p>
+        <ul class="project-list">
+          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint1">Full Rigidbody control
+          </li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint2">Smooth rotation toward
+            velocity</li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint3">Jumping with air
+            control
+          </li>
+          <li data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementPoint4">Movement dampening when
+            no
+            input is given</li>
+        </ul>
+        <p data-i18n="projectPages.slimetasticPunchout.playerMovement.playerMovementCodeSnippet">This snippet
+          preserves
+          vertical velocity while allowing grounded or aerial movement with different strengths.</p>
+        <div class="code-block" style="position: relative !important;">
+          <a data-i18n="projectPages.viewOnGitHub"
+            href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/PlayerController.cs#L74-L82"
+            class="github-inline" target="_blank" title="View on GitHub"
+            style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+            <i class="fab fa-github"></i>
+            View on GitHub
+          </a>
+          <pre><code class="language-csharp">
          rb.velocity = new Vector3(
     lastMoveDirection.x * currentSpeed,
     yVelocity,
     lastMoveDirection.y * currentSpeed
 );
         </code></pre>
-      </div>
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutMove.gif" alt=""
+        </div>
+        <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutMove.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto">
-        <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutMove.webm" type="video/webm" />
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+          style="display: block; margin: 20px auto; max-width: 50%; height: auto">
+          <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutMove.webm" type="video/webm" />
+        </video>
 
-      <h3 data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringTitle" class="GradiantTitle subtitle">
-        Tile Coloring</h3>
-      <p data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringIntro">Each floor tile tracks the last
-        player that touched it and changes to their selected team color.</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/TileColorChanger.cs#L64-L75"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">     
+        <h3 data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringTitle" class="GradiantTitle subtitle">
+          Tile Coloring</h3>
+        <p data-i18n="projectPages.slimetasticPunchout.tileColoring.tileColoringIntro">Each floor tile tracks the last
+          player that touched it and changes to their selected team color.</p>
+        <div class="code-block" style="position: relative !important;">
+          <a data-i18n="projectPages.viewOnGitHub"
+            href="https://github.com/NielsCraft12/Slimetastic-Punchout/blob/main/Assets/Devs/Scripts/TileColorChanger.cs#L64-L75"
+            class="github-inline" target="_blank" title="View on GitHub"
+            style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
+            <i class="fab fa-github"></i>
+            View on GitHub
+          </a>
+          <pre><code class="language-csharp">     
         if (other.gameObject.CompareTag("Floor"))
         {
           foreach (Transform child in other.gameObject.transform)
@@ -617,30 +645,31 @@ else
           other.GetComponent&lt;Tile&gt;().lastPlayer = playerNum;
         }
         </code></pre>
-      </div>
-      <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutColor.gif" alt=""
+        </div>
+        <!-- <img src="/images/gif/SlimeTasticPunchout/SIlimeTasticPunchoutColor.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 50%; height: auto"> -->
 
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 50%; height: auto">
-        <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutColor.webm" type="video/webm" />
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+          style="display: block; margin: 20px auto; max-width: 50%; height: auto">
+          <source src="../videos/webm/SlimeTasticPunchout/SIlimeTasticPunchoutColor.webm" type="video/webm" />
+        </video>
 
-      <!-- Play -->
-      <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
-        class="GradiantTitle">Play</h1>
-      <div class="itch-embed-container"
-        style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
-          src="https://itch.io/embed-upload/12639739?color=1E1E1E" allowfullscreen="">
-          <a href="https://nielscraft12.itch.io/slimetastic-punchout">Play Slimetastic Punchout on itch.io</a>
-        </iframe>
-      </div>
-      <div class="mobile-message">
-        <i class="fas fa-desktop mobile-message-icon"></i>
-        <p data-i18n="projectPages.slimetasticPunchout.mobileMessage">To play Slimetastic Punchout, please visit this
-          page on a computer.</p>
-      </div>
+        <!-- Play -->
+        <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
+          class="GradiantTitle">Play</h1>
+        <div class="itch-embed-container"
+          style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
+          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
+            src="https://itch.io/embed-upload/12639739?color=1E1E1E" allowfullscreen="">
+            <a href="https://nielscraft12.itch.io/slimetastic-punchout">Play Slimetastic Punchout on itch.io</a>
+          </iframe>
+        </div>
+        <div class="mobile-message">
+          <i class="fas fa-desktop mobile-message-icon"></i>
+          <p data-i18n="projectPages.slimetasticPunchout.mobileMessage">To play Slimetastic Punchout, please visit
+            this
+            page on a computer.</p>
+        </div>
     </div>
 
     <!-- Visual Divider -->

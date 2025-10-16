@@ -115,51 +115,15 @@
   <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+
+  <!-- components -->
+  <script type="module" src="../components/navbar.js" defer></script>
+  <script type="module" src="../components/code-block.js" defer></script>
 </head>
 
 <body>
   <!-- Navigation Menu -->
-  <nav>
-    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
-    <div class="nav-brand">
-      <a href="../" class="nav-logo">
-        <img src="../images/Favicon/favicon.svg" alt="Logo" />
-      </a>
-      <a href="../" class="nav-title">Niels de Laat</a>
-    </div>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <div class="hamburger-icon">
-        <span class="bar bar1"></span>
-        <span class="bar bar2"></span>
-        <span class="bar bar3"></span>
-      </div>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <div class="hamburger-icon">
-          <span class="bar bar1"></span>
-          <span class="bar bar2"></span>
-          <span class="bar bar3"></span>
-        </div>
-      </label>
-      <!-- <a data-i18n="nav.home" class="home-link" href="../">Home</a> -->
-      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
-          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <nav-bar></nav-bar>
   <div style="height: 50px;"></div>
   <!-- Main Content Container -->
   <div class="containerProject">
@@ -190,77 +154,67 @@
         <li data-i18n="projectPages.walch.proceduralLevelGen.proceduralLevelGenPoint3">Maze-like structure via
           backtracking algorithm.</li>
       </ul>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L10-L34"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-          public class Cell
-          {
-              public bool visited = false;
-              public bool[] status = new bool[4]; // Up, Down, Right, Left
-          }
 
-          [System.Serializable]
-          public class Rule
+      <code-block
+        href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L10-L34"
+        language="csharp" code="
+          if (selected == 0) // Cosmetic selection
           {
-              public GameObject room;
-              public Vector2Int minPosition;
-              public Vector2Int maxPosition;
-              public bool obligatory;
-
-              public int ProbabilityOfSpawning(int x, int y)
-              {
-                  return obligatory ? 2 : (IsInside(x, y) ? 1 : 0);
+              public class Cell {
+                  public bool visited = false;
+                  public bool[] status = new bool[4]; // Up, Down, Right, Left
               }
 
-              private bool IsInside(int x, int y)
-              {
-                  return x >= minPosition.x && x &lt;= maxPosition.x && y >= minPosition.y && y &lt;= maxPosition.y;
-    }
-}</code></pre>
-      </div>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L105-L109"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-    if (generatorRooms == 0 && j == size.y && i == size.x) {
-    int randomGenRoom = UnityEngine.Random.Range(3, 5);
-    newRoom = Instantiate(rooms[randomGenRoom].room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
-}</code></pre>
-      </div>
+              [System.Serializable]
+              public class Rule {
+                  public GameObject room;
+                  public Vector2Int minPosition;
+                  public Vector2Int maxPosition;
+                  public bool obligatory;
+
+                  public int ProbabilityOfSpawning(int x, int y) {
+                      return obligatory ? 2 : (IsInside(x, y) ? 1 : 0);
+                  }
+
+                  private bool IsInside(int x, int y) {
+                      return x >= minPosition.x && x &lt;= maxPosition.x &&
+                            y >= minPosition.y && y &lt;= maxPosition.y;
+                  }
+              }
+          }
+        "></code-block>
+
+      <code-block
+        href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L105-L109"
+        language="csharp" code="
+        if (generatorRooms == 0 && j == size.y && i == size.x)
+        {
+          int randomGenRoom = UnityEngine.Random.Range(3, 5);
+          newRoom = Instantiate(rooms[randomGenRoom].room, new Vector3(i * offset.x, 0, -j * offset.y),
+          Quaternion.identity, transform).GetComponent&lt;RoomBehaviour&gt;();
+        }
+        "></code-block>
+
       <img src="/images/png/ProjectImages/Walch/walchGen.png" alt=""
         style="display: block; margin: 20px auto; max-width: 60%; height: auto" loading="lazy">
 
-      <h3 data-i18n="projectPages.walch.qte.qteTitle" class="GradiantTitle subtitle">Generator Activation via QTE</h3>
-      <p data-i18n="projectPages.walch.qte.qteIntro">To activate power generators in the dungeon, players must complete
+      <h3 data-i18n="projectPages.walch.qte.qteTitle" class="GradiantTitle subtitle">Generator Activation via QTE
+      </h3>
+      <p data-i18n="projectPages.walch.qte.qteIntro">To activate power generators in the dungeon, players must
+        complete
         <strong>Quick Time Events
           (QTEs)</strong>.
         These are skill checks using keys (E, R, T or controller equivalents).
       </p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L177-L180"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">if ((qteGen == 1 && key == "E") || (qteGen == 2 && key == "R") || (qteGen == 3 && key == "T")) {
-    correctKey = 1;
-}</code></pre>
-      </div>
+      <code-block
+        href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L177-L180"
+        language="csharp" code="
+      if ((qteGen == 1 && key == &quot;E&quot;) || (qteGen== 2 && key== &quot;R&quot;) || (qteGen== 3 && key== &quot;T&quot;)) 
+      { 
+        correctKey=1;
+      } "></code-block>
 
-      <div class="code-block" style="position: relative !important;">
+      <div class=" code-block" style="position: relative !important;">
         <a data-i18n="projectPages.viewOnGitHub"
           href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L224-L244"
           class="github-inline" target="_blank" title="View on GitHub"
@@ -269,79 +223,70 @@
           View on GitHub
         </a>
 
-        <pre><code class="language-csharp">IEnumerator CountDown()
-{
-    yield return new WaitForSeconds(timeoutTime);
-    if (countingDown == 1)
-    {
-        passBox.text = "Too Late";
-        active = false;
-    }
-}</code></pre>
-      </div>
-      <!-- <img src="/images/gif/Walch/walchQte.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy"> -->
+        <code-block
+          href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L224-L244"
+          language="csharp" code="
+            IEnumerator CountDown()
+            {
+                yield return new WaitForSeconds(timeoutTime);
+                if (countingDown == 1)
+                {
+                  passBox.text = &quot;Too Late&quot;; active = false;
+                }
+              } "> </code-block>
+        <!-- <img src=" /images/gif/Walch/walchQte.gif" alt=""
+          style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy"> -->
 
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="../videos/webm/Walch/walchQte.webm" type="video/webm">
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+          style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+          <source src="../videos/webm/Walch/walchQte.webm" type="video/webm">
+        </video>
 
-      <h3 data-i18n="projectPages.walch.cleaningPod.cleaningPodTitle" class="GradiantTitle subtitle">Cleaning Pod
-        Collection System</h3>
-      <p data-i18n="projectPages.walch.cleaningPod.cleaningPodIntro">Cleaning pods are scattered throughout the level.
-        When collected, they update the game state and
-        trigger sound
-        effects.</p>
+        <h3 data-i18n="projectPages.walch.cleaningPod.cleaningPodTitle" class="GradiantTitle subtitle">Cleaning Pod
+          Collection System</h3>
+        <p data-i18n="projectPages.walch.cleaningPod.cleaningPodIntro">Cleaning pods are scattered throughout the
+          level.
+          When collected, they update the game state and
+          trigger sound
+          effects.</p>
 
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
+        <code-block
           href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/CleanigPod.cs#L16-L24"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-        private void OnTriggerEnter(Collider other)
-{
-    if (other.gameObject.CompareTag("Player"))
-    {
-        FindObjectOfType&lt;AudioManager&gt;().Play("PodPickup");
-        Destroy(gameObject);
-        gameManagerScript.cleanigPodsPickedUp++;
-    }
-}</code></pre>
-      </div>
-      <!-- <img src="/images/gif/Walch/walchCLean.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy"> -->
+          language="csharp" code="
+            private void OnTriggerEnter(Collider other)
+            {
+              if (other.gameObject.CompareTag(&quot;Player&quot;)) 
+              { 
+                FindObjectOfType&lt;AudioManager&gt;().Play(&quot;PodPickup&quot;);
+                Destroy(gameObject); gameManagerScript.cleanigPodsPickedUp++;
+                }
+              } "></code-block>
+        <!-- <img src=" /images/gif/Walch/walchCLean.gif" alt=""
+          style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy"> -->
 
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="../videos/webm/Walch/walchCLean.webm" type="video/webm">
-      </video>
+        <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+          style="display: block; margin: 20px auto; max-width: 80%; height: auto">
+          <source src="../videos/webm/Walch/walchCLean.webm" type="video/webm">
+        </video>
 
-      <h3 data-i18n="projectPages.walch.dynamicRoomBehavior.dynamicRoomBehaviorTitle" class="GradiantTitle subtitle">
-        Dynamic Room Behavior</h3>
-      <p data-i18n="projectPages.walch.dynamicRoomBehavior.dynamicRoomBehaviorIntro">Each room updates its doors and
-        walls based on neighboring connections.</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
+        <h3 data-i18n="projectPages.walch.dynamicRoomBehavior.dynamicRoomBehaviorTitle" class="GradiantTitle subtitle">
+          Dynamic Room Behavior</h3>
+        <p data-i18n="projectPages.walch.dynamicRoomBehavior.dynamicRoomBehaviorIntro">Each room updates its doors
+          and
+          walls based on neighboring connections.</p>
+
+        <code-block
           href="https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/RoomBehaviour.cs#L11-L22"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-        public void UpdateRoom(bool[] status)
-{
-    for (int i = 0; i &lt; status.Length; i++)
-    {
-        doors[i].SetActive(status[i]);
-        walls[i].SetActive(!status[i]);
-    }
-}</code></pre>
+          language="csharp" code="
+                  public void UpdateRoom(bool[] status)
+                  {
+                      for (int i = 0; i &lt; status.Length; i++)
+                      {
+                          doors[i].SetActive(status[i]);
+                          walls[i].SetActive(!status[i]);
+                      }
+                  }
+          "> </code-block>
       </div>
       <!-- <img src="/images/gif/Walch/walchRooms.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy"> -->

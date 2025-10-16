@@ -40,7 +40,7 @@ export const en = {
     gluDescription: "The Game Development program at Grafisch Lyceum Utrecht teaches game design, coding, and collaboration between programmers and artists. Through practical projects we learn the skills needed to fun games.",
     futureTitle: "The Future",
     futureTime: "Future",
-    futureDescription: 'Your project here? click <a style="color: #ff7e5f;" href="#Contact">here</a> To Contact Me',
+    futureDescription: "Looking to expand my skills in advanced game development, AI integration, and possibly mobile game development. Always open to new opportunities and collaborations.",
   },
 
   contact: {

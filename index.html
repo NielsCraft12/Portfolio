@@ -66,24 +66,14 @@
   <link rel="stylesheet" href="css/Experience.css" />
   <link rel="stylesheet" href="css/Projects.css" />
   <link rel="stylesheet" href="css/Contact.css" />
-  <!-- Font Awesome -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  </noscript>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </noscript>
-
   <!-- Resource hints for better performance -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="//gc.zgo.at">
   <link rel="modulepreload" href="js/translate.js">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="preload" as="image" href="images/webp/me-medium.webp" media="(min-width: 451px)" type="image/webp">
   <link rel="preload" as="image" href="images/webp/me-small3.webp" media="(max-width: 450px)" type="image/webp">
 
@@ -95,46 +85,17 @@
   <link rel="manifest" href="images/Favicon/site.webmanifest" />
 </head>
 
+
+<!-- components -->
+<script src="components/project-item.js" defer></script>
+<script src="components/navbar.js" defer></script>
+<script src="components/tech-chip-list.js" defer></script>
+<script src="components/social-buttons.js" defer></script>
+
+
+
 <body>
-  <nav aria-label="Main navigation">
-    <div class="nav-brand">
-      <a href="#Home" class="nav-logo">
-        <img src="images/Favicon/favicon.svg" alt="Logo" />
-      </a>
-      <a href="#Home" class="nav-title">Niels de Laat</a>
-    </div>
-    <input type="checkbox" id="sidebar-active" aria-label="Toggle navigation menu" />
-    <label for="sidebar-active" class="open-sidebar-button" aria-label="Open navigation menu">
-      <div class="hamburger-icon">
-        <span class="bar bar1"></span>
-        <span class="bar bar2"></span>
-        <span class="bar bar3"></span>
-      </div>
-    </label>
-    <label id="overlay" for="sidebar-active" aria-label="Close navigation overlay"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button" aria-label="Close navigation menu">
-        <div class="hamburger-icon">
-          <span class="bar bar1"></span>
-          <span class="bar bar2"></span>
-          <span class="bar bar3"></span>
-        </div>
-      </label>
-      <a data-i18n="nav.projects" href="#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="#Contact">Contact</a>
-      <div class="language-switcher">
-        <button type="button" class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
-          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <nav-bar></nav-bar>
 
   <!-- Home Section -->
   <section id="Home">
@@ -166,71 +127,15 @@
             class="external-link">movies</a>.
         </p>
         <h1 data-i18n="aboutMe.skills" style="text-align: center;">Skills</h1>
-        <ul class="cd-demo-chip-list">
-          <li>
-            <span class="chip">
-              <picture>
-                <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/CSharpLogo.png" alt="C# Logo" loading="lazy" width="100"
-                  height="100" />
-              </picture>
-              <i class="chip__label">C#</i>
-            </span>
-          </li>
-
-          <li>
-            <span class="chip">
-              <picture>
-                <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/UnityLogo.png" alt="Unity Logo" loading="lazy" width="100"
-                  height="100" />
-              </picture>
-              <i class="chip__label">Unity</i>
-            </span>
-          </li>
-
-          <li>
-            <span class="chip">
-              <picture>
-                <source srcset="images/webp/htmlLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/htmlLogo.png" alt="HTML Logo" loading="lazy" width="100"
-                  height="100" />
-              </picture>
-              <i class="chip__label">HTML</i>
-            </span>
-          </li>
-          <li>
-            <span class="chip">
-              <picture>
-                <source srcset="images/webp/cssLogo2.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/cssLogo2.png" alt="CSS Logo" loading="lazy" width="100"
-                  height="100" />
-              </picture>
-              <i class="chip__label">CSS</i>
-            </span>
-          </li>
-          <li>
-            <span class="chip">
-              <picture>
-                <source srcset="images/webp/GithubLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/GithubLogo.png" alt="Git Logo" loading="lazy" width="100"
-                  height="100" />
-              </picture>
-              <i class="chip__label">Git</i>
-            </span>
-          </li>
-
-          <li>
-            <span class="chip">
-              <picture>
-                <source srcset="images/webp/TrelloLogo.webp" type="image/webp" />
-                <img class="chip__img" src="images/png/TrelloLogo.png" alt="Scrum/Trello Logo" loading="lazy"
-                  width="100" height="100" />
-              </picture>
-              <i class="chip__label">Scrum</i>
-            </span>
-          </li>
-        </ul>
+        <tech-chip-list data-chips='[
+    {"name": "C#", "png": "images/png/CSharpLogo.png", "webp": "images/webp/CSharpLogo.webp"},
+    {"name": "Unity", "png": "images/png/UnityLogo.png", "webp": "images/webp/UnityLogo.webp"},
+    {"name": "HTML", "png": "images/png/htmlLogo.png", "webp": "images/webp/htmlLogo.webp"},
+    {"name": "CSS", "png": "images/png/cssLogo2.png", "webp": "images/webp/cssLogo2.webp"},
+    {"name": "Git", "png": "images/png/GithubLogo.png", "webp": "images/webp/GithubLogo.webp"},
+    {"name": "Scrum", "png": "images/png/TrelloLogo.png", "webp": "images/webp/TrelloLogo.webp"}
+  ]'>
+        </tech-chip-list>
       </div>
     </div>
   </section>
@@ -245,292 +150,115 @@
         aria-controls="projects-panel">Games</button>
       <button class="tab-button" data-tab="web" data-i18n="projects.webProjects" role="tab" aria-selected="false"
         aria-controls="projects-panel">Web</button>
+      <!-- <button class="tab-button" data-tab="3dPrinting" data-i18n="projects.3dPrinting" role="tab" aria-selected="false"
+        aria-controls="projects-panel">3D Printing</button> -->
     </div>
 
     <div class="blog-container" id="projects-panel" role="tabpanel">
-      <a href="projects/wa-lch-origins.html" class="blog-box project-item" data-category="games" data-year="2025"
-        aria-label="WA-LCH Origins project details">
-        <div class="blog-img">
-          <picture>
-            <source srcset="images/webp/WalchOrgins.webp" type="image/webp" />
-            <img alt="WA-LCH Origins game screenshot" src="images/png/WalchOrgins.png" loading="lazy" width="800"
-              height="450" />
-          </picture>
-        </div>
-        <div class="blog-text">
-          <span class="blog-year">2025</span>
-          <span class="blog-title">WA-LCH Origins</span>
-          <p data-i18n="projects.descriptionGame1">Step into the role of a dedicated cleaning robot, just like in the
-            original WA-LCH. But this</p>
-          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
-          <ul class="cd-demo-chip-list" style="justify-content: left">
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
-                </picture>
-                <i class="chip__label">C#</i>
-              </span>
-            </li>
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Unity Logo" />
-                </picture>
-                <i class="chip__label">Unity</i>
-              </span>
-            </li>
-          </ul>
-          <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
-        </div>
-      </a>
+      <!-- 
+-------------------------------------------------------------------------------------------------------------------    
+    WA-LCH Origins                                        WA-LCH Origins                             WA-LCH Origins
+-------------------------------------------------------------------------------------------------------------------    
+-->
+      <project-item link="projects/wa-lch-origins.html" title="WA-LCH Origins" year="2025" category="games"
+        image-webp="images/webp/WalchOrgins.webp" image-png="images/png/WalchOrgins.png"
+        description="A prequel to WA-LCH exploring the origins of the cleaning bot's story."
+        i18n-description="projects.descriptionGame1" i18n-technologies="projects.technologies"
+        i18n-see-more="projects.seeMore" technologies='[
+    {"name": "C#", "webp": "images/webp/CSharpLogo.webp", "png": "images/png/CSharpLogo.png"},
+    {"name": "Unity", "webp": "images/webp/UnityLogo.webp", "png": "images/png/UnityLogo.png"}
+  ]'></project-item>
 
-      <a href="projects/portfolio.html" class="blog-box project-item" data-category="web" data-year="2025"
-        aria-label="Portfolio project details">
-        <div class="blog-img">
-          <picture>
-            <source srcset="images/webp/Portfolio.webp" type="image/webp" />
-            <img alt="Portfolio website screenshot" src="images/png/Portfolio.png" loading="lazy" width="800"
-              height="450" />
-          </picture>
-        </div>
-        <div class="blog-text">
-          <span class="blog-year">2025</span>
-          <span class="blog-title">Portfolio</span>
-          <p data-i18n="projects.descriptionGame2">Step into the role of a dedicated cleaning robot, just like in the
-            original WA-LCH. But this</p>
-          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
-          <ul class="cd-demo-chip-list" style="justify-content: left">
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/htmlLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/htmlLogo.png" alt="Html Logo" />
-                </picture>
-                <i class="chip__label">HTML</i>
-              </span>
-            </li>
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/cssLogo2.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/cssLogo2.png" alt="Css Logo" />
-                </picture>
-                <i class="chip__label">CSS</i>
-              </span>
-            </li>
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/JavaScriptLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/JavaScriptLogo.png" alt="JavaScript Logo" />
-                </picture>
-                <i class="chip__label">JavaScript</i>
-              </span>
-            </li>
-          </ul>
-          <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
-        </div>
-      </a>
+      <!-- 
+-------------------------------------------------------------------------------------------------------------------    
+    Portfolio                                             Portfolio                                       Portfolio
+------------------------------------------------------------------------------------------------------------------- 
+-->
 
-      <a href="projects/merge-packing.html" class="blog-box project-item" data-category="games" data-year="2025"
-        aria-label="Merge Packing project details">
-        <div class="blog-img">
-          <picture>
-            <source srcset="images/webp/mergePacking.webp" type="image/webp" />
-            <img alt="Merge Packing game screenshot" src="images/png/mergePacking.jpg" loading="lazy" width="800"
-              height="450" />
-          </picture>
-        </div>
-        <div class="blog-text">
-          <span class="blog-year">2025</span>
-          <span class="blog-title">Merge Packing</span>
-          <p data-i18n="projects.descriptionGame3">Merge Packing is a quick, quirky mobile game built over a few
-            days using Unity and C#...</p>
-          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
-          <ul class="cd-demo-chip-list" style="justify-content: left">
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
-                </picture>
-                <i class="chip__label">C#</i>
-              </span>
-            </li>
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
-                </picture>
-                <i class="chip__label">Unity</i>
-              </span>
-            </li>
-          </ul>
-          <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
-        </div>
-      </a>
+      <project-item link="projects/portfolio.html" title="Portfolio" year="2025" category="web"
+        image-webp="images/webp/Portfolio.webp" image-png="images/png/Portfolio.png"
+        description="A modern portfolio website showcasing my projects and skills."
+        i18n-description="projects.descriptionWeb1" i18n-technologies="projects.technologies"
+        i18n-see-more="projects.seeMore" technologies='[
+    {"name": "HTML", "webp": "images/webp/htmlLogo.webp", "png": "images/png/htmlLogo.png"},
+    {"name": "CSS", "webp": "images/webp/cssLogo2.webp", "png": "images/png/cssLogo2.png"},
+    {"name": "JavaScript", "webp": "images/webp/JavaScriptLogo.webp", "png": "images/png/JavaScriptLogo.png"}
+  ]'></project-item>
 
-      <a href="projects/wa-lch.html" class="blog-box project-item" data-category="games" data-year="2024"
-        aria-label="WA-LCH project details">
-        <div class="blog-img">
-          <picture>
-            <source srcset="images/webp/WA-LCH.webp" type="image/webp" />
-            <img alt="WA-LCH game screenshot" src="images/png/WA-LCH.png" loading="lazy" width="800" height="450" />
-          </picture>
-        </div>
-        <div class="blog-text">
-          <span class="blog-year">2024</span>
-          <span class="blog-title">WA-LCH</span>
-          <p data-i18n="projects.descriptionGame4">You are LCH, a cleaning bot who awakens from years of hibernation
-            by an unknown source.</p>
-          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
-          <ul class="cd-demo-chip-list" style="justify-content: left">
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
-                </picture>
-                <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
-                <i class="chip__label">C#</i>
-              </span>
-            </li>
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
-                </picture>
-                <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
-                <i class="chip__label">Unity</i>
-              </span>
-            </li>
-          </ul>
-          <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
-        </div>
-      </a>
+      <!-- 
+-------------------------------------------------------------------------------------------------------------------    
+    Merge Packing                                    Merge Packing                                    Merge Packing
+-------------------------------------------------------------------------------------------------------------------    
+-->
 
-      <!-- <a href="projects/mage-with-rage.html" class="blog-box project-item" data-category="games" data-year="2024">
-        <div class="blog-img">
-          <picture>
-            <source srcset="images/webp/mageWithRage.webp" type="image/webp" />
-            <img alt="blog" src="images/png/WA-LCH.png" loading="lazy" />
-          </picture>
-        </div>
-        <div class="blog-text">
-          <span class="blog-year">2025</span>
-          <span class="blog-title">Mage with Rage</span>
-          <p data-i18n="projects.descriptionGame7">You are a mage that does not like magic but likes to bonk
-            everything while having lost</p>
-          <p style="color: black">Technologies:</p>
-          <ul class="cd-demo-chip-list" style="justify-content: left">
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
-                </picture>
-                <i class="chip__label">C#</i>
-              </span>
-            </li>
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
-                </picture>
-                <i class="chip__label">Unity</i>
-              </span>
-            </li>
-          </ul>
-          <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
-        </div>
-      </a> -->
+      <project-item link="projects/merge-packing.html" title="Merge Packing" year="2025" category="games"
+        image-webp="images/webp/mergePacking.webp" image-png="images/png/mergePacking.jpg"
+        description="A strategic puzzle game about merging and packing items efficiently."
+        i18n-description="projects.descriptionGame2" i18n-technologies="projects.technologies"
+        i18n-see-more="projects.seeMore" technologies='[
+    {"name": "C#", "webp": "images/webp/CSharpLogo.webp", "png": "images/png/CSharpLogo.png"},
+    {"name": "Unity", "webp": "images/webp/UnityLogo.webp", "png": "images/png/UnityLogo.png"}
+  ]'></project-item>
 
-      <a href="projects/you-only-have-one-box.html" class="blog-box project-item" data-category="games" data-year="2024"
-        aria-label="You Only Have One Box project details">
-        <div class="blog-img">
-          <picture>
-            <source srcset="images/webp/onlyOneblock.webp" type="image/webp" />
-            <img alt="You Only Have One Box game screenshot" src="images/png/onlyOneblock.png" loading="lazy"
-              width="800" height="450" />
-          </picture>
-        </div>
-        <div class="blog-text">
-          <span class="blog-year">2024</span>
-          <span class="blog-title">You Only Have One Box</span>
-          <p data-i18n="projects.descriptionGame5">A challenging 2D platformer where your only tool is a single box.
-            Guide both yourself and your</p>
-          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
-          <ul class="cd-demo-chip-list" style="justify-content: left">
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
-                </picture>
-                <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
-                <i class="chip__label">C#</i>
-              </span>
-            </li>
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
-                </picture>
-                <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
-                <i class="chip__label">Unity</i>
-              </span>
-            </li>
-          </ul>
-          <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
-        </div>
-      </a>
-      <a href="projects/slimetastic-punchout.html" class="blog-box project-item" data-category="games" data-year="2024"
-        aria-label="Slimetastic Punchout project details">
-        <div class="blog-img">
-          <picture>
-            <source srcset="images/webp/SlimetasticPunchout.webp" type="image/webp" />
-            <img alt="Slimetastic Punchout game screenshot" src="images/png/SlimetasticPunchout.png" loading="lazy"
-              width="800" height="450" />
-          </picture>
-        </div>
-        <div class="blog-text">
-          <span class="blog-year">2024</span>
-          <span class="blog-title">Slimetastic Punchout</span>
-          <p data-i18n="projects.descriptionGame6">Slimetastic Punchout is a chaotic and fun local multiplayer game
-            where you take control</p>
-          <p data-i18n="projects.technologies" class="technologies">Technologies:</p>
-          <ul class="cd-demo-chip-list" style="justify-content: left">
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="Profile picture" />
-                </picture>
-                <!-- <img class="chip__img" src="images/CSharpLogo.png" alt="C# Logo" /> -->
-                <i class="chip__label">C#</i>
-              </span>
-            </li>
-            <li>
-              <span class="chip">
-                <picture>
-                  <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Profile picture" />
-                </picture>
-                <!-- <img class="chip__img" src="images/UnityLogo.png" alt="Unity Logo" /> -->
-                <i class="chip__label">Unity</i>
-              </span>
-            </li>
-          </ul>
-          <span data-i18n="projects.seeMore" class="blog-readmore">See More</span>
-        </div>
-      </a>
+      <!-- 
+-------------------------------------------------------------------------------------------------------------------    
+    WA-LCH                                           WA-LCH                                                  WA-LCH
+-------------------------------------------------------------------------------------------------------------------    
+-->
+
+      <project-item link="projects/wa-lch.html" title="WA-LCH" year="2024" category="games"
+        image-webp="images/webp/WA-LCH.webp" image-png="images/png/WA-LCH.png"
+        description="You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source."
+        i18n-description="projects.descriptionGame4" i18n-technologies="projects.technologies"
+        i18n-see-more="projects.seeMore" technologies='[
+    {"name": "C#", "webp": "images/webp/CSharpLogo.webp", "png": "images/png/CSharpLogo.png"},
+    {"name": "Unity", "webp": "images/webp/UnityLogo.webp", "png": "images/png/UnityLogo.png"}
+  ]'></project-item>
+
+      <!-- 
+-------------------------------------------------------------------------------------------------------------------    
+    You Only Have One Box                          You Only Have One Box                      You Only Have One Box
+-------------------------------------------------------------------------------------------------------------------    
+-->
+
+      <project-item link="projects/you-only-have-one-box.html" title="You Only Have One Box" year="2024"
+        category="games" image-webp="images/webp/onlyOneblock.webp" image-png="images/png/onlyOneblock.png"
+        description="A minimalist puzzle game where you only have one box to solve challenges."
+        i18n-description="projects.descriptionGame5" i18n-technologies="projects.technologies"
+        i18n-see-more="projects.seeMore" technologies='[
+    {"name": "C#", "webp": "images/webp/CSharpLogo.webp", "png": "images/png/CSharpLogo.png"},
+    {"name": "Unity", "webp": "images/webp/UnityLogo.webp", "png": "images/png/UnityLogo.png"}
+  ]'></project-item>
+
+      <!-- 
+-------------------------------------------------------------------------------------------------------------------    
+    Slimetastic Punchout                          Slimetastic Punchout                         Slimetastic Punchout
+-------------------------------------------------------------------------------------------------------------------    
+-->
+
+      <project-item link="projects/slimetastic-punchout.html" title="Slimetastic Punchout" year="2024" category="games"
+        image-webp="images/webp/SlimetasticPunchout.webp" image-png="images/png/SlimetasticPunchout.png"
+        description="A fun arcade-style game with slime characters and exciting combat."
+        i18n-description="projects.descriptionGame6" i18n-technologies="projects.technologies"
+        i18n-see-more="projects.seeMore" technologies='[
+    {"name": "C#", "webp": "images/webp/CSharpLogo.webp", "png": "images/png/CSharpLogo.png"},
+    {"name": "Unity", "webp": "images/webp/UnityLogo.webp", "png": "images/png/UnityLogo.png"}
+  ]'></project-item>
+
+      <!-- 
+-------------------------------------------------------------------------------------------------------------------    
+    3D Printing                                     3D Printing                                         3D Printing
+-------------------------------------------------------------------------------------------------------------------    
+-->
+
+      <project-item link="projects/3d-printing.html" title="Test 3D Printing" year="2025" category="3dPrinting"
+        image-webp="images/webp/3dPrinting.webp" image-png="images/png/3dPrinting.png"
+        description="Exploring 3D printing technology and creating custom models."
+        i18n-description="projects.description3dPrinting" i18n-technologies="projects.technologies"
+        i18n-see-more="projects.seeMore" technologies='[
+    {"name": "Blender", "webp": "images/BlenderLogo.webp", "png": "images/BlenderLogo.webp"}
+  ]'></project-item>
+
     </div>
   </section>
 
@@ -539,63 +267,36 @@
   <!-- Experience Section -->
   <section id="Experience">
     <h1 data-i18n="nav.experience">Experience</h1>
-    <div class="experience-container">
-      <div class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></div>
-      <div class="timeline-container">
-        <div class="content-section active" data-index="0">
-          <div class="header">
-            <div class="title-container">
-              <div class="title">GLU Game Developer</div>
-              <div class="badges">
-                <div class="skill" data-i18n="experience.education">education</div>
-                <div class="skill">MBO 4</div>
-              </div>
-            </div>
-            <div class="date">08.2023 - <span data-i18n="experience.present">Present</span></div>
+    <div class="timeline-container">
+      <!-- <div class="controls">
+        <button id="prev-btn">◀</button>
+        <div class="slider" id="slider">
+          <div class="slider-track" id="slider-track"></div>
+          <div class="slider-points">
+            <-- JS will generate points ->
           </div>
-
-          <div class="content">
-            <p data-i18n="experience.gluDescription">The Game Development program at Grafisch Lyceum Utrecht teaches
-              game design, coding, and collaboration between programmers and artists. Through practical projects we
-              learn the skills needed to fun games.</p>
-            <h2 style="text-align: left; font-size: 40px" data-i18n="experience.skillsLearned">Skills Learned:</h2>
-            <div class="skills">
-              <div class="badge">
-                <picture>
-                  <source srcset="images/webp/UnityLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/UnityLogo.png" alt="Unity Logo" loading="lazy" width="40"
-                    height="40" />
-                </picture>
-                Unity
-              </div>
-              <div class="badge">
-                <picture>
-                  <source srcset="images/webp/CSharpLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/CSharpLogo.png" alt="C# Logo" loading="lazy" width="40"
-                    height="40" />
-                </picture>
-                C#
-              </div>
-              <div class="badge">
-                <picture>
-                  <source srcset="images/webp/TrelloLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/TrelloLogo.png" alt="Scrum/Trello Logo" loading="lazy"
-                    width="40" height="40" />
-                </picture>
-                Scrum
-              </div>
-              <div class="badge">
-                <picture>
-                  <source srcset="images/webp/GithubLogo.webp" type="image/webp" />
-                  <img class="chip__img" src="images/png/GithubLogo.png" alt="Git Logo" loading="lazy" width="40"
-                    height="40" />
-                </picture>
-                Git
-              </div>
-            </div>
-          </div>
+          <div class="slider-thumb" id="slider-thumb"></div>
         </div>
-      </div>
+        <button id="next-btn">▶</button>
+      </div> -->
+
+      <!-- Web component: content sections go here -->
+      <experience-section id="experience" data-experiences='[
+    {
+      "title": "GLU Game Developer",
+      "badges": ["education", "MBO 4"],
+      "startDate": "08.2023",
+      "endDate": "Present",
+      "description": "The Game Development program at Grafisch Lyceum Utrecht teaches game design, coding, and collaboration between programmers and artists. Through practical projects we learn the skills needed to fun games.",
+      "i18nDescription": "experience.gluDescription",
+      "skills": [
+        {"name": "Unity", "png": "images/png/UnityLogo.png", "webp": "images/webp/UnityLogo.webp"},
+        {"name": "C#", "png": "images/png/CSharpLogo.png", "webp": "images/webp/CSharpLogo.webp"},
+        {"name": "Trello", "png": "images/png/TrelloLogo.png", "webp": "images/webp/TrelloLogo.webp"},
+        {"name": "Git", "png": "images/png/GithubLogo.png", "webp": "images/webp/GithubLogo.webp"}
+      ]
+    }
+  ]'></experience-section>
     </div>
   </section>
   <hr class="rounded" style="margin-bottom: 3px" />
@@ -603,16 +304,14 @@
   <!-- Contact Section -->
   <section id="Contact">
     <h1 data-i18n="contact.contactTitle">Contact Me</h1>
-    <div class="socal-media-buttons">
-      <a href="mailto:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#064;&#110;&#105;&#101;&#108;&#115;&#100;&#101;&#108;&#097;&#097;&#116;&#046;&#099;&#111;&#109;"
-        tartget="_blank" class="fa fa-envelope fa-2xl icon"></a>
-      <a href="https://nielscraft12.itch.io/" target="”_blank”" rel="noreferrer" class="fa fa-itch-io fa-2xl icon"></a>
-      <a href="https://www.linkedin.com/in/niels-de-laat-a81931311/" target="”_blank”" rel="noreferrer"
-        class="fa fa-linkedin fa-2xl icon"></a>
-      <a href="https://github.com/NielsCraft12" target="”_blank”" rel="noreferrer" class="fa fa-github fa-2xl icon"></a>
-      <a href="/Documents/Cv_Niels_de_Laat_Portfolio_EN.pdf" target="_blank" rel="noreferrer" title="Download my cv"
-        class="fa fa-file-lines fa-2xl icon" data-cv-link data-i18n-title="cv.title"></a>
-    </div>
+    <social-buttons data-buttons='[
+    {"url": "mailto:contact@nielsdelaat.com", "icon": "fas fa-envelope"},
+    {"url": "https://nielscraft12.itch.io/", "icon": "fab fa-itch-io"},
+    {"url": "https://www.linkedin.com/in/niels-de-laat-a81931311/", "icon": "fab fa-linkedin"},
+    {"url": "https://github.com/NielsCraft12", "icon": "fab fa-github"},
+    {"url": "/Documents/Cv_Niels_de_Laat_Portfolio_EN.pdf", "icon": "fas fa-file-alt", "title": "Download my CV"}
+  ]'>
+    </social-buttons>
   </section>
 
   <!-- Preload the default language file to reduce waterfall -->
@@ -622,6 +321,7 @@
   <script type="module" src="js/translate.js"></script>
   <script src="js/main.js"></script>
   <script src="js/project-ordering.js"></script>
+  <script src="components/experience-section.js" defer></script>
 
   <!-- Non-critical scripts with lower priority -->
   <script defer src="js/animation.js"></script>

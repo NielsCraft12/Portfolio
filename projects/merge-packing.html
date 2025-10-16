@@ -235,51 +235,15 @@
       width: 100% !important;
     }
   </style>
+
+  <!-- components -->
+  <script type="module" src="../components/navbar.js" defer></script>
+  <script type="module" src="../components/code-block.js" defer></script>
 </head>
 
 <body class="merge-packing-page">
   <!-- Navigation Menu -->
-  <nav>
-    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
-    <div class="nav-brand">
-      <a href="../" class="nav-logo">
-        <img src="../images/Favicon/favicon.svg" alt="Logo" />
-      </a>
-      <a href="../" class="nav-title">Niels de Laat</a>
-    </div>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <div class="hamburger-icon">
-        <span class="bar bar1"></span>
-        <span class="bar bar2"></span>
-        <span class="bar bar3"></span>
-      </div>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <div class="hamburger-icon">
-          <span class="bar bar1"></span>
-          <span class="bar bar2"></span>
-          <span class="bar bar3"></span>
-        </div>
-      </label>
-      <!-- <a data-i18n="nav.home" class="home-link" href="../">Home</a> -->
-      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
-          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <nav-bar></nav-bar>
   <div style="height: 50px;"></div>
   <!-- Main Content Container -->
   <div class="containerProject">
@@ -301,15 +265,9 @@
       </video>
       <p data-i18n="projectPages.mergePacking.mergingLogic.mergingLogicIntro">Merge Packing's primary mechanic revolves
         around combining two identical items into a higher-tier object. This is handled in the ObjectManager script:</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/ObjectManager.cs#L56-L83"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
+      <code-block
+        href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/ObjectManager.cs#L56-L83"
+        language="csharp" code="
         if (other == null || other.ObjectTypeIndex != ObjectTypeIndex) return;
 
         Destroy(gameObject);
@@ -317,7 +275,7 @@
 
         if (ObjectTypeIndex == itemPrefs.Count - 1)
         {
-            GameObject[] _peanutsArray = GameObject.FindGameObjectsWithTag("Peanut");
+            GameObject[] _peanutsArray = GameObject.FindGameObjectsWithTag(&quot;Peanut&quot;);
 
             foreach (GameObject _peanut in _peanutsArray)
             {
@@ -334,10 +292,8 @@
             // spawn one merged object
             GameObject _newBall = Instantiate(itemPrefs[ObjectTypeIndex + 1], middlePoint, Quaternion.identity);
             _newBall.GetComponent&lt;Rigidbody2D&gt;().gravityScale = 1f;
-        }
+        }"></code-block>
 
-      </code></pre>
-      </div>
       <p data-i18n="projectPages.mergePacking.mergingLogicEnd">The merging system checks for matching sprite types,
         ensures only one of the colliding objects spawns the new item in the middle of the 2 objects, and increases the
         score.</p>
@@ -350,23 +306,17 @@
       <p data-i18n="projectPages.mergePacking.alien.alienIntro">The alien is a floating alien creature that periodically
         swoops across the screen, dropping packing peanuts. Its motion is point-to-point, with smoothed directional
         transitions and dynamic behavior.</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L97-L99"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-        desiredDirection = (points[pointIndex].position - transform.position).normalized;
-        direction = Vector2.Lerp(direction, desiredDirection, turnSpeed * Time.deltaTime);
-        transform.position += (Vector3)(direction * movespeed * Time.deltaTime);
-        </code></pre>
-      </div>
+
+      <code-block
+        href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L97-L99"
+        language="csharp" code="
+desiredDirection = (points[pointIndex].position - transform.position).normalized;
+direction = Vector2.Lerp(direction, desiredDirection, turnSpeed * Time.deltaTime);
+transform.position += (Vector3)(direction * movespeed * Time.deltaTime);"></code-block>
+
       <p data-i18n="projectPages.mergePacking.alien.alienCodeSnippet">The alien’s path resets after each score
         milestone, creating a rhythmic gameplay loop. Peanuts are dropped using a coroutine:</p>
-      <div class="code-block" style="position: relative !important;">
+      <!-- <div class="code-block" style="position: relative !important;">
         <a data-i18n="projectPages.viewOnGitHub"
           href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L112-L123"
           class="github-inline" target="_blank" title="View on GitHub"
@@ -385,7 +335,21 @@ IEnumerator DropPeanut()
     }
 }
         </code></pre>
-      </div>
+      </div> -->
+
+      <code-block
+        href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L112-L123"
+        language="csharp" code="
+IEnumerator DropPeanut()
+{
+    while (true)
+    {
+        yield return new WaitForSeconds(peanutDropSpeed);
+        GameObject peanut = Instantiate(peanutPrefab, DropPoint.position, Quaternion.identity);
+        peanut.GetComponent&lt;SpriteRenderer&gt;().sprite = peanutSprites[Random.Range(0, peanutSprites.Count)];
+    }
+}
+"> </code-block>
 
       <!-- Play -->
       <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"

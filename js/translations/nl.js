@@ -41,7 +41,7 @@ export const nl = {
     gluDescription: "Het Game Development-programma van het Grafisch Lyceum Utrecht leert game-ontwerp, codering en samenwerking tussen programmeurs en artiesten. Door praktische projecten leren we de vaardigheden die nodig zijn om leuke games te maken.",
     futureTitle: "De Toekomst",
     futureTime: "Toekomst",
-    futureDescription: 'Jouw project hier? Klik <a style="color: #ff7e5f;" href="#Contact">hier</a> om contact met mij op te nemen',
+    futureDescription: "Ik wil mijn vaardigheden uitbreiden in geavanceerde game-ontwikkeling, AI-integratie en mogelijk mobiele game-ontwikkeling. Altijd open voor nieuwe kansen en samenwerkingen.",
   },
 
   contact: {

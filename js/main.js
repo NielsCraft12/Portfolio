@@ -22,7 +22,7 @@ function updateAgeDisplay() {
 // Project Tab Functionality
 function initProjectTabs() {
   const tabButtons = document.querySelectorAll(".tab-button");
-  const projectItems = document.querySelectorAll(".project-item");
+  const projectItems = document.querySelectorAll("project-item");
   const blogContainer = document.querySelector(".blog-container");
 
   // Immediately hide all projects to prevent flash
@@ -35,8 +35,8 @@ function initProjectTabs() {
     const maxProjects = 6;
 
     projectItems.forEach((item) => {
-      const itemCategory = item.getAttribute("data-category");
-      const itemYear = parseInt(item.getAttribute("data-year"));
+      const itemCategory = item.getAttribute("category");
+      const itemYear = parseInt(item.getAttribute("year"));
       const currentYear = new Date().getFullYear();
 
       let shouldShow = false;
@@ -76,18 +76,14 @@ function initProjectTabs() {
       blogContainer.style.maxWidth = "400px"; // Width of one card + some margin
       blogContainer.style.margin = "32px auto 0 auto"; // Keep consistent top margin
 
-      // Find the visible anchor that contains the project
+      // Find the visible items that are not hidden by filter
       const visibleItems = Array.from(projectItems).filter((item) => !item.classList.contains("hidden-filter"));
       if (visibleItems.length === 1) {
-        const parentLink = visibleItems[0].closest("a");
-        const projectItem = visibleItems[0];
-        if (parentLink) {
-          parentLink.style.width = "100%";
+        const parentItem = visibleItems[0];
+        if (parentItem) {
+          parentItem.style.width = "100%";
           // Keep consistent alignment with multiple items
-          parentLink.style.marginTop = "0"; // Remove negative margin
-        }
-        if (projectItem) {
-          projectItem.style.marginTop = "0"; // Keep consistent margins
+          parentItem.style.marginTop = "0"; // Remove negative margin
         }
       }
     } else {
@@ -96,22 +92,10 @@ function initProjectTabs() {
       blogContainer.style.margin = "32px auto 0 auto"; // Keep consistent top margin
 
       // Reset any item-specific styles
-      document.querySelectorAll(".blog-container > a").forEach((link) => {
-        link.style.width = "";
-        link.style.marginTop = "";
-
-        // Also reset the project item styles
-        const projectItem = link.querySelector(".project-item");
-        if (projectItem) {
-          projectItem.style.marginTop = "";
-          projectItem.style.transform = ""; // Clear any inline transform
-        }
-
-        // Reset any transform styles on the blog-box
-        const blogBox = link.querySelector(".blog-box");
-        if (blogBox) {
-          blogBox.style.transform = ""; // Clear any inline transform to allow hover effects
-        }
+      document.querySelectorAll(".blog-container > project-item").forEach((item) => {
+        item.style.width = "";
+        item.style.marginTop = "";
+        item.style.transform = ""; // Clear any inline transform
       });
     }
   }

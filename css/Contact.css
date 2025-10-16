@@ -121,7 +121,7 @@
     width: 87vw;
   }
 
-  .socal-media-buttons {
+  .social-media-buttons {
     margin-bottom: 20px;
     gap: 15px;
     font-size: 25px;
@@ -173,6 +173,12 @@
   color: white;
 }
 
+.fa-gamepad {
+  border-radius: 20px;
+  background: #dd4a4a;
+  color: white;
+}
+
 .fa-envelope {
   border-radius: 20px;
   background: #55acee;
@@ -185,7 +191,19 @@
   color: white;
 }
 
-.socal-media-buttons {
+.fa-file-alt {
+  border-radius: 20px;
+  background: #55acee;
+  color: white;
+}
+
+.fa-file-text-o {
+  border-radius: 20px;
+  background: #55acee;
+  color: white;
+}
+
+.social-media-buttons {
   font-size: 30px;
   gap: 20px;
   width: 100%;

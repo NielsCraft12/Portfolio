@@ -137,6 +137,16 @@ async function updateContent(lang) {
   if (typeof updateAgeDisplay === "function") {
     updateAgeDisplay();
   }
+
+  // Dispatch event to notify shadow DOM components about translation updates
+  const translationEvent = new CustomEvent('translationUpdated', {
+    detail: {
+      language: lang,
+      translations: translations
+    },
+    bubbles: true
+  });
+  document.dispatchEvent(translationEvent);
 }
 
 function getNestedTranslation(obj, key) {
@@ -236,52 +246,47 @@ function initTranslation() {
  * Sets up event listeners for language switching
  */
 function setupLanguageSwitcher() {
-  const languageLinks = document.querySelectorAll(".language-menu a, footer a[data-lang]");
+  // Handle language links in the main document (like footer)
+  const languageLinks = document.querySelectorAll("footer a[data-lang]");
 
   languageLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
-      e.stopPropagation(); // Prevent the click from bubbling up
+      e.stopPropagation();
 
       const lang = this.getAttribute("data-lang");
       if (lang) {
-        // Close the dropdown immediately
-        const languageSwitcher = this.closest(".language-switcher");
-        if (languageSwitcher) {
-          languageSwitcher.classList.remove("active");
-          // console.log("Language selected, dropdown closed");
-        }
-
-        // Update content after a brief delay to ensure dropdown is closed
-        setTimeout(() => {
-          updateContent(lang);
-        }, 10);
+        updateContent(lang);
       }
     });
   });
 
-  // Add click handler for the language button to toggle dropdown on mobile
-  const languageBtn = document.querySelector(".language-btn");
-  const languageSwitcher = document.querySelector(".language-switcher");
+  // Listen for custom language change events from the navbar component
+  document.addEventListener('languageChanged', function (e) {
+    const lang = e.detail.language;
+    if (lang) {
+      updateContent(lang);
+    }
+  });
 
-  // console.log("Language button found:", languageBtn);
+  // Fallback: Try to find language elements in the main document
+  // (This is for backward compatibility if there are language switchers outside shadow DOM)
+  const mainLanguageBtn = document.querySelector(".language-btn");
+  const mainLanguageSwitcher = document.querySelector(".language-switcher");
 
-  if (languageBtn && languageSwitcher) {
+  if (mainLanguageBtn && mainLanguageSwitcher) {
     let outsideClickHandler = null;
 
     // Toggle dropdown when clicking the button
-    languageBtn.addEventListener("click", function (e) {
-      // console.log("Language button clicked!");
+    mainLanguageBtn.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
 
-      const isCurrentlyActive = languageSwitcher.classList.contains("active");
-      // console.log("Currently active:", isCurrentlyActive);
+      const isCurrentlyActive = mainLanguageSwitcher.classList.contains("active");
 
       // Toggle the active state
       if (isCurrentlyActive) {
-        languageSwitcher.classList.remove("active");
-        // console.log("Dropdown closed by button click");
+        mainLanguageSwitcher.classList.remove("active");
 
         // Remove the outside click handler when closing
         if (outsideClickHandler) {
@@ -289,8 +294,7 @@ function setupLanguageSwitcher() {
           outsideClickHandler = null;
         }
       } else {
-        languageSwitcher.classList.add("active");
-        // console.log("Dropdown opened by button click");
+        mainLanguageSwitcher.classList.add("active");
 
         // Remove any existing handler before adding a new one
         if (outsideClickHandler) {
@@ -301,9 +305,8 @@ function setupLanguageSwitcher() {
         setTimeout(() => {
           outsideClickHandler = function (e) {
             // Only close if clicking outside the language switcher
-            if (!languageSwitcher.contains(e.target)) {
-              // console.log("Clicked outside, closing dropdown");
-              languageSwitcher.classList.remove("active");
+            if (!mainLanguageSwitcher.contains(e.target)) {
+              mainLanguageSwitcher.classList.remove("active");
               document.removeEventListener("click", outsideClickHandler);
               outsideClickHandler = null;
             }
@@ -312,11 +315,33 @@ function setupLanguageSwitcher() {
           document.addEventListener("click", outsideClickHandler);
         }, 10);
       }
-
-      // console.log("After toggle, active:", languageSwitcher.classList.contains("active"));
     });
-  } else {
-    console.warn("Language button or switcher not found!");
+
+    // Handle language selection in main document
+    const mainLanguageLinks = document.querySelectorAll(".language-menu a");
+    mainLanguageLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const lang = this.getAttribute("data-lang");
+        if (lang) {
+          // Close the dropdown immediately
+          mainLanguageSwitcher.classList.remove("active");
+
+          // Remove outside click handler
+          if (outsideClickHandler) {
+            document.removeEventListener("click", outsideClickHandler);
+            outsideClickHandler = null;
+          }
+
+          // Update content
+          setTimeout(() => {
+            updateContent(lang);
+          }, 10);
+        }
+      });
+    });
   }
 }
 

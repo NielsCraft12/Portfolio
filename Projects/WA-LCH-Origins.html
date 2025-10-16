@@ -11,14 +11,13 @@
   <title>WA-LCH Origins</title>
 
   <!-- External Resources -->
-  <!-- jQuery library
-  <script src="https://ajax.googleapis.com/ajax/      <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
+  <!--       <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
       <a href="https://github.com/NielsCraft12/ggj-walch2/tree/main/Assets/Scripts" target="_blank" rel="noreferrer"
-        class="fab fa-github fa-2xl icon"></a>
+        class="fab fa-github fa-2xl icon"></a>ery library
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  -->
 
-      <!-- Credits Section -->
-  <h1 data-i18n="projectPages.credits" style="text-align: center; margin-top: 10px; margin-bottom: 0"
-    class="GradiantTitle">Credits</h1>uery/3.5.1/jquery.min.js"></script> --> <!-- Google Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
@@ -325,51 +324,15 @@
   <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+
+  <!-- components -->
+  <script type="module" src="../components/navbar.js" defer></script>
+  <script type="module" src="../components/code-block.js" defer></script>
 </head>
 
 <body>
   <!-- Navigation Menu -->
-  <nav>
-    <!-- <a href="#Home" class="GradiantTitle" style="justify-content: flex-start; font-size: 22px">Niels de Laat</a> -->
-    <div class="nav-brand">
-      <a href="../" class="nav-logo">
-        <img src="../images/Favicon/favicon.svg" alt="Logo" />
-      </a>
-      <a href="../" class="nav-title">Niels de Laat</a>
-    </div>
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <div class="hamburger-icon">
-        <span class="bar bar1"></span>
-        <span class="bar bar2"></span>
-        <span class="bar bar3"></span>
-      </div>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <div class="hamburger-icon">
-          <span class="bar bar1"></span>
-          <span class="bar bar2"></span>
-          <span class="bar bar3"></span>
-        </div>
-      </label>
-      <!-- <a data-i18n="nav.home" class="home-link" href="../">Home</a> -->
-      <a data-i18n="nav.projects" href="../#Projects">Projects</a>
-      <a data-i18n="nav.experience" href="../#Experience">Experience</a>
-      <a data-i18n="nav.contact" href="../#Contact">Contact</a>
-      <div class="language-switcher">
-        <button class="language-btn">
-          <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <ul class="language-menu">
-          <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
-          <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <nav-bar></nav-bar>
   <div style="height: 50px;"></div>
   <!-- Main Content Container -->
   <div class="containerProject">
@@ -394,22 +357,16 @@
         for an
         intuitive feel.</p>
 
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L106-#L117"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-            rb.linearVelocity = new Vector3(
-              moveDirection.y * maxSpeed,
-              yVelocity,
-              moveDirection.x * maxSpeed
-          );
-                </code></pre>
-      </div>
+      <code-block
+        href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L106-#L117"
+        language="csharp" code="
+        rb.linearVelocity = new Vector3(
+        moveDirection.y * maxSpeed,
+        yVelocity,
+        moveDirection.x * maxSpeed
+        );">
+      </code-block>
+
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
         <source src="../videos/webm/WalchOrigins/WalchorginsMovement.webm" type="video/webm">
@@ -421,21 +378,17 @@
         particle effect and wipes nearby trash or rats from
         the scene.
         Using an OverlapSphere to detect the trash</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L205-L210"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-Collider[] hitColliders = Physics.OverlapSphere(
-    cleaningpoint.transform.position,
-    cleaningRadius
-);
-</code></pre>
-      </div> <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
+
+      <code-block href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L205-L210"
+        language="csharp" code="
+        Collider[] hitColliders = Physics.OverlapSphere(
+        cleaningpoint.transform.position,
+        cleaningRadius
+        );">
+
+      </code-block>
+
+      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
         <source src="../videos/webm/WalchOrigins/walchOriginsCleaning.webm" type="video/webm">
       </video>
@@ -447,22 +400,16 @@ Collider[] hitColliders = Physics.OverlapSphere(
         to
         deal with
         fast-moving rats.</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L128-L137"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
+
+      <code-block href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L128-L137"
+        language="csharp" code="
         if (trapcooldownTimer &lt;= 0)
         {
-           Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
-           trapcooldownTimer = trapcooldown;
+         Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
+         trapcooldownTimer = trapcooldown;
         }
-        </code></pre>
-      </div>
+      "></code-block>
+
       <!-- <img src="../images/gif/WalchOrigins/walchOriginsTraps.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 100%; height: auto" loading="lazy" />  -->
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
@@ -471,74 +418,59 @@ Collider[] hitColliders = Physics.OverlapSphere(
       </video>
       <h3 data-i18n="projectPages.walchOrigins.doorSystem.doorSystemTitle" class="GradiantTitle subtitle">Doors
       </h3>
-      <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint1">Doors open and close automatically when the
+      <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint1">Doors open and close automatically when
+        the
         when player or npc's enters a trigger zone. It tells the door to change the door state to open.</p>
 
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L183-L193"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-            if (other.gameObject.CompareTag("Door"))
-         {
-            if (other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving == false)
-            {
+      <code-block href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/PlayerMovement.cs#L183-L193"
+        language="csharp" code="            
+            if (other.gameObject.CompareTag(&quot;Door&quot;))
+             { 
+              if (other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving == false)
+              {
                 other.gameObject.GetComponent&lt;DoorOpen&gt;().Moving = true;
-            }
-         }
-        </code></pre>
-      </div>
+              }
+            }">
+
+      </code-block>
+
       <p data-i18n="projectPages.walchOrigins.doorSystem.doorSystemPoint2">The door then moves to the open position
         and
         waits for a certain amount of time before closing again.</p>
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/DoorOpen.cs#L39-L67"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
-        void MoveDoor(Vector3 goalPos)
-        {
-            float dist = Vector3.Distance(transform.position, goalPos);
-            if (dist >= 0.001f)
-            {
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    goalPos,
-                    speed * Time.deltaTime
-                );
+
+      <code-block href="https://github.com/NielsCraft12/ggj-walch2/blob/main/Assets/Scripts/DoorOpen.cs#L39-L67"
+        language="csharp" code="        
+        void MoveDoor(Vector3 goalPos) {
+          float dist = Vector3.Distance(transform.position, goalPos);
+          if (dist >= 0.001 f) {
+            transform.position = Vector3.MoveTowards(
+              transform.position,
+              goalPos,
+              speed * Time.deltaTime
+            );
+          } else {
+            if (opening) {
+              delay += Time.deltaTime;
+              if (delay &lt; openTime) {
+                opening = false;
+                delay = 0.0 f;
+              }
             }
-            else
-            {
-                if (opening)
-                {
-                    delay += Time.deltaTime;
-                    if (delay &lt; openTime)
-                    {
-                        opening = false;
-                        delay = 0.0f;
-                    }
-                }
-            }
-        }
-        </code></pre>
-      </div>
+          }
+        }">
+      </code-block>
+
       <!-- <img src="../images/gif/WalchOrigins/walchOriginsDoor.gif" alt=""
         style="display: block; margin: 20px auto; max-width: 80%; height: auto" loading="lazy" /> -->
       <video autoplay muted loop playsinline disablePictureInPicture class="make-gif"
         style="display: block; margin: 20px auto; max-width: 80%; height: auto">
         <source src="../videos/webm/WalchOrigins/walchOriginsDoor.webm" type="video/webm">
       </video>
-      <h3 data-i18n="projectPages.walchOrigins.customTrailer.customTrailerTitle" class="GradiantTitle subtitle">Custom
+      <h3 data-i18n="projectPages.walchOrigins.customTrailer.customTrailerTitle" class="GradiantTitle subtitle">
+        Custom
         Trailer</h3>
-      <p data-i18n="projectPages.walchOrigins.customTrailer.customTrailerPoint1">I also created a custom trailer to
+      <p data-i18n="projectPages.walchOrigins.customTrailer.customTrailerPoint1">I also created a custom trailer
+        to
         showcase the core
         mechanics, vibe, and loop of the game. (Created after the game jam)</p>
       <div style="display: flex; justify-content: center; margin: 20px 0; ">
@@ -611,147 +543,95 @@ Collider[] hitColliders = Physics.OverlapSphere(
       <a href="https://github.com/NielsCraft12/ggj-walch2/tree/main/Assets/Scripts" target="”_blank”" rel="noreferrer"
         class="fab fa-github fa-2xl icon"></a>
 
-      <!-- Credits Section -->
-      <!-- <h1 data-i18n="projectPages.credits" style="text-align: center; margin-top: 10px; margin-bottom: 0"
-        class="GradiantTitle">Credits</h1>
-
-      <ul class="cd-demo-chip-list">
-        <li>
-          <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-code GradiantTitle"></i>
-              <i class="chip__label">Niels de Laat</i>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="http://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-code GradiantTitle"></i>
-              <i class="chip__label">Joah van der Sloot</i>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.artstation.com/maxtesser" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-paintbrush GradiantTitle"></i>
-              <i class="chip__label">Max Tesser</i>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.artstation.com/finnvonk" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-paintbrush GradiantTitle"></i>
-              <i class="chip__label">Finn Vonk</i>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="https://thierryvanrooijen.artstation.com/" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-paintbrush GradiantTitle"></i>
-              <i class="chip__label">Thierry van Rooijen</i>
-            </span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Image Modal for Screenshots -->
       <div id="imageModal" class="modal">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="modalImg" />
       </div>
-      <!-- Lazy load image zoom functionality -->
-      <script src="../js/imagezoom.js" defer></script>
-      <script src="../js/translate.js" defer></script>
-      <script src="../js/mobile-optimizations.js" defer></script>
+    </div>
+    <!-- Footer positioned outside the containerProject -->
+    <footer>
+      <div class="footer" style="display: flex; align-items: center; position: relative">
+        <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
+          <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+            viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
+            <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+              <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
+            -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
+            -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
+            -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
+            1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
+            0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
+            -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
+            -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
+            316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
+            123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
+            c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
+            -1440 483 -149 19 -562 27 -710 15z" />
+            </g>
+          </svg>
+        </a>
+        <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
+        <script>
+          document.getElementById("copyright-year").textContent = new Date().getFullYear();
+        </script>
+      </div>
+    </footer>
 
+    <!-- JavaScript files and analytics -->
+    <script src="../js/imagezoom.js" defer></script>
+    <script src="../js/translate.js" defer></script>
+    <script src="../js/mobile-optimizations.js" defer></script>
 
+    <!-- Load analytics after page is fully loaded -->
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const script = document.createElement('script');
+          script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
+          script.src = '//gc.zgo.at/count.js';
+          script.async = true;
+          document.head.appendChild(script);
+        }, 1000); // Delay by 1 second after load
+      });
+    </script>
+    <script>
+      // Efficient video lazy loading - only if videos exist
+      document.addEventListener('DOMContentLoaded', () => {
+        const videos = document.querySelectorAll('video[autoplay]');
+        if (videos.length === 0) return; // Skip if no videos
 
-      <!-- Load analytics after page is fully loaded -->
-      <script>
-        window.addEventListener('load', () => {
-          setTimeout(() => {
-            const script = document.createElement('script');
-            script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
-            script.src = '//gc.zgo.at/count.js';
-            script.async = true;
-            document.head.appendChild(script);
-          }, 1000); // Delay by 1 second after load
-        });
-      </script>
-      <script>
-        // Efficient video lazy loading - only if videos exist
-        document.addEventListener('DOMContentLoaded', () => {
-          const videos = document.querySelectorAll('video[autoplay]');
-          if (videos.length === 0) return; // Skip if no videos
-
-          const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const video = entry.target;
-                video.paused && video.play().catch(() => { }); // Silent fail
-                videoObserver.unobserve(video);
-              }
-            });
-          }, { threshold: 0.25 });
-
-          videos.forEach(video => {
-            video.pause();
-            videoObserver.observe(video);
+        const videoObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const video = entry.target;
+              video.paused && video.play().catch(() => { }); // Silent fail
+              videoObserver.unobserve(video);
+            }
           });
-        }, { once: true });
+        }, { threshold: 0.25 });
 
-
-        // Conditionally load the itch.io embed only for "Merge Packing"
-        document.addEventListener('DOMContentLoaded', () => {
-          const project = document.body.getAttribute('data-project');
-          if (project === 'Merge Packing') {
-            const embedContainer = document.querySelector('.itch-embed-container');
-            const iframe = document.createElement('iframe');
-            iframe.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%';
-            iframe.frameBorder = '0';
-            iframe.src = 'https://itch.io/embed-upload/12701195?color=1E1E1E';
-            iframe.allowFullscreen = true;
-            embedContainer.innerHTML = ''; // Clear the placeholder
-            embedContainer.appendChild(iframe);
-          }
+        videos.forEach(video => {
+          video.pause();
+          videoObserver.observe(video);
         });
-      </script>
+      }, { once: true });
 
-      <footer>
-        <div class="footer" style="display: flex; align-items: center; position: relative">
-          <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-              viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet" class="mi-icon">
-              <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-                <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
-                -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
-                -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
-                -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
-                1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
-                0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
-                -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
-                -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
-                316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
-                123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
-                c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-                -1440 483 -149 19 -562 27 -710 15z" />
-              </g>
-            </svg>
-          </a>
-          <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-          <script>
-            document.getElementById("copyright-year").textContent = new Date().getFullYear();
-          </script>
-        </div>
-      </footer>
+
+      // Conditionally load the itch.io embed only for "Merge Packing"
+      document.addEventListener('DOMContentLoaded', () => {
+        const project = document.body.getAttribute('data-project');
+        if (project === 'Merge Packing') {
+          const embedContainer = document.querySelector('.itch-embed-container');
+          const iframe = document.createElement('iframe');
+          iframe.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%';
+          iframe.frameBorder = '0';
+          iframe.src = 'https://itch.io/embed-upload/12701195?color=1E1E1E';
+          iframe.allowFullscreen = true;
+          embedContainer.innerHTML = ''; // Clear the placeholder
+          embedContainer.appendChild(iframe);
+        }
+      });
+    </script>
 </body>
 
 </html>

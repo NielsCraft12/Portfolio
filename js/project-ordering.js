@@ -122,11 +122,11 @@ class ProjectOrdering {
     const container = document.querySelector(".blog-container");
     if (!container) return null;
 
-    const projectItems = container.querySelectorAll(".project-item");
+    const projectItems = container.querySelectorAll("project-item");
 
     for (const item of projectItems) {
-      const href = item.getAttribute("href");
-      const title = item.querySelector(".blog-title")?.textContent;
+      const href = item.getAttribute("link");
+      const title = item.getAttribute("title");
 
       // Check by mapping key
       if (this.projectMappings[identifier]) {
@@ -157,7 +157,7 @@ class ProjectOrdering {
     const container = document.querySelector(".blog-container");
     if (!container) return [];
 
-    return Array.from(container.querySelectorAll(".project-item"));
+    return Array.from(container.querySelectorAll("project-item"));
   }
 
   /**
@@ -354,7 +354,7 @@ class ProjectOrdering {
     const order = [];
 
     projects.forEach((project) => {
-      const href = project.getAttribute("href");
+      const href = project.getAttribute("link");
 
       // Find the mapping key for this project
       for (const [key, mapping] of Object.entries(this.projectMappings)) {
