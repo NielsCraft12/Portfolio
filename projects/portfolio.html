@@ -2,578 +2,540 @@
 <html lang="en">
 
 <head>
-  <!-- Character encoding and viewport settings -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="projects.wa_lch.title">WA-LCH | Niels de Laat</title>
 
-  <meta name="description"
-    content="Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this time, you’re not just tidying up an abandoned lab filled with radioactive mess you’re dealing with the chaos before it got that bad." />
-  <title>Portfolio</title>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/Favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/Favicon/favicon-16x16.png">
+  <link rel="manifest" href="../images/Favicon/site.webmanifest">
 
-  <!-- Preconnect to external domains -->
+  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
+  <meta name="author" content="Niels de Laat">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Non-critical CSS loaded asynchronously -->
-  <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/ProjectPage.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/Home.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/prism.css" media="print" onload="this.media='all'">
+  <link href="../css/prism.css" rel="stylesheet" />
 
-  <!-- Load Font Awesome synchronously for GitHub buttons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    crossorigin="anonymous">
+  <script type="module" src="../components/navbar.js"></script>
+  <script type="module" src="../components/social-buttons.js"></script>
+  <script type="module" src="../components/code-block.js"></script>
+  <!-- <script type="module" src="../js/translate.js"></script> -->
+  <script type="module" src="../components/projectPageLayout.js"></script>
+  <script type="module" src="../components/footer.js"></script>
 
-  <!-- Async load Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
-    onload="this.media='all'">
-
-  <!-- Fallback for browsers that don't support onload -->
-  <noscript>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/ProjectPage.css">
-    <link rel="stylesheet" href="../css/Home.css">
-    <link rel="stylesheet" href="../css/prism.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
-  </noscript>
-
-  <!-- Favicon Settings for various platforms -->
   <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
   <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
 
-  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script> -->
-  <!-- <script
-    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script> -->
+  <script>
+    // Lazy load Prism.js only when code blocks are visible
+    const loadPrism = () => {
+      if (window.Prism) return; // Already loaded
+      const script = document.createElement('script');
+      script.src = '../js/prism.js';
+      script.onload = () => window.Prism?.highlightAll();
+      document.head.appendChild(script);
+    };
 
-  <style>
-    /* Critical CSS for immediate rendering */
-    :root {
-      --gradient-start: #ff7e5f;
-      --gradient-end: #feb47b;
-      --scrollbar-track: #1e1e1e;
-    }
+    // Intersection Observer for lazy loading
+    const codeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadPrism();
+          codeObserver.disconnect(); // Only load once
+        }
+      });
+    }, { rootMargin: '200px' });
 
-    body {
-      font-family: "Baloo 2", sans-serif;
-      margin: 0;
-      padding: 0;
-      background: var(--primary-bg);
-      color: #e0e0e0;
-      line-height: 1.6;
-    }
-
-    /* Critical scrollbar styling with high specificity and fallbacks */
-    * ::-webkit-scrollbar,
-    html ::-webkit-scrollbar,
-    body ::-webkit-scrollbar,
-    ::-webkit-scrollbar {
-      width: 15px !important;
-    }
-
-    * ::-webkit-scrollbar-track,
-    html ::-webkit-scrollbar-track,
-    body ::-webkit-scrollbar-track,
-    ::-webkit-scrollbar-track {
-      background: #1e1e1e !important;
-      background-color: #1e1e1e !important;
-    }
-
-    * ::-webkit-scrollbar-thumb,
-    html ::-webkit-scrollbar-thumb,
-    body ::-webkit-scrollbar-thumb,
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(to left, #ff7e5f, #feb47b) !important;
-      background-color: #ff7e5f !important;
-      border-radius: 10px !important;
-    }
-
-    /* Fallback for Firefox */
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: #ff7e5f #1e1e1e;
-    }
-
-    .navbar {
-      background-color: #333;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100vw;
-      z-index: 1000;
-      transition: all 0.3s ease;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    .navbar::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(10px);
-      z-index: -1;
-    }
-
-    .content-container {
-      margin-top: 80px;
-      padding: 20px;
-    }
-
-    .project-header {
-      text-align: center;
-      margin: 2rem 0;
-    }
-
-    .project-title {
-      font-size: 3rem;
-      color: #4CAF50;
-      margin-bottom: 1rem;
-    }
-
-    .project-description {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* iOS safe area support */
-    @supports(padding: max(0px)) {
-      .navbar {
-        padding-top: max(env(safe-area-inset-top), 10px);
+    // Observe code blocks when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const codeBlocks = document.querySelectorAll('pre code');
+      if (codeBlocks.length > 0) {
+        codeBlocks.forEach(block => codeObserver.observe(block));
       }
+    });
+  </script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/ProjectPage.css" id="customStyles">
 
-      .content-container {
-        margin-top: max(calc(80px + env(safe-area-inset-top)), 80px);
-      }
-    }
-
-    /* CSS custom property for the spoiler tooltip text */
-    :root {
-      --spoiler-tooltip-text: "Click to reveal spoiler";
-    }
-
-    .spoiler-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 16px;
-      /* Add gap between spoiler boxes */
-    }
-
-    .spoiler-cover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-      cursor: pointer;
-      border-radius: 4px;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-      pointer-events: auto;
-    }
-
-    .spoiler-cover.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* Tooltip Styles */
-    .spoiler-cover::after {
-      content: var(--spoiler-tooltip-text);
-      position: absolute;
-      bottom: 110%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #222;
-      color: #fff;
-      padding: 6px 10px;
-      font-size: 12px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .spoiler-cover:hover::after {
-      opacity: 1;
-    }
-
-    /* Desktop layout for 404 images */
-    .portfolio-404-images {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: nowrap;
-    }
-
-    .portfolio-404-images picture {
-      flex: 1;
-      max-width: 33%;
-    }
-
-    .portfolio-404-images picture img {
-      width: 100%;
-      height: auto;
-    }
-
-    /* Mobile layout for 404 images */
-    @media (max-width: 768px) {
-      .portfolio-404-images {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .portfolio-404-images picture {
-        width: 90%;
-        max-width: 768px;
-      }
-
-      .portfolio-404-images picture img {
-        width: 100% !important;
-        height: auto;
-      }
-    }
-
-    /* Vertical tablet specific styling for ProjectCard video */
-    @media (min-width: 481px) and (max-width: 1024px) and (orientation: portrait) {
-      .project-card-video {
-        display: block !important;
-        margin: 10px auto !important;
-        max-width: 50% !important;
-      }
-    }
-  </style>
-
-  <!-- components -->
-  <script type="module" src="../components/navbar.js" defer></script>
-  <script type="module" src="../components/code-block.js" defer></script>
 </head>
 
 <body>
-  <!-- Navigation Menu -->
-  <!-- components -->
+  <!-- Navigation Component -->
   <nav-bar></nav-bar>
-  <div style="height: 50px;"></div>
-  <!-- Main Content Container -->
-  <div class="containerProject">
-    <!-- Project Description Section -->
-    <div class="Main-Content">
-      <h1 class="GradiantTitle title">Portfolio</h1>
-      <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
-      <p data-i18n="projectPages.portfolio.portfolioDescription">This is the website you're currently viewing a fully
-        custom, multi-language developer portfolio showcasing my game development projects, skills, and personality.
-        It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and
-        a touch of humor.</p>
-      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
-      <p data-i18n="projectPages.portfolio.whatIMadeStart">This project wasn’t just about creating a static site, it’s a
-        full experience. Here's what I built:</p>
-      <h3 data-i18n="projectPages.portfolio.homepage.homePageTitle" class="GradiantTitle subtitle">Home Page</h3>
-      <ul class="project-list">
-        <li data-i18n="projectPages.portfolio.homepage.homePagePoint1">Clean layout with profile picture, dynamic age
-          display, and skills list.</li>
-        <li data-i18n="projectPages.portfolio.homepage.homePagePoint2">Fully responsive design using Flexbox and custom
-          media queries.</li>
-      </ul>
+  <!-- ============================================
+       CONTENT CONFIGURATION - EDIT YOUR CONTENT HERE
+       ============================================ -->
+  <script id="projectConfig">
+    const PROJECT_DATA = {
+      // Project Info
+      title: "Portfolio Website",
+      title_i18n: "__NO_TRANSLATE__",
 
-      <code-block href="https://github.com/NielsCraft12/Portfolio/blob/main/js/main.js#L1-L14" language="javascript"
-        code="
-        // JavaScript that dynamically calculates and displays my age
-        function calculateAge(birthday) {
-          const today = new Date();
-          const birthDate = new Date(birthday);
-          let age = today.getFullYear() - birthDate.getFullYear();
-          const monthDifference = today.getMonth() - birthDate.getMonth();
-          const dayDifference = today.getDate() - birthDate.getDate();
+      // Main Content Sections
+      sections: [
+        {
+          title: "Description",
+          title_i18n: "projectPages.description",
+          content: `A modern, multilingual portfolio website built from scratch using vanilla HTML, CSS, and JavaScript. Features custom web components, internationalization support, dynamic project pages, and playful Easter eggs. Fully responsive with optimized performance and no framework dependencies.`,
+          content_i18n: "projectPages.portfolio.description"
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/Portfolio/indexScroll.webm",
+          alt: "Scrolling through portfolio homepage",
+          maxWidth: "800px"
+        },
 
-          // Adjust age if today's date is before the birthday this year
-          if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
-            age--;
-          }
-          return age;
+        {
+          title: "What I Made",
+          title_i18n: "projectPages.whatIMadeTitle",
+          content_i18n: "__NO_TRANSLATE__"
+        },
+
+        // Language Switching
+        {
+          title: "Multi-Language Support",
+          title_i18n: "projectPages.portfolio.i18n.title",
+          content: "The entire website can switch between English, Dutch. All text updates instantly without reloading the page. Your language preference is saved automatically.",
+          content_i18n: "projectPages.portfolio.i18n.content"
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/portfolio/language-switch.webm",
+          alt: "Switching between English, Dutch",
+          maxWidth: "800px"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/js/translate.js",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `// Dynamic language loading
+async function loadTranslations(lang) {
+  const module = await import(\`./translations/\${lang}.js\`);
+  return module.translations;
+}
+
+// Update all translated content instantly
+function updateContent(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    const translation = getNestedTranslation(translations, key);
+    if (translation) element.textContent = translation;
+  });
+  localStorage.setItem('preferredLanguage', lang);
+}`
+        },
+
+        // Project Filtering
+        {
+          title: "Project Filtering System",
+          title_i18n: "projectPages.portfolio.filtering.title",
+          content: "Browse my projects by category with smooth tab switching. Filter between Games, Web Projects, and 3D Printing projects with one click.",
+          content_i18n: "projectPages.portfolio.filtering.content"
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/portfolio/tab-filtering.webm",
+          alt: "Filtering projects by category",
+          maxWidth: "800px"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/js/project-ordering.js",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const category = tab.dataset.tab;
+    
+    // Update active tab styling
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    
+    // Show/hide projects based on category
+    projects.forEach(project => {
+      project.style.display = 
+        (category === 'all' || project.dataset.category === category)
+        ? 'block' : 'none';
+    });
+  });
+});`
+        },
+
+        // Dynamic Project Pages
+        {
+          title: "Dynamic Project Pages",
+          title_i18n: "projectPages.portfolio.projectPages.title",
+          content: "Each project page is built from a simple configuration object. Add sections, code blocks, images, and videos without touching HTML. Everything renders automatically with full translation support.",
+          content_i18n: "projectPages.portfolio.projectPages.content"
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/portfolio/project-page-scroll.webm",
+          alt: "Scrolling through a project page",
+          maxWidth: "800px"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/components/projectPageLayout.js#L20-L50",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `const PROJECT_DATA = {
+  title: "WA-LCH Origins",
+  sections: [
+    {
+      title: "Player Movement",
+      content: "Physics-based movement...",
+      content_i18n: "projectPages.walchOrigins.playerMovement"
+    },
+    {
+      type: "codeblock",
+      githubUrl: "https://github.com/...",
+      language: "csharp",
+      code: \`rb.linearVelocity = new Vector3(...)\`
+    },
+    {
+      type: "media",
+      mediaType: "video",
+      src: "../videos/webm/movement.webm"
+    }
+  ]
+};`
+        },
+
+        // Screenshot Gallery with Modal
+        {
+          title: "Interactive Screenshot Gallery",
+          title_i18n: "projectPages.portfolio.imageModal.title",
+          content: "Click any screenshot to view it full-size. The lightbox effect was built from scratch without any external libraries.",
+          content_i18n: "projectPages.portfolio.imageModal.content"
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/portfolio/modal-interaction.webm",
+          alt: "Clicking screenshot to enlarge and close",
+          maxWidth: "800px"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/components/projectPageLayout.js#L165-L180",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImg');
+
+// Open modal when clicking a screenshot
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('screenshot')) {
+    modal.style.display = 'block';
+    modalImg.src = e.target.src;
+  }
+});
+
+// Close on X button or background click
+closeBtn.addEventListener('click', () => modal.style.display = 'none');
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) modal.style.display = 'none';
+});`
+        },
+
+        // Smart Game Embedding
+        {
+          title: "Smart Game Embedding",
+          title_i18n: "projectPages.portfolio.embedSystem.title",
+          content: "Play games directly on project pages! The system automatically detects your device and adjusts the layout. Mobile users see a helpful message for desktop-only games, while mobile-friendly games display in vertical format.",
+          content_i18n: "projectPages.portfolio.embedSystem.content"
+        },
+        {
+          type: "media",
+          mediaType: "image",
+          src: "../images/portfolio/embed-desktop-mobile.png",
+          alt: "Game embed on desktop (horizontal) vs mobile (vertical or message)",
+          maxWidth: "800px"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/components/projectPageLayout.js#L230-L260",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `function detectMobile() {
+  const isTouchDevice = ('ontouchstart' in window) || 
+                        (navigator.maxTouchPoints > 0);
+  const isNarrow = window.matchMedia('(max-width: 950px)').matches;
+  return isTouchDevice || isNarrow;
+}
+
+if (isMobile && !playableOnMobile) {
+  // Show friendly message
+  messageEl.innerHTML = \`
+    <i class="fas fa-mobile-alt"></i>
+    <p>This game is not playable on touch devices.</p>
+  \`;
+  embedSection.style.display = 'none';
+} else if (isMobile && playableOnMobile) {
+  // Use vertical layout for mobile games
+  iframe.style.aspectRatio = '9 / 16';
+  iframe.style.maxWidth = '400px';
+}`
+        },
+
+        // Custom 404 Page
+        {
+          title: "Fun 404 Error Page",
+          title_i18n: "projectPages.portfolio.404page.title",
+          content: "Getting lost on my website is actually fun! The 404 page randomly shows different characters from my games with funny messages. Refresh to see a new character!",
+          content_i18n: "projectPages.portfolio.404page.content"
+        },
+        {
+          type: "media",
+          mediaType: "image",
+          src: [
+            "../images/webp/ProjectImages/portfolio/404Image1.webp",
+            "../images/webp/ProjectImages/portfolio/404Image2.webp",
+            "../images/webp/ProjectImages/portfolio/404Image3.webp",
+          ],
+          flex: [1, 1, 1],
+          maxWidth: ["30%", "30%", "30%"],
+          alt: "Grid showing 8 different 404 page variations with game characters",
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/404-page-not-found.html#L33-L43",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `const randomNum = Math.floor(Math.random() * 8);
+
+const characters = [
+  "player-dead", "slimeKing", "roomba-bomb", 
+  "slime", "punchingslimes", "dino", ...
+];
+
+const messages = [
+  "error404.playerDead", 
+  "error404.slimeKing", 
+  "error404.roombaBomb", ...
+];
+
+// Set random image with WebP fallback
+document.getElementById("webpSource").srcset = 
+  \`../images/webp/404Images/\${characters[randomNum]}.webp\`;
+  
+// Set random translated message
+document.getElementById("randomText")
+  .setAttribute("data-i18n", messages[randomNum]);`
+        },
+
+        // Responsive Design
+        {
+          title: "Fully Responsive Design",
+          title_i18n: "projectPages.portfolio.responsive.title",
+          content: "The website adapts beautifully to any screen size - from mobile phones to ultra-wide monitors. Navigation, images, and layouts automatically adjust for the best viewing experience.",
+          content_i18n: "projectPages.portfolio.responsive.content"
+        },
+        {
+          type: "media",
+          mediaType: "image",
+          src: "../images/portfolio/responsive-showcase.png",
+          alt: "Website displayed on phone, tablet, and desktop",
+          maxWidth: "800px"
+        },
+
+        // Performance
+        {
+          title: "Optimized Performance",
+          title_i18n: "projectPages.portfolio.performance.title",
+          content: "Fast loading times through smart optimizations: images load only when you scroll to them, code syntax highlighting loads on-demand, and modern WebP images are used with automatic fallbacks for older browsers.",
+          content_i18n: "projectPages.portfolio.performance.content"
+        },
+        {
+          type: "media",
+          mediaType: "image",
+          src: "../images/portfolio/lighthouse-score.png",
+          alt: "Google Lighthouse performance score",
+          maxWidth: "600px"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/projects/wa-lch-origins.html#L48-L62",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `// Lazy load Prism.js only when code blocks are visible
+const codeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const script = document.createElement('script');
+      script.src = '../js/prism.js';
+      script.onload = () => window.Prism?.highlightAll();
+      document.head.appendChild(script);
+      codeObserver.disconnect();
+    }
+  });
+}, { rootMargin: '200px' });`
+        },
+        // Code Syntax Highlighting
+        {
+          title: "Beautiful Code Display",
+          title_i18n: "projectPages.portfolio.codeBlocks.title",
+          content: "All code examples feature syntax highlighting with direct links to view the full code on GitHub. The highlighting library only loads when you scroll to a code block to keep the page fast.",
+          content_i18n: "projectPages.portfolio.codeBlocks.content"
+        },
+        {
+          type: "media",
+          mediaType: "image",
+          src: "../images/portfolio/code-block-example.png",
+          alt: "Code block with syntax highlighting and GitHub link",
+          maxWidth: "800px"
+        },
+
+        // Custom Components
+        {
+          title: "Modular Component System",
+          title_i18n: "projectPages.portfolio.webComponents.title",
+          content: "Built reusable web components for navigation, project cards, social buttons, and more. This keeps the code organized and makes it easy to add new features.",
+          content_i18n: "projectPages.portfolio.webComponents.content"
+        },
+        {
+          type: "media",
+          mediaType: "image",
+          src: "../images/portfolio/components-showcase.png",
+          alt: "Examples of custom components: navbar, project cards, tech chips",
+          maxWidth: "800px"
+        },
+
+        // Technology Stack Summary
+        {
+          title: "Built With",
+          title_i18n: "projectPages.portfolio.techStack.title",
+          type: "list",
+          content: "Modern web technologies without heavy frameworks:",
+          content_i18n: "projectPages.portfolio.techStack.content",
+          items: [
+            { text: "Vanilla JavaScript (ES6+)", i18n: "projectPages.portfolio.techStack.item1" },
+            { text: "CSS Grid & Flexbox", i18n: "projectPages.portfolio.techStack.item2" },
+            { text: "Custom Web Components", i18n: "projectPages.portfolio.techStack.item3" },
+            { text: "Multi-language support", i18n: "projectPages.portfolio.techStack.item4" },
+            { text: "Mobile-first responsive design", i18n: "projectPages.portfolio.techStack.item5" },
+            { text: "Performance optimized", i18n: "projectPages.portfolio.techStack.item6" },
+            { text: "Accessible with ARIA labels", i18n: "projectPages.portfolio.techStack.item7" }
+          ]
+        },
+
+        // Final showcase
+        {
+          title: "Explore the Website",
+          title_i18n: "projectPages.portfolio.explore.title",
+          content: "Visit the live site to see all these features in action! Try switching languages, filtering projects, and searching for Easter eggs.",
+          content_i18n: "projectPages.portfolio.explore.content"
         }
-      ">
-      </code-block>
+      ],
 
-      <h3 data-i18n="projectPages.portfolio.projectsPage.projectsPageTitle" class="GradiantTitle subtitle">Projects
-        Page
-      </h3>
-      <ul class="project-list">
-        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint1">Each project is presented in a card
-          format with hover effects.</li>
-        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint2">Displays project year, title,
-          thumbnail,
-          brief description, and tech stack.</li>
-        <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint3">Clicking a project opens a detailed
-          page
-          with:</li>
-        <ul class="project-list">
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint31">Embedded trailer</li>
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint32">Full description of my
-            contributions
-          </li>
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint33">Screenshots that can be enlarged
-          </li>
-          <li data-i18n="projectPages.portfolio.projectsPage.projectsPagePoint34">Playable game (if supported)</li>
-        </ul>
-      </ul>
-
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="width: 100%; max-width: 600px; height: auto">
-        <source src="../videos/webm/Portfolio/ScreenshotShow.webm" type="video/webm" alt="Screenshot demonstration" />
-      </video>
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif project-card-video" loading="lazy"
-        style="width: 100%; max-width: 300px; height: auto; margin-top: 10px">
-        <source src="../videos/webm/Portfolio/ProjectCard.webm" type="video/webm" alt="Project card animation" />
-      </video>
-
-      <h3 data-i18n="projectPages.portfolio.languageSupport.languageSupportTitle" class="GradiantTitle subtitle">
-        Language Support</h3>
-      <p data-i18n="projectPages.portfolio.languageSupport.languageSupportStart" style="margin-bottom: 10px">This
-        website supports English and Dutch, using a lightweight custom translation system that updates all text
-        instantly via data-i18n attributes. No page reloads.</p>
-      <ul class="project-list">
-        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint1">Active language is stored in
-          localStorage</li>
-        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint2">Missing keys fall back to
-          English
-          and are highlighted for debugging</li>
-        <li data-i18n="projectPages.portfolio.languageSupport.languageSupportPoint3">Translations are structured and
-          nested for modularity</li>
-      </ul>
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="../videos/webm/Portfolio/Taranslate.webm" type="video/webm" alt="translate demonstration" />
-      </video>
-
-      <code-block href="https://github.com/NielsCraft12/Portfolio/blob/main/js/translate.js#L35-L49"
-        language="javascript" code="
-                // JavaScript that dynamically calculates and displays my age
-        function calculateAge(birthday) {
-          const today = new Date();
-          // Update all elements with a translation key
-          document.querySelectorAll(&quot;[data-i18n]&quot;).forEach((element)=> {
-          const key = element.getAttribute(&quot;data-i18n&quot;); // get key
-          const value = getNestedTranslation(translations[lang], key); // lookup translation
-
-          if (value) {
-            element.innerHTML = value; // apply translation
-            element.classList.remove(&quot;missing-translation&quot;);
-            element.removeAttribute(&quot;data-missing-key&quot;);
-          } else {
-            // Handle missing translation
-            handleMissingTranslation(element, key, lang);
-            missingCount++;
+      // Sidebar Content
+      sidebar: {
+        trailerUrl: "https://www.youtube.com/embed/YOUR_PORTFOLIO_DEMO_VIDEO",
+        screenshots: [
+          { src: "../images/webp/Portfolio.webp", alt: "Portfolio Homepage" },
+          { src: "../images/portfolio/projects-section.webp", alt: "Projects Section with Filtering" },
+          { src: "../images/portfolio/project-page-example.webp", alt: "Example Project Page" },
+          { src: "../images/portfolio/mobile-responsive.webp", alt: "Mobile Responsive View" },
+          { src: "../images/portfolio/404-page.webp", alt: "Custom 404 Page" },
+          { src: "../images/portfolio/minionese-view.webp", alt: "Minionese Language Mode" }
+        ],
+        socialButtons: [
+          {
+            url: "https://github.com/NielsCraft12/Portfolio-website",
+            icon: "fab fa-github",
+            title: "View on GitHub",
+            target: "_blank",
+            rel: "noreferrer"
+          },
+          {
+            url: "https://nielsdelaat.com",
+            icon: "fas fa-external-link-alt",
+            title: "Visit Live Site",
+            target: "_blank",
+            rel: "noreferrer"
           }
-        });
+        ]
+      },
+
+      // Embed
+      embed: {
+        enabled: false,
+        url: "",
+        playableOnMobile: false
       }
-        "></code-block>
+    };
+  </script>
 
-      <h3 data-i18n="projectPages.portfolio.error404.error404PageTitle" class="GradiantTitle subtitle">Custom 404
-        Page
-      </h3>
-      <p data-i18n="projectPages.portfolio.error404.error404PagePoint1" style="margin-bottom: 10px">Lost visitors
-        get a
-        custom error page that displays a random character from one of my games with a matching fun message. Images
-        load
-        in either WebP or fallback PNG formats based on browser support. <a href="../404-page-not-found.html"
-          rel="noopener noreferrer" class="credits">click here</a> to view the 404 page.</p>
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="gradient-title project-title" id="projectTitle"></h1>
+      <div id="mainContent"></div>
+      <div id="codeBlocks"></div>
+      <div id="mediaContent"></div>
 
-      <div class="portfolio-404-images">
-        <picture>
-          <source srcset="../images/webp/ProjectImages/Portfolio/404Image1.webp" type="image/webp" />
-          <img src="../images/png/ProjectImages/Portfolio/404Image1.png" alt="Profile picture" />
-        </picture>
-        <picture>
-          <source srcset="../images/webp/ProjectImages/Portfolio/404Image2.webp" type="image/webp" />
-          <img src="../images/png/ProjectImages/Portfolio/404Image2.png" alt="Profile picture" />
-        </picture>
-        <picture>
-          <source srcset="../images/webp/ProjectImages/Portfolio/404Image3.webp" type="image/webp" />
-          <img src="../images/png/ProjectImages/Portfolio/404Image3.png" alt="Profile picture" />
-        </picture>
-      </div>
-
-      <!-- <h3 data-i18n="projectPages.portfolio.easterEggs.easterEggsTitle" class="GradiantTitle subtitle">Easter Eggs</h3>
-        <p data-i18n="projectPages.portfolio.easterEggs.easterEggsPoint1" style="margin-bottom: 16px">Try to find them. No Time? click on the boxes below to reveal the Easter eggs.</p>
-        <ul class="project-list">
-          <div class="spoiler-container" onclick="toggleSpoiler(this)">
-            <span>
-              <li data-i18n="projectPages.portfolio.easterEggs.easterEggsPoint2">The site includes a Minoneese translation: a fictional, playful third language option you can access from the hidden icon in the footer.</li>
-            </span>
-            <div class="spoiler-cover"></div>
-          </div>
-
-          <div class="spoiler-container" onclick="toggleSpoiler(this)">
-            <span>
-              <li data-i18n="projectPages.portfolio.easterEggs.easterEggsPoint3">The words "games" and "movies" at the end of the About Me section have hidden clickable links to personal profiles and fun references.</li>
-            </span>
-            <div class="spoiler-cover"></div>
-          </div>
-        </ul> -->
-
-      <h3 data-i18n="projectPages.portfolio.technologies.technologiesTitle" class="GradiantTitle subtitle">
-        Technologies
-        Used</h3>
-      <ul class="project-list">
-        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint1">HTML5 + semantic structure</li>
-        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint2">Custom CSS (no frameworks)</li>
-        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint3">JavaScript (vanilla ES6)</li>
-        <li data-i18n="projectPages.portfolio.technologies.technologiesPoint4">The <code class="language-html"
-            style="font-size: 20px">&lt;picture&gt;</code> element enables format-aware image loading.</li>
-      </ul>
+      <div id="embedSection"></div>
     </div>
 
-    <!-- <h1 data-i18n="play" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Play</h1> -->
-    <!-- <div class="itch-embed-container" style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden"> -->
-    <!-- <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0" src="https://itch.io/embed-upload/12701195?color=1E1E1E" allowfullscreen="">
-            <a href="https://joahvds.itch.io/walch-origins">Play WA-LCH Origins on itch.io</a>
-          </iframe> -->
-    <!-- </div> -->
-    <!-- <div class="mobile-message">
-          <p data-i18n="walchOriginsMobileMessage">To play WA-LCH Origins, please visit this page on a computer.</p>
-        </div> -->
+    <!-- Divider -->
+    <div class="divider"></div>
 
-    <!-- Visual Divider -->
-    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
-      <hr class="roundedv" style="height: 100%; margin: 0" />
-      <!-- <hr class="roundedv mobile-divider" /> -->
-    </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2 class="gradient-title" style="display: none;" data-i18n="projectPages.trailer">Trailer</h2>
+      <div class="video-container" style="display: none;" id="trailerContainer"></div>
 
-    <div class="divider mobile-divider">
-      <hr class="roundedv" />
-    </div>
+      <h2 class="gradient-title" data-i18n="projectPages.screenshots">Screenshots</h2>
+      <div id="screenshotsContainer"></div>
 
-    <!-- Sidebar Content -->
-    <div class="SideBar" style="height: max-content">
-      <!-- Trailer Section -->
-      <!-- <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
-        <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="https://www.youtube.com/embed/z1rAx_g-JZI?si=OWBI3CY6Af5n6Iyw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
-        </div> -->
-
-      <!-- Screenshots Section -->
-      <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">
-        Screenshots</h1>
-      <picture>
-        <source srcset="../images/webp/Portfolio.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/Portfolio.png" alt="Profile picture" />
-      </picture>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot1.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/Portfolio/portfolioScreenshot1.png"
-          alt="Profile picture" />
-      </picture>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot2.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/Portfolio/portfolioScreenshot2.png"
-          alt="Profile picture" />
-      </picture>
-
-      <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
-      <a href="https://github.com/NielsCraft12/Portfolio" target="”_blank”" rel="noreferrer"
-        class="fab fa-github fa-2xl icon"></a>
-      <!-- Credits Section -->
-      <!-- <ul class="cd-demo-chip-list">
-        <li>
-          <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-code GradiantTitle"></i>
-              <i class="chip__label">Niels de Laat</i>
-            </span>
-          </a>
-        </li>
-      </ul>  -->
+      <h2 class="gradient-title" data-i18n="projectPages.exploreCode">Explore Code</h2>
+      <social-buttons id="exploreCodeButtons"></social-buttons>
     </div>
   </div>
 
-  <!-- Image Modal for Screenshots -->
+  <!-- Image Modal -->
   <div id="imageModal" class="modal">
     <span class="modal-close">&times;</span>
-    <img class="modal-content" id="modalImg" />
+    <img class="modal-content" id="modalImg" alt="Enlarged screenshot">
   </div>
-  <script src="../js/imagezoom.js" defer></script>
-  <script src="../js/translate.js" defer></script>
-  <script src="../js/mobile-optimizations.js" defer></script>
 
-  <script>
+  <!-- Footer -->
 
+  <site-footer></site-footer>
+  <!-- <p>© <span id="copyright-year"></span> <span id="footerName"></span>Niels de Laat</p> -->
 
-    // Lazy load syntax highlighting
-    document.addEventListener('DOMContentLoaded', () => {
-      const codeBlocks = document.querySelectorAll('pre code, .language-');
-      if (codeBlocks.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              import('../js/prism.js').then(() => {
-                if (typeof Prism !== "undefined") {
-                  Prism.highlightAll();
-                }
-              });
-              observer.disconnect();
-            }
-          });
-        });
-        codeBlocks.forEach(block => observer.observe(block));
-      }
-    });
-
-    // Spoiler functionality
-    function toggleSpoiler(container) {
-      const cover = container.querySelector(".spoiler-cover");
-      cover.classList.toggle("hidden");
-    }
-
-    // Defer analytics to reduce main thread blocking
-    setTimeout(() => {
-      const script = document.createElement('script');
-      script.src = '//gc.zgo.at/count.js';
-      script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
-      script.async = true;
-      document.head.appendChild(script);
-    }, 3000);
-  </script>
 </body>
-<footer>
-  <div class="footer" style="display: flex; align-items: center; position: relative">
-    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
-        preserveAspectRatio="xMidYMid meet" class="mi-icon">
-        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
-            -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
-            -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
-            -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
-            1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
-            0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
-            -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
-            -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
-            316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
-            123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
-            c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-            -1440 483 -149 19 -562 27 -710 15z" />
-        </g>
-      </svg>
-    </a>
-    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-    <script>
-      document.getElementById("copyright-year").textContent = new Date().getFullYear();
-    </script>
-  </div>
-</footer>
 
 </html>

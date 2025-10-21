@@ -1,14 +1,17 @@
 class CodeBlock extends HTMLElement {
-    connectedCallback() {
-        const href = this.getAttribute("href") || "#";
-        const language = this.getAttribute("language") || "csharp";
-        const code = this.getAttribute("code") || "";
+  connectedCallback() {
+    const href = this.getAttribute("href") || "#";
+    const language = this.getAttribute("language") || "csharp";
+    const code = this.getAttribute("code") || "";
+    const buttonText = this.getAttribute("button-text") || "View on GitHub";
+    const buttonI18n = this.getAttribute("button-i18n") || "projectPages.viewOnGitHub";
+    const buttonTitle = this.getAttribute("button-title") || "View on GitHub";
 
-        this.innerHTML = `
+    this.innerHTML = `
       <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
+        <a data-i18n="${buttonI18n}"
           href="${href}"
-          class="github-inline" target="_blank" title="View on GitHub"
+          class="github-inline" target="_blank" title="${buttonTitle}"
           style="position: absolute !important;
                  top: 8px !important;
                  right: 8px !important;
@@ -26,14 +29,14 @@ class CodeBlock extends HTMLElement {
                  font-size: 0.75em !important;
                  font-family: monospace !important;">
           <i class="fab fa-github"></i>
-          View on GitHub
+          ${buttonText}
         </a>
         <pre><code class="language-${language}">
 ${code}
         </code></pre>
       </div>
     `;
-    }
+  }
 }
 
 customElements.define("code-block", CodeBlock);

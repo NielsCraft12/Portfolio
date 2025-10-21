@@ -83,10 +83,29 @@ async function updateContent(lang) {
 
   // Update all translatable elements
   document.querySelectorAll("[data-i18n]").forEach((element) => {
+    // Allow authors to opt-out with data-no-i18n, data-skip-i18n, class no-i18n, or sentinel key
+    if (shouldSkipElement(element)) return;
+
     const key = element.getAttribute("data-i18n");
     const value = getNestedTranslation(translations, key);
     if (value) {
-      element.innerHTML = value;
+      // Some elements (like <meta>) are void and don't support innerHTML.
+      // Set the appropriate attribute for those; otherwise update innerHTML.
+      if (element.tagName === 'META') {
+        element.setAttribute('content', value);
+      } else if (element.dataset.type === 'list') {
+        // Handle list type elements
+        const itemsKey = element.getAttribute("data-i18n-items");
+        const items = getNestedTranslation(translations, itemsKey);
+
+        if (Array.isArray(items)) {
+          element.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+        } else {
+          console.warn(`Expected an array for list items at key '${itemsKey}'`);
+        }
+      } else {
+        element.innerHTML = value;
+      }
       // Remove any previous missing translation styling
       element.classList.remove("missing-translation");
       element.removeAttribute("data-missing-key");
@@ -149,8 +168,28 @@ async function updateContent(lang) {
   document.dispatchEvent(translationEvent);
 }
 
+
+
 function getNestedTranslation(obj, key) {
   return key.split(".").reduce((o, k) => o && o[k], obj);
+}
+
+/**
+ * Decide whether an element should be skipped by the translation system.
+ * Supports multiple markers so templates and authors can opt-out per-element:
+ *  - data-no-i18n attribute
+ *  - data-skip-i18n="true"
+ *  - data-i18n="__NO_TRANSLATE__"
+ *  - class "no-i18n"
+ */
+function shouldSkipElement(element) {
+  if (!element) return false;
+  if (element.hasAttribute && element.hasAttribute('data-no-i18n')) return true;
+  if (element.getAttribute && element.getAttribute('data-skip-i18n') === 'true') return true;
+  const di = element.getAttribute && element.getAttribute('data-i18n');
+  if (di === '__NO_TRANSLATE__' || di === 'NO_TRANSLATE') return true;
+  if (element.classList && element.classList.contains('no-i18n')) return true;
+  return false;
 }
 
 /**
@@ -177,14 +216,26 @@ async function handleMissingTranslation(element, key, lang) {
       const fallbackTranslations = await loadTranslation("en");
       const fallbackValue = getNestedTranslation(fallbackTranslations, key);
       if (fallbackValue) {
-        element.innerHTML = fallbackValue;
+        if (element.tagName === 'META') {
+          element.setAttribute('content', fallbackValue);
+        } else {
+          element.innerHTML = fallbackValue;
+        }
         element.setAttribute("title", `Missing translation for "${lang}" - showing English fallback`);
       } else {
-        element.innerHTML = `[Translation missing]`;
+        if (element.tagName === 'META') {
+          element.setAttribute('content', `[Translation missing]`);
+        } else {
+          element.innerHTML = `[Translation missing]`;
+        }
         element.setAttribute("title", `Missing translation key: ${key}`);
       }
     } else {
-      element.innerHTML = `[Translation missing]`;
+      if (element.tagName === 'META') {
+        element.setAttribute('content', `[Translation missing]`);
+      } else {
+        element.innerHTML = `[Translation missing]`;
+      }
       element.setAttribute("title", `Missing translation key: ${key}`);
     }
   }
@@ -371,6 +422,7 @@ window.findMissingTranslations = async function (lang = "all") {
     }
 
     document.querySelectorAll("[data-i18n]").forEach((element) => {
+      if (shouldSkipElement(element)) return;
       const key = element.getAttribute("data-i18n");
       const value = getNestedTranslation(translations, key);
       if (!value) {

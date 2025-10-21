@@ -1,519 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta name="description" content="Merge Packing is an addictive puzzle game where strategic thinking meets satisfying gameplay. Merge identical items by dragging and dropping them into perfect positions. 
-  Plan your moves to maximize space and create efficient packing combinations!" />
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, 
-    squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. 
-    Along the way, you can land some solid punches to shove your opponents out of the way—or just throw them off their game. Every match is unpredictable, full of laughter, 
-    and a messy fight for control. It’s slimy chaos at its best!" />
-  <title>Merge Packing</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="projects.wa_lch.title">WA-LCH | Niels de Laat</title>
 
-  <!-- Preconnect to external domains -->
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/Favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/Favicon/favicon-16x16.png">
+  <link rel="manifest" href="../images/Favicon/site.webmanifest">
+
+  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
+  <meta name="author" content="Niels de Laat">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Google Fonts - async loaded -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
-    onload="this.media='all'" />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
-  </noscript>
+  <link href="../css/prism.css" rel="stylesheet" />
 
-  <!-- Lightweight CSS loading polyfill -->
-  <script>
-    if (!('onload' in document.createElement('link'))) {
-      document.querySelectorAll('link[media="print"]').forEach(l => l.media = 'all');
-    }
-  </script>
+  <script type="module" src="../components/navbar.js"></script>
+  <script type="module" src="../components/social-buttons.js"></script>
+  <script type="module" src="../components/code-block.js"></script>
+  <script type="module" src="../js/translate.js"></script>
+  <script type="module" src="../components/projectPageLayout.js"></script>
+  <script type="module" src="../components/footer.js"></script>
 
-  <!-- Critical CSS inlined for faster rendering -->
-  <style>
-    /* Critical above-the-fold styles */
-    * {
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary-bg: #1e1e1e;
-      --primary-text: #ffffff;
-      --gradient-start: #ff7e5f;
-      --gradient-end: #feb47b;
-    }
-
-    html {
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    body {
-      background-color: var(--primary-bg);
-      overflow-x: hidden;
-      font-family: "Baloo 2", cursive;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      color: var(--primary-text);
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100vw;
-      height: 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      padding-left: 30px;
-      padding-right: 30px;
-      background: rgba(30, 30, 30, 0.5);
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    nav::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(10px);
-      z-index: -1;
-    }
-
-    .containerProject {
-      display: grid;
-      grid-template-columns: 3fr min-content 1fr;
-      grid-template-areas: "Main-Content divider SideBar";
-      gap: 20px;
-      padding: 20px;
-      margin-top: 60px;
-      min-height: calc(100vh - 60px);
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    .Main-Content {
-      grid-area: Main-Content;
-    }
-
-    .SideBar {
-      grid-area: SideBar;
-      padding: 20px;
-      padding-top: 100px;
-      min-width: 200px;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .GradiantTitle {
-      background: linear-gradient(to left, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    @media screen and (max-width: 950px) {
-      .containerProject {
-        display: block;
-        padding: 10px;
-        gap: 0;
-        margin-top: 60px;
-      }
-
-      .Main-Content {
-        padding-left: 5%;
-        padding-right: 5%;
-        max-width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .SideBar {
-        padding: 20px;
-        text-align: center;
-        margin: 0 auto;
-        width: 100%;
-      }
-
-      .itch-embed-container {
-        height: 100vh !important;
-        /* Use full viewport height */
-      }
-
-      iframe.game-iframe {
-        height: 100%;
-        width: 100%;
-        display: block;
-      }
-    }
-
-    .game-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: fit-content;
-      /* Ensure it adapts to child content */
-    }
-
-    iframe.game-iframe {
-      height: 100% !important;
-      width: 100%;
-      display: block;
-    }
-  </style>
-
-  <!-- Non-critical stylesheets loaded asynchronously -->
-  <link href="../css/style.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <link href="../css/ProjectPage.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <link href="../css/Home.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <link href="../css/prism.css" rel="stylesheet" media="print" onload="this.media='all'" />
-
-  <noscript>
-    <link href="../css/style.css" rel="stylesheet" />
-    <link href="../css/ProjectPage.css" rel="stylesheet" />
-    <link href="../css/Home.css" rel="stylesheet" />
-    <link href="../css/prism.css" rel="stylesheet" />
-  </noscript>
-
-  <!-- Prism.js for syntax highlighting -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script> -->
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-  <!-- Favicon Settings for various platforms -->
   <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
   <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
-  <style>
-    /* Page-specific overrides to ensure the page can scroll.
-       ProjectPage.css contains several rules forcing 100vh heights
-       and overflow: hidden for the merge-packing page. These
-       overrides restore normal document flow for this page only. */
-    .merge-packing-page {
-      overflow: visible !important;
-    }
 
-    .merge-packing-page .itch-embed-container {
-      height: auto !important;
-      max-height: none !important;
-      overflow: visible !important;
-      padding-top: 0 !important;
-    }
+  <script>
+    // Lazy load Prism.js only when code blocks are visible
+    const loadPrism = () => {
+      if (window.Prism) return; // Already loaded
+      const script = document.createElement('script');
+      script.src = '../js/prism.js';
+      script.onload = () => window.Prism?.highlightAll();
+      document.head.appendChild(script);
+    };
 
-    .merge-packing-page .game-iframe,
-    .merge-packing-page iframe.game-iframe {
-      position: static !important;
-      height: auto !important;
-      min-height: 480px !important;
-      /* ensure reasonable game area */
-      width: 100% !important;
-    }
-  </style>
+    // Intersection Observer for lazy loading
+    const codeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadPrism();
+          codeObserver.disconnect(); // Only load once
+        }
+      });
+    }, { rootMargin: '200px' });
 
-  <!-- components -->
-  <script type="module" src="../components/navbar.js" defer></script>
-  <script type="module" src="../components/code-block.js" defer></script>
+    // Observe code blocks when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const codeBlocks = document.querySelectorAll('pre code');
+      if (codeBlocks.length > 0) {
+        codeBlocks.forEach(block => codeObserver.observe(block));
+      }
+    });
+  </script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/ProjectPage.css" id="customStyles">
+
 </head>
 
-<body class="merge-packing-page">
-  <!-- Navigation Menu -->
+<body>
+  <!-- Navigation Component -->
   <nav-bar></nav-bar>
-  <div style="height: 50px;"></div>
-  <!-- Main Content Container -->
-  <div class="containerProject">
-    <!-- Project Description Section -->
-    <div class="Main-Content">
-      <h1 class="GradiantTitle title">Merge Packing</h1>
-      <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
-      <p data-i18n="projectPages.mergePacking.description">Merge Packing is a quick, quirky mobile game built over a few
-        days using Unity and C#. It features a unique merging mechanic inspired by puzzle games like Suika Game, with an
-        alien twist: a cheerful alien drops randomized packing peanuts as you attempt to combine them into larger items.
-      </p>
-      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
+  <!-- ============================================
+       CONTENT CONFIGURATION - EDIT YOUR CONTENT HERE
+       ============================================ -->
+  <script id="projectConfig">
+    const PROJECT_DATA = {
+      // Project Info
+      title: "Merge Packing",
+      title_i18n: "__NO_TRANSLATE__",
 
-      <h3 data-i18n="projectPages.mergePacking.mergingLogic.mergingLogicTitle" class="GradiantTitle subtitle">Merging
-        Logic</h3>
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="../videos/webm/MergePacking/MergePackingMerge.webm" type="video/webm" />
-      </video>
-      <p data-i18n="projectPages.mergePacking.mergingLogic.mergingLogicIntro">Merge Packing's primary mechanic revolves
-        around combining two identical items into a higher-tier object. This is handled in the ObjectManager script:</p>
-      <code-block
-        href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/ObjectManager.cs#L56-L83"
-        language="csharp" code="
-        if (other == null || other.ObjectTypeIndex != ObjectTypeIndex) return;
-
-        Destroy(gameObject);
-        Destroy(collision.gameObject);
-
-        if (ObjectTypeIndex == itemPrefs.Count - 1)
+      // Main Content Sections - with inline media and code block support
+      sections: [
         {
-            GameObject[] _peanutsArray = GameObject.FindGameObjectsWithTag(&quot;Peanut&quot;);
-
-            foreach (GameObject _peanut in _peanutsArray)
-            {
-                Destroy(_peanut);
-            }
-        }
-        else
+          title: "Description",
+          title_i18n: "projectPages.description",
+          content: `Merge Packing is a quick, quirky mobile game built over a few days using Unity and C#. It features a unique merging mechanic inspired by puzzle games like Suika Game, with an alien twist: a cheerful alien drops randomized packing peanuts as you attempt to combine them into larger items.`,
+          content_i18n: "projectPages.mergePacking.description"
+        },
         {
-            // ensure only one of the two runs the merge
-            if (this.GetInstanceID() &gt; collision.gameObject.GetInstanceID()) return;
+          title: "What I Made",
+          title_i18n: "projectPages.whatIMadeTitle",
+          content_i18n: "__NO_TRANSLATE__"
+        },
+        {
+          title: "Merging Logic",
+          title_i18n: "projectPages.mergePacking.mergingLogic.mergingLogicTitle",
+          content: "Merge Packing's primary mechanic revolves around combining two identical items into a higher-tier object. This is handled in the ObjectManager script:",
+          content_i18n: "projectPages.mergePacking.mergingLogic.mergingLogicIntro"
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/MergePacking/MergePackingMerge.webm",
+          height: "10%", // Corrected "hight" to "height" and adjusted the value
+          width: "70%"   // Optional: Add a width property if needed
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/ObjectManager.cs#L56-L83",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+if (other == null || other.ObjectTypeIndex != ObjectTypeIndex) return;
 
-            Vector2 middlePoint = Vector2.Lerp(transform.position, collision.transform.position, 0.5f);
+Destroy(gameObject);
+Destroy(collision.gameObject);
 
-            // spawn one merged object
-            GameObject _newBall = Instantiate(itemPrefs[ObjectTypeIndex + 1], middlePoint, Quaternion.identity);
-            _newBall.GetComponent&lt;Rigidbody2D&gt;().gravityScale = 1f;
-        }"></code-block>
+if (ObjectTypeIndex == itemPrefs.Count - 1)
+{
+    GameObject[] _peanutsArray = GameObject.FindGameObjectsWithTag("Peanut");
 
-      <p data-i18n="projectPages.mergePacking.mergingLogicEnd">The merging system checks for matching sprite types,
-        ensures only one of the colliding objects spawns the new item in the middle of the 2 objects, and increases the
-        score.</p>
+    foreach (GameObject _peanut in _peanutsArray)
+    {
+        Destroy(_peanut);
+    }
+}
+else
+{
+    // ensure only one of the two runs the merge
+    if (this.GetInstanceID() > collision.gameObject.GetInstanceID()) return;
 
-      <h3 data-i18n="projectPages.mergePacking.alien.alienTitle" class="GradiantTitle subtitle">The alien</h3>
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="../videos/webm/MergePacking/MergePackingalien.webm" type="video/webm" />
-      </video>
-      <p data-i18n="projectPages.mergePacking.alien.alienIntro">The alien is a floating alien creature that periodically
-        swoops across the screen, dropping packing peanuts. Its motion is point-to-point, with smoothed directional
-        transitions and dynamic behavior.</p>
+    Vector2 middlePoint = Vector2.Lerp(transform.position, collision.transform.position, 0.5f);
 
-      <code-block
-        href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L97-L99"
-        language="csharp" code="
+    // spawn one merged object
+    GameObject _newBall = Instantiate(itemPrefs[ObjectTypeIndex + 1], middlePoint, Quaternion.identity);
+    _newBall.GetComponent().gravityScale = 1f;
+}`
+        },
+        {
+          title_i18n: "__NO_TRANSLATE__",
+          content: 'The merging system checks for matching sprite types, ensures only one of the colliding objects spawns the new item in the middle of the 2 objects, and increases the score.',
+          content_i18n: "projectPages.mergePacking.mergingLogic.mergingLogicEnd"
+        },
+        {
+          title: "The alien",
+          title_i18n: "projectPages.mergePacking.alien.alienTitle",
+          content: "The alien is a floating alien creature that periodically swoops across the screen, dropping packing peanuts. Its motion is point-to-point, with smoothed directional transitions and dynamic behavior.",
+          content_i18n: "projectPages.mergePacking.alien.alienIntro",
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/MergePacking/MergePackingalien.webm",
+          height: "10%", // Corrected "hight" to "height" and adjusted the value
+          width: "70%"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L97-L99",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
 desiredDirection = (points[pointIndex].position - transform.position).normalized;
 direction = Vector2.Lerp(direction, desiredDirection, turnSpeed * Time.deltaTime);
-transform.position += (Vector3)(direction * movespeed * Time.deltaTime);"></code-block>
-
-      <p data-i18n="projectPages.mergePacking.alien.alienCodeSnippet">The alien’s path resets after each score
-        milestone, creating a rhythmic gameplay loop. Peanuts are dropped using a coroutine:</p>
-      <!-- <div class="code-block" style="position: relative !important;">
-        <a data-i18n="projectPages.viewOnGitHub"
-          href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L112-L123"
-          class="github-inline" target="_blank" title="View on GitHub"
-          style="position: absolute !important; top: 8px !important; right: 8px !important; left: auto !important; bottom: auto !important; z-index: 9999 !important; background: #000 !important; color: #fff !important; padding: 0.3em 0.7em !important; border-radius: 4px !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4em !important; font-size: 0.75em !important; font-family: monospace !important;">
-          <i class="fab fa-github"></i>
-          View on GitHub
-        </a>
-        <pre><code class="language-csharp">
+transform.position += (Vector3)(direction * movespeed * Time.deltaTime);`
+        },
+        {
+          title_i18n: "__NO_TRANSLATE__",
+          content: "The alien's path resets after each score milestone, creating a rhythmic gameplay loop. Peanuts are dropped using a coroutine:",
+          content_i18n: "projectPages.mergePacking.alien.alienCodeSnippet"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L112-L123",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
 IEnumerator DropPeanut()
 {
     while (true)
     {
         yield return new WaitForSeconds(peanutDropSpeed);
         GameObject peanut = Instantiate(peanutPrefab, DropPoint.position, Quaternion.identity);
-        peanut.GetComponent&lt;SpriteRenderer&gt;().sprite = peanutSprites[Random.Range(0, peanutSprites.Count)];
+        peanut.GetComponent().sprite = peanutSprites[Random.Range(0, peanutSprites.Count)];
     }
-}
-        </code></pre>
-      </div> -->
+}`
+        },
+      ],
+      // Sidebar Content
+      sidebar: {//localhost/Portfolio/projects/merge-packing-backup.html
+        trailerUrl: "../videos/MergePackingVideowide.mp4",
+        screenshots: [
+          { src: "../images/webp/ProjectScreenShots/MergePacking/MergePackingScreenshot1.webp", alt: "WA-LCH Origins Screenshot 1" },
+        ],
+        socialButtons: [
+          {
+            url: "https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/",
+            icon: "fab fa-github",
+            title: "View on GitHub",
+            target: "_blank",
+            rel: "noreferrer"
+          }
+        ]
+      },
 
-      <code-block
-        href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/Gaylien.cs#L112-L123"
-        language="csharp" code="
-IEnumerator DropPeanut()
-{
-    while (true)
-    {
-        yield return new WaitForSeconds(peanutDropSpeed);
-        GameObject peanut = Instantiate(peanutPrefab, DropPoint.position, Quaternion.identity);
-        peanut.GetComponent&lt;SpriteRenderer&gt;().sprite = peanutSprites[Random.Range(0, peanutSprites.Count)];
-    }
-}
-"> </code-block>
-
-      <!-- Play -->
-      <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
-        class="GradiantTitle">Play</h1>
-      <!-- Mobile optimized game container -->
-      <div class="game-container">
-        <div class="itch-embed-container">
-          <iframe class="game-iframe" frameborder="0" src="https://itch.io/embed-upload/13820968?color=1E1E1E"
-            allowfullscreen="">
-            <a href="https://joahvds.itch.io/merge-packing">Play Merge Packing on itch.io</a>
-          </iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- Visual Divider -->
-    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
-      <hr class="roundedv" style="height: 100%; margin: 0" />
-      <!-- <hr class="roundedv mobile-divider" /> -->
-    </div>
-
-    <div class="divider mobile-divider">
-      <hr class="roundedv" />
-    </div>
-
-    <!-- Sidebar Content -->
-    <div class="SideBar" style="height: max-content">
-      <!-- Trailer Section -->
-      <h1 data-i18n="projectPages.trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
-      <div style="position: relative; padding-top: 50%; width: 100%; border-radius: 20px;">
-        <!-- <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
-          src="https://www.youtube.com/embed/zgEdaaWe3JQ?si=Uud4DAc4EJKVmMVA" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe> -->
-        <video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain"
-          src="../videos/MergePackingVideo.mp4" controls></video>
-      </div>
-
-      <!-- Screenshots Section -->
-      <h1 data-i18n="projectPages.screenshots" style="text-align: center;" class="GradiantTitle">
-        Screenshots</h1>
-      <picture style="height: 10% !important">
-        <source srcset="../images/webp/ProjectScreenShots/MergePacking/MergePackingScreenshot1.webp"
-          type="image/webp" />
-        <img class="ScreenShots" style="height: 10% !important"
-          src="../images/png/ProjectScreenShots/MergePacking/MergePackingScreenshot1.jpg" alt="Profile picture" />
-      </picture>
-
-      <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
-      <a href="https://github.com/JoahvanderSloot/Packing-Merge/blob/main/Assets/_Project/Dev/Scripts/"
-        target="”_blank”" rel="noreferrer" class="fab fa-github fa-2xl icon"></a>
-      <!-- <picture>
-        <source srcset="../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot2.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/SlimetasticPunchout/Screenshot2.png"
-          alt="Profile picture" />
-      </picture>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot3.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/SlimetasticPunchout/Screenshot3.png"
-          alt="Profile picture" />
-      </picture> -->
-      <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot1.png" alt="screen shot of the game" /> -->
-      <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot2.png" alt="screen shot of the game" /> -->
-      <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/SlimetasticPunchout/Screenshot3.png" alt="screen shot of the game" /> -->
-
-      <!-- Credits Section -->
-      <!-- <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">Credits</h1>
-
-
-        <ul class="cd-demo-chip-list">
-          <li>
-            <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-code GradiantTitle"></i>
-                <i class="chip__label">Niels de Laat</i>
-              </span>
-            </a>
-          </li>
-
-          <li>
-            <a href="https://github.com/Linkerpink" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-code GradiantTitle"></i>
-                <i class="chip__label">Noah van Uunen</i>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.artstation.com/seemz" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-paintbrush GradiantTitle"></i>
-                <i class="chip__label">Seemay Alsemgeest</i>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.artstation.com/lisavdkloet" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-paintbrush GradiantTitle"></i>
-                <i class="chip__label">Lisa van der Kloet</i>
-              </span>
-            </a>
-          </li>
-
-          <li>
-            <a href="https://www.artstation.com/sekerio" target="_blank" rel="noreferrer">
-              <span class="chip">
-                <i class="fa-solid fa-paintbrush GradiantTitle"></i>
-                <i class="chip__label">Jordy Andriessen</i>
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div> -->
-    </div>
-
-    <!-- Image Modal for Screenshots -->
-    <div id="imageModal" class="modal">
-      <span class="modal-close">&times;</span>
-      <img class="modal-content" id="modalImg" />
-    </div>
-
-    <!-- Modal functionality script -->
-    <script defer src="../js/imagezoom.js"></script>
-    <script type="module" defer src="../js/translate.js"></script>
-    <script defer src="../js/prism.js"></script>
-    <script defer src="../js/mobile-optimizations.js"></script>
-
-    <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-    <script>
-      // Initialize Prism.js syntax highlighting
-      if (typeof Prism !== "undefined") {
-        Prism.highlightAll();
+      // Embed (itch.io, etc)
+      embed: {
+        enabled: true,
+        url: "https://itch.io/embed-upload/13820968?color=1E1E1E",
+        playableOnMobile: true
       }
-    </script>
+    };
+  </script>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="gradient-title project-title" id="projectTitle"></h1>
+      <div id="mainContent"></div>
+      <div id="codeBlocks"></div>
+      <div id="mediaContent"></div>
+
+      <div id="embedSection"></div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2 class="gradient-title" data-i18n="projectPages.trailer">Trailer</h2>
+      <div class="video-container" id="trailerContainer"></div>
+
+      <h2 class="gradient-title" data-i18n="projectPages.screenshots">Screenshots</h2>
+      <div id="screenshotsContainer"></div>
+
+      <h2 class="gradient-title" data-i18n="projectPages.exploreCode">Explore Code</h2>
+      <social-buttons id="exploreCodeButtons"></social-buttons>
+    </div>
   </div>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Enlarged screenshot">
+  </div>
+
+  <!-- Footer -->
+
+  <site-footer></site-footer>
+  <!-- <p>© <span id="copyright-year"></span> <span id="footerName"></span>Niels de Laat</p> -->
+
 </body>
-<footer>
-  <div class="footer" style="display: flex; align-items: center; position: relative">
-    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
-        preserveAspectRatio="xMidYMid meet" class="mi-icon">
-        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
-            -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
-            -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
-            -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
-            1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
-            0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
-            -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
-            -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
-            316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
-            123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
-            c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-            -1440 483 -149 19 -562 27 -710 15z" />
-        </g>
-      </svg>
-    </a>
-    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-    <script>
-      document.getElementById("copyright-year").textContent = new Date().getFullYear();
-    </script>
-  </div>
-</footer>
 
 </html>

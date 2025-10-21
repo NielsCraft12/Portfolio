@@ -1,0 +1,1636 @@
+/* Global overflow prevention */
+html {
+  overflow-x: hidden !important;
+  overflow-y: scroll !important; /* Ensure vertical scrolling is enabled */
+  max-width: 100%;
+}
+
+/* Extra-high specificity fallback to override any remaining rules/scripts for portrait tablets */
+@media (min-width: 451px) and (max-width: 1024px) {
+  body.merge-packing-page .containerProject .Main-Content .game-container > .itch-embed-container {
+    overflow-x: hidden !important;
+    overflow-y: scroll !important; /* Ensure vertical scrolling is enabled */
+    max-width: 100%;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.containerProject {
+  display: grid;
+  grid-template-columns: 3fr min-content 1fr;
+  grid-template-areas: "Main-Content divider SideBar";
+  gap: 20px;
+  padding: 20px;
+  min-height: auto;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.SideBar {
+  grid-area: SideBar;
+  padding: 20px;
+  padding-top: 100px;
+  min-width: 200px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.SideBar a {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+/* Contact button styling for GitHub icon */
+.fa-github {
+  border-radius: 20px;
+  background: #551a8b !important;
+  color: white !important;
+}
+
+.icon {
+  padding: 20px;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.icon:hover {
+  opacity: 0.7;
+}
+
+.fa-linkedin {
+  border-radius: 20px;
+  background: #007bb5;
+  color: white;
+}
+
+.fa-itch-io {
+  border-radius: 20px;
+  background: #dd4a4a;
+  color: white;
+}
+
+.fa-envelope {
+  border-radius: 20px;
+  background: #55acee;
+  color: white;
+}
+
+.fa-file-lines {
+  border-radius: 20px;
+  background: #55acee;
+  color: white;
+}
+
+.socal-media-buttons {
+  font-size: 30px;
+  gap: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-divider {
+  width: 10vw;
+  margin-top: 20px;
+}
+
+/* Override SideBar width for icons to work properly */
+.SideBar a.icon {
+  width: 70px !important;
+  height: 70px !important;
+  display: inline-block !important;
+  margin: 0 auto;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+}
+
+.divider {
+  padding-top: 100px;
+  grid-area: divider;
+}
+
+.Main-Content {
+  grid-area: Main-Content;
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.credits {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 0;
+  padding-top: 0;
+  text-decoration: none;
+  color: #ff7e5f;
+}
+
+.credits:hover {
+  color: #feb47b;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #fff;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.project-list {
+  list-style-type: disc;
+  padding-left: 40px;
+  margin-right: 0;
+  margin-left: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+hr.roundedv {
+  border: none;
+  /* Remove the border to show the gradient background */
+  width: 4px;
+  /* Set the width to match the previous border */
+  height: 1300px;
+  /* Set the height to a vertical size */
+  background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+  /* Gradient from top to bottom */
+  border-radius: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Duplicate mobile styles removed - consolidated into main mobile media query below */
+
+.ScreenShots {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.ScreenShots:hover {
+  transition: transform 0.2s;
+  /* Animation */
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000000 !important;
+}
+
+.modal-content {
+  margin: 30px auto;
+  display: block;
+  width: 90%;
+  height: calc(100% - 150px);
+  /* Account for top and bottom margins */
+  object-fit: contain;
+  border-radius: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1000000 !important;
+  transform: translate(-50%, -50%);
+}
+
+.modal-close {
+  position: fixed;
+  right: 25px;
+  top: 50px;
+  /* Changed from 15px to 50px to move it lower */
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 15px;
+  margin: -15px;
+  line-height: 40px;
+}
+
+.modal-close:hover {
+  color: #ff7e5f;
+}
+
+body {
+  max-width: calc(100vh * 16 / 9);
+  margin: 0 auto;
+}
+
+/* Desktop sidebar video/iframe styling */
+.SideBar iframe,
+.SideBar video {
+  width: 100%;
+  min-height: 200px;
+  max-height: 300px;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+}
+.trailer-box {
+  width: 100%;
+}
+
+/* Mobile-first responsive body width */
+@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+  body {
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* Animations for mobile message */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.mobile-message {
+  display: none;
+  text-align: center;
+  padding: 25px 30px;
+  background: var(--background-color);
+  border-radius: 20px;
+  margin: 25px auto;
+  color: #ffffff;
+  max-width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* .mobile-message:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+} */
+
+.mobile-message-icon {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  color: var(--gradient-start);
+  text-shadow: 0 2px 8px var(--gradient-start);
+  animation: pulse 2s infinite;
+}
+
+.mobile-message p {
+  margin: 0;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.3px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mobile-divider {
+  display: none;
+}
+
+.pc-divider {
+  display: flex;
+}
+
+.title {
+  font-size: 75px;
+}
+
+.subtitle {
+  font-weight: 100;
+  font-size: xx-large;
+  font-size: 30px;
+}
+
+@media (max-width: 450px) {
+  .itch-embed-container {
+    display: block !important;
+    padding-top: 56.25% !important;
+    /* 16:9 aspect ratio for mobile phones */
+  }
+
+  .mobile-message {
+    display: none !important;
+    /* Always hide mobile message on phones */
+  }
+}
+
+@media (max-width: 1024px) and (orientation: portrait) and (min-width: 451px) {
+  .merge-packing-page .itch-embed-container {
+    display: block !important;
+    padding-top: 150% !important;
+    /* Tall aspect ratio for merge-packing portrait tablets only */
+  }
+
+  .merge-packing-page .mobile-message {
+    display: none !important;
+    /* Always hide mobile message on merge-packing */
+  }
+}
+
+/* Horizontal tablets - show itch embed only for merge-packing */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .merge-packing-page .itch-embed-container {
+    display: block !important;
+    padding-top: 130% !important;
+    /* Tall aspect ratio for merge-packing landscape tablets */
+  }
+
+  .merge-packing-page .mobile-message {
+    display: none !important;
+  }
+}
+
+/* FORCE DEFAULT BEHAVIOR - Hide embed and show message for ALL pages except merge-packing */
+
+/* Mobile phones - show message for non-merge-packing pages */
+@media (max-width: 450px) {
+  body:not(.merge-packing-page) .itch-embed-container {
+    display: none !important;
+  }
+
+  body:not(.merge-packing-page) .mobile-message {
+    display: block !important;
+  }
+}
+
+/* Portrait tablets - show message for non-merge-packing pages */
+@media (min-width: 451px) and (max-width: 1024px) and (orientation: portrait) {
+  body:not(.merge-packing-page) .itch-embed-container {
+    display: none !important;
+  }
+
+  body:not(.merge-packing-page) .mobile-message {
+    display: block !important;
+  }
+}
+
+/* Landscape tablets - show message for non-merge-packing pages */
+@media (min-width: 451px) and (max-width: 1024px) and (orientation: landscape) {
+  body:not(.merge-packing-page) .itch-embed-container {
+    display: none !important;
+  }
+
+  body:not(.merge-packing-page) .mobile-message {
+    display: block !important;
+  }
+}
+
+/* iPad Pro and large tablets - show message for non-merge-packing pages */
+@media (min-width: 1025px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  body:not(.merge-packing-page) .itch-embed-container {
+    display: none !important;
+  }
+
+  body:not(.merge-packing-page) .mobile-message {
+    display: block !important;
+  }
+}
+
+/* All touch devices regardless of size - show message for non-merge-packing pages */
+@media (hover: none) and (pointer: coarse) {
+  body:not(.merge-packing-page) .itch-embed-container {
+    display: none !important;
+  }
+
+  body:not(.merge-packing-page) .mobile-message {
+    display: block !important;
+  }
+}
+
+/* Mobile and portrait tablet layout - applies to ALL pages */
+@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+  .containerProject {
+    display: block !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .Main-Content {
+    grid-area: unset !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin-bottom: 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .divider {
+    grid-area: unset !important;
+    padding-top: 0 !important;
+  }
+
+  .SideBar {
+    grid-area: unset !important;
+    padding: 10px !important;
+    padding-top: 20px !important;
+    /* Center sidebar content on mobile */
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    /* Full width on mobile */
+    max-width: 100% !important;
+    min-width: unset !important;
+    /* Remove min-width constraint on mobile */
+  }
+}
+
+/* Merge-packing specific itch embed behavior */
+@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+  .merge-packing-page .itch-embed-container {
+    display: block !important;
+    padding-top: 500% !important;
+    /* Extra tall aspect ratio for mobile and tablets */
+  }
+
+  .merge-packing-page .mobile-message {
+    display: none !important;
+    /* Always hide mobile message */
+  }
+
+  /* Ensure iframe responsiveness on mobile */
+  .SideBar iframe {
+    max-width: 100%;
+    min-height: 180px;
+    height: auto;
+    aspect-ratio: 16/9;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Sidebar video styling */
+  .SideBar video {
+    min-height: 180px;
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
+  .trailer-box {
+    width: 100%;
+  }
+
+  /* Ensure all potentially wide elements are contained */
+  img,
+  video,
+  iframe,
+  embed,
+  object {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Improved video aspect ratio for mobile and tablet */
+  video {
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    border-radius: 10px;
+    min-height: 200px;
+    width: 100%;
+  }
+
+  /* Allow GIF-style videos to maintain natural aspect ratio */
+  video.make-gif {
+    aspect-ratio: unset;
+    height: auto;
+    min-height: unset;
+  }
+
+  /* Force container elements to not exceed viewport */
+  .containerProject,
+  .Main-Content,
+  .SideBar,
+  .divider {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+  }
+
+  hr.roundedv {
+    width: 80%;
+    height: 4px;
+    margin: 20px auto;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+  }
+
+  /* Mobile code block optimizations */
+  pre {
+    padding: 0.8rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    border-radius: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  pre code {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Ensure long text doesn't break layout */
+  p,
+  li,
+  div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* Make sure inline code doesn't break out */
+  code:not(pre code) {
+    word-break: break-all;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  .pc-divider {
+    display: none !important;
+  }
+
+  .mobile-divider {
+    display: block !important;
+  }
+
+  .mobile-message {
+    display: none;
+  }
+
+  .title {
+    font-size: 50px;
+  }
+
+  .subtitle {
+    font-weight: 100;
+    font-size: xx-large;
+    font-size: 25px;
+  }
+}
+
+/* Desktop only - exclude touch devices like large tablets/iPads */
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+  .itch-embed-container {
+    display: block !important;
+    padding-top: 50% !important;
+    /* Desktop aspect ratio - less tall */
+  }
+
+  .merge-packing-page .itch-embed-container {
+    padding-top: 50% !important;
+    /* Ensure merge-packing also uses desktop aspect ratio */
+  }
+
+  .mobile-message {
+    display: none !important;
+  }
+
+  .pc-divider {
+    display: flex !important;
+  }
+
+  .mobile-divider {
+    display: none !important;
+  }
+
+  .subtitle {
+    font-weight: 100;
+    font-size: xx-large;
+    font-size: 25px;
+  }
+
+  .title {
+    font-size: 50px;
+  }
+}
+
+/* Large tablets/iPads - even if they have desktop-sized screens */
+@media (min-width: 1025px) and (hover: none) and (pointer: coarse) {
+  .itch-embed-container {
+    display: block !important;
+  }
+
+  .mobile-message {
+    display: none !important;
+  }
+
+  .mobile-message-icon {
+    font-size: 3em;
+    margin-bottom: 18px;
+  }
+
+  .pc-divider {
+    display: none !important;
+  }
+
+  .mobile-divider {
+    display: block !important;
+  }
+}
+
+/* Fallback for specific iPad screen sizes */
+@media screen and (min-device-width: 768px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1) {
+  .itch-embed-container {
+    display: block !important;
+  }
+
+  .mobile-message {
+    display: none !important;
+  }
+}
+
+/* Additional iPad Pro specific targeting */
+@media screen and (width: 1024px) and (height: 1366px), screen and (width: 1366px) and (height: 1024px), screen and (width: 834px) and (height: 1194px), screen and (width: 1194px) and (height: 834px), screen and (width: 820px) and (height: 1180px), screen and (width: 1180px) and (height: 820px) {
+  .itch-embed-container {
+    display: block !important;
+  }
+
+  .mobile-message {
+    display: none !important;
+  }
+}
+
+pre {
+  padding: 1rem;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  tab-size: 2;
+  word-break: normal;
+  hyphens: none;
+  margin: 1rem 0;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  /* Prevent code blocks from affecting page layout */
+  contain: layout;
+}
+
+pre code {
+  overflow-x: auto;
+  white-space: pre;
+  display: block;
+  width: 100%;
+  min-width: auto;
+  min-height: 100px;
+  word-wrap: normal;
+}
+
+.code-header {
+  background: #2d2d2d;
+  /* match Prism theme background */
+  color: #ccc;
+  padding: 0.4em 1em;
+  font-family: monospace;
+  font-size: 0.9em;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+.code-header a {
+  color: #58a6ff;
+  text-decoration: none;
+  float: right;
+}
+
+.code-header a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile-optimized game container styles */
+.game-container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.itch-embed-container {
+  position: relative;
+  padding-top: 50%;
+  /* Wide aspect ratio for desktop - much less tall */
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1e1e1e;
+}
+
+/* Default behavior: show mobile message on tablets for non-merge-packing pages */
+@media (max-width: 450px) {
+  .itch-embed-container {
+    padding-top: 56.25% !important; /* 16:9 aspect ratio for mobile phones */
+  }
+
+  .mobile-message {
+    display: none !important; /* Hide mobile message on phones */
+  }
+
+  .game-iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+  }
+}
+
+@media (min-width: 451px) and (max-width: 1024px) {
+  .itch-embed-container {
+    display: none !important; /* Hide itch embed on tablets */
+  }
+
+  .mobile-message {
+    display: block !important; /* Show "visit on PC" message on tablets */
+  }
+}
+
+/* Merge-packing page specific - taller and slimmer */
+@media (max-width: 450px) {
+  .merge-packing-page .itch-embed-container {
+    height: 100px !important; /* Reduced height for mobile */
+    width: 80% !important; /* Slimmer - 80% width */
+    margin: 0 auto !important; /* Center it */
+    padding-top: 0 !important; /* Remove aspect ratio padding */
+  }
+
+  .merge-packing-page .game-iframe {
+    height: 700px !important; /* Match container height */
+  }
+}
+
+@media (min-width: 451px) and (max-width: 1024px) {
+  .merge-packing-page .itch-embed-container {
+    display: block !important; /* Override: show itch embed on tablets */
+    height: 1400px !important; /* Taller for tablets */
+    width: 70% !important; /* Slimmer - 70% width */
+    margin: 0 auto !important; /* Center it */
+    padding-top: 0 !important; /* Remove aspect ratio padding */
+  }
+
+  .merge-packing-page .game-iframe {
+    height: 1400px !important; /* Match container height */
+  }
+
+  .merge-packing-page .mobile-message {
+    display: none !important; /* Override: hide mobile message on merge-packing tablets */
+  }
+}
+
+.game-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mobile-play-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+  margin: 15px 0;
+}
+
+.mobile-play-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 126, 95, 0.4);
+  color: white;
+}
+
+.mobile-play-btn i {
+  margin-right: 8px;
+}
+
+/* Mobile and portrait tablet optimizations */
+@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+  .itch-embed-container {
+    padding-top: 177.78% !important;
+    /* 9:16 aspect ratio for consistent tall display */
+    border-radius: 15px;
+    margin: 15px 0;
+    /* Add some breathing room */
+  }
+
+  .mobile-message {
+    display: none;
+    /* Hide mobile message since we're showing embed */
+  }
+
+  .game-container {
+    margin: 15px 0;
+    /* Reduce margin on mobile */
+  }
+
+  /* Additional mobile optimizations */
+  .containerProject {
+    display: block !important;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body {
+    max-width: none;
+    margin: 0;
+    margin-right: 0;
+    /* margin-left: 1%; */
+  }
+
+  .Main-Content {
+    grid-area: unset !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .SideBar {
+    grid-area: unset !important;
+    padding: 10px;
+    padding-top: 20px;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: unset;
+  }
+
+  .divider {
+    grid-area: unset !important;
+    padding-top: 0;
+  }
+
+  .project-list {
+    padding-left: 25px;
+    margin-right: 0;
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  /* Improve touch targets */
+  .ScreenShots {
+    margin-top: 15px;
+    border-radius: 15px;
+    /* Increase touch area */
+    min-height: 44px;
+  }
+
+  /* Better typography for mobile */
+  p {
+    line-height: 1.6;
+    font-size: 16px;
+    /* Ensure readable text size */
+  }
+
+  .title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin: 15px 0 10px 0;
+  }
+}
+
+/* Tablet optimizations - exclude small mobile phones */
+@media (min-width: 451px) and (max-width: 1024px) {
+  .itch-embed-container {
+    padding-top: 150% !important;
+    /* Tall aspect ratio for tablets */
+    display: block !important;
+  }
+
+  .containerProject {
+    padding: 0;
+    margin: 0;
+  }
+
+  .Main-Content {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  /* Hide mobile message on tablets */
+  .mobile-message {
+    display: none !important;
+  }
+
+  /* Better video aspect ratio for tablets */
+  video {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 15px;
+    min-height: 250px;
+    max-height: 500px;
+    width: 80%;
+  }
+
+  /* Allow GIF-style videos to maintain natural aspect ratio on tablets */
+  video.make-gif {
+    aspect-ratio: unset;
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+  }
+
+  /* Tablet sidebar video/iframe styling */
+  .SideBar iframe,
+  .SideBar video {
+    min-height: 220px;
+    max-height: 350px;
+    width: 80%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    margin: 0 auto !important;
+    display: block !important;
+    position: relative !important;
+  }
+
+  .trailer-box iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 80% !important;
+    margin: 0 !important;
+  }
+
+  /* Mobile phones only (not tablets) - show Merge Packing embed */
+  @media (max-width: 450px) {
+    .merge-packing-page .itch-embed-container {
+      display: block !important;
+      padding-top: 177.78% !important;
+      /* 9:16 aspect ratio for consistent tall display */
+      border-radius: 15px;
+      margin: 15px 0;
+    }
+
+    .merge-packing-page .mobile-message {
+      display: none !important;
+      /* Hide mobile message on Merge Packing page on phones only */
+    }
+  }
+
+  /* Specific landscape tablet optimizations */
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .mobile-message {
+      display: none !important;
+    }
+
+    .mobile-message-icon {
+      font-size: 2.8em;
+      margin-bottom: 16px;
+    }
+
+    .itch-embed-container {
+      display: block !important;
+      padding-top: 130% !important;
+      /* Taller aspect ratio for landscape tablets */
+    }
+
+    .merge-packing-page .itch-embed-container {
+      padding-top: 130% !important;
+      /* Taller aspect ratio for merge-packing on landscape tablets */
+    }
+
+    /* Landscape tablet video styling */
+    video {
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      min-height: 280px;
+      max-height: 450px;
+      width: 80%;
+      border-radius: 12px;
+    }
+
+    /* Allow GIF-style videos to maintain natural aspect ratio on landscape tablets */
+    video.make-gif {
+      aspect-ratio: unset;
+      height: auto;
+      min-height: unset;
+      max-height: unset;
+    }
+
+    /* Landscape tablet sidebar video/iframe styling */
+    .SideBar iframe,
+    .SideBar video {
+      min-height: 240px;
+      max-height: 380px;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 10px;
+      width: 80%;
+    }
+
+    .Main-Content {
+      padding-left: 8%;
+      padding-right: 8%;
+    }
+  }
+
+  .make-gif {
+    pointer-events: none;
+    /* disables all interaction */
+    user-select: none;
+    /* prevents text selection (if any) */
+  }
+
+  /* Ensure code snippets have proper scrolling */
+  .language-csharp,
+  .language-js,
+  .code-snippet {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  /* Additional overflow protection for all content */
+  .Main-Content * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Specific fix for inline code */
+  code:not(pre code) {
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+
+  /* Container for positioning */
+  .code-block {
+    position: relative;
+    margin: 1.5em 0;
+    /* Reserve space to prevent layout shifts */
+    min-height: 120px;
+  }
+
+  /* Ensure code-block maintains positioning context in all responsive modes */
+  @media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+    .code-block {
+      position: relative !important;
+      margin: 1em 0 !important;
+      min-height: 100px !important;
+      overflow: visible !important;
+    }
+  }
+
+  @media (min-width: 451px) and (max-width: 1024px) and (orientation: landscape) {
+    .code-block {
+      position: relative !important;
+      margin: 1.2em 0 !important;
+      min-height: 110px !important;
+      overflow: visible !important;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .code-block {
+      position: relative !important;
+      margin: 1.5em 0 !important;
+      min-height: 120px !important;
+      overflow: visible !important;
+    }
+  }
+
+  /* Prevent CLS for code blocks */
+  .code-block pre[class*="language-"] {
+    min-height: 80px;
+    /* Reserve space for typical code block content */
+    contain: layout;
+    /* Isolate layout calculations */
+  }
+
+  /* FORCE GitHub button to top-right - highest specificity */
+  .code-block .github-inline,
+  .code-block a.github-inline,
+  div.code-block .github-inline,
+  div.code-block a.github-inline {
+    position: fixed !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+  }
+
+  /* Reset positioning to absolute within container */
+  .code-block .github-inline {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    left: auto !important;
+    bottom: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.4em !important;
+    background: #000 !important;
+    color: #fff !important;
+    font-size: 0.75em !important;
+    font-family: monospace !important;
+    padding: 0.3em 0.7em !important;
+    border-radius: 4px !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+    z-index: 10 !important;
+    transition: background 0.3s, transform 0.2s !important;
+    min-width: 100px !important;
+    min-height: 24px !important;
+    max-width: 150px !important;
+    contain: layout !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    float: none !important;
+    margin: 0 !important;
+    transform: translateX(0) translateY(0) !important;
+    direction: ltr !important;
+    text-align: center !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* Hover effect */
+  .github-inline:hover {
+    background: #111 !important;
+    transform: scale(1.05) !important;
+  }
+
+  /* Font Awesome icon size */
+  .github-inline i {
+    font-size: 1em !important;
+    color: #fff !important;
+  }
+
+  /* Responsive styles for GitHub inline buttons - matching existing breakpoints */
+
+  /* Small screens and portrait tablets - when container becomes display: block */
+  @media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+    .code-block .github-inline {
+      position: absolute !important;
+      top: 8px !important;
+      right: 8px !important;
+      font-size: 0.65em !important;
+      padding: 0.25em 0.6em !important;
+      min-width: 85px !important;
+    }
+  }
+
+  /* Tablet landscape */
+  @media (min-width: 451px) and (max-width: 1024px) and (orientation: landscape) {
+    .code-block .github-inline {
+      position: absolute !important;
+      top: 8px !important;
+      right: 8px !important;
+      font-size: 0.7em !important;
+      padding: 0.3em 0.7em !important;
+      min-width: 95px !important;
+    }
+  }
+
+  /* Desktop and larger screens */
+  @media (min-width: 1025px) {
+    .code-block .github-inline {
+      position: absolute !important;
+      top: 8px !important;
+      right: 8px !important;
+      font-size: 0.75em !important;
+      padding: 0.3em 0.7em !important;
+      min-width: 100px !important;
+    }
+  }
+
+  /* Prevent layout shifts for visibility changes */
+  .button-container,
+  .button-container.visible {
+    min-height: 40px;
+    min-width: 120px;
+    contain: layout;
+  }
+
+  /* Prevent layout shifts for any visibility transitions */
+  [class*="visible"],
+  [class*="hidden"] {
+    contain: layout;
+  }
+
+  /* Prevent layout shifts during loading states */
+  .loading,
+  [data-loading="true"] {
+    min-height: 50px;
+    contain: layout;
+  }
+
+  /* Ensure embedded content doesn't cause layout shifts */
+  .itch-embed-container,
+  iframe[src*="youtube.com"],
+  iframe[src*="itch.io"] {
+    contain: layout;
+    /* Already has aspect-ratio defined in HTML */
+  }
+}
+
+/* Merge Packing specific styles and overrides */
+.merge-packing-page {
+  /* Specific styles for merge-packing pages */
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  /* Ensure block display for proper padding */
+}
+
+.merge-packing-page .itch-embed-container {
+  display: block !important;
+  height: 100vh !important; /* Use full viewport height */
+  padding-top: 0 !important; /* Remove aspect ratio constraint */
+}
+
+/* Responsive adjustments for merge-packing pages */
+@media (max-width: 950px) {
+  .merge-packing-page .itch-embed-container {
+    max-height: 100vh !important; /* Allow scrolling beyond viewport */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-top: 0 !important; /* Remove aspect ratio constraint */
+  }
+}
+
+/* General mobile styles - apply to all mobile views */
+@media (max-width: 450px) {
+  body {
+    max-width: 100% !important;
+    margin: 0;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .containerProject {
+    display: block !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .Main-Content {
+    grid-area: unset !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin-bottom: 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .divider {
+    grid-area: unset !important;
+    padding-top: 0 !important;
+  }
+
+  .SideBar {
+    grid-area: unset !important;
+    padding: 10px !important;
+    padding-top: 20px !important;
+    /* Center sidebar content on mobile */
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    /* Full width on mobile */
+    max-width: 100% !important;
+    min-width: unset !important;
+    /* Remove min-width constraint on mobile */
+  }
+}
+
+/* High specificity overrides for merge-packing pages */
+.merge-packing-page .itch-embed-container {
+  display: block !important;
+  height: 100vh !important; /* Use full viewport height */
+  padding-top: 0 !important; /* Remove aspect ratio constraint */
+}
+
+/* Ensure proper stacking and spacing on merge-packing pages */
+@media (max-width: 450px) {
+  .merge-packing-page {
+    display: block !important;
+    position: relative !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .merge-packing-page .itch-embed-container {
+    display: block !important;
+    height: 100vh !important; /* Use full viewport height */
+    padding-top: 0 !important; /* Remove aspect ratio constraint */
+  }
+
+  .merge-packing-page .mobile-message {
+    display: none !important;
+    /* Hide mobile message on Merge Packing page on phones only */
+  }
+}
+
+/* Ensure proper stacking and spacing on merge-packing pages - tablets */
+@media (min-width: 451px) and (max-width: 1024px) {
+  .merge-packing-page {
+    display: block !important;
+    position: relative !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .merge-packing-page .itch-embed-container {
+    display: block !important;
+    height: 100vh !important; /* Use full viewport height */
+    padding-top: 0 !important; /* Remove aspect ratio constraint */
+  }
+
+  .merge-packing-page .mobile-message {
+    display: none !important;
+    /* Hide mobile message on Merge Packing page on tablets */
+  }
+}
+
+/* Specific styles for merge-packing pages - landscape tablets */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .merge-packing-page .itch-embed-container {
+    display: block !important;
+    padding-top: 130% !important;
+    /* Taller aspect ratio for merge-packing on landscape tablets */
+  }
+
+  .merge-packing-page .mobile-message {
+    display: none !important;
+  }
+}
+
+/* General tablet styles - apply to all tablets */
+@media (min-width: 451px) and (max-width: 1024px) {
+  .itch-embed-container {
+    padding-top: 150% !important;
+    /* Tall aspect ratio for tablets */
+    display: block !important;
+  }
+
+  .containerProject {
+    padding: 0;
+    margin: 0;
+  }
+
+  .Main-Content {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  /* Hide mobile message on tablets */
+  .mobile-message {
+    display: none !important;
+  }
+
+  /* Better video aspect ratio for tablets */
+  video {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 15px;
+    min-height: 250px;
+    max-height: 500px;
+    width: 80%;
+  }
+
+  /* Allow GIF-style videos to maintain natural aspect ratio on tablets */
+  video.make-gif {
+    aspect-ratio: unset;
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+  }
+
+  /* Tablet sidebar video/iframe styling */
+  .SideBar iframe,
+  .SideBar video {
+    min-height: 220px;
+    max-height: 350px;
+    width: 80%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    margin: 0 auto !important;
+    display: block !important;
+    position: relative !important;
+  }
+
+  .trailer-box iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 80% !important;
+    margin: 0 !important;
+  }
+}
+
+/* Force specific height for merge-packing itch embed on mobile */
+@media (max-width: 950px) {
+  .merge-packing-page .itch-embed-container {
+    max-height: 100vh !important; /* Allow scrolling beyond viewport */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-top: 0 !important; /* Remove aspect ratio constraint */
+  }
+}
+
+/* High-specificity tablet override: tall and thin layout */
+@media (min-width: 451px) and (max-width: 1024px) {
+  .merge-packing-page .itch-embed-container {
+    display: block !important;
+    width: 45% !important; /* Narrower width (tall & thin) */
+    height: 1600px !important; /* Taller height for tablets */
+    margin: 20px auto !important; /* Center and add breathing room */
+    padding-top: 0 !important; /* Ensure no aspect padding interferes */
+    overflow-y: auto !important; /* Allow internal scrolling if needed */
+  }
+
+  .merge-packing-page .itch-embed-container .game-iframe,
+  .merge-packing-page .game-iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important; /* Match the container height */
+    border: none !important;
+  }
+}
+
+/* End of CSS */
+/* Fix: ensure Merge Packing itch embed is visible and responsive on tablets */
+@media (min-width: 451px) and (max-width: 1024px) {
+  body.merge-packing-page .itch-embed-container {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    padding-top: 0 !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  body.merge-packing-page .itch-embed-container .game-iframe,
+  body.merge-packing-page .game-iframe {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 480px !important;
+    border: none !important;
+  }
+}
+
+/* Animated Hamburger Icon for Project Pages */
+.hamburger-icon {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-icon .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+}
+
+/* Default hamburger state */
+.open-sidebar-button .hamburger-icon .bar1 {
+  transform: translateY(0) rotate(0deg);
+}
+
+.open-sidebar-button .hamburger-icon .bar2 {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.open-sidebar-button .hamburger-icon .bar3 {
+  transform: translateY(0) rotate(0deg);
+}
+
+/* Hamburger to X animation when sidebar is active */
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar1 {
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar3 {
+  transform: translateY(-10.5px) rotate(-45deg);
+}

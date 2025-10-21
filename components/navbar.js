@@ -59,6 +59,12 @@ class NavBar extends HTMLElement {
   <!-- Critical scripts loaded for immediate execution -->
   <script type="module" src="js/translate.js"></script>
     <script src="js/main.js"></script>
+    <style>
+          .links-container a {
+            font-size: 16px; /* Ensures consistent font size across all pages */
+            font-weight: bold; /* Makes navbar links bold universally */
+          }
+        </style>
  `;
 
         // Initialize dropdown functionality after DOM is set

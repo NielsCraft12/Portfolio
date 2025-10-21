@@ -2,415 +2,281 @@
 <html lang="en">
 
 <head>
-  <!-- Character encoding and viewport settings -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="A challenging 2D platformer where your only tool is a single box. Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you'll have to start over! This game won 1st place in the GLU Game Jam, where it was created under the theme You Only Have One." />
-  <title>You Only Have One Box</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="projects.wa_lch.title">WA-LCH | Niels de Laat</title>
 
-  <!-- Preconnect to external domains -->
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/Favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/Favicon/favicon-16x16.png">
+  <link rel="manifest" href="../images/Favicon/site.webmanifest">
+
+  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
+  <meta name="author" content="Niels de Laat">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Critical CSS - Inline above-the-fold styles -->
-  <style>
-    /* Critical CSS for immediate rendering */
-    body {
-      font-family: "Baloo 2", sans-serif;
-      margin: 0;
-      padding: 0;
-      background: var(--primary-bg);
-      color: #e0e0e0;
-      line-height: 1.6;
-    }
+  <link href="../css/prism.css" rel="stylesheet" />
 
-    .navbar {
-      background-color: #333;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100vw;
-      z-index: 1000;
-      transition: all 0.3s ease;
-      margin: 0;
-      box-sizing: border-box;
-    }
+  <script type="module" src="../components/navbar.js"></script>
+  <script type="module" src="../components/social-buttons.js"></script>
+  <script type="module" src="../components/code-block.js"></script>
+  <script type="module" src="../js/translate.js"></script>
+  <script type="module" src="../components/projectPageLayout.js"></script>
+  <script type="module" src="../components/footer.js"></script>
 
-    .navbar::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(10px);
-      z-index: -1;
-    }
-
-    .content-container {
-      margin-top: 80px;
-      padding: 20px;
-    }
-
-    .project-header {
-      text-align: center;
-      margin: 2rem 0;
-    }
-
-    .project-title {
-      font-size: 3rem;
-      color: #4CAF50;
-      margin-bottom: 1rem;
-    }
-
-    .project-description {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* iOS safe area support */
-    @supports(padding: max(0px)) {
-      .navbar {
-        padding-top: max(env(safe-area-inset-top), 10px);
-      }
-
-      .content-container {
-        margin-top: max(calc(80px + env(safe-area-inset-top)), 80px);
-      }
-    }
-  </style>
-
-  <!-- Non-critical CSS loaded asynchronously -->
-  <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/ProjectPage.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/Home.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/prism.css" media="print" onload="this.media='all'">
-
-  <!-- Load Font Awesome synchronously for GitHub buttons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    crossorigin="anonymous">
-
-  <!-- Async load Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
-    onload="this.media='all'">
-
-  <!-- Fallback for browsers that don't support onload -->
-  <noscript>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/ProjectPage.css">
-    <link rel="stylesheet" href="../css/Home.css">
-    <link rel="stylesheet" href="../css/prism.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
-  </noscript>
-
-  <!-- Favicon Settings for various platforms -->
   <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
   <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
 
-  <!-- components -->
-  <script type="module" src="../components/navbar.js" defer></script>
-  <script type="module" src="../components/code-block.js" defer></script>
-</head>
-
-<body>
-  <!-- Navigation Menu -->
-  <nav-bar></nav-bar>
-
-  <div style="height: 50px;"></div>
-  <!-- Main Content Container -->
-  <div class="containerProject">
-    <!-- Project Description Section -->
-    <div class="Main-Content">
-      <h1 class="GradiantTitle title">You Only Have One Box</h1>
-      <h3 data-i18n="projectPages.description" class="GradiantTitle subtitle">Description</h3>
-      <p data-i18n="projectPages.yohob.description">A challenging 2D platformer where your only tool is a single box.
-        Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you'll have to
-        start over! This game won 1st place in the GLU Game Jam, where it was created under the theme "You Only Have
-        One".</p>
-      <h3 data-i18n="projectPages.whatIMadeTitle" class="GradiantTitle subtitle">What I Made</h3>
-      <h3 data-i18n="projectPages.yohob.levelDesign.levelDesignTitle" class="GradiantTitle subtitle">Level Design</h3>
-      <p data-i18n="projectPages.yohob.levelDesign.levelDesignIntro">I created the level tilemap that forms the
-        foundation of each challenge. The structure and pacing were designed to encourage creative parkour.</p>
-
-      <h3 data-i18n="projectPages.yohob.enemy.enemyTitle" class="GradiantTitle subtitle">Enemy AI — The Chicken</h3>
-      <p data-i18n="projectPages.yohob.enemy.enemyIntro">I programmed the enemy logic for the chicken enemy, giving it
-        simple but effective patrol and collision behavior. It patrols back and forth, using raycasts to detect
-        obstacles or edges, and turns upon encountering any non-box or non-player object. The enemy can damage the
-        player or be destroyed with the box.</p>
-
-      <p data-i18n="projectPages.yohob.enemy.enemyCodeSnippet">Snippet: Chicken movement and collision detection</p>
-
-      <code-block
-        href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/BasicEnemy.cs#L40-L45"
-        language="csharp" code="
-        RaycastHit2D hit = Physics2D.Raycast(Pos, direction, .1f);
-        if (hit && hit.collider.name != &quot;Box&quot; && hit.collider.name != &quot;Player&quot; && !hit.collider.CompareTag(&quot;Enemy&quot;))
-        {
-          Rotate();
-        }
-        ">
-      </code-block>
-
-      <p data-i18n="projectPages.yohob.enemy.enemyBehaviorTitle">Behavior Highlights:</p>
-      <ul class="project-list">
-        <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint1">Uses raycasting to avoid walls and hazards.</li>
-        <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint2">Flips direction.</li>
-        <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint3">Damages the player on contact.</li>
-        <li data-i18n="projectPages.yohob.enemy.enemyBehaviorPoint4">Gets destroyed when hit by the box.</li>
-      </ul>
-
-      <!-- <img src="/images/gif/Yohob/YohobChickenwalk.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-      <img src="/images/gif/Yohob/YohobEnemy.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto"> -->
-
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="../videos/webm/Yohob/YohobChickenwalk.webm" type="video/webm" />
-      </video>
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="../videos/webm/Yohob/YohobEnemy.webm" type="video/webm" />
-      </video>
-
-      <h3 data-i18n="projectPages.yohob.finish.finishTitle" class="GradiantTitle subtitle">Finish System</h3>
-      <p data-i18n="projectPages.yohob.finish.finishIntro">I implemented the finish object that ends the level once the
-        player reaches it. The system saves the player’s current damage state and triggers an animation before
-        transitioning to the next level.</p>
-
-      <p data-i18n="projectPages.yohob.finish.finishCodeSippet">Snippet: Triggering level completion and transitioning
-        scenes</p>
-
-      <code-block href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/Finish.cs#L26-L35"
-        language="csharp" code="
-              private void OnTriggerEnter2D(Collider2D collision) {
-              if (collision.gameObject.CompareTag(&quot;Player&quot;)) {
-                StartCoroutine(NextLevel());
-                hasFinsihed = true;
-                endHP = PlayerInfo.Instance.DamagePoints;
-                animator.SetTrigger(&quot;IsPressed&quot;);
-              }
-            }
-        ">
-
-      </code-block>
-
-      <p data-i18n="projectPages.yohob.finish.finishCodeSippet2">This coroutine waits briefly for an animation to play,
-        then loads the next scene:</p>
-
-      <code-block href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/Finish.cs#L37-L42"
-        language="csharp" code="
-        IEnumerator NextLevel()
-        {
-          yield return new WaitForSeconds(2f);
-          SceneManager.LoadScene(NextLevelName);
-          PlayerInfo.Instance.isPaused = true;
-        }
-        ">
-      </code-block>
-
-      <!-- <img src="/images/gif/Yohob/YohobEnd.gif" alt=""
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto"> -->
-      <video autoplay muted loop playsinline disablePictureInPicture class="make-gif" loading="lazy"
-        style="display: block; margin: 20px auto; max-width: 80%; height: auto">
-        <source src="../videos/webm/Yohob/YohobEnd.webm" type="video/webm" />
-      </video>
-      <h1 data-i18n="projectPages.play" style="text-align: center; margin-top: 10px; margin-bottom: 0"
-        class="GradiantTitle">Play</h1>
-      <div class="itch-embed-container"
-        style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
-          src="https://itch.io/embed-upload/11579544?color=1E1E1E" allowfullscreen="">
-          <a href="https://gohanblade.itch.io/you-only-have-one-box">Play You Only Have One Box on itch.io</a>
-        </iframe>
-      </div>
-      <div class="mobile-message">
-        <i class="fas fa-desktop mobile-message-icon"></i>
-        <p data-i18n="projectPages.yohob.mobileMessage">To play You Only Have One Box, please visit this page on a
-          computer.</p>
-      </div>
-    </div>
-
-    <!-- Visual Divider -->
-    <div class="divider pc-divider" style="height: 96%; display: flex; align-items: stretch">
-      <hr class="roundedv" style="height: 100%; margin: 0" />
-      <!-- <hr class="roundedv mobile-divider" /> -->
-    </div>
-
-    <div class="divider mobile-divider">
-      <hr class="roundedv" />
-    </div>
-
-    <!-- Sidebar Content -->
-    <div class="SideBar" style="height: max-content">
-      <!-- Trailer Section -->
-      <h1 data-i18n="projectPages.trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
-      <!-- <div style="position: relative; padding-top: 56.25%; width: 80%; border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; aspect-ratio: 16/9;"
-          src="https://www.youtube.com/embed/mR3u5qeEQoc?si=lvwrLVPt16mvQSvR" title="YouTube video player"
-          frameborder="0" loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
-      </div> -->
-
-      <div class="trailer-box" style="position: relative; padding-top: 56.25%;  border-radius: 20px; overflow: hidden">
-        <iframe style="position: absolute; top: 0; left: 0;  height: 100%; aspect-ratio: 16/9;"
-          src="https://www.youtube.com/embed/mR3u5qeEQoc?si=lvwrLVPt16mvQSvR" title="YouTube video player"
-          frameborder="0" loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
-      </div>
-
-      <!-- Screenshots Section -->
-      <h1 data-i18n="projectPages.screenshots" style="text-align: center; margin-top: 10px" class="GradiantTitle">
-        Screenshots</h1>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot1.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot1.png"
-          alt="Profile picture" />
-      </picture>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot2.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot2.png"
-          alt="Profile picture" />
-      </picture>
-      <picture>
-        <source srcset="../images/webp/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot3.webp" type="image/webp" />
-        <img class="ScreenShots" src="../images/png/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot3.png"
-          alt="Profile picture" />
-      </picture>
-
-      <h1 style="text-align: center; margin-top: 10px" class="GradiantTitle">Explore Code</h1>
-      <a href="https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts" target="”_blank”"
-        rel="noreferrer" class="fab fa-github fa-2xl icon"></a>
-
-      <!-- Credits Section -->
-      <!-- <h1 data-i18n="credits" style="text-align: center; margin-top: 10px; margin-bottom: 0" class="GradiantTitle">
-        Credits</h1>
-      <h3 data-i18n="developers" style="text-align: center; margin-bottom: 0">Developers</h3>
-      <a class="credits" href="https://nielsdelaat.us.to" target="_blank" rel="noreferrer">Niels de Laat</a>
-      <a class="credits" href="http://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">Joah van der
-        Sloot</a>
-      <a class="credits" href="https://sites.google.com/view/rodneywillems/home" target="_blank" rel="noreferrer">Rodney
-        Willems</a>
-      <ul class="cd-demo-chip-list">
-        <li>
-          <a href="https://nielsdelaat.com" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-code GradiantTitle"></i>
-              <i class="chip__label">Niels de Laat</i>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="https://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-code GradiantTitle"></i>
-              <i class="chip__label">Joah van der Sloot</i>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="https://sites.google.com/view/rodneywillems/home" target="_blank" rel="noreferrer">
-            <span class="chip">
-              <i class="fa-solid fa-code GradiantTitle"></i>
-              <i class="chip__label">Rodney Willems</i>
-            </span>
-          </a>
-        </li>
-      </ul>-->
-    </div>
-  </div>
-
-  <!-- Image Modal for Screenshots -->
-  <div id="imageModal" class="modal">
-    <span class="modal-close">&times;</span>
-    <img class="modal-content" id="modalImg" />
-  </div>
-  <script src="../js/imagezoom.js" defer></script>
-  <script src="../js/translate.js" defer></script>
-  <script src="../js/mobile-optimizations.js" defer></script>
   <script>
-    // Lazy load syntax highlighting
-    document.addEventListener('DOMContentLoaded', () => {
-      const codeBlocks = document.querySelectorAll('pre code, .language-');
-      if (codeBlocks.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              import('../js/prism.js').then(() => {
-                if (typeof Prism !== "undefined") {
-                  Prism.highlightAll();
-                }
-              });
-              observer.disconnect();
-            }
-          });
-        });
-        codeBlocks.forEach(block => observer.observe(block));
-      }
-    });
-
-    // Defer analytics to reduce main thread blocking
-    setTimeout(() => {
+    // Lazy load Prism.js only when code blocks are visible
+    const loadPrism = () => {
+      if (window.Prism) return; // Already loaded
       const script = document.createElement('script');
-      script.src = '//gc.zgo.at/count.js';
-      script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
-      script.async = true;
+      script.src = '../js/prism.js';
+      script.onload = () => window.Prism?.highlightAll();
       document.head.appendChild(script);
-    }, 3000);
+    };
 
-    // Conditionally load the itch.io embed only for "Merge Packing"
+    // Intersection Observer for lazy loading
+    const codeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadPrism();
+          codeObserver.disconnect(); // Only load once
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    // Observe code blocks when DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
-      const project = document.body.getAttribute('data-project');
-      if (project === 'Merge Packing') {
-        const embedContainer = document.querySelector('.itch-embed-container');
-        const iframe = document.createElement('iframe');
-        iframe.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%';
-        iframe.frameBorder = '0';
-        iframe.src = 'https://itch.io/embed-upload/12639739?color=1E1E1E';
-        iframe.allowFullscreen = true;
-        embedContainer.innerHTML = ''; // Clear the placeholder
-        embedContainer.appendChild(iframe);
+      const codeBlocks = document.querySelectorAll('pre code');
+      if (codeBlocks.length > 0) {
+        codeBlocks.forEach(block => codeObserver.observe(block));
       }
     });
   </script>
-</body>
-<footer>
-  <div class="footer" style="display: flex; align-items: center; position: relative">
-    <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
-        preserveAspectRatio="xMidYMid meet" class="mi-icon">
-        <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-          <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
-            -425 -524 -166 -251 -266 -441 -369 -708 -111 -284 -177 -543 -222 -867 -25
-            -182 -30 -638 -10 -832 80 -754 362 -1423 842 -1997 121 -145 371 -391 507
-            -500 550 -439 1176 -703 1882 -793 198 -25 663 -25 860 0 587 76 1104 264
-            1579 574 866 566 1453 1462 1620 2473 14 85 28 188 32 228 l7 72 -489 0 -489
-            0 -1322 -1322 -1323 -1323 -1500 1500 -1500 1500 1503 1503 1502 1502 1365
-            -1365 1365 -1365 -786 0 -786 0 -13 48 c-25 89 -90 225 -155 323 -395 594
-            -1208 736 -1782 313 -321 -237 -503 -600 -503 -1002 0 -347 122 -643 365 -887
-            316 -318 774 -437 1218 -319 112 30 270 104 374 176 89 61 232 198 290 278 89
-            123 185 320 208 428 l7 32 -541 0 -541 0 0 190 0 190 1766 0 1767 0 -6 183
-            c-12 429 -149 934 -377 1386 -310 617 -823 1164 -1420 1513 -445 261 -909 417
-            -1440 483 -149 19 -562 27 -710 15z" />
-        </g>
-      </svg>
-    </a>
-    <p style="flex: 1; text-align: center">© <span id="copyright-year"></span> Niels de Laat</p>
-    <script>
-      document.getElementById("copyright-year").textContent = new Date().getFullYear();
-    </script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/ProjectPage.css" id="customStyles">
+
+</head>
+
+<body>
+  <!-- Navigation Component -->
+  <nav-bar></nav-bar>
+  <!-- ============================================
+       CONTENT CONFIGURATION - EDIT YOUR CONTENT HERE
+       ============================================ -->
+  <script id="projectConfig">
+    const PROJECT_DATA = {
+      // Project Info
+      title: "You Only Have One Box",
+      title_i18n: "__NO_TRANSLATE__",
+
+      // Main Content Sections - with inline media and code block support
+      sections: [
+        {
+          title: "Description",
+          title_i18n: "projectPages.description",
+          content: `A challenging 2D platformer where your only tool is a single box. Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you'll have to start over! This game won 1st place in the GLU Game Jam, where it was created under the theme "You Only Have One".`,
+          content_i18n: "projectPages.yohob.description"
+        },
+        {
+          title: "What I Made",
+          title_i18n: "projectPages.whatIMadeTitle",
+          content_i18n: "__NO_TRANSLATE__"
+        },
+        {
+          title: "Level Design",
+          title_i18n: "projectPages.yohob.levelDesign.levelDesignTitle",
+          content: "I created the level tilemap that forms the foundation of each challenge. The structure and pacing were designed to encourage creative parkour.",
+          content_i18n: "projectPages.yohob.levelDesign.levelDesignIntro",
+        },
+        {
+          title: "Enemy AI — The Chicken",
+          title_i18n: "projectPages.yohob.enemy.enemyTitle",
+          content: "I programmed the enemy logic for the chicken enemy, giving it simple but effective patrol and collision behavior. It patrols back and forth, using raycasts to detect obstacles or edges, and turns upon encountering any non-box or non-player object. The enemy can damage the player or be destroyed with the box.",
+          content_i18n: "projectPages.yohob.enemy.enemyIntro"
+        },
+        {
+          title_i18n: "__NO_TRANSLATE__",
+          content: "Snippet: Chicken movement and collision detection",
+          content_i18n: "projectPages.yohob.enemy.enemyCodeSnippet"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/BasicEnemy.cs#L40-L45",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+RaycastHit2D hit = Physics2D.Raycast(Pos, direction, .1f);
+if (hit && hit.collider.name != "Box" && hit.collider.name != "Player" && !hit.collider.CompareTag("Enemy"))
+{
+  Rotate();
+}`
+        }, {
+          title_i18n: "__NO_TRANSLATE__",
+          content: "Behavior Highlights:",
+          content_i18n: "projectPages.yohob.enemy.enemyBehaviorTitle",
+        },
+        {
+          title_i18n: "__NO_TRANSLATE__",
+          type: "list",
+          items: [
+            "Uses raycasting to avoid walls and hazards.",
+            "Flips direction.",
+            "Damages the player on contact.",
+            "Gets destroyed when hit by the box."
+          ],
+          items_i18n: [
+            "projectPages.yohob.enemy.enemyBehaviorPoint1",
+            "projectPages.yohob.enemy.enemyBehaviorPoint2",
+            "projectPages.yohob.enemy.enemyBehaviorPoint3",
+            "projectPages.yohob.enemy.enemyBehaviorPoint4"
+          ]
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/yohob/YohobChickenwalk.webm",
+          alt: "WA-LCH Game Screenshot",
+          loading: "lazy" // Added lazy loading
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/yohob/YohobEnemy.webm",
+          alt: "WA-LCH Game Screenshot",
+          loading: "lazy" // Added lazy loading
+        },
+        {
+          title: "Finish System",
+          title_i18n: "projectPages.yohob.finish.finishTitle",
+          content: "I implemented the finish object that ends the level once the player reaches it. The system saves the player's current damage state and triggers an animation before transitioning to the next level. Snippet: Triggering level completion and transitioning scenes",
+          content_i18n: "projectPages.yohob.finish.finishIntro"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/Finish.cs#L26-L35",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+private void OnTriggerEnter2D(Collider2D collision) {
+  if (collision.gameObject.CompareTag("Player")) {
+    StartCoroutine(NextLevel());
+    hasFinsihed = true;
+    endHP = PlayerInfo.Instance.DamagePoints;
+    animator.SetTrigger("IsPressed");
+  }
+}`
+        },
+        {
+          title_i18n: "__NO_TRANSLATE__",
+          content: "This coroutine waits briefly for an animation to play, then loads the next scene:",
+          content_i18n: "projectPages.yohob.finish.finishCodeSippet2"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts/Finish.cs#L37-L42",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+IEnumerator NextLevel()
+{
+  yield return new WaitForSeconds(2f);
+  SceneManager.LoadScene(NextLevelName);
+  PlayerInfo.Instance.isPaused = true;
+}`
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/yohob/YohobEnd.webm",
+          alt: "WA-LCH Game Screenshot",
+          loading: "lazy" // Added lazy loading
+        },
+      ],
+      // Sidebar Content
+      sidebar: {//localhost/Portfolio/projects/merge-packing-backup.html
+        trailerUrl: "https://www.youtube.com/embed/mR3u5qeEQoc?si=lvwrLVPt16mvQSvR",
+        screenshots: [
+          { src: "../images/webp/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot1.webp", alt: "WA-LCH Origins Screenshot 1" },
+          { src: "../images/webp/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot2.webp", alt: "WA-LCH Origins Screenshot 1" },
+          { src: "../images/webp/ProjectScreenShots/YouOnlyHaveOneBox/BoxScreenshot2.webp", alt: "WA-LCH Origins Screenshot 1" },
+        ],
+        socialButtons: [
+          {
+            url: "https://github.com/NielsCraft12/GluJam_09-2024/blob/main/Assets/Niels/Scripts",
+            icon: "fab fa-github",
+            title: "View on GitHub",
+            target: "_blank",
+            rel: "noreferrer"
+          }
+        ]
+      },
+
+      // Embed (itch.io, etc)
+      embed: {
+        enabled: true,
+        url: "https://itch.io/embed-upload/11579544?color=1E1E1E",
+        playableOnMobile: false
+      }
+    };
+  </script>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="gradient-title project-title" id="projectTitle"></h1>
+      <div id="mainContent"></div>
+      <div id="codeBlocks"></div>
+      <div id="mediaContent"></div>
+
+      <div id="embedSection"></div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2 class="gradient-title" data-i18n="projectPages.trailer">Trailer</h2>
+      <div class="video-container" id="trailerContainer"></div>
+
+      <h2 class="gradient-title" data-i18n="projectPages.screenshots">Screenshots</h2>
+      <div id="screenshotsContainer"></div>
+
+      <h2 class="gradient-title" data-i18n="projectPages.exploreCode">Explore Code</h2>
+      <social-buttons id="exploreCodeButtons"></social-buttons>
+    </div>
   </div>
-</footer>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Enlarged screenshot">
+  </div>
+
+  <!-- Footer -->
+
+  <site-footer></site-footer>
+  <!-- <p>© <span id="copyright-year"></span> <span id="footerName"></span>Niels de Laat</p> -->
+
+</body>
 
 </html>

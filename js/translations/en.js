@@ -51,18 +51,20 @@ export const en = {
     // project pages
     description: "Description",
     trailer: "Trailer",
-    play: "Play",
+    tryItOut: "Try It Out",
     credits: "Credits",
     screenshots: "Screenshots",
     developers: "Developers",
     artists: "Artists",
     whatIMadeTitle: "What I Made",
     viewOnGitHub: '<i class="fab fa-github"></i> View on GitHub',
+    exploreCode: "Explore Code",
+    mobileMessage: `To play ${(typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.title) ? PROJECT_DATA.title : 'dit project'}, please visit this page on a computer.`,
+
 
     slimetasticPunchout: {
       // Slimetastic Punchout
       description: "Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It's slimy chaos at its best!",
-      mobileMessage: "To play Slimetastic Punchout, please visit this page on a computer.",
 
       playerJoin: {
         playerJoinTitle: "Custom Player Join System",
@@ -101,7 +103,6 @@ export const en = {
     walch: {
       // WA-LCH
       description: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room " + "thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon.",
-      mobileMessage: "To play WA-LCH, please visit this page on a computer.",
       proceduralLevelGen: {
         proceduralLevelGenTitle: "Procedural Level Generation",
         proceduralLevelGenIntro: "Walch features a dynamic, grid-based dungeon generator that constructs levels using predefined room templates. Each level is made up of cells" + " that can contain different types of rooms including normal, generator, and special event rooms.",
@@ -129,7 +130,6 @@ export const en = {
     yohob: {
       // You Only Have One Box
       description: 'A challenging 2D platformer where your only tool is a single box. Guide both yourself and your precious box through increasingly tricky obstacles. Lose it, and you\'ll have to start over! This game won 1st place in the GLU Game Jam, where it was created under the theme "You Only Have One".',
-      mobileMessage: "To play You Only Have One Box, please visit this page on a computer.",
 
       levelDesign: {
         levelDesignTitle: "Level Design",
@@ -158,7 +158,6 @@ export const en = {
     walchOrigins: {
       //WA-LCH Origins
       description: "Made in ~30 hours during a game jam (theme:“Bubbles”). Built with Unity and C#. " + "WA-LCH Origins is a chaotic mini-cleanup adventure where you play as a janitor scrubbing away trash and trapping rogue rats using bubble-based tools. " + "Built entirely under game jam pressure, it features player-controlled physics movement, animated doors, trap-based rat removal, and a bubbly cleaning mechanic.",
-      mobileMessage: "To play WA-LCH Origins, please visit this page on a computer.",
 
       playerMovement: {
         playerMovementTitle: "Player Movement",
@@ -193,9 +192,9 @@ export const en = {
       mergingLogic: {
         mergingLogicTitle: "Merging Logic",
         mergingLogicIntro: "Merge Packing's primary mechanic revolves around combining two identical items into a higher-tier object. This is handled in the ObjectManager script:",
+        mergingLogicEnd: "The merging system checks for matching sprite types, ensures only one of the colliding objects spawns the new item in the middle of the 2 objects, and increases the score.",
       },
 
-      mergingLogicEnd: "The merging system checks for matching sprite types, ensures only one of the colliding objects spawns the new item in the middle of the 2 objects, and increases the score.",
 
       alien: {
         alienTitle: "The alien",

@@ -49,6 +49,10 @@ iframe {
   /* Tooltip Colors */
   --tooltip-bg: #333;
   --tooltip-text: white;
+
+  --font-family: "Baloo 2", cursive;
+
+  --text-color: #ffffff;
 }
 
 /* iOS Safari viewport fixes */
@@ -106,16 +110,21 @@ body {
 
 /* Ensure modal covers the entire viewport and is always clickable */
 #imageModal {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Lighter semi-transparent black background */
   position: fixed;
-  top: 0;
+  top: 30px;
+  /* Move modal down to avoid collision with the navbar */
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--modal-bg);
+  width: 100%;
+  height: 100%;
   display: none;
+  /* Hidden by default */
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  z-index: 3000;
+  padding-bottom: 20px;
+  /* Add space beneath the image */
 }
 
 #imageModal.show {
@@ -123,7 +132,7 @@ body {
 }
 
 /* Prevent interaction with all content except modal when modal is open */
-body.modal-open > *:not(#imageModal):not(script):not(style) {
+body.modal-open>*:not(#imageModal):not(script):not(style) {
   pointer-events: none !important;
   user-select: none !important;
 }
@@ -195,6 +204,7 @@ hr.rounded {
 
 /* Ensure rounded corners for scrollbar on mobile and tablet */
 @media (max-width: 1024px) {
+
   * ::-webkit-scrollbar-thumb,
   html ::-webkit-scrollbar-thumb,
   body ::-webkit-scrollbar-thumb,

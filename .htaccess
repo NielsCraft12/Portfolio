@@ -8,3 +8,19 @@ RewriteRule ^ %{REQUEST_URI}.html [NC,L]
 
 RewriteCond %{HTTP_HOST} ^www\.nielsdelaat\.us.to$
 RewriteRule ^/?$ "http\:\/\/nielsdelaat\.us.to\/" [R=301,L]
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # Cache images, videos, etc. for a year
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+
+  # Cache CSS and JS for a month
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

@@ -53,12 +53,15 @@ export const nl = {
     description: "Beschrijving",
     trailer: "Trailer",
     screenshots: "Screenshots",
-    play: "Spelen",
+    tryItOut: "Probeer het uit",
     credits: "Credits",
     developers: "Ontwikkelaars",
     artists: "Artiesten",
     whatIMadeTitle: "Wat ik heb gemaakt",
     viewOnGitHub: ' <i class="fab fa-github"></i> Bekijk op GitHub',
+    exploreCode: "Verken de code",
+    mobileMessage: `Om ${(typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.title) ? PROJECT_DATA.title : 'dit project'} te spelen, bezoek deze pagina op een computer.`,
+
     slimetasticPunchout: {
       // Slimetastic Punchout
       description: "Slimetastic Punchout is een chaotisch en leuk lokaal multiplayer spel waarin je de controle neemt over kleurrijke, squishy slimes en het uitvecht in snelle arena's. Het doel? Bedek zoveel mogelijk tegels terwijl je over de kaart glijdt, stuitert en spettert. Onderweg kun je wat stevige stoten landen om je tegenstanders uit de weg te duwen of ze gewoon van hun stuk te brengen. Elke wedstrijd is onvoorspelbaar, zit vol met gelach en is een rommelige strijd om de controle. Het is slijmerige chaos op zijn best!",
@@ -122,7 +125,7 @@ export const nl = {
 
       dynamicRoomBehavior: {
         dynamicRoomBehaviorTitle: "Dynamisch Kamergedrag",
-        dynamicRoomBehaviorIntro: "Elke kamer past zijn deuren en muren aan op basis van naburige verbindingen.",
+        dynamicRoomBehaviorIntro: "Elke kamer past zijn deuren en muren aan op basis van aangrenzende verbindingen.",
       },
     },
     yohob: {
@@ -192,9 +195,9 @@ export const nl = {
       mergingLogic: {
         mergingLogicTitle: "Samenvoegings logica",
         mergingLogicIntro: "Merge Packing's primaire mechaniek draait om het combineren van twee identieke items tot een hoger-tier object. Dit wordt afgehandeld in het ObjectManager script:",
+        mergingLogicEnd: "Het merge systeem controleert op overeenkomende sprite types, zorgt ervoor dat slechts één van de botsende objecten het nieuwe item spawnt in het midden van de 2 objecten, en verhoogt de score.",
       },
 
-      mergingLogicEnd: "Het merge systeem controleert op overeenkomende sprite types, zorgt ervoor dat slechts één van de botsende objecten het nieuwe item spawnt in het midden van de 2 objecten, en verhoogt de score.",
 
       alien: {
         alienTitle: "De alien",

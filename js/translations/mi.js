@@ -50,13 +50,16 @@ export const mi = {
     // project pages
     description: "Luvwry",
     trailer: "Trailer",
-    play: "Hopa",
+    tryItOut: "Traigo pik kapee",
     credits: "Iffmu",
     screenshots: "Screenshots",
     developers: "Nitaye",
     artists: "Bowale",
     whatIMadeTitle: "Whaat? ka mobla",
     viewOnGitHub: '<i class="fab fa-github"></i> Eel en github',
+    exploreCode: "Explor da code",
+    mobileMessage: `Da hopa ${(typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.title) ? PROJECT_DATA.title : 'dit project'}, radbad ods ba piplo en a doegob`,
+
     slimetasticPunchout: {
       // Slimetastic Punchout
       description: "Slimetastic punchout tis a chaotic yee agei got multiplayer spaghetti donde to nupi hottoe de colorful, squishy slimes yee uketav pik kapee een fast-paced arenas.  Ta up? coplo sim mublai tiles sim to pudum weebo sliding, bouncing, yee splattering tu via bodbag ta mopa.  Ghi ta via, to pudum briko tem ark punches da shove tu cutaa kapee de ta way or sola gul vus dak tus spaghetti.  Alga ant tis unpredictable, lemo de laughter, yee a messy fipe nunu hottoe.  It's slimy elm ka ti obe!",
@@ -131,9 +134,9 @@ export const mi = {
       mergingLogic: {
         mergingLogicTitle: "Zeddol gee",
         mergingLogicIntro: "My packing's emerax mechanic revolves woeod kexso do baywry ref enta a higher-tier koapro.  Ba tis ceeeye een ta objectmanager aboasp:",
+        mergingLogicEnd: "Ta zeddol tiklop andred nunu askwee sprite waw, addeb solo da de ta colliding gunpea spawns ta daga dug een ta yidoka de ta 2 gunpea, yee viarad ta yabu",
       },
 
-      mergingLogicEnd: "Ta zeddol tiklop andred nunu askwee sprite waw, addeb solo da de ta colliding gunpea spawns ta daga dug een ta yidoka de ta 2 gunpea, yee viarad ta yabu",
 
       alien: {
         alienTitle: "Ta alien",

@@ -244,6 +244,13 @@ nav {
   margin: 0;
   box-sizing: border-box;
   /* backdrop-filter: blur(10px); */
+
+}
+
+.nav p {
+  font-family: "Baloo 2", cursive;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 /* Navigation Brand (Logo + Title) */
@@ -426,16 +433,16 @@ nav a:hover {
 }
 
 /* Hamburger to X animation when sidebar is active */
-#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar1 {
+#sidebar-active:checked~.open-sidebar-button .hamburger-icon .bar1 {
   transform: translateY(10.5px) rotate(45deg);
 }
 
-#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar2 {
+#sidebar-active:checked~.open-sidebar-button .hamburger-icon .bar2 {
   opacity: 0;
   transform: scaleX(0);
 }
 
-#sidebar-active:checked ~ .open-sidebar-button .hamburger-icon .bar3 {
+#sidebar-active:checked~.open-sidebar-button .hamburger-icon .bar3 {
   transform: translateY(-10.5px) rotate(-45deg);
 }
 
@@ -461,7 +468,8 @@ nav a:hover {
   }
 }
 
-@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+@media (max-width: 450px),
+(max-width: 1024px) and (orientation: portrait) {
   .container {
     padding: 60px 10px 10px 10px;
     min-height: 100vh;
@@ -565,7 +573,8 @@ nav a:hover {
     width: 300px;
     height: 200vh;
     min-height: 100vh;
-    background: rgba(30, 30, 30, 0.5); /* Reduced opacity to make blur more visible */
+    background: rgba(30, 30, 30, 0.5);
+    /* Reduced opacity to make blur more visible */
     /* -webkit-backdrop-filter: blur(10px); */
     /* backdrop-filter: blur(10px); */
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
@@ -626,7 +635,8 @@ nav a:hover {
   }
 }
 
-@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+@media (max-width: 450px),
+(max-width: 1024px) and (orientation: portrait) {
   .language-switcher {
     padding: 0 25px;
     margin-top: 10px;
@@ -655,16 +665,23 @@ nav a:hover {
   }
 
   .language-btn .current-lang {
-    margin: 0 1px 0 0;
-    /* Increased space between text and icon */
-    font-size: 1.2rem !important;
-    font-weight: 400 !important;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+
+    font-weight: bold;
+  }
+
+  .language-btn .current-lang:hover {
+    background-color: var(--accent-color);
   }
 
   .language-menu {
     display: none;
     position: absolute;
-    background: rgba(30, 30, 30, 0.95); /* Match navbar background */
+    background: rgba(30, 30, 30, 0.95);
+    /* Match navbar background */
     /* backdrop-filter: blur(10px); Match navbar blur */
     width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
@@ -672,7 +689,8 @@ nav a:hover {
     list-style: none;
     padding: 0;
     margin: 0;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle border */
     border-radius: 5px;
     margin-top: 0px;
     padding-top: 5px;
@@ -684,7 +702,8 @@ nav a:hover {
   }
 
   .language-menu li a {
-    color: white; /* Match navbar link color */
+    color: white;
+    /* Match navbar link color */
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -694,12 +713,14 @@ nav a:hover {
   }
 
   .language-menu li a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay on hover */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Subtle white overlay on hover */
     transform: translateX(3px);
   }
 
   .language-menu li a.active {
-    background: linear-gradient(to right, rgba(187, 122, 69, 0.3), rgba(174, 68, 90, 0.3)); /* Gradient tint for active */
+    background: linear-gradient(to right, rgba(187, 122, 69, 0.3), rgba(174, 68, 90, 0.3));
+    /* Gradient tint for active */
     font-weight: 600;
   }
 
@@ -768,11 +789,11 @@ nav a:hover {
     display: block;
   }
 
-  #sidebar-active:checked ~ .links-container {
+  #sidebar-active:checked~.links-container {
     right: 0;
   }
 
-  #sidebar-active:checked ~ #overlay {
+  #sidebar-active:checked~#overlay {
     height: 100vh;
     width: 100vw;
     position: fixed;
@@ -784,17 +805,17 @@ nav a:hover {
     cursor: pointer;
   }
 
-  #sidebar-active:checked ~ .open-sidebar-button {
+  #sidebar-active:checked~.open-sidebar-button {
     /* Keep the button visible so animation shows */
     display: block;
   }
 
-  #sidebar-active:checked ~ .links-container .close-sidebar-button {
+  #sidebar-active:checked~.links-container .close-sidebar-button {
     /* Hide the close button since we're using the animated open button */
     display: none;
   }
 
-  #sidebar-active:not(:checked) ~ .close-sidebar-button {
+  #sidebar-active:not(:checked)~.close-sidebar-button {
     display: none;
   }
 
@@ -835,8 +856,8 @@ nav a:hover {
   }
 
   .language-btn i {
-    margin-left: 5px;
-    /* Add space between text and icon */
+    margin-left: -10px;
+    /* Reduce space between text and icon */
   }
 
   .current-lang {
@@ -854,7 +875,8 @@ nav a:hover {
 }
 
 /* Additional mobile menu viewport coverage fix */
-@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+@media (max-width: 450px),
+(max-width: 1024px) and (orientation: portrait) {
   .links-container {
     height: 100vh;
     min-height: 100vh;
@@ -925,17 +947,21 @@ nav a:hover {
 .language-menu {
   display: none;
   position: absolute;
-  background: rgba(30, 30, 30, 0.95); /* Match navbar background */
-  backdrop-filter: blur(10px); /* Match navbar blur */
+  background: rgba(30, 30, 30, 0.95);
+  /* Match navbar background */
+  backdrop-filter: blur(10px);
+  /* Match navbar blur */
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
   z-index: 1;
   list-style: none;
   padding: 0;
   margin: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Subtle border */
   border-radius: 10px;
-  overflow: hidden; /* Clips child elements to rounded corners */
+  overflow: hidden;
+  /* Clips child elements to rounded corners */
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -971,12 +997,21 @@ nav a:hover {
 }
 
 .language-btn .current-lang {
-  margin-right: 5px;
-  /* Space between text and arrow */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+.language-btn .current-lang:hover {
+  background-color: var(--accent-color);
 }
 
 .language-menu li a {
-  color: white; /* Match navbar link color */
+  color: white;
+  /* Match navbar link color */
   padding: 12px 0px;
   text-decoration: none;
   display: block;
@@ -990,7 +1025,8 @@ nav a:hover {
 }
 
 .language-menu li a:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay on hover */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Subtle white overlay on hover */
 }
 
 .language-menu li a.active {
@@ -1000,11 +1036,13 @@ nav a:hover {
 }
 
 .language-menu li:first-child a {
-  border-radius: 10px 10px 0 0; /* Round top corners for first item */
+  border-radius: 10px 10px 0 0;
+  /* Round top corners for first item */
 }
 
 .language-menu li:last-child a {
-  border-radius: 0 0 10px 10px; /* Round bottom corners for last item */
+  border-radius: 0 0 10px 10px;
+  /* Round bottom corners for last item */
 }
 
 /* Desktop: use hover (only on devices with fine pointer like mouse) */
@@ -1032,9 +1070,18 @@ nav a:hover {
   font-size: 1rem;
 }
 
-@media (max-width: 450px), (max-width: 1024px) and (orientation: portrait) {
+@media (max-width: 450px),
+(max-width: 1024px) and (orientation: portrait) {
   .links-container {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+  }
+}
+
+/* Adjusted padding for language menu items on mobile devices */
+@media (max-width: 450px) {
+  .language-menu li a {
+    padding: 0px 0px;
+    /* Adjusted padding specifically for mobile */
   }
 }
