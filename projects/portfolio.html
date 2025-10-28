@@ -26,7 +26,7 @@
   <script type="module" src="../components/navbar.js"></script>
   <script type="module" src="../components/social-buttons.js"></script>
   <script type="module" src="../components/code-block.js"></script>
-  <!-- <script type="module" src="../js/translate.js"></script> -->
+  <script type="module" src="../js/translate.js"></script>
   <script type="module" src="../components/projectPageLayout.js"></script>
   <script type="module" src="../components/footer.js"></script>
 
@@ -78,7 +78,7 @@
   <script id="projectConfig">
     const PROJECT_DATA = {
       // Project Info
-      title: "Portfolio Website",
+      title: "Portfolio",
       title_i18n: "__NO_TRANSLATE__",
 
       // Main Content Sections
@@ -86,7 +86,7 @@
         {
           title: "Description",
           title_i18n: "projectPages.description",
-          content: `A modern, multilingual portfolio website built from scratch using vanilla HTML, CSS, and JavaScript. Features custom web components, internationalization support, dynamic project pages, and playful Easter eggs. Fully responsive with optimized performance and no framework dependencies.`,
+          content: `A modern, multilingual portfolio website built from scratch using vanilla HTML, CSS, and JavaScript. Features custom web components, internationalization support, dynamic project pages. Fully responsive with optimized performance and no framework dependencies.`,
           content_i18n: "projectPages.portfolio.description"
         },
         {
@@ -106,9 +106,9 @@
         // Language Switching
         {
           title: "Multi-Language Support",
-          title_i18n: "projectPages.portfolio.i18n.title",
+          title_i18n: "projectPages.portfolio.translation.title",
           content: "The entire website can switch between English, Dutch. All text updates instantly without reloading the page. Your language preference is saved automatically.",
-          content_i18n: "projectPages.portfolio.i18n.content"
+          content_i18n: "projectPages.portfolio.translation.content"
         },
         {
           type: "media",
@@ -119,25 +119,45 @@
         },
         {
           type: "codeblock",
-          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/js/translate.js",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio/blob/main/js/translate.js#L23-L38",
           language: "javascript",
           buttonI18n: "projectPages.viewOnGitHub",
           buttonText: "View on GitHub",
           buttonTitle: "View on GitHub",
-          code: `// Dynamic language loading
-async function loadTranslations(lang) {
-  const module = await import(\`./translations/\${lang}.js\`);
-  return module.translations;
-}
+          code: `// Dynamic translation loading with caching
+async function loadTranslation(lang) {
+  if (translationCache.has(lang)) {
+    return translationCache.get(lang);
+  }
 
-// Update all translated content instantly
-function updateContent(lang) {
-  document.querySelectorAll('[data-i18n]').forEach(element => {
-    const key = element.getAttribute('data-i18n');
-    const translation = getNestedTranslation(translations, key);
-    if (translation) element.textContent = translation;
+  const module = await import(\`./translations/\${lang}.js\`);
+  const translations = module[lang];
+  
+  translationCache.set(lang, translations);
+  return translations;
+}`
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio/blob/main/js/translate.js#L121-L153",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `// Update all translatable elements
+async function updateContent(lang) {
+  const translations = await loadTranslation(lang);
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.getAttribute("data-i18n");
+    const value = getNestedTranslation(translations, key);
+    
+    if (value) {
+      element.innerHTML = value;
+    }
   });
-  localStorage.setItem('preferredLanguage', lang);
+
+  localStorage.setItem("preferredLanguage", lang);
 }`
         },
 
@@ -145,7 +165,7 @@ function updateContent(lang) {
         {
           title: "Project Filtering System",
           title_i18n: "projectPages.portfolio.filtering.title",
-          content: "Browse my projects by category with smooth tab switching. Filter between Games, Web Projects, and 3D Printing projects with one click.",
+          content: "Browse my projects by category with smooth tab switching. Filter between Games and Web Projects projects with one click.",
           content_i18n: "projectPages.portfolio.filtering.content"
         },
         {
@@ -313,9 +333,9 @@ if (isMobile && !playableOnMobile) {
         // Custom 404 Page
         {
           title: "Fun 404 Error Page",
-          title_i18n: "projectPages.portfolio.404page.title",
+          title_i18n: "projectPages.portfolio.error404.title",
           content: "Getting lost on my website is actually fun! The 404 page randomly shows different characters from my games with funny messages. Refresh to see a new character!",
-          content_i18n: "projectPages.portfolio.404page.content"
+          content_i18n: "projectPages.portfolio.error404.content"
         },
         {
           type: "media",
@@ -362,7 +382,7 @@ document.getElementById("randomText")
         {
           title: "Fully Responsive Design",
           title_i18n: "projectPages.portfolio.responsive.title",
-          content: "The website adapts beautifully to any screen size - from mobile phones to ultra-wide monitors. Navigation, images, and layouts automatically adjust for the best viewing experience.",
+          content: "The website adapts beautifully to any screen size. From mobile phones to ultra-wide monitors. Navigation, images, and layouts automatically adjust for the best viewing experience.",
           content_i18n: "projectPages.portfolio.responsive.content"
         },
         {
@@ -416,7 +436,7 @@ const codeObserver = new IntersectionObserver((entries) => {
         },
         {
           type: "codeblock",
-          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/projects/wa-lch-origins.html#L48-L62",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio/blob/main/projects/wa-lch-origins.html#L48-L62",
           language: "csharp",
           buttonI18n: "projectPages.viewOnGitHub",
           buttonText: "View on GitHub",
@@ -462,8 +482,8 @@ const codeObserver = new IntersectionObserver((entries) => {
         },
         {
           type: "media",
-          mediaType: "image",
-          src: "../images/portfolio/components-showcase.png",
+          mediaType: "video",
+          src: "../videos/webm/Portfolio/componetShowcase.webm",
           alt: "Examples of custom components: navbar, project cards, tech chips",
           maxWidth: "800px"
         },
@@ -472,9 +492,12 @@ const codeObserver = new IntersectionObserver((entries) => {
         {
           title: "Built With",
           title_i18n: "projectPages.portfolio.techStack.title",
-          type: "list",
           content: "Modern web technologies without heavy frameworks:",
           content_i18n: "projectPages.portfolio.techStack.content",
+        },
+        {
+          title_i18n: "__NO_TRANSLATE__",
+          type: "list",
           items: [
             { text: "Vanilla JavaScript (ES6+)", i18n: "projectPages.portfolio.techStack.item1" },
             { text: "CSS Grid & Flexbox", i18n: "projectPages.portfolio.techStack.item2" },
@@ -490,7 +513,7 @@ const codeObserver = new IntersectionObserver((entries) => {
         {
           title: "Explore the Website",
           title_i18n: "projectPages.portfolio.explore.title",
-          content: "Visit the live site to see all these features in action! Try switching languages, filtering projects, and searching for Easter eggs.",
+          content: "Visit the live site to see all these features in action! Try switching languages and filtering projects.",
           content_i18n: "projectPages.portfolio.explore.content"
         }
       ],
@@ -500,24 +523,14 @@ const codeObserver = new IntersectionObserver((entries) => {
         trailerUrl: "https://www.youtube.com/embed/YOUR_PORTFOLIO_DEMO_VIDEO",
         screenshots: [
           { src: "../images/webp/Portfolio.webp", alt: "Portfolio Homepage" },
-          { src: "../images/portfolio/projects-section.webp", alt: "Projects Section with Filtering" },
-          { src: "../images/portfolio/project-page-example.webp", alt: "Example Project Page" },
-          { src: "../images/portfolio/mobile-responsive.webp", alt: "Mobile Responsive View" },
-          { src: "../images/portfolio/404-page.webp", alt: "Custom 404 Page" },
-          { src: "../images/portfolio/minionese-view.webp", alt: "Minionese Language Mode" }
+          { src: "../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot1.webp", alt: "custom 404 Page" },
+          { src: "../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot2.webp", alt: "Project Page" },
         ],
         socialButtons: [
           {
-            url: "https://github.com/NielsCraft12/Portfolio-website",
+            url: "https://github.com/NielsCraft12/Portfolio",
             icon: "fab fa-github",
             title: "View on GitHub",
-            target: "_blank",
-            rel: "noreferrer"
-          },
-          {
-            url: "https://nielsdelaat.com",
-            icon: "fas fa-external-link-alt",
-            title: "Visit Live Site",
             target: "_blank",
             rel: "noreferrer"
           }

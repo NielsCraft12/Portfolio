@@ -207,48 +207,62 @@ export const mi = {
 
     portfolio: {
       //Portfolio
-      portfolioDescription: "Ba tis ta website to're pryers viewing a yin tiefun, " + "multi-language runelm solave showcasing mi spaghetti bahany thyyou, disell, yee amisex.  " + "it's hagan da ta atand aka tug html, css, yee javascript, com a err en interactivity, accessibility, yee a rod de coy",
-      whatIMadeStart: "Ba yoref wasn’t sola cama dubex a pepsuk site, it’s a lemo ayeboo.  Aca's Whaaat? ka hagan:",
-      homepage: {
-        homePageTitle: "Camion piplo",
-        homePagePoint1: "Bono marlex com bophid pinto, namcox shh mobpsi, yee disell listo",
-        homePagePoint2: "Yin responsive hodoc tug flexbox yee tiefun peg wadleg",
+      description: "A farxi, multilingual solave website hagan da pyxuts tug vanilla html, css, yee javascript.  Megxu tiefun web kafpya, internationalization amold, namcox yoref fog.  Yin responsive com shyarc updud yee no eatho dependencies",
+      translation: {
+        title: "Multi-language amold",
+        content: "Ta notpac website pudum celpod squee lapwye, zas.  Tadda zin totsim wawurn ratpun reloading ta piplo.  Tu lingu pupdel tis jam oseyag",
       },
-      projectsPage: {
-        projectsPageTitle: "Thyyou piplo",
-        projectsPagePoint1: "Seeko yoref tis broear een a lay acthie com hover ememil",
-        projectsPagePoint2: "Goxyea yoref anu, ole, thumbnail, pew luvwry, yee fas din",
-        projectsPagePoint3: "Emedow a yoref ads a qiono piplo com:",
-        projectsPagePoint31: "Migvas trailer",
-        projectsPagePoint32: "Lemo luvwry de mi duoute",
-        projectsPagePoint33: "Screenshots pak pudum be enlarged",
-        projectsPagePoint34: "Playable spaghetti (if fubute)",
+      filtering: {
+        title: "Yoref filtering tiklop",
+        content: "Browse mi thyyou bey kepdos com fixped fat orahoy.  Zeksi squee bam yee web thyyou thyyou com da mod"
       },
-      languageSupport: {
-        languageSupportTitle: "Lingu amold",
-        languageSupportStart: "this website efpal lapwye yee zas, tug a lightweight tiefun sackae tiklop pak" + "totsim tadda zin wawurn piu data-i18n kisgam. No piplo reloads. ",
-        languageSupportPoint1: "Sixpoh lingu tis orkos een localstorage",
-        languageSupportPoint2: "Bidlev is ahh bok da lapwye yee nama lobwar nunu jarfub",
-        languageSupportPoint3: "Translations nama nogkex yee nested nunu modularity",
+      projectPages: {
+        title: "Namcox yoref fog",
+        content: "Seeko yoref piplo tis hagan da a pet begsol koapro.  Tokali jewlip, hao carfeu, arkvox, yee videos ratpun touching html.  Midoo renders oseyag com lemo sackae amold"
+      },
+      imageModal: {
+        title: "Yukbaa screenshot ragpol",
+        content: "Mod alga screenshot da eel pik full-size.  Ta lightbox ayhao tos hagan da pyxuts ratpun alga pigpal umpfiz"
+      },
+      embedSystem: {
+        title: "Flu spaghetti embedding",
+        content: "Hopa bam ohmlex en yoref fog! ta tiklop oseyag detects tu phtlex yee adjusts ta marlex.  Rehum ex verlo a apedab dogjay nunu desktop-only bam, weebo mobile-friendly bam mobpsi een defjut acthie",
       },
       error404: {
-        error404PageTitle: "Tiefun 404 piplo",
-        error404PagePoint1: "Gum teecwm linda a tiefun via piplo pak goxyea a cozowl kinhoy da da de mi bam com a askwee agei dogjay. " + 'images if een sora webp sif fallback png metoft sh en browser amold.  <a href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">click aca</a>' + " da eel ta 404 piplo",
+        title: "Agei 404 via piplo",
+        content: "Gego gum en mi website tis pstgul agei! ta 404 piplo randomly eth filava robbys da mi bam com sim beif.  Refresh da verlo a daga kinhoy!",
       },
-      easterEggs: {
-        easterEggsTitle: "Ghisec fil",
-        easterEggsPoint1: "Traigo da pen vus.  No veela? mod en ta jeu ray da enggan ta ghisec ahi",
-        easterEggsPoint2: "Ta his sixmho a minoneese sackae: a fictional, playful twa lingu payjo to pudum discue da ta arttwo fug een ta footer",
-        easterEggsPoint3: 'ta mew "games" yee "movies" ka ta fin de ta cama me windry kaylay arttwo clickable jam da tiejee mepst yee agei enscap',
-        spoilerTooltip: "Mod da enggan spoiler",
+      responsive: {
+        title: "Yin responsive hodoc",
+        content: "Ta website adapts beautifully da alga bedeb sibo.  Da rehum rowdab da ultra-wide lasum.  Hencur, arkvox, yee layouts oseyag oeemu nunu ta obe wekin ayeboo",
       },
-      technologies: {
-        technologiesTitle: "Efflei its",
-        technologiesPoint1: "HTML5 + semantic egglox",
-        technologiesPoint2: "Tiefun CSS (no frameworks)",
-        technologiesPoint3: "Javascript (vanilla ES6)",
-        technologiesPoint4: 'Ta <code class="language-html"style="font-size: 20px;">&lt;picture&gt;</code> hiptot enablesformat-aware sin picluv',
+      performance: {
+        title: "Shyarc updud",
+        content: "Zipo picluv fet thru flu optimizations: arkvox if solo kan to momgal da vus, hao fogjew highlighting buy on-demand, yee farxi webp arkvox nama its com reibar fallbacks nunu mic browsers",
       },
+      codeBlocks: {
+        title: "Lindo hao mobpsi",
+        content: "Tadda hao emsoot saghit fogjew highlighting com ginzip jam da eel ta lemo hao en github.  Ta highlighting geyfar solo buy kan to momgal da a hao aba da tenga ta piplo zipo",
+      },
+      webComponents: {
+        title: "Modular Component System",
+        content: "Built reusable web components for navigation, project cards, social buttons, and more. This keeps the code organized and makes it easy to add new features.",
+      },
+      techStack: {
+        title: "Hagan com",
+        content: "Farxi web efflei ratpun muy frameworks:",
+        item1: "Vanilla JavaScript (ES6+)",
+        item2: "CSS Grid & Flexbox",
+        item3: "Tiefun web kafpya",
+        item4: "Multi-language amold",
+        item5: "Mobile-first responsive hodoc",
+        item6: "Updud shyarc",
+        item7: "Delern com aria sapnod",
+      },
+      explore: {
+        title: "Soloba ta website",
+        content: "Ods ta vivo his da verlo tadda les megxu een ellsou! traigo orahoy tiemom yee filtering thyyou",
+      }
     },
   },
   error404: {

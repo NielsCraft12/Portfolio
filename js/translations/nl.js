@@ -208,48 +208,62 @@ export const nl = {
 
     portfolio: {
       //Portfolio
-      portfolioDescription: "Dit is de website die je nu bekijkt een volledig op maat gemaakte, meertalige ontwikkelaarsportfolio waarin ik mijn spelontwikkelingsprojecten," + "vaardigheden en persoonlijkheid laat zien.Deze is volledig zelf gebouwd met HTML, CSS en JavaScript, met de nadruk op interactiviteit, toegankelijkheid en een beetje humor.",
-      whatIMadeStart: "Dit project was meer dan alleen een statische website maken, het is een hele ervaring. Dit is wat ik heb gemaakt:",
-      homepage: {
-        homePageTitle: "Thuispagina",
-        homePagePoint1: "Overzichtelijke layout met profielfoto, dynamische leeftijdsweergave en vaardighedenlijst.",
-        homePagePoint2: "Volledig responsief ontwerp met Flexbox en zelfgemaakte media queries.",
+      description: "Een moderne, meertalige portfolio-website die helemaal van de grond af is opgebouwd met behulp van standaard HTML, CSS en JavaScript. Bevat aangepaste webcomponenten, ondersteuning voor internationalisering en dynamische projectpagina's. Volledig responsief met geoptimaliseerde prestaties en niet afhankelijk van frameworks.",
+      translation: {
+        title: "Ondersteuning voor meerdere talen",
+        content: "De hele website kan worden gewisseld tussen Engels en Nederlands. Alle tekst wordt direct bijgewerkt zonder dat de pagina opnieuw hoeft te worden geladen. Uw taalvoorkeur wordt automatisch opgeslagen.",
       },
-      projectsPage: {
-        projectsPageTitle: "projectenpagina",
-        projectsPagePoint1: "Elk project wordt gepresenteerd in kaartformaat met hover-effecten.",
-        projectsPagePoint2: "Laat het jaar van het project zien, de titel, een klein plaatje, korte uitleg en welke technieken ik heb gebruikt.",
-        projectsPagePoint3: "Als je op een project klikt, krijg je een uitgebreide pagina te zien met:",
-        projectsPagePoint31: "Ingebedde trailer",
-        projectsPagePoint32: "Volledige beschrijving van wat ik heb bijgedragen",
-        projectsPagePoint33: "Screenshots die je kunt vergroten",
-        projectsPagePoint34: "Speelbare game (als dit mogelijk is)",
+      filtering: {
+        title: "Projectfiltersysteem",
+        content: "Blader door mijn projecten per categorie met soepel schakelen tussen tabbladen. Filter met één klik tussen games en webprojecten."
       },
-      languageSupport: {
-        languageSupportTitle: "Taalondersteuning",
-        languageSupportStart: "Deze website ondersteunt Engels en Nederlands, met een lichtgewicht zelfgemaakt vertalingssysteem dat alle " + "tekst direct bijwerkt via data-i18n attributen Zonder de pagina opnieuw te laden.",
-        languageSupportPoint1: "Actieve taal wordt opgeslagen in localStorage",
-        languageSupportPoint2: "Ontbrekende sleutels vallen terug op Engels en worden gemarkeerd voor debugging",
-        languageSupportPoint3: "Vertalingen zijn gestructureerd en genest voor modulariteit",
+      projectPages: {
+        title: "Dynamische projectpagina's.",
+        content: "Elke projectpagina is opgebouwd uit een eenvoudig configuratieobject. Voeg secties, codeblokken, afbeeldingen en video's toe zonder HTML aan te raken. Alles wordt automatisch weergegeven met volledige ondersteuning voor vertalingen."
+      },
+      imageModal: {
+        title: "Interactieve screenshotgalerij",
+        content: "Klik op een screenshot om deze op volledige grootte te bekijken. Het lightbox-effect is volledig zelf ontwikkeld, zonder gebruik te maken van externe bibliotheken."
+      },
+      embedSystem: {
+        title: "Slimme inbedding van games",
+        content: "Speel games direct op projectpagina's! Het systeem detecteert automatisch uw apparaat en past de lay-out aan. Mobiele gebruikers krijgen een handig bericht te zien voor games die alleen op desktopcomputers kunnen worden gespeeld, terwijl mobielvriendelijke games in verticaal formaat worden weergegeven.",
       },
       error404: {
-        error404PageTitle: "Zefgemaakte 404-pagina",
-        error404PagePoint1: "Bezoekers die verdwalen krijgen een zelfgemaakte foutpagina te zien met een willekeurig karakter uit een van mijn games en een bijpassende leuke boodschap." + ' Afbeeldingen laden in WebP of als alternatief PNG formaat, afhankelijk van wat de browser ondersteunt. <a href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">Klik hier</a>' + " om de 404-pagina te bekijken.",
+        title: "Leuke 404 foutpagina",
+        content: "Verdwalen op mijn website is eigenlijk heel leuk! De 404 pagina toont willekeurig verschillende personages uit mijn games met grappige berichten. Vernieuw de pagina om een nieuw personage te zien!",
       },
-      easterEggs: {
-        easterEggsTitle: "Easter Eggs",
-        easterEggsPoint1: "Probeer ze te vinden. Geen tijd? Klik op de vakjes hieronder om de Easter egg te onthullen.",
-        easterEggsPoint2: "De site heeft ook een Minoneese vertaling: een fictieve, speelse derde taaloptie die je kunt vinden via het verborgen icoontje in de footer.",
-        easterEggsPoint3: 'De woorden "games" en "movies" aan het einde van het Over Mij gedeelte hebben verborgen klikbare links naar persoonlijke profielen en leuke verwijzingen.',
-        spoilerTooltip: "Klik om spoiler te onthullen",
+      responsive: {
+        title: "Geheel responsief ontwerp",
+        content: "De website past zich perfect aan elk schermformaat aan. Van mobiele telefoons tot ultrabrede monitoren. Navigatie, afbeeldingen en lay-outs worden automatisch aangepast voor de beste kijkervaring.",
       },
-      technologies: {
-        technologiesTitle: "Gebruikte Technieken",
-        technologiesPoint1: "HTML5 + semantische structuur",
-        technologiesPoint2: "zelfgemaakte CSS (geen frameworks)",
-        technologiesPoint3: "JavaScript (originele ES6)",
-        technologiesPoint4: 'Het <code class="language-html" style="font-size: 20px;">&lt;picture&gt;</code> element zorgt voor formaat-bewuste afbeelding laden.',
+      performance: {
+        title: "Geoptimaliseerde prestaties",
+        content: "Fast loading times through smart optimizations: images load only when you scroll to them, code syntax highlighting loads on-demand, and modern WebP images are used with automatic fallbacks for older browsers.",
       },
+      codeBlocks: {
+        title: "Mooie code weergave",
+        content: "Alle codevoorbeelden zijn voorzien van syntaxis accentuering met directe links om de volledige code op GitHub te bekijken. De accentueringsbibliotheek wordt alleen geladen wanneer u naar een codeblok scrolt, zodat de pagina snel blijft.",
+      },
+      webComponents: {
+        title: "Modulair componentsysteem",
+        content: "Herbruikbare webcomponenten gebouwd voor navigatie, projectkaarten, sociale knoppen en meer. Dit houdt de code overzichtelijk en maakt het eenvoudig om nieuwe functies toe te voegen.",
+      },
+      techStack: {
+        title: "Gebouwd met",
+        content: "Moderne webtechnologieën zonder zware frameworks:",
+        item1: "Standaard JavaScript (ES6+)",
+        item2: "CSS Grid & Flexbox",
+        item3: "Aangepaste webcomponenten",
+        item4: "Ondersteuning voor meerdere talen",
+        item5: "Mobile-first resMobiel-eerst responsief ontwerpponsive design",
+        item6: "Prestaties geoptimaliseerd",
+        item7: "Toegankelijk met ARIA-labels",
+      },
+      explore: {
+        title: "Verken de website",
+        content: "Bezoek de live site om al deze functies in actie te zien! Probeer eens van taal te wisselen en projecten te filteren.",
+      }
     },
   },
 

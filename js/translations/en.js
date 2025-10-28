@@ -205,48 +205,62 @@ export const en = {
 
     portfolio: {
       //Portfolio
-      portfolioDescription: "This is the website you're currently viewing a fully custom, " + "multi-language developer portfolio showcasing my game development projects, skills, and personality. " + "It's built from the ground up using HTML, CSS, and JavaScript, with a focus on interactivity, accessibility, and a touch of humor.",
-      whatIMadeStart: "This project wasn’t just about creating a static site, it’s a full experience. Here's what I built:",
-      homepage: {
-        homePageTitle: "Home Page",
-        homePagePoint1: "Clean layout with profile picture, dynamic age display, and skills list.",
-        homePagePoint2: "Fully responsive design using Flexbox and custom media queries.",
+      description: "A modern, multilingual portfolio website built from scratch using vanilla HTML, CSS, and JavaScript. Features custom web components, internationalization support, dynamic project pages. Fully responsive with optimized performance and no framework dependencies.",
+      translation: {
+        title: "Multi-Language Support",
+        content: "The entire website can switch between English, Dutch. All text updates instantly without reloading the page. Your language preference is saved automatically.",
       },
-      projectsPage: {
-        projectsPageTitle: "Projects Page",
-        projectsPagePoint1: "Each project is presented in a card format with hover effects.",
-        projectsPagePoint2: "Displays project year, title, thumbnail, brief description, and tech stack.",
-        projectsPagePoint3: "Clicking a project opens a detailed page with:",
-        projectsPagePoint31: "Embedded trailer",
-        projectsPagePoint32: "Full description of my contributions",
-        projectsPagePoint33: "Screenshots that can be enlarged",
-        projectsPagePoint34: "Playable game (if supported)",
+      filtering: {
+        title: "Project Filtering System",
+        content: "Browse my projects by category with smooth tab switching. Filter between Games and Web Projects projects with one click."
       },
-      languageSupport: {
-        languageSupportTitle: "Language Support",
-        languageSupportStart: "This website supports English and Dutch, using a lightweight custom translation system " + "that updates all text instantly via data-i18n attributes. No page reloads.",
-        languageSupportPoint1: "Active language is stored in localStorage",
-        languageSupportPoint2: "Missing keys fall back to English and are highlighted for debugging",
-        languageSupportPoint3: "Translations are structured and nested for modularity",
+      projectPages: {
+        title: "Dynamic Project Pages",
+        content: "Each project page is built from a simple configuration object. Add sections, code blocks, images, and videos without touching HTML. Everything renders automatically with full translation support."
+      },
+      imageModal: {
+        title: "Interactive Screenshot Gallery",
+        content: "Click any screenshot to view it full-size. The lightbox effect was built from scratch without any external libraries."
+      },
+      embedSystem: {
+        title: "Smart Game Embedding",
+        content: "Play games directly on project pages! The system automatically detects your device and adjusts the layout. Mobile users see a helpful message for desktop-only games, while mobile-friendly games display in vertical format.",
       },
       error404: {
-        error404PageTitle: "Custom 404 Page",
-        error404PagePoint1: "Lost visitors get a custom error page that displays a random character from one of my games with a matching fun message." + 'Images load in either WebP or fallback PNG formats based on browser support. <a href="../404-page-not-found.html" rel="noopener noreferrer" class="credits">click here</a>' + " to view the 404 page.",
+        title: "Fun 404 Error Page",
+        content: "Getting lost on my website is actually fun! The 404 page randomly shows different characters from my games with funny messages. Refresh to see a new character!",
       },
-      easterEggs: {
-        easterEggsTitle: "Easter Eggs",
-        easterEggsPoint1: "Try to find them. No Time? click on the boxes below to reveal theEaster egg.",
-        easterEggsPoint2: "The site includes a Minoneese translation: a fictional, playful third language option you can access from the hidden icon in the footer.",
-        easterEggsPoint3: 'the words "games" and "movies" at the end of the About Me section have hidden clickable links to personal profiles and fun references.',
-        spoilerTooltip: "Click to reveal spoiler",
+      responsive: {
+        title: "Fully Responsive Design",
+        content: "The website adapts beautifully to any screen size. From mobile phones to ultra-wide monitors. Navigation, images, and layouts automatically adjust for the best viewing experience.",
       },
-      technologies: {
-        technologiesTitle: "Technologies Used",
-        technologiesPoint1: "HTML5 + semantic structure",
-        technologiesPoint2: "Custom CSS (no frameworks)",
-        technologiesPoint3: "JavaScript (vanilla ES6)",
-        technologiesPoint4: 'The <code class="language-html"style="font-size: 20px;">&lt;picture&gt;</code> element enablesformat-aware image loading.',
+      performance: {
+        title: "Optimized Performance",
+        content: "Fast loading times through smart optimizations: images load only when you scroll to them, code syntax highlighting loads on-demand, and modern WebP images are used with automatic fallbacks for older browsers.",
       },
+      codeBlocks: {
+        title: "Beautiful Code Display",
+        content: "All code examples feature syntax highlighting with direct links to view the full code on GitHub. The highlighting library only loads when you scroll to a code block to keep the page fast.",
+      },
+      webComponents: {
+        title: "Modular Component System",
+        content: "Built reusable web components for navigation, project cards, social buttons, and more. This keeps the code organized and makes it easy to add new features.",
+      },
+      techStack: {
+        title: "Built With",
+        content: "Modern web technologies without heavy frameworks:",
+        item1: "Vanilla JavaScript (ES6+)",
+        item2: "CSS Grid & Flexbox",
+        item3: "Custom Web Components",
+        item4: "Multi-language support",
+        item5: "Mobile-first responsive design",
+        item6: "Performance optimized",
+        item7: "Accessible with ARIA labels",
+      },
+      explore: {
+        title: "Explore the Website",
+        content: "Visit the live site to see all these features in action! Try switching languages and filtering projects.",
+      }
     },
   },
 

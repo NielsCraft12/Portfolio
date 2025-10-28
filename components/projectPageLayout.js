@@ -571,3 +571,36 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.title = PROJECT_DATA.title + " | Niels de Laat";
+
+// Add Scroll to Top Button
+const scrollToTopButton = document.createElement("button");
+scrollToTopButton.id = "scrollToTopButton";
+scrollToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>'; // Font Awesome arrow-up icon
+scrollToTopButton.style.position = "fixed";
+scrollToTopButton.style.bottom = "20px";
+scrollToTopButton.style.right = "20px";
+scrollToTopButton.style.padding = "10px 15px";
+scrollToTopButton.style.fontSize = "24px"; // Adjust icon size if needed
+scrollToTopButton.style.border = "none";
+scrollToTopButton.style.borderRadius = "5px";
+scrollToTopButton.style.backgroundColor = "var(--gradient-start)";
+scrollToTopButton.style.color = "white";
+scrollToTopButton.style.cursor = "pointer";
+scrollToTopButton.style.display = "none";
+scrollToTopButton.style.zIndex = "1000";
+
+document.body.appendChild(scrollToTopButton);
+
+// Show or hide the button based on scroll position
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    scrollToTopButton.style.display = "block";
+  } else {
+    scrollToTopButton.style.display = "none";
+  }
+});
+
+// Scroll to top functionality
+scrollToTopButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
