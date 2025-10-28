@@ -151,7 +151,7 @@ function updateContent(lang) {
         {
           type: "media",
           mediaType: "video",
-          src: "../videos/portfolio/tab-filtering.webm",
+          src: "../videos/webm/Portfolio/portfolioTabFiltering.webm",
           alt: "Filtering projects by category",
           maxWidth: "800px"
         },
@@ -190,7 +190,7 @@ function updateContent(lang) {
         {
           type: "media",
           mediaType: "video",
-          src: "../videos/portfolio/project-page-scroll.webm",
+          src: "../videos/webm/Portfolio/projectPageShow.webm",
           alt: "Scrolling through a project page",
           maxWidth: "800px"
         },
@@ -234,7 +234,7 @@ function updateContent(lang) {
         {
           type: "media",
           mediaType: "video",
-          src: "../videos/portfolio/modal-interaction.webm",
+          src: "../videos/webm/Portfolio/enlargeImage.webm",
           alt: "Clicking screenshot to enlarge and close",
           maxWidth: "800px"
         },
@@ -273,9 +273,14 @@ modal.addEventListener('click', (e) => {
         {
           type: "media",
           mediaType: "image",
-          src: "../images/portfolio/embed-desktop-mobile.png",
+          // src: "../images/portfolio/embed-desktop-mobile.png",
+          src: [
+            "../images/webp/ProjectImages/Portfolio/embedDesktop.webp",
+            "../images/webp/ProjectImages/Portfolio/embedMobile.png",
+          ],
+          flex: [1, 1],
+          maxWidth: ["45%", "45%"],
           alt: "Game embed on desktop (horizontal) vs mobile (vertical or message)",
-          maxWidth: "800px"
         },
         {
           type: "codeblock",
@@ -362,8 +367,8 @@ document.getElementById("randomText")
         },
         {
           type: "media",
-          mediaType: "image",
-          src: "../images/portfolio/responsive-showcase.png",
+          mediaType: "video",
+          src: "../videos/webm/portfolio/responsiveShowcase.webm",
           alt: "Website displayed on phone, tablet, and desktop",
           maxWidth: "800px"
         },
@@ -375,13 +380,13 @@ document.getElementById("randomText")
           content: "Fast loading times through smart optimizations: images load only when you scroll to them, code syntax highlighting loads on-demand, and modern WebP images are used with automatic fallbacks for older browsers.",
           content_i18n: "projectPages.portfolio.performance.content"
         },
-        {
-          type: "media",
-          mediaType: "image",
-          src: "../images/portfolio/lighthouse-score.png",
-          alt: "Google Lighthouse performance score",
-          maxWidth: "600px"
-        },
+        // {
+        //   type: "media",
+        //   mediaType: "image",
+        //   src: "../images/portfolio/lighthouse-score.png",
+        //   alt: "Google Lighthouse performance score",
+        //   maxWidth: "600px"
+        // },
         {
           type: "codeblock",
           githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/projects/wa-lch-origins.html#L48-L62",
@@ -410,11 +415,42 @@ const codeObserver = new IntersectionObserver((entries) => {
           content_i18n: "projectPages.portfolio.codeBlocks.content"
         },
         {
-          type: "media",
-          mediaType: "image",
-          src: "../images/portfolio/code-block-example.png",
-          alt: "Code block with syntax highlighting and GitHub link",
-          maxWidth: "800px"
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio-website/blob/main/projects/wa-lch-origins.html#L48-L62",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on GitHub",
+          buttonTitle: "View on GitHub",
+          code: `
+
+          // Example C# code with syntax highlighting
+          static void Main()
+        {
+            Console.WriteLine("Starting mission-critical system...");
+            PretendToWork();
+            Console.WriteLine("All tasks completed successfully (we think).");
+        }
+
+        static void PretendToWork()
+        {
+            Console.WriteLine("Optimizing synergy...");
+            FakeProgress();
+            Console.WriteLine("Rebooting confidence module...");
+            FakeProgress();
+            Console.WriteLine("Deploying good vibes to production...");
+            FakeProgress();
+        }
+
+        static void FakeProgress()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write(".");
+                System.Threading.Thread.Sleep(500); // simulates productivity
+            }
+            Console.WriteLine();
+        }
+          `
         },
 
         // Custom Components
