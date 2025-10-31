@@ -352,7 +352,25 @@ async function initProjectPage() {
   try {
     const currentLang = localStorage.getItem("preferredLanguage") || "en";
     if (typeof window.updateContent === "function") {
-      setTimeout(() => window.updateContent(currentLang), 10);
+      setTimeout(() => {
+        window.updateContent(currentLang);
+
+        // Prevent the translation system from touching the <title>
+        const headTitle = document.querySelector("title");
+        if (headTitle && headTitle.hasAttribute && headTitle.hasAttribute("data-i18n")) {
+          headTitle.removeAttribute("data-i18n");
+        }
+
+        // Force the desired document.title after translations run
+        document.title = `${PROJECT_DATA.title} | Niels de Laat`;
+      }, 10);
+    } else {
+      // Ensure title is not marked for translation and is set correctly
+      const headTitle = document.querySelector("title");
+      if (headTitle && headTitle.hasAttribute && headTitle.hasAttribute("data-i18n")) {
+        headTitle.removeAttribute("data-i18n");
+      }
+      document.title = `${PROJECT_DATA.title} | Niels de Laat`;
     }
   } catch (e) {
     console.warn("Failed to re-run translations after dynamic rendering", e);

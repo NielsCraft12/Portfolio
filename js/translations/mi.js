@@ -25,7 +25,7 @@ export const mi = {
     webProjects: "Web",
     recent: "Nuppan",
     descriptionGame1: "Via enta ta orb de a hobaha vandad robot, sola ko een ta nipfey wa-lch. Pelo ba",
-    descriptionGame2: "Ba tis ta website to're pryers viewing a yin tiefun, multi-language runelm solave showcasing",
+    descriptionWeb1: "A farxi, multilingual solave website hagan da pyxuts tug vanilla html, css, yee javascript.",
     descriptionGame3: "My packing tis a ars, quirky rehum spaghetti hagan fino a foop dex tug ane yee c#",
     descriptionGame4: "To nama lch, a vandad bot ben awakens da fey de hibernation bey nan itism ribnip",
     descriptionGame5: "A lotkaf 2d platformer donde tu solo taj tis a puplox caro. Nah lap ki yee tu",
@@ -58,7 +58,7 @@ export const mi = {
     whatIMadeTitle: "Whaat? ka mobla",
     viewOnGitHub: '<i class="fab fa-github"></i> Eel en github',
     exploreCode: "Explor da code",
-    mobileMessage: `Da hopa ${(typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.title) ? PROJECT_DATA.title : 'dit project'}, radbad ods ba piplo en a doegob`,
+    mobileMessage: `Da hopa ${typeof PROJECT_DATA !== "undefined" && PROJECT_DATA.title ? PROJECT_DATA.title : "dit project"}, radbad ods ba piplo en a doegob`,
 
     slimetasticPunchout: {
       // Slimetastic Punchout
@@ -137,7 +137,6 @@ export const mi = {
         mergingLogicEnd: "Ta zeddol tiklop andred nunu askwee sprite waw, addeb solo da de ta colliding gunpea spawns ta daga dug een ta yidoka de ta 2 gunpea, yee viarad ta yabu",
       },
 
-
       alien: {
         alienTitle: "Ta alien",
         alienIntro: "Ta alien tis a zagla alien creature pak oldneb swoops bodbag ta bedeb, aukfin packing peanuts.  Ti pyxben tis point-to-point, com smoothed directional salohs yee namcox jotat",
@@ -214,15 +213,15 @@ export const mi = {
       },
       filtering: {
         title: "Yoref filtering tiklop",
-        content: "Browse mi thyyou bey kepdos com fixped fat orahoy.  Zeksi squee bam yee web thyyou thyyou com da mod"
+        content: "Browse mi thyyou bey kepdos com fixped fat orahoy.  Zeksi squee bam yee web thyyou thyyou com da mod",
       },
       projectPages: {
         title: "Namcox yoref fog",
-        content: "Seeko yoref piplo tis hagan da a pet begsol koapro.  Tokali jewlip, hao carfeu, arkvox, yee videos ratpun touching html.  Midoo renders oseyag com lemo sackae amold"
+        content: "Seeko yoref piplo tis hagan da a pet begsol koapro.  Tokali jewlip, hao carfeu, arkvox, yee videos ratpun touching html.  Midoo renders oseyag com lemo sackae amold",
       },
       imageModal: {
         title: "Yukbaa screenshot ragpol",
-        content: "Mod alga screenshot da eel pik full-size.  Ta lightbox ayhao tos hagan da pyxuts ratpun alga pigpal umpfiz"
+        content: "Mod alga screenshot da eel pik full-size.  Ta lightbox ayhao tos hagan da pyxuts ratpun alga pigpal umpfiz",
       },
       embedSystem: {
         title: "Flu spaghetti embedding",
@@ -262,7 +261,7 @@ export const mi = {
       explore: {
         title: "Soloba ta website",
         content: "Ods ta vivo his da verlo tadda les megxu een ellsou! traigo orahoy tiemom yee filtering thyyou",
-      }
+      },
     },
   },
   error404: {

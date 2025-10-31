@@ -1,32 +1,34 @@
 class ProjectItem extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.translations = {};
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    this.translations = {};
+  }
+
+  connectedCallback() {
+    const link = this.getAttribute("link");
+    const title = this.getAttribute("title");
+    const year = this.getAttribute("year");
+    const category = this.getAttribute("category");
+    const imageWebp = this.getAttribute("image-webp");
+    const imagePng = this.getAttribute("image-png");
+    const description = this.getAttribute("description");
+    const i18nDescription = this.getAttribute("i18n-description");
+    const i18nTechnologies = this.getAttribute("i18n-technologies");
+    const i18nSeeMore = this.getAttribute("i18n-see-more");
+
+    // Parse the technologies JSON
+    let technologies = [];
+    try {
+      const techAttr = this.getAttribute("technologies");
+      if (techAttr) technologies = JSON.parse(techAttr);
+    } catch (e) {
+      console.error("Invalid technologies JSON:", e);
     }
 
-    connectedCallback() {
-        const link = this.getAttribute('link');
-        const title = this.getAttribute('title');
-        const year = this.getAttribute('year');
-        const category = this.getAttribute('category');
-        const imageWebp = this.getAttribute('image-webp');
-        const imagePng = this.getAttribute('image-png');
-        const description = this.getAttribute('description');
-        const i18nDescription = this.getAttribute('i18n-description');
-        const i18nTechnologies = this.getAttribute('i18n-technologies');
-        const i18nSeeMore = this.getAttribute('i18n-see-more');
-
-        // Parse the technologies JSON
-        let technologies = [];
-        try {
-            const techAttr = this.getAttribute('technologies');
-            if (techAttr) technologies = JSON.parse(techAttr);
-        } catch (e) {
-            console.error('Invalid technologies JSON:', e);
-        }
-
-        const techListHTML = technologies.map(tech => `
+    const techListHTML = technologies
+      .map(
+        (tech) => `
       <li>
         <span class="chip">
           <picture>
@@ -36,9 +38,11 @@ class ProjectItem extends HTMLElement {
           <i class="chip__label">${tech.name}</i>
         </span>
       </li>
-    `).join('');
+    `
+      )
+      .join("");
 
-        this.shadowRoot.innerHTML = `
+    this.shadowRoot.innerHTML = `
         <style>
       .cd-demo-chip-list {
   display: flex;
@@ -50,7 +54,7 @@ class ProjectItem extends HTMLElement {
   padding: 0; /* remove left indent */
 }
       </style>
-      <link rel="stylesheet" href="css/projects.css">
+      <link rel="stylesheet" href="css/Projects.css">
       <link rel="stylesheet" href="css/Home.css">
       
       <a href="${link}" class="blog-box project-item" data-category="${category}" data-year="${year}"
@@ -74,45 +78,45 @@ class ProjectItem extends HTMLElement {
       </a>
     `;
 
-        // Listen for translation updates
-        document.addEventListener('translationUpdated', (event) => {
-            this.updateTranslations(event.detail.translations);
-        });
+    // Listen for translation updates
+    document.addEventListener("translationUpdated", (event) => {
+      this.updateTranslations(event.detail.translations);
+    });
 
-        // Initialize with current language if available
-        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
-        this.loadInitialTranslations(currentLang);
+    // Initialize with current language if available
+    const currentLang = localStorage.getItem("preferredLanguage") || "en";
+    this.loadInitialTranslations(currentLang);
+  }
+
+  async loadInitialTranslations(lang) {
+    try {
+      const module = await import(`../js/translations/${lang}.js`);
+      const translations = module[lang];
+      if (translations) {
+        this.updateTranslations(translations);
+      }
+    } catch (error) {
+      console.error("Failed to load initial translations:", error);
     }
+  }
 
-    async loadInitialTranslations(lang) {
-        try {
-            const module = await import(`../js/translations/${lang}.js`);
-            const translations = module[lang];
-            if (translations) {
-                this.updateTranslations(translations);
-            }
-        } catch (error) {
-            console.error('Failed to load initial translations:', error);
-        }
-    }
+  updateTranslations(translations) {
+    this.translations = translations;
 
-    updateTranslations(translations) {
-        this.translations = translations;
+    // Update all elements with data-i18n attributes within shadow DOM
+    const translatableElements = this.shadowRoot.querySelectorAll("[data-i18n]");
+    translatableElements.forEach((element) => {
+      const key = element.getAttribute("data-i18n");
+      const value = this.getNestedTranslation(translations, key);
+      if (value) {
+        element.innerHTML = value;
+      }
+    });
+  }
 
-        // Update all elements with data-i18n attributes within shadow DOM
-        const translatableElements = this.shadowRoot.querySelectorAll('[data-i18n]');
-        translatableElements.forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            const value = this.getNestedTranslation(translations, key);
-            if (value) {
-                element.innerHTML = value;
-            }
-        });
-    }
-
-    getNestedTranslation(translations, key) {
-        return key.split('.').reduce((obj, k) => obj && obj[k], translations);
-    }
+  getNestedTranslation(translations, key) {
+    return key.split(".").reduce((obj, k) => obj && obj[k], translations);
+  }
 }
 
-customElements.define('project-item', ProjectItem);
+customElements.define("project-item", ProjectItem);

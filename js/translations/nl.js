@@ -26,7 +26,7 @@ export const nl = {
     webProjects: "Web",
     recent: "Recent",
     descriptionGame1: "Stap in de rol van een toegewijde schoonmaakrobot, net als in de originele WA-LCH. Maar dit",
-    descriptionGame2: "Dit is de website die je nu bekijkt een volledig op maat gemaakte, meertalige ontwikkelaarsportfolio",
+    descriptionWeb1: "Een moderne, meertalige portfolio-website die helemaal van de grond af is opgebouwd met behulp van standaard HTML, CSS en JavaScript.",
     descriptionGame3: "Merge Packing is een snelle, eigenaardige mobiele game gebouwd in een paar dagen met Unity en C#.",
     descriptionGame4: "Je bent LCH, een schoonmaakrobot die wordt gewekt uit jaren van winterslaap door een onbekende bron.",
     descriptionGame5: "Een uitdagende 2D platformer waar je enige gereedschap een enkele doos is. Begeleid zowel jezelf als je",
@@ -60,7 +60,7 @@ export const nl = {
     whatIMadeTitle: "Wat ik heb gemaakt",
     viewOnGitHub: ' <i class="fab fa-github"></i> Bekijk op GitHub',
     exploreCode: "Verken de code",
-    mobileMessage: `Om ${(typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.title) ? PROJECT_DATA.title : 'dit project'} te spelen, bezoek deze pagina op een computer.`,
+    mobileMessage: `Om ${typeof PROJECT_DATA !== "undefined" && PROJECT_DATA.title ? PROJECT_DATA.title : "dit project"} te spelen, bezoek deze pagina op een computer.`,
 
     slimetasticPunchout: {
       // Slimetastic Punchout
@@ -198,7 +198,6 @@ export const nl = {
         mergingLogicEnd: "Het merge systeem controleert op overeenkomende sprite types, zorgt ervoor dat slechts één van de botsende objecten het nieuwe item spawnt in het midden van de 2 objecten, en verhoogt de score.",
       },
 
-
       alien: {
         alienTitle: "De alien",
         alienIntro: "De alien is een zwevend alien wezen dat periodiek over het scherm zweeft en verpakkingspinda's laat vallen. Zijn beweging is punt-naar-punt, met gladde richtingsovergangen en dynamisch gedrag.",
@@ -215,15 +214,15 @@ export const nl = {
       },
       filtering: {
         title: "Projectfiltersysteem",
-        content: "Blader door mijn projecten per categorie met soepel schakelen tussen tabbladen. Filter met één klik tussen games en webprojecten."
+        content: "Blader door mijn projecten per categorie met soepel schakelen tussen tabbladen. Filter met één klik tussen games en webprojecten.",
       },
       projectPages: {
         title: "Dynamische projectpagina's.",
-        content: "Elke projectpagina is opgebouwd uit een eenvoudig configuratieobject. Voeg secties, codeblokken, afbeeldingen en video's toe zonder HTML aan te raken. Alles wordt automatisch weergegeven met volledige ondersteuning voor vertalingen."
+        content: "Elke projectpagina is opgebouwd uit een eenvoudig configuratieobject. Voeg secties, codeblokken, afbeeldingen en video's toe zonder HTML aan te raken. Alles wordt automatisch weergegeven met volledige ondersteuning voor vertalingen.",
       },
       imageModal: {
         title: "Interactieve screenshotgalerij",
-        content: "Klik op een screenshot om deze op volledige grootte te bekijken. Het lightbox-effect is volledig zelf ontwikkeld, zonder gebruik te maken van externe bibliotheken."
+        content: "Klik op een screenshot om deze op volledige grootte te bekijken. Het lightbox-effect is volledig zelf ontwikkeld, zonder gebruik te maken van externe bibliotheken.",
       },
       embedSystem: {
         title: "Slimme inbedding van games",
@@ -263,7 +262,7 @@ export const nl = {
       explore: {
         title: "Verken de website",
         content: "Bezoek de live site om al deze functies in actie te zien! Probeer eens van taal te wisselen en projecten te filteren.",
-      }
+      },
     },
   },
 

@@ -25,7 +25,7 @@ export const en = {
     webProjects: "Web",
     recent: "Recent",
     descriptionGame1: "Step into the role of a dedicated cleaning robot, just like in the original WA-LCH. But this",
-    descriptionGame2: "This is the website you're currently viewing a fully custom, multi-language developer",
+    descriptionWeb1: "A modern, multilingual portfolio website built from scratch using vanilla HTML, CSS, and JavaScript.",
     descriptionGame3: "Merge Packing is a quick, quirky mobile game built over a few days using Unity and C#.",
     descriptionGame4: "You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source.",
     descriptionGame5: "A challenging 2D platformer where your only tool is a single box. Guide both yourself and your",
@@ -59,8 +59,7 @@ export const en = {
     whatIMadeTitle: "What I Made",
     viewOnGitHub: '<i class="fab fa-github"></i> View on GitHub',
     exploreCode: "Explore Code",
-    mobileMessage: `To play ${(typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.title) ? PROJECT_DATA.title : 'dit project'}, please visit this page on a computer.`,
-
+    mobileMessage: `To play ${typeof PROJECT_DATA !== "undefined" && PROJECT_DATA.title ? PROJECT_DATA.title : "dit project"}, please visit this page on a computer.`,
 
     slimetasticPunchout: {
       // Slimetastic Punchout
@@ -195,7 +194,6 @@ export const en = {
         mergingLogicEnd: "The merging system checks for matching sprite types, ensures only one of the colliding objects spawns the new item in the middle of the 2 objects, and increases the score.",
       },
 
-
       alien: {
         alienTitle: "The alien",
         alienIntro: "The alien is a floating alien creature that periodically swoops across the screen, dropping packing peanuts. Its motion is point-to-point, with smoothed directional transitions and dynamic behavior.",
@@ -212,15 +210,15 @@ export const en = {
       },
       filtering: {
         title: "Project Filtering System",
-        content: "Browse my projects by category with smooth tab switching. Filter between Games and Web Projects projects with one click."
+        content: "Browse my projects by category with smooth tab switching. Filter between Games and Web Projects projects with one click.",
       },
       projectPages: {
         title: "Dynamic Project Pages",
-        content: "Each project page is built from a simple configuration object. Add sections, code blocks, images, and videos without touching HTML. Everything renders automatically with full translation support."
+        content: "Each project page is built from a simple configuration object. Add sections, code blocks, images, and videos without touching HTML. Everything renders automatically with full translation support.",
       },
       imageModal: {
         title: "Interactive Screenshot Gallery",
-        content: "Click any screenshot to view it full-size. The lightbox effect was built from scratch without any external libraries."
+        content: "Click any screenshot to view it full-size. The lightbox effect was built from scratch without any external libraries.",
       },
       embedSystem: {
         title: "Smart Game Embedding",
@@ -260,7 +258,7 @@ export const en = {
       explore: {
         title: "Explore the Website",
         content: "Visit the live site to see all these features in action! Try switching languages and filtering projects.",
-      }
+      },
     },
   },
 

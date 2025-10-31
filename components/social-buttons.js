@@ -5,7 +5,7 @@ class SocialButtons extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log('ConnectedCallback this context:', this); // Debugging: Log the `this` context
+    console.log("ConnectedCallback this context:", this); // Debugging: Log the `this` context
 
     let buttons = [];
     try {
@@ -26,28 +26,33 @@ class SocialButtons extends HTMLElement {
         const target = btn.target ? `target="${btn.target}"` : 'target="_blank"';
 
         // Add fallback text for when FontAwesome doesn't load
-        let fallbackText = '';
-        if (btn.icon.includes('fa-envelope')) fallbackText = '✉';
-        else if (btn.icon.includes('fa-itch-io')) fallbackText = '🎮';
-        else if (btn.icon.includes('fa-linkedin')) fallbackText = '💼';
-        else if (btn.icon.includes('fa-github')) fallbackText = '⚡';
-        else if (btn.icon.includes('fa-file')) fallbackText = '📄';
+        let fallbackText = "";
+        if (btn.icon.includes("fa-envelope")) fallbackText = "✉";
+        else if (btn.icon.includes("fa-itch-io")) fallbackText = "🎮";
+        else if (btn.icon.includes("fa-linkedin")) fallbackText = "💼";
+        else if (btn.icon.includes("fa-github")) fallbackText = "⚡";
+        else if (btn.icon.includes("fa-file")) fallbackText = "📄";
+
+        // If the button is marked as the CV entry (isCv: true) add a data attribute so
+        // the translation system or this component can update it when the language changes.
+        const cvAttr = btn.isCv || btn.isCV || btn.dataCv ? "data-cv-link" : "";
 
         return `
-          <a href="${btn.url}"
-             ${target}
-             ${rel}
-             class="${btn.icon} icon"
-             ${title}>
-             <span class="icon-fallback">${fallbackText}</span>
-          </a>`;
+       <a href="${btn.url}"
+         ${target}
+         ${rel}
+         class="${btn.icon} icon"
+         ${cvAttr}
+         ${title}>
+         <span class="icon-fallback">${fallbackText}</span>
+       </a>`;
       })
       .join("");
 
     console.log("Generated buttons HTML:", buttonsHTML); // Debugging: Log generated HTML
 
     // Determine the correct CSS path based on current location
-    const cssPath = window.location.pathname.includes('/projects/') ? '../css/Contact.css' : 'css/Contact.css';
+    const cssPath = window.location.pathname.includes("/projects/") ? "../css/Contact.css" : "css/Contact.css";
 
     this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="${cssPath}">
@@ -149,17 +154,43 @@ class SocialButtons extends HTMLElement {
 
     // Check if FontAwesome loaded and add fallback if needed
     setTimeout(() => {
-      const icons = this.shadowRoot.querySelectorAll('.icon');
-      icons.forEach(icon => {
-        const computedStyle = window.getComputedStyle(icon, ':before');
-        const fontFamily = computedStyle.getPropertyValue('font-family');
+      const icons = this.shadowRoot.querySelectorAll(".icon");
+      icons.forEach((icon) => {
+        const computedStyle = window.getComputedStyle(icon, ":before");
+        const fontFamily = computedStyle.getPropertyValue("font-family");
 
         // If FontAwesome isn't detected, enable fallback mode
-        if (!fontFamily.includes('Font Awesome')) {
-          icon.classList.add('fallback-mode');
+        if (!fontFamily.includes("Font Awesome")) {
+          icon.classList.add("fallback-mode");
         }
       });
     }, 100);
+
+    // Listen for translation updates so we can update the CV link inside the shadow DOM.
+    // The translation system dispatches a `translationUpdated` event with detail.translations.
+    this._translationHandler = (e) => {
+      try {
+        const translations = e && e.detail && e.detail.translations;
+        if (!translations || !translations.cv) return;
+        const cv = translations.cv;
+        const cvAnchor = this.shadowRoot.querySelector("[data-cv-link]");
+        if (cvAnchor) {
+          if (cv.filePath) cvAnchor.href = cv.filePath;
+          if (cv.title) cvAnchor.title = cv.title;
+        }
+      } catch (err) {
+        console.error("Error updating CV link in social-buttons:", err);
+      }
+    };
+
+    document.addEventListener("translationUpdated", this._translationHandler);
+  }
+
+  disconnectedCallback() {
+    if (this._translationHandler) {
+      document.removeEventListener("translationUpdated", this._translationHandler);
+      this._translationHandler = null;
+    }
   }
 }
 
