@@ -2,6 +2,21 @@
 * {
   /* Prevent unexpected layout changes */
   box-sizing: border-box;
+  /* Ensure all elements inherit the font unless specifically overridden */
+  font-family: inherit;
+}
+
+/* Ensure sections have relative positioning for absolute children */
+section {
+  position: relative;
+}
+
+/* Ensure buttons and form elements inherit font */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }
 
 /* Prevent layout shifts from font loading */
@@ -29,6 +44,10 @@ iframe {
   --gradient-start: #ff7e5f;
   --gradient-end: #feb47b;
 
+  /* Container Background */
+  --container-gradient-start: #bb7a45;
+  --container-gradient-end: #ae445a;
+
   /* Icon Colors */
   --icon-default: #1b1b1b;
   --icon-active: #ffffff;
@@ -38,7 +57,9 @@ iframe {
   --modal-disabled-opacity: 0.5;
 
   /* Scrollbar Colors */
-  --scrollbar-track: transparent;
+  --scrollbar-track: #1e1e1e;
+  --scrollbar-thumb-start: #ff7e5f;
+  --scrollbar-thumb-end: #feb47b;
 
   /* Error/Missing Translation Colors */
   --error-bg: rgba(255, 0, 0, 0.2);
@@ -49,6 +70,15 @@ iframe {
   /* Tooltip Colors */
   --tooltip-bg: #333;
   --tooltip-text: white;
+
+  /* Nav Colors */
+  --nav-bg: rgba(30, 30, 30, 0.5);
+  --nav-text: white;
+  --nav-hover: rgba(255, 255, 255, 0.1);
+
+  /* Chip Colors */
+  --chip-bg: hsla(230, 13%, 9%, 0.517);
+  --chip-text: white;
 
   --font-family: "Baloo 2", cursive;
 
@@ -68,7 +98,7 @@ html {
 body {
   background-color: var(--primary-bg);
   overflow-x: hidden;
-  font-family: "Baloo 2", cursive;
+  font-family: var(--font-family);
   overflow-y: auto;
   /* Fix for iOS Safari white space */
   position: relative;
@@ -132,7 +162,7 @@ body {
 }
 
 /* Prevent interaction with all content except modal when modal is open */
-body.modal-open>*:not(#imageModal):not(script):not(style) {
+body.modal-open > *:not(#imageModal):not(script):not(style) {
   pointer-events: none !important;
   user-select: none !important;
 }
@@ -192,24 +222,23 @@ hr.rounded {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e1e1e !important;
-  background-color: #1e1e1e !important;
+  background: var(--scrollbar-track) !important;
+  background-color: var(--scrollbar-track) !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to left, #ff7e5f, #feb47b) !important;
-  background-color: #ff7e5f !important;
+  background: linear-gradient(to left, var(--scrollbar-thumb-start), var(--scrollbar-thumb-end)) !important;
+  background-color: var(--scrollbar-thumb-start) !important;
   border-radius: 10px !important;
 }
 
 /* Ensure rounded corners for scrollbar on mobile and tablet */
 @media (max-width: 1024px) {
-
   * ::-webkit-scrollbar-thumb,
   html ::-webkit-scrollbar-thumb,
   body ::-webkit-scrollbar-thumb,
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to left, #ff7e5f, #feb47b) !important;
+    background: linear-gradient(to left, var(--scrollbar-thumb-start), var(--scrollbar-thumb-end)) !important;
     border-radius: 10px !important;
     background-clip: padding-box !important;
     border: 3px solid transparent !important;
@@ -227,19 +256,19 @@ hr.rounded {
 @media (max-width: 1024px) {
   html {
     scrollbar-width: thin !important;
-    scrollbar-color: linear-gradient(to left, #ff7e5f, #feb47b) #1e1e1e !important;
+    scrollbar-color: var(--scrollbar-thumb-start) var(--scrollbar-track) !important;
   }
 
   * {
     scrollbar-width: thin !important;
-    scrollbar-color: linear-gradient(to left, #ff7e5f, #feb47b) #1e1e1e !important;
+    scrollbar-color: var(--scrollbar-thumb-start) var(--scrollbar-track) !important;
   }
 }
 
 /* Fallback for Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #ff7e5f #1e1e1e;
+  scrollbar-color: var(--scrollbar-thumb-start) var(--scrollbar-track);
 }
 
 /* Missing Translation Styles */
@@ -312,4 +341,33 @@ h6.missing-translation {
 .external-link:focus {
   opacity: 0.8;
   text-decoration: underline;
+}
+
+/* Scale up Micro 5 font to make it more readable - only apply to body to avoid multiplication */
+
+/* Target body element when Micro 5 font is active */
+body[style*='"Micro 5"'] {
+  font-size: 2em !important; /* 200% increase for base text to match the orange example */
+}
+
+/* Force all common elements to inherit the scaled size */
+body[style*='"Micro 5"'] *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+  font-size: inherit !important;
+}
+
+/* Make age-location text smaller */
+body[style*='"Micro 5"'] .age-location {
+  font-size: 0.6em !important;
+}
+
+body[style*='"Micro 5"'] h1 {
+  font-size: 2.5em !important;
+}
+
+body[style*='"Micro 5"'] h2 {
+  font-size: 2em !important;
+}
+
+body[style*='"Micro 5"'] h3 {
+  font-size: 1.5em !important;
 }

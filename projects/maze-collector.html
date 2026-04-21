@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/Favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/Favicon/favicon-16x16.png">
+  <link rel="manifest" href="../images/Favicon/site.webmanifest">
+
+  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
+  <meta name="author" content="Niels de Laat">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link href="../css/prism.css" rel="stylesheet" />
+
+  <script type="module" src="../components/navbar.js"></script>
+  <script type="module" src="../components/social-buttons.js"></script>
+  <script type="module" src="../components/code-block.js"></script>
+  <script type="module" src="../js/translate.js"></script>
+  <script type="module" src="../components/projectPageLayout.js"></script>
+  <script type="module" src="../components/footer.js"></script>
+
+  <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+
+  <script>
+    // Lazy load Prism.js only when code blocks are visible
+    const loadPrism = () => {
+      if (window.Prism) return; // Already loaded
+      const script = document.createElement('script');
+      script.src = '../js/prism.js';
+      script.onload = () => window.Prism?.highlightAll();
+      document.head.appendChild(script);
+    };
+
+    // Intersection Observer for lazy loading
+    const codeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadPrism();
+          codeObserver.disconnect(); // Only load once
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    // Observe code blocks when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const codeBlocks = document.querySelectorAll('pre code');
+      if (codeBlocks.length > 0) {
+        codeBlocks.forEach(block => codeObserver.observe(block));
+      }
+    });
+  </script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/ProjectPage.css" id="customStyles">
+
+</head>
+
+<body>
+  <!-- Navigation Component -->
+  <nav-bar></nav-bar>
+  <!-- ============================================
+       CONTENT CONFIGURATION - EDIT YOUR CONTENT HERE
+       ============================================ -->
+  <script id="projectConfig">
+    const PROJECT_DATA = {
+      // Project Info
+      title: "Maze Collector",
+      title_i18n: "__NO_TRANSLATE__",
+
+      // Main Content Sections - with inline media and code block support
+      sections: [
+
+
+      ],
+      // Sidebar Content
+      sidebar: {//localhost/Portfolio/projects/merge-packing-backup.html
+        trailerUrl: "https://www.youtube.com/embed/zgEdaaWe3JQ?si=Uud4DAc4EJKVmMVA",
+        screenshots: [
+          { src: "../images/webp/ProjectScreenShots/MazeCollector/MazeCollectorScreenshot1.webp", alt: "MazeCollector Screenshot 1" },
+          { src: "../images/webp/ProjectScreenShots/MazeCollector/MazeCollectorScreenshot2.webp", alt: "MazeCollector Screenshot 2" },
+          { src: "../images/webp/ProjectScreenShots/MazeCollector/MazeCollectorScreenshot3.webp", alt: "MazeCollector Screenshot 3" },
+        ],
+      },
+
+      // Embed (itch.io, etc)
+      embed: {
+        enabled: true,
+        url: "https://itch.io/embed-upload/12639739?color=1E1E1E",
+        playableOnMobile: false
+      }
+    };
+
+
+  </script>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="gradient-title project-title" id="projectTitle"></h1>
+      <div id="mainContent"></div>
+      <div id="codeBlocks"></div>
+      <div id="mediaContent"></div>
+
+      <div id="embedSection"></div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2 class="gradient-title" data-i18n="projectPages.trailer">Trailer</h2>
+      <div class="video-container" id="trailerContainer"></div>
+
+      <h2 class="gradient-title" data-i18n="projectPages.screenshots">Screenshots</h2>
+      <div id="screenshotsContainer"></div>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Enlarged screenshot">
+  </div>
+
+  <!-- Footer -->
+  <site-footer></site-footer>
+</body>
+
+</html>

@@ -35,6 +35,7 @@ export const en = {
   experience: {
     //Experience
     education: "Education",
+    internship: "Internship",
     skillsLearned: "Skills Learned:",
     present: "present",
     gluDescription: "The Game Development program at Grafisch Lyceum Utrecht teaches game design, coding, and collaboration between programmers and artists. Through practical projects we learn the skills needed to fun games.",

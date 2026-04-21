@@ -1,5 +1,5 @@
 #Contact {
-  background-color: #1e1e1e;
+  background-color: var(--primary-bg);
   height: max-content;
   box-sizing: border-box;
 }

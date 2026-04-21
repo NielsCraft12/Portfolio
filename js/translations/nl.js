@@ -36,6 +36,7 @@ export const nl = {
   experience: {
     //Experience
     education: "Opleiding",
+    internship: "Stage",
     skillsLearned: "Vaardigheden geleerd:",
     present: "Heden",
     gluDescription: "Het Game Development-programma van het Grafisch Lyceum Utrecht leert game-ontwerp, codering en samenwerking tussen programmeurs en artiesten. Door praktische projecten leren we de vaardigheden die nodig zijn om leuke games te maken.",

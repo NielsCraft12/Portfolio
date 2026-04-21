@@ -35,6 +35,7 @@ export const mi = {
   experience: {
     //Experience
     education: "Educashun",
+    internship: "Internship",
     skillsLearned: "Disell da mi traba:",
     present: "Ughrec",
     gluDescription: "Ta spaghetti bahany chinu ka grafisch lyceum utrecht teaches spaghetti hodoc, coding, yee leuvow squee ocaoke yee bowale.  Thru midmut thyyou pem estudo ta disell neblo da agei bam",

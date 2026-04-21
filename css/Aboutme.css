@@ -1,232 +1,213 @@
 #Aboutme h1 {
-    font-size: 5vh;
-    color: #fff;
-    text-align: center;
+  font-size: 5vh;
+  color: #fff;
+  text-align: center;
 }
 
 #Aboutme {
-    height: 100vh;
-    background-color: #1e1e1e;
-    padding: 50px 0;
-    overflow: hidden;
+  height: 100vh;
+  background-color: var(--primary-bg);
+  padding: 50px 0;
+  overflow: hidden;
 }
 
 #Aboutme .Aboutme-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 #Aboutme .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    /* Reduced the gap here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  /* Reduced the gap here */
 }
 
 #Aboutme .Image img {
-    height: 60vh;
-    border-radius: 20px;
+  height: 60vh;
+  border-radius: 20px;
 }
 
 #Aboutme .Text {
-    text-align: left;
-    max-width: 50vw;
-    color: #fff;
-    font-size: 3vh;
+  text-align: left;
+  max-width: 50vw;
+  color: #fff;
+  font-size: 3vh;
 }
 
 .Myskills h1 {
-    font-size: 10vh;
-    color: #ff0000;
+  font-size: 10vh;
+  color: #ff0000;
 }
 
 .Myskills {
-    text-align: center;
-    padding-top: 0px;
-    width: 100%;
+  text-align: center;
+  padding-top: 0px;
+  width: 100%;
 }
 
 .container-skills {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .skill {
-    text-align: center;
-    color: #fff;
+  text-align: center;
+  color: #fff;
 }
 
 .skill img {
-    height: 80px;
-    border-radius: 10px;
+  height: 80px;
+  border-radius: 10px;
 }
 
 .skill .stars {
-    font-size: 15px;
-    color: gold;
-    margin-top: 5px;
+  font-size: 15px;
+  color: gold;
+  margin-top: 5px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media only screen and (max-width: 780px) and (orientation: portrait) {
+  .container-skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    /* Define grid layout */
+    gap: 20px;
+    /* Add gap between grid items */
+    justify-items: center;
+    max-width: 90%;
+    /* Limit maximum width */
+    margin: 0 auto;
+    /* Center the container */
+  }
 
-    .container-skills {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-        /* Define grid layout */
-        gap: 20px;
-        /* Add gap between grid items */
-        justify-items: center;
-        max-width: 90%;
-        /* Limit maximum width */
-        margin: 0 auto;
-        /* Center the container */
-    }
+  #Aboutmetext {
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    padding-top: 2vh;
+  }
 
+  .skill {
+    text-align: center;
+    color: #fff;
+    width: 120px;
+    /* Set width for grid items */
+  }
 
-    #Aboutmetext {
-        font-size: 24px;
-        color: #fff;
-        text-align: center;
-        padding-top: 2vh;
-    }
+  #Aboutme .Image img {
+    height: 25vh;
+    border-radius: 20px;
+  }
 
-    .skill {
-        text-align: center;
-        color: #fff;
-        width: 120px;
-        /* Set width for grid items */
-    }
+  #Aboutme {
+    padding: 20px 0;
+  }
 
-    #Aboutme .Image img {
-        height: 25vh;
-        border-radius: 20px;
-    }
+  #Aboutme .container {
+    flex-direction: column;
+    gap: 1px;
+    /* Reduced the gap for mobile here */
+  }
 
-    #Aboutme {
-        padding: 20px 0;
-    }
+  #Aboutme .Text {
+    max-width: 90vw;
+    font-size: 16px;
+  }
 
-    #Aboutme .container {
-        flex-direction: column;
-        gap: 1px;
-        /* Reduced the gap for mobile here */
-    }
+  .banner-text h2 {
+    font-size: 24px;
+    margin-top: 30%;
+  }
 
-    #Aboutme .Text {
-        max-width: 90vw;
-        font-size: 16px;
-    }
+  .banner-text ul li {
+    justify-content: center;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-right: 5vw;
+  }
 
-    .banner-text h2 {
-        font-size: 24px;
-        margin-top: 30%;
-    }
+  .animated-heading {
+    font-size: 14px;
+  }
 
-    .banner-text ul li {
-        justify-content: center;
-        font-size: 12px;
-        padding-top: 10px;
-        padding-right: 5vw;
-    }
+  .skill img {
+    height: 5vh;
+    /* Set image height */
+    width: auto;
+    /* Ensure the width adjusts proportionally */
+  }
 
-    .animated-heading {
-        font-size: 14px;
-    }
+  .Myskills p {
+    font-size: 2vh;
+  }
 
-    .skill img {
-        height: 5vh;
-        /* Set image height */
-        width: auto;
-        /* Ensure the width adjusts proportionally */
-    }
+  .skill .stars {
+    font-size: 14px;
+    /* Adjust star font size */
+  }
 
+  p {
+    font-size: 14px;
+  }
 
-    .Myskills p {
-        font-size: 2vh;
-    }
-
-    .skill .stars {
-        font-size: 14px;
-        /* Adjust star font size */
-    }
-
-    p {
-        font-size: 14px;
-    }
-
-    #Aboutme h1 {
-        font-size: 30px;
-    }
+  #Aboutme h1 {
+    font-size: 30px;
+  }
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 781px) and (orientation: portrait) {
-    .container-skills {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 20px;
-        justify-items: center;
-    }
+  .container-skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
 
-    #Aboutmetext {
-        font-size: 32px;
-        color: #fff;
-        text-align: center;
-        padding-top: 3vh;
-    }
+  #Aboutmetext {
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+    padding-top: 3vh;
+  }
 
-    .skill {
-        width: auto;
-        margin: 0;
-    }
+  .skill {
+    width: auto;
+    margin: 0;
+  }
 
-    #Aboutme .Image img {
-        height: 35vh;
-        border-radius: 50px;
-    }
+  #Aboutme .Image img {
+    height: 35vh;
+    border-radius: 50px;
+  }
 
-    #Aboutme {
-        padding: 30px 0;
-    }
+  #Aboutme {
+    padding: 30px 0;
+  }
 
-    #Aboutme .container {
-        flex-direction: column;
-        gap: 15px;
-        /* Reduced the gap for tablet here */
-    }
+  #Aboutme .container {
+    flex-direction: column;
+    gap: 15px;
+    /* Reduced the gap for tablet here */
+  }
 
-    #Aboutme .Text {
-        max-width: 90vw;
-        font-size: 18px;
-    }
+  #Aboutme .Text {
+    max-width: 90vw;
+    font-size: 18px;
+  }
 
-    .banner-text h2 {
-        font-size: 50px;
-        margin-top: 30%;
-    }
+  .banner-text h2 {
+    font-size: 50px;
+    margin-top: 30%;
+  }
 
-    .skill img {
-        height: 70px;
-    }
-
-
-
+  .skill img {
+    height: 70px;
+  }
 }

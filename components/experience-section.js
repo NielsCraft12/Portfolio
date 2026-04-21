@@ -23,6 +23,14 @@ class ExperienceSection extends HTMLElement {
       this.updateTranslations(e.detail.translations);
     });
 
+    // Listen for theme changes to adjust font size for Micro 5
+    window.addEventListener("themeChanged", (event) => {
+      this.checkMicro5Font();
+    });
+
+    // Check if Micro 5 font is currently active
+    this.checkMicro5Font();
+
     // Notify parent that component is ready
     setTimeout(() => {
       this.dispatchEvent(
@@ -89,6 +97,7 @@ class ExperienceSection extends HTMLElement {
     // Include the Experience.css styles in the shadow DOM
     this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="css/Experience.css">
+      <link rel="stylesheet" href="css/style.css">
       <div class="experience-content">
         ${contentHTML}
       </div>
@@ -181,6 +190,44 @@ class ExperienceSection extends HTMLElement {
       }
     } catch (error) {
       console.log("Translation loading failed, using defaults:", error);
+    }
+  }
+
+  checkMicro5Font() {
+    const bodyFontFamily = document.body.style.fontFamily;
+    const isMicro5 = bodyFontFamily && bodyFontFamily.includes("Micro 5");
+
+    // Adjust this value to change the size:
+    // "1em" = normal, "1.5em" = 50% larger, "2em" = double size, etc.
+    if (isMicro5) {
+      // Apply to both the host element and add a style tag inside shadow DOM
+      this.style.setProperty("font-size", "1em", "important");
+
+      // Also add inline styles to shadow DOM elements
+      const styleElement = this.shadowRoot.querySelector("#micro5-style");
+      if (!styleElement) {
+        const newStyle = document.createElement("style");
+        newStyle.id = "micro5-style";
+        newStyle.textContent = `
+          .experience-content * {
+            font-size: 0.9em !important;
+          }
+          .title {
+            font-size: 2em !important;
+          }
+          .badge img {
+            width: 20px !important;
+            height: 20px !important;
+          }
+        `;
+        this.shadowRoot.appendChild(newStyle);
+      }
+    } else {
+      this.style.fontSize = "";
+      const styleElement = this.shadowRoot.querySelector("#micro5-style");
+      if (styleElement) {
+        styleElement.remove();
+      }
     }
   }
 }

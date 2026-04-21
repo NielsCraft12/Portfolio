@@ -34,6 +34,14 @@ function initProjectTabs() {
     let visibleCount = 0;
     const maxProjects = 6;
 
+    // Hide container to prevent flash during updates
+    blogContainer.style.visibility = "hidden";
+
+    // Disable transitions temporarily to prevent flash
+    projectItems.forEach((item) => {
+      item.style.transition = "none";
+    });
+
     projectItems.forEach((item) => {
       const itemCategory = item.getAttribute("category");
       const itemYear = parseInt(item.getAttribute("year"));
@@ -63,11 +71,9 @@ function initProjectTabs() {
       }
     });
 
-    // Apply custom ordering after filtering, but don't change tabs
+    // Apply custom ordering immediately (synchronously) before showing
     if (window.projectOrdering) {
-      setTimeout(() => {
-        window.projectOrdering.applyOrderingOnly();
-      }, 10);
+      window.projectOrdering.applyOrderingOnly();
     }
 
     // Handle single item centering with a direct approach
@@ -98,6 +104,14 @@ function initProjectTabs() {
         item.style.transform = ""; // Clear any inline transform
       });
     }
+
+    // Show container and re-enable transitions after all operations complete
+    requestAnimationFrame(() => {
+      blogContainer.style.visibility = "visible";
+      projectItems.forEach((item) => {
+        item.style.transition = "";
+      });
+    });
   }
 
   tabButtons.forEach((button) => {

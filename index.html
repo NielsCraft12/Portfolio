@@ -70,9 +70,13 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="//gc.zgo.at">
   <link rel="modulepreload" href="js/translate.js">
+  <link rel="modulepreload" href="js/translations/en.js">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
     crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="preload" as="image" href="images/webp/me-medium.webp" media="(min-width: 451px)" type="image/webp">
   <link rel="preload" as="image" href="images/webp/me-small3.webp" media="(max-width: 450px)" type="image/webp">
@@ -83,18 +87,57 @@
   <link rel="shortcut icon" href="images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="images/Favicon/site.webmanifest" />
+  <!-- Preload critical component scripts -->
+  <link rel="modulepreload" href="components/navbar.js">
+  <link rel="modulepreload" href="components/project-item.js">
+
+  <!-- Inline script to prevent image flash - runs immediately -->
+  <style id="seasonal-preload">
+    [data-seasonal] img {
+      opacity: 0 !important;
+    }
+  </style>
+  <script>
+    // Inline seasonal checker - runs immediately before body renders
+    (function () {
+      function isInSeason(startMonth, startDay, endMonth, endDay) {
+        const now = new Date();
+        const currentMonth = now.getMonth() + 1;
+        const currentDay = now.getDate();
+        const currentYear = now.getFullYear();
+        const currentDate = new Date(currentYear, currentMonth - 1, currentDay);
+        const startDate = new Date(currentYear, startMonth - 1, startDay);
+        let endDate = new Date(currentYear, endMonth - 1, endDay);
+
+        if (endMonth < startMonth) {
+          if (currentMonth <= endMonth) {
+            startDate.setFullYear(currentYear - 1);
+          } else {
+            endDate.setFullYear(currentYear + 1);
+          }
+        }
+
+        return currentDate >= startDate && currentDate <= endDate;
+      }
+
+      // Store active season globally
+      window.__activeSeason = null;
+
+      const seasons = [
+        { name: "winter-holidays", startMonth: 12, startDay: 15, endMonth: 1, endDay: 7 },
+        { name: "halloween", startMonth: 10, startDay: 25, endMonth: 10, endDay: 31 },
+        { name: "easter", startMonth: 3, startDay: 20, endMonth: 4, endDay: 10 }
+      ];
+
+      for (const season of seasons) {
+        if (isInSeason(season.startMonth, season.startDay, season.endMonth, season.endDay)) {
+          window.__activeSeason = season.name;
+          break;
+        }
+      }
+    })();
+  </script>
 </head>
-
-
-<!-- components -->
-<script src="components/project-item.js" defer></script>
-<script src="components/navbar.js" defer></script>
-<script src="components/tech-chip-list.js" defer></script>
-<script src="components/social-buttons.js" defer></script>
-<script src="components/footer.js" defer></script>
-
-
-
 
 <body>
   <nav-bar></nav-bar>
@@ -102,14 +145,67 @@
   <!-- Home Section -->
   <section id="Home">
     <div class="container">
+      <!-- <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 10%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 10s linear infinite; animation-delay: 0s;">
+          ❅</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 20%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 12s linear infinite; animation-delay: 2s;">
+          ❅</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 30%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 8s linear infinite; animation-delay: 4s;">
+          ❆</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 40%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 14s linear infinite; animation-delay: 0s;">
+          ❄</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 50%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 11s linear infinite; animation-delay: 3s;">
+          ❅</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 60%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 9s linear infinite; animation-delay: 1s;">
+          ❆</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 70%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 13s linear infinite; animation-delay: 5s;">
+          ❄</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 80%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 10s linear infinite; animation-delay: 2s;">
+          ❅</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 90%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 15s linear infinite; animation-delay: 0s;">
+          ❆</div>
+        <div class="snowflake"
+          style="position: absolute; top: 0; left: 95%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 12s linear infinite; animation-delay: 4s;">
+          ❄</div>
+      </div> -->
       <div class="Picture">
-        <picture>
-          <source media="(min-width: 1301px)" srcset="images/webp/me-medium.webp" type="image/webp" />
-          <source media="(min-width: 451px)" srcset="images/webp/me-medium.webp" type="image/webp" />
-          <source media="(max-width: 450px)" srcset="images/webp/me-small3.webp" type="image/webp" />
-          <source srcset="images/webp/me.webp" type="image/webp" />
+        <picture data-seasonal="winter-holidays" data-seasonal-picture-winter-holidays="images/png/me-holiday.png">
+          <source media="(min-width: 1301px)" srcset="images/webp/me-medium.webp" type="image/webp" id="source-1" />
+          <source media="(min-width: 451px)" srcset="images/webp/me-medium.webp" type="image/webp" id="source-2" />
+          <source media="(max-width: 450px)" srcset="images/webp/me-small3.webp" type="image/webp" id="source-3" />
+          <source srcset="images/webp/me.webp" type="image/webp" id="source-4" />
           <img src="images/png/me.jpg" alt="Niels de Laat - Game Developer" fetchpriority="high" width="1600"
-            height="2107" />
+            height="2107" id="profile-img" />
+        </picture>
+        <script>
+          // Inline swap - runs immediately after the picture element is parsed
+          (function () {
+            if (window.__activeSeason === 'winter-holidays') {
+              const img = document.getElementById('profile-img');
+              const sources = [
+                document.getElementById('source-1'),
+                document.getElementById('source-2'),
+                document.getElementById('source-3'),
+                document.getElementById('source-4')
+              ];
+
+              sources.forEach(s => s.srcset = 'images/png/me-holiday.png');
+              img.src = 'images/png/me-holiday.png';
+              img.style.opacity = '1';
+            } else {
+              document.getElementById('profile-img').style.opacity = '1';
+            }
+          })();
+        </script>
         </picture>
       </div>
       <div class="Text">
@@ -128,14 +224,18 @@
           <a href="https://trakt.tv/users/nielscraft12" target="_blank" rel="noopener noreferrer"
             class="external-link">movies</a>.
         </p>
-        <h1 data-i18n="aboutMe.skills" style="text-align: center;">Skills</h1>
+        <h1 data-i18n="aboutMe.skills" style="text-align: center; position: relative; z-index: 10;">Skills</h1>
         <tech-chip-list data-chips='[
     {"name": "C#", "png": "images/png/CSharpLogo.png", "webp": "images/webp/CSharpLogo.webp"},
     {"name": "Unity", "png": "images/png/UnityLogo.png", "webp": "images/webp/UnityLogo.webp"},
     {"name": "HTML", "png": "images/png/htmlLogo.png", "webp": "images/webp/htmlLogo.webp"},
     {"name": "CSS", "png": "images/png/cssLogo2.png", "webp": "images/webp/cssLogo2.webp"},
+    {"name": "JS", "png": "images/png/JavaScriptLogo.png", "webp": "images/webp/JavaScriptLogo.webp"},
     {"name": "Git", "png": "images/png/GithubLogo.png", "webp": "images/webp/GithubLogo.webp"},
-    {"name": "Scrum", "png": "images/png/TrelloLogo.png", "webp": "images/webp/TrelloLogo.webp"}
+    {"name": "Scrum", "png": "images/png/TrelloLogo.png", "webp": "images/webp/TrelloLogo.webp"},
+    {"name": "GameMaker", "png": "images/png/GMLogo.png", "webp": "images/webp/GMLogo.webp"},
+    {"name": "WordPress", "png": "images/png/WordpressLogo.png", "webp": "images/webp/WordpressLogo.webp"},
+    {"name": "Power Platform", "png": "images/png/PowerPlatformLogo.png", "webp": "images/webp/PowerPlatformLogo.webp"}
   ]'>
         </tech-chip-list>
       </div>
@@ -163,7 +263,7 @@
 -------------------------------------------------------------------------------------------------------------------    
 -->
       <project-item link="projects/wa-lch-origins.html" title="WA-LCH Origins" year="2025" category="games"
-        image-webp="images/webp/WalchOrgins.webp" image-png="images/png/WalchOrgins.png"
+        image-webp="images/webp/WalchOrgins.webp" image-png="images/png/WalchOrgins_s.png"
         description="A prequel to WA-LCH exploring the origins of the cleaning bot's story."
         i18n-description="projects.descriptionGame1" i18n-technologies="projects.technologies"
         i18n-see-more="projects.seeMore" technologies='[
@@ -248,18 +348,32 @@
   ]'></project-item>
 
       <!-- 
+-------------------------------------------------------------------------------------------------------------------  
+Maze Collector                                      Maze Collector                                   Maze Collector  
+-------------------------------------------------------------------------------------------------------------------    
+-->
+
+      <!-- <project-item link="projects/maze-collector.html" title="Maze Collector" year="2016" category="games"
+        image-webp="images/webp/MazeCollector.webp" image-png="images/png/MazeCollector.png"
+        description="A fun arcade-style game with slime characters and exciting combat."
+        i18n-description="projects.descriptionGame6" i18n-technologies="projects.technologies"
+        i18n-see-more="projects.seeMore" technologies='[
+    {"name": "GameMaker", "webp": "images/webp/GMLogo.webp", "png": "images/png/GMLogo.png"}
+  ]'></project-item> -->
+
+      <!-- 
 -------------------------------------------------------------------------------------------------------------------    
     3D Printing                                     3D Printing                                         3D Printing
 -------------------------------------------------------------------------------------------------------------------    
 -->
 
-      <project-item link="projects/3d-printing.html" title="Test 3D Printing" year="2025" category="3dPrinting"
+      <!-- <project-item link="projects/3d-printing.html" title="Test 3D Printing" year="2025" category="3dPrinting"
         image-webp="images/webp/3dPrinting.webp" image-png="images/png/3dPrinting.png"
         description="Exploring 3D printing technology and creating custom models."
         i18n-description="projects.description3dPrinting" i18n-technologies="projects.technologies"
         i18n-see-more="projects.seeMore" technologies='[
     {"name": "Blender", "webp": "images/BlenderLogo.webp", "png": "images/BlenderLogo.webp"}
-  ]'></project-item>
+  ]'></project-item> -->
 
     </div>
   </section>
@@ -270,17 +384,17 @@
   <section id="Experience">
     <h1 data-i18n="nav.experience">Experience</h1>
     <div class="timeline-container">
-      <!-- <div class="controls">
+      <div class="controls">
         <button id="prev-btn">◀</button>
         <div class="slider" id="slider">
           <div class="slider-track" id="slider-track"></div>
           <div class="slider-points">
-            <-- JS will generate points ->
+            <!-- JS will generate points -->
           </div>
           <div class="slider-thumb" id="slider-thumb"></div>
         </div>
         <button id="next-btn">▶</button>
-      </div> -->
+      </div>
 
       <!-- Web component: content sections go here -->
       <experience-section id="experience" data-experiences='[
@@ -297,8 +411,20 @@
         {"name": "Trello", "png": "images/png/TrelloLogo.png", "webp": "images/webp/TrelloLogo.webp"},
         {"name": "Git", "png": "images/png/GithubLogo.png", "webp": "images/webp/GithubLogo.webp"}
       ]
+    },
+    {
+      "title": "Ster.Co",
+      "badges": ["internship"],
+      "startDate": "02.2026",
+      "endDate": "Present",
+      "description": " ",
+      "i18nDescription": "experience.stercoDescription",
+      "skills": [
+        {"name": "Power Platform", "png": "images/png/PowerPlatformLogo.png", "webp": "images/webp/PowerPlatformLogo.webp"}
+      ]
     }
   ]'></experience-section>
+
     </div>
   </section>
   <hr class="rounded" style="margin-bottom: 3px" />
@@ -316,14 +442,29 @@
     </social-buttons>
   </section>
 
-  <!-- Preload the default language file to reduce waterfall -->
-  <link rel="modulepreload" href="js/translations/en.js">
-
   <!-- Critical scripts loaded for immediate execution -->
+  <script type="module" src="js/themes.js"></script>
+  <script type="module">
+    import { initializeTheme } from './js/themes.js';
+    initializeTheme();
+  </script>
+
+  <!-- Seasonal content - run immediately before anything renders -->
+  <script src="js/seasonal.js"></script>
+
   <script type="module" src="js/translate.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/project-ordering.js"></script>
+
+  <!-- Component definitions - load early but defer execution -->
+  <script src="components/navbar.js" defer></script>
+  <script src="components/project-item.js" defer></script>
+  <script src="components/tech-chip-list.js" defer></script>
+  <script src="components/social-buttons.js" defer></script>
   <script src="components/experience-section.js" defer></script>
+  <script src="components/footer.js" defer></script>
+
+  <!-- Application scripts -->
+  <script src="js/main.js" defer></script>
+  <script src="js/project-ordering.js" defer></script>
 
   <!-- Non-critical scripts with lower priority -->
   <script defer src="js/animation.js"></script>

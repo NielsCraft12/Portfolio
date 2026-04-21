@@ -6,7 +6,7 @@
 }
 
 #Projects {
-  background-color: #1e1e1e;
+  background-color: var(--primary-bg);
   min-height: 100vh;
   max-height: fit-content;
   box-sizing: border-box;
@@ -108,7 +108,7 @@
 
 .blog-year {
   padding-bottom: 0 !important;
-  color: #ff7e5f;
+  color: var(--gradient-start);
   font-size: 0.95rem;
   display: inline-flex;
   align-items: center;
@@ -148,7 +148,7 @@
 }
 
 .blog-box:hover .blog-readmore {
-  color: #ff7e5f !important;
+  color: var(--gradient-start) !important;
   transition: all ease 0.2s !important;
 }
 
@@ -161,7 +161,7 @@
 }
 
 .blog-box:hover .blog-title {
-  color: #ff7e5f !important;
+  color: var(--gradient-start) !important;
   transition: all ease 0.2s !important;
 }
 
@@ -169,7 +169,7 @@
   color: #000000 !important;
 }
 .blog-box:hover .technologies {
-  color: #ff7e5f !important;
+  color: var(--gradient-start) !important;
   transition: all ease 0.2s !important;
 }
 
@@ -184,36 +184,35 @@
 
 .tab-button {
   background-color: transparent;
-  border: 2px solid #feb47b;
+  border: 2px solid var(--gradient-end);
   color: #fff;
   padding: 12px 24px;
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  font-family: "Baloo 2", cursive;
+  font-family: var(--font-family);
   transition: all 0.5s ease;
   outline: none;
 }
 
 .tab-button:hover {
-  background: linear-gradient(to left, #ff7e5f, #feb47b);
+  background: linear-gradient(to left, var(--gradient-start), var(--gradient-end));
   /* color: #1e1e1e; */
   transform: translateY(-2px);
 }
 
 .tab-button.active {
-  background: linear-gradient(to left, #ff7e5f, #feb47b);
+  background: linear-gradient(to left, var(--gradient-start), var(--gradient-end));
   /* color: #1e1e1e; */
   /* box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); */
-  box-shadow: 0 4px 5px #ff7e5f;
+  box-shadow: 0 4px 5px var(--gradient-start);
 }
 
 /* Project filtering */
 .project-item {
   opacity: 1;
   margin: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
   visibility: visible;
 }
 
@@ -221,22 +220,18 @@
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
-  transform: scale(0.95);
 }
 
 /* Initial state - hide all projects until JavaScript loads */
 .project-item.hidden {
   opacity: 0;
   visibility: hidden;
-  transform: scale(0.95);
 }
 
-/* Show projects with smooth transition */
+/* Show projects - instant display without transition to prevent flash */
 .project-item.show {
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
-  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 @media (max-width: 1250px) and (min-width: 1101px) {
