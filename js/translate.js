@@ -91,24 +91,31 @@ async function updateContent(lang) {
     if (value) {
       // Some elements (like <meta>) are void and don't support innerHTML.
       // Set the appropriate attribute for those; otherwise update innerHTML.
+      // Writing innerHTML unconditionally tore down and rebuilt every
+      // translated node ~1s after load -- including on first paint in English,
+      // where the markup is already correct. That reflow was the page's
+      // remaining layout shift, so only touch the DOM when it actually differs.
       if (element.tagName === 'META') {
-        element.setAttribute('content', value);
+        if (element.getAttribute('content') !== value) element.setAttribute('content', value);
       } else if (element.dataset.type === 'list') {
         // Handle list type elements
         const itemsKey = element.getAttribute("data-i18n-items");
         const items = getNestedTranslation(translations, itemsKey);
 
         if (Array.isArray(items)) {
-          element.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+          const html = items.map(item => `<li>${item}</li>`).join('');
+          if (element.innerHTML !== html) element.innerHTML = html;
         } else {
           console.warn(`Expected an array for list items at key '${itemsKey}'`);
         }
-      } else {
+      } else if (element.innerHTML !== value) {
         element.innerHTML = value;
       }
       // Remove any previous missing translation styling
-      element.classList.remove("missing-translation");
-      element.removeAttribute("data-missing-key");
+      if (element.classList.contains("missing-translation")) {
+        element.classList.remove("missing-translation");
+        element.removeAttribute("data-missing-key");
+      }
       successCount++;
     } else {
       // Handle missing translation
@@ -141,6 +148,13 @@ async function updateContent(lang) {
 
   //console.log(`Translation update complete: ${successCount} successful, ${missingCount} missing`);
 
+  // The ageLocation string ships an empty <span id="age">, so refill it in the
+  // same task as the DOM write. Doing it after the awaits below let the browser
+  // paint the blank age first, which shifted the whole Home column.
+  if (typeof updateAgeDisplay === "function") {
+    updateAgeDisplay();
+  }
+
   // Update current language display
   updateLanguageDisplay(lang);
   // Update CSS custom properties for translated content
@@ -149,13 +163,8 @@ async function updateContent(lang) {
   // Update CV link
   await updateCVLink(lang);
 
-  // Save preference and update age display
+  // Save preference
   localStorage.setItem("preferredLanguage", lang);
-
-  // Call updateAgeDisplay if it exists (defined in main.js)
-  if (typeof updateAgeDisplay === "function") {
-    updateAgeDisplay();
-  }
 
   // Dispatch event to notify shadow DOM components about translation updates
   const translationEvent = new CustomEvent('translationUpdated', {
@@ -439,10 +448,7 @@ window.findMissingTranslations = async function (lang = "all") {
 let isInitialized = false;
 
 function initializeTranslationSystem() {
-  if (isInitialized) {
-    console.log("Translation system already initialized, skipping...");
-    return;
-  }
+  if (isInitialized) return;
 
   // console.log("Initializing translation system...");
   isInitialized = true;

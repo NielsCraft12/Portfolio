@@ -65,7 +65,7 @@ class ExperienceSection extends HTMLElement {
           .join("");
 
         return `
-        <div class="content-section ${index === 0 ? "active" : ""}" data-index="${index}">
+        <div class="content-section ${index === 0 ? "active" : ""}" data-index="${index}" ${index === 0 ? "" : "inert"}>
           <div class="header">
             <div class="title-container">
               <div class="title">${exp.title}</div>
@@ -131,12 +131,16 @@ class ExperienceSection extends HTMLElement {
         // Add active class and remove slide class
         section.classList.add("active");
         section.classList.remove("slide-left", "slide-right");
+        // Inactive panels are only collapsed to height:0 in CSS, so without `inert`
+        // their headings and links stay in the accessibility tree and in the tab order.
+        section.removeAttribute("inert");
       } else {
         // Slide out in the opposite direction
         if (section.classList.contains("active")) {
           section.classList.add(previousIndex > index ? "slide-left" : "slide-right");
         }
         section.classList.remove("active");
+        section.setAttribute("inert", "");
       }
     });
 
@@ -189,7 +193,6 @@ class ExperienceSection extends HTMLElement {
         this.updateTranslations(translations);
       }
     } catch (error) {
-      console.log("Translation loading failed, using defaults:", error);
     }
   }
 

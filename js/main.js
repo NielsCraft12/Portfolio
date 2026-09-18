@@ -16,7 +16,7 @@ function calculateAge(birthday) {
 function updateAgeDisplay() {
   const birthday = "2005-03-20"; // Set your birth date here (YYYY-MM-DD)
   const ageElement = document.getElementById("age");
-  ageElement.textContent = calculateAge(birthday);
+  if (ageElement) ageElement.textContent = calculateAge(birthday);
 }
 
 // Project Tab Functionality
@@ -33,9 +33,6 @@ function initProjectTabs() {
   function filterProjects(category) {
     let visibleCount = 0;
     const maxProjects = 6;
-
-    // Hide container to prevent flash during updates
-    blogContainer.style.visibility = "hidden";
 
     // Disable transitions temporarily to prevent flash
     projectItems.forEach((item) => {
@@ -105,28 +102,49 @@ function initProjectTabs() {
       });
     }
 
-    // Show container and re-enable transitions after all operations complete
+    // Re-enable transitions once the new layout has been painted
     requestAnimationFrame(() => {
-      blogContainer.style.visibility = "visible";
       projectItems.forEach((item) => {
         item.style.transition = "";
       });
     });
   }
 
-  tabButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // Remove active class from all buttons
-      tabButtons.forEach((btn) => btn.classList.remove("active"));
+  // The tabs advertise aria-selected in the markup, so the state has to move with
+  // the active class -- otherwise the tree keeps reporting the first tab as selected.
+  function selectTab(button) {
+    tabButtons.forEach((btn) => {
+      const isActive = btn === button;
+      btn.classList.toggle("active", isActive);
+      btn.setAttribute("aria-selected", String(isActive));
+      btn.tabIndex = isActive ? 0 : -1;
+    });
+    const panel = document.getElementById("projects-panel");
+    if (panel && button.id) panel.setAttribute("aria-labelledby", button.id);
+  }
 
-      // Add active class to clicked button
-      button.classList.add("active");
+  tabButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      selectTab(button);
 
       // Filter projects based on selected tab
       const category = button.getAttribute("data-tab");
       filterProjects(category);
     });
+
+    // Arrow-key navigation is what the tab role promises once it is in the tree.
+    button.addEventListener("keydown", (e) => {
+      const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      const next = tabButtons[(index + step + tabButtons.length) % tabButtons.length];
+      next.focus();
+      next.click();
+    });
   });
+
+  // Keep the ordering system's programmatic switches in sync too.
+  window.selectProjectTab = selectTab;
 
   // Initialize with 'games' projects shown immediately, unless URL ordering overrides it
   const urlParams = new URLSearchParams(window.location.search);
@@ -142,27 +160,27 @@ function initProjectTabs() {
   // Make filterProjects globally available for the ordering system
   window.filterProjects = filterProjects;
 }
-//
-//
-//
-// navbar chang color on scroll
-//
-//
-//
-//
-
-// Function to walk up and find the first non-transparent background color
-
-// Update age display when the page loads
-window.onload = function () {
-  updateAgeDisplay();
-  // Use requestAnimationFrame to ensure DOM is ready and make filtering instant
-  requestAnimationFrame(() => {
-    initProjectTabs();
+// Close the mobile navbar after following an in-page link.
+function initMobileNav() {
+  const sidebarCheckbox = document.getElementById("sidebar-active");
+  document.querySelectorAll('.links-container a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      if (sidebarCheckbox && sidebarCheckbox.checked) sidebarCheckbox.checked = false;
+    });
   });
+}
 
-  //
-  //
-  //
-  //
-};
+// Runs on DOMContentLoaded rather than window.onload: every project card starts
+// hidden, so waiting for images and videos to finish left the grid blank for the
+// whole load and then popped it in.
+function init() {
+  updateAgeDisplay();
+  initMobileNav();
+  initProjectTabs();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}

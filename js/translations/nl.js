@@ -13,7 +13,8 @@ export const nl = {
     // welcome: "Hoi, ik ben Niels de Laat",
     welcome: '<span style="white-space: nowrap;">Hoi, ik ben</span><wbr> <span style="white-space: nowrap;">Niels de Laat</span>',
     ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, Nederland',
-    aboutMe: "Ik ben een spel ontwikkelaar die ervan houdt om vermakelijke games te maken. Ideeën worden tot leven gebracht met Unity en C#, en het leren van nieuwe en innovatieve benaderingen is iets wat boeiend blijft. Buiten het programmeren om gaat de tijd vaak naar games of films.",
+    birthday: '🎉 Vandaag word ik <span id="age"> </span>! 🎂⠀| 📍 Utrecht, Nederland',
+    aboutMe: "Ik ben een spel ontwikkelaar die ervan houdt om vermakelijke games te maken. Ideeën worden tot leven gebracht met Unity en C#, en het leren van nieuwe en innovatieve benaderingen is iets wat boeiend blijft. Buiten het programmeren om gaat de tijd vaak naar <a href=\"https://infinitebacklog.net/users/nielscraft12\" target=\"_blank\" style=\"text-decoration: none; color: #fffffff9\">games</a> of <a href=\"https://trakt.tv/users/nielscraft12\" target=\"_blank\" style=\"text-decoration: none; color: #fffffff9\">films</a>.",
     skills: "Vaardigheden",
   },
 
@@ -43,6 +44,7 @@ export const nl = {
     futureTitle: "De Toekomst",
     futureTime: "Toekomst",
     futureDescription: "Ik wil mijn vaardigheden uitbreiden in geavanceerde game-ontwikkeling, AI-integratie en mogelijk mobiele game-ontwikkeling. Altijd open voor nieuwe kansen en samenwerkingen.",
+    stercoDescription: "Ster.co automatiseert bedrijfsprocessen met behulp van het Microsoft Power Platform. Ze helpen bedrijven handmatige, tijdrovende taken te vervangen door slimme digitale oplossingen.",
   },
 
   contact: {

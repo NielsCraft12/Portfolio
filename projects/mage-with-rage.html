@@ -11,16 +11,12 @@
   <title>WA-LCH</title>
 
   <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
   <!-- Google Fonts - async loaded -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" media="print"
     onload="this.media='all'" />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
-  </noscript>
+
+  <noscript>  </noscript>
 
   <!-- Lightweight CSS loading polyfill -->
   <script>
@@ -230,6 +226,7 @@
   </style>
 
   <!-- Non-critical stylesheets loaded asynchronously -->
+  <link rel="preload" href="/fonts/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link href="../css/style.css" rel="stylesheet" media="print" onload="this.media='all'" />
   <link href="../css/ProjectPage.css" rel="stylesheet" media="print" onload="this.media='all'" />
   <link href="../css/Home.css" rel="stylesheet" media="print" onload="this.media='all'" />
@@ -244,9 +241,6 @@
   </noscript>
 
   <!-- Font Awesome Icons - loaded asynchronously -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
 
   <!-- Highlight.js - lazy loaded when code blocks are visible -->
   <script>
@@ -296,12 +290,12 @@
   <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+  <script src="../components/icons.js" defer></script>
 </head>
 
 <body>
   <!-- Navigation Menu -->
   <nav-bar></nav-bar>
-
 
   <div style="height: 50px;"></div>
   <!-- Main Content Container -->
@@ -490,9 +484,9 @@
         <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot3.png"
           alt="Profile picture" />
       </picture>
-      <!-- <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot1.png" alt="screen shot of the game" />
-        <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot2.png" alt="screen shot of the game" />
-        <img class="ScreenShots" src="../images/ProjectScreenShots/WALCH/WALCHscreenshot3.png" alt="screen shot of the game" /> -->
+      <!-- <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot1.png" alt="screen shot of the game" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot2.png" alt="screen shot of the game" />
+        <img class="ScreenShots" src="../images/png/ProjectScreenShots/WALCH/WALCHscreenshot3.png" alt="screen shot of the game" /> -->
 
       <!-- Credits Section -->
       <!-- <h1 data-i18n="projectPages.credits" style="text-align: center; margin-top: 10px; margin-bottom: 0"
@@ -509,7 +503,7 @@
         </li>
 
         <li>
-          <a href="http://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">
+          <a href="https://joahvandersloot.github.io/Portfolio" target="_blank" rel="noreferrer">
             <span class="chip">
               <i class="fa-solid fa-code GradiantTitle"></i>
 
@@ -609,7 +603,7 @@
         setTimeout(() => {
           const script = document.createElement('script');
           script.setAttribute('data-goatcounter', 'https://nielsdelaat.goatcounter.com/count');
-          script.src = '//gc.zgo.at/count.js';
+          script.src = 'https://gc.zgo.at/count.js';
           script.async = true;
           document.head.appendChild(script);
         }, 1000); // Delay by 1 second after load
@@ -619,7 +613,7 @@
 <footer>
   <div class="footer" style="display: flex; align-items: center; position: relative">
     <a data-lang="mi" style="position: absolute; left: 10px; cursor: pointer">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
+      <svg version="1.0" xmlns="https://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 736.000000 736.000000"
         preserveAspectRatio="xMidYMid meet" class="mi-icon">
         <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
           <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323

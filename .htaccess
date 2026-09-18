@@ -1,5 +1,8 @@
 ErrorDocument 404 /404-page-not-found.html
 
+# ----------------------------------------------------------------------
+# Clean URLs: /projects/wa-lch instead of /projects/wa-lch.html
+# ----------------------------------------------------------------------
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NC,L,R]
 
@@ -9,18 +12,82 @@ RewriteRule ^ %{REQUEST_URI}.html [NC,L]
 RewriteCond %{HTTP_HOST} ^www\.nielsdelaat\.us.to$
 RewriteRule ^/?$ "http\:\/\/nielsdelaat\.us.to\/" [R=301,L]
 
+# ----------------------------------------------------------------------
+# Compression -- text assets travel 3-5x smaller
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json application/manifest+json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml application/rss+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/x-javascript text/javascript
+  AddOutputFilterByType BROTLI_COMPRESS application/json application/manifest+json
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml application/xml application/rss+xml
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Correct types, so compression and caching rules actually match
+# ----------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType text/javascript              .js .mjs
+  AddType image/webp                   .webp
+  AddType image/svg+xml                .svg
+  AddType video/webm                   .webm
+  AddType application/manifest+json    .webmanifest
+  AddType font/woff2                   .woff2
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Caching
+# ----------------------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
 
-  # Cache images, videos, etc. for a year
+  # HTML must stay fresh, otherwise deploys go unnoticed
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # Media is versioned by filename in practice -- cache hard
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType video/webm "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 
-  # Cache CSS and JS for a month
+  # CSS and JS are edited in place, so a month with revalidation
   ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
+
+<IfModule mod_headers.c>
+  # immutable lets browsers skip the revalidation round trip entirely
+  <FilesMatch "\.(webp|png|jpe?g|gif|ico|svg|webm|mp4|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+
+  # ------------------------------------------------------------------
+  # Security headers
+  # ------------------------------------------------------------------
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # ETag plus Last-Modified is redundant; drop the weaker one
+  Header unset ETag
+</IfModule>
+
+FileETag None

@@ -50,7 +50,6 @@ class ThemeSwitcher extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = `
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <style>
         .theme-switcher {
           position: relative;
@@ -79,7 +78,8 @@ class ThemeSwitcher extends HTMLElement {
           background-color: var(--nav-hover);
         }
 
-        .theme-btn i {
+        .theme-btn i,
+        .theme-btn .svg-icon {
           transition: transform 0.3s ease;
           margin-left: -5px;
         }
@@ -157,7 +157,8 @@ class ThemeSwitcher extends HTMLElement {
             pointer-events: auto;
           }
 
-          .theme-switcher:hover .theme-btn i {
+          .theme-switcher:hover .theme-btn i,
+          .theme-switcher:hover .theme-btn .svg-icon {
             transform: rotate(180deg);
           }
         }
@@ -170,7 +171,8 @@ class ThemeSwitcher extends HTMLElement {
           pointer-events: auto;
         }
 
-        .theme-switcher.active .theme-btn i {
+        .theme-switcher.active .theme-btn i,
+        .theme-switcher.active .theme-btn .svg-icon {
           transform: rotate(180deg);
         }
 

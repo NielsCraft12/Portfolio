@@ -1,5 +1,16 @@
+/* This page does not load style.css, so --font-family never resolved here and
+   the page fell back to Times New Roman. Declare the face and a literal
+   fallback locally; the files are the same self-hosted ones style.css uses. */
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/baloo2-latin.woff2") format("woff2");
+}
+
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-family, "Baloo 2", cursive);
   background-color: var(--primary-bg);
   color: white;
   text-align: center;

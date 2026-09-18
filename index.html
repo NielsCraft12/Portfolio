@@ -15,7 +15,7 @@
   <meta property="og:title" content="Niels de Laat - Game Developer Portfolio" />
   <meta property="og:description"
     content="Game Developer specializing in Unity and C#. Explore my portfolio of entertaining games and web projects." />
-  <meta property="og:image" content="images/webp/me-medium.webp" />
+  <meta property="og:image" content="https://nielsdelaat.com/images/webp/me-medium.webp" />
   <meta property="og:url" content="https://nielsdelaat.com" />
 
   <!-- Twitter Card -->
@@ -23,9 +23,11 @@
   <meta name="twitter:title" content="Niels de Laat - Game Developer Portfolio" />
   <meta name="twitter:description"
     content="Game Developer specializing in Unity and C#. Explore my portfolio of entertaining games and web projects." />
-  <meta name="twitter:image" content="images/webp/me-medium.webp" />
+  <meta name="twitter:image" content="https://nielsdelaat.com/images/webp/me-medium.webp" />
 
   <title>Niels de Laat - Game Developer Portfolio</title>
+  <link rel="canonical" href="https://nielsdelaat.com/" />
+  <meta name="theme-color" content="#1e1e1e" />
 
   <!-- Critical CSS for LCP optimization -->
   <style>
@@ -35,7 +37,6 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      font-display: swap;
     }
 
     .container {
@@ -57,46 +58,13 @@
   </style>
 
   <!-- Google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
-  <!-- Style sheets -->
+<!-- Style sheets -->
+  <link rel="preload" href="/fonts/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/Home.css" />
   <link rel="stylesheet" href="css/Experience.css" />
   <link rel="stylesheet" href="css/Projects.css" />
   <link rel="stylesheet" href="css/Contact.css" />
-  <!-- Resource hints for better performance -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preconnect" href="//gc.zgo.at">
-  <link rel="modulepreload" href="js/translate.js">
-  <link rel="modulepreload" href="js/translations/en.js">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="preload" as="image" href="images/webp/me-medium.webp" media="(min-width: 451px)" type="image/webp">
-  <link rel="preload" as="image" href="images/webp/me-small3.webp" media="(max-width: 450px)" type="image/webp">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/Favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="images/Favicon/favicon.svg" />
-  <link rel="shortcut icon" href="images/Favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="images/Favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="images/Favicon/site.webmanifest" />
-  <!-- Preload critical component scripts -->
-  <link rel="modulepreload" href="components/navbar.js">
-  <link rel="modulepreload" href="components/project-item.js">
-
-  <!-- Inline script to prevent image flash - runs immediately -->
-  <style id="seasonal-preload">
-    [data-seasonal] img {
-      opacity: 0 !important;
-    }
-  </style>
   <script>
     // Inline seasonal checker - runs immediately before body renders
     (function () {
@@ -123,10 +91,12 @@
       // Store active season globally
       window.__activeSeason = null;
 
+      // Order matters: the loop below breaks on the first match, and the
+      // birthday falls on the opening day of the easter window.
       const seasons = [
-        { name: "winter-holidays", startMonth: 12, startDay: 15, endMonth: 1, endDay: 7 },
-        { name: "halloween", startMonth: 10, startDay: 25, endMonth: 10, endDay: 31 },
-        { name: "easter", startMonth: 3, startDay: 20, endMonth: 4, endDay: 10 }
+        { name: "birthday", startMonth: 3, startDay: 20, endMonth: 3, endDay: 20 },
+        { name: "winter-holidays", startMonth: 12, startDay: 20, endMonth: 1, endDay: 30 }
+
       ];
 
       for (const season of seasons) {
@@ -135,8 +105,70 @@
           break;
         }
       }
+
+      // ?holiday=1 / ?birthday=1 force a season so it can be previewed on any
+      // date - the winter treatment is otherwise only visible in December, and
+      // the birthday one on a single day of the year.
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("holiday")) {
+        window.__activeSeason = "winter-holidays";
+      } else if (params.has("birthday")) {
+        window.__activeSeason = "birthday";
+      }
+
+      // Single source of truth for the hero image, used by both the preload
+      // below and the <picture> in the body. Seasons without an entry here fall
+      // back to the year-round portrait.
+      const heroes = {
+        "winter-holidays": {
+          srcset: "images/webp/me-holiday-300.webp 300w, images/webp/me-holiday-400.webp 400w, images/webp/me-holiday-600.webp 600w, images/webp/me-holiday-800.webp 800w",
+          fallback: "images/png/me-holiday.jpg"
+        },
+        "birthday": {
+          srcset: "images/webp/me-birthday-300.webp 300w, images/webp/me-birthday-400.webp 400w, images/webp/me-birthday-600.webp 600w, images/webp/me-birthday-800.webp 800w",
+          fallback: "images/png/me-birthday.jpg"
+        }
+      };
+      const hero = heroes[window.__activeSeason] || {
+        srcset: "images/webp/me-small2.webp 200w, images/webp/me-small3.webp 300w, images/webp/me-small.webp 400w, images/webp/me-medium.webp 600w, images/webp/me-large.webp 800w",
+        fallback: "images/png/me-fallback.jpg"
+      };
+      window.__heroSizes = "(max-width: 767px) 90vw, (max-width: 1300px) 450px, 500px";
+      window.__heroSrcset = hero.srcset;
+      window.__heroFallback = hero.fallback;
     })();
   </script>
+  <!-- Resource hints for better performance -->
+  <link rel="preconnect" href="https://gc.zgo.at">
+  <link rel="modulepreload" href="js/translate.js">
+  <link rel="modulepreload" href="js/translations/en.js">
+  <!-- Hero portrait preload. Injected rather than static so it points at the
+       holiday portrait during the winter-holidays season; a static link would
+       preload the regular photo and then the swap below would fetch a second one. -->
+  <script>
+    (function () {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.type = "image/webp";
+      link.fetchPriority = "high";
+      link.imageSrcset = window.__heroSrcset;
+      link.imageSizes = window.__heroSizes;
+      document.head.appendChild(link);
+    })();
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="images/Favicon/site.webmanifest" />
+  <!-- Preload critical component scripts -->
+  <link rel="preload" as="script" href="components/icons.js">
+  <link rel="preload" as="script" href="components/navbar.js">
+  <link rel="preload" as="script" href="components/project-item.js">
+
 </head>
 
 <body>
@@ -144,73 +176,42 @@
 
   <!-- Home Section -->
   <section id="Home">
+    <!-- Filled by js/particles.js during the winter-holidays and birthday seasons -->
+    <div class="particles" aria-hidden="true" hidden></div>
     <div class="container">
-      <!-- <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 10%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 10s linear infinite; animation-delay: 0s;">
-          ❅</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 20%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 12s linear infinite; animation-delay: 2s;">
-          ❅</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 30%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 8s linear infinite; animation-delay: 4s;">
-          ❆</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 40%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 14s linear infinite; animation-delay: 0s;">
-          ❄</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 50%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 11s linear infinite; animation-delay: 3s;">
-          ❅</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 60%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 9s linear infinite; animation-delay: 1s;">
-          ❆</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 70%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 13s linear infinite; animation-delay: 5s;">
-          ❄</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 80%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 10s linear infinite; animation-delay: 2s;">
-          ❅</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 90%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 15s linear infinite; animation-delay: 0s;">
-          ❆</div>
-        <div class="snowflake"
-          style="position: absolute; top: 0; left: 95%; font-size: 3em; color: white; text-shadow: 0 0 10px white; animation: fall 12s linear infinite; animation-delay: 4s;">
-          ❄</div>
-      </div> -->
       <div class="Picture">
-        <picture data-seasonal="winter-holidays" data-seasonal-picture-winter-holidays="images/png/me-holiday.png">
-          <source media="(min-width: 1301px)" srcset="images/webp/me-medium.webp" type="image/webp" id="source-1" />
-          <source media="(min-width: 451px)" srcset="images/webp/me-medium.webp" type="image/webp" id="source-2" />
-          <source media="(max-width: 450px)" srcset="images/webp/me-small3.webp" type="image/webp" id="source-3" />
-          <source srcset="images/webp/me.webp" type="image/webp" id="source-4" />
-          <img src="images/png/me.jpg" alt="Niels de Laat - Game Developer" fetchpriority="high" width="1600"
-            height="2107" id="profile-img" />
+        <picture>
+          <source type="image/webp" id="hero-source"
+            srcset="images/webp/me-small2.webp 200w, images/webp/me-small3.webp 300w, images/webp/me-small.webp 400w, images/webp/me-medium.webp 600w, images/webp/me-large.webp 800w"
+            sizes="(max-width: 767px) 90vw, (max-width: 1300px) 450px, 500px" />
+          <img src="images/png/me-fallback.jpg" alt="Niels de Laat - Game Developer" fetchpriority="high"
+            width="1600" height="2107" id="profile-img" />
         </picture>
         <script>
-          // Inline swap - runs immediately after the picture element is parsed
+          // Swap in the seasonal portrait before the browser starts fetching.
+          // Inline (rather than in seasonal.js) so there is never a visible swap.
+          // The sources come from the head so the preload agrees with what the
+          // <picture> ends up requesting.
           (function () {
-            if (window.__activeSeason === 'winter-holidays') {
-              const img = document.getElementById('profile-img');
-              const sources = [
-                document.getElementById('source-1'),
-                document.getElementById('source-2'),
-                document.getElementById('source-3'),
-                document.getElementById('source-4')
-              ];
-
-              sources.forEach(s => s.srcset = 'images/png/me-holiday.png');
-              img.src = 'images/png/me-holiday.png';
-              img.style.opacity = '1';
-            } else {
-              document.getElementById('profile-img').style.opacity = '1';
-            }
+            document.getElementById("hero-source").srcset = window.__heroSrcset;
+            document.getElementById("profile-img").src = window.__heroFallback;
           })();
         </script>
-        </picture>
       </div>
       <div class="Text">
         <p data-i18n="aboutMe.ageLocation" class="age-location">🎂 <span id="age"></span>⠀| 📍 Utrecht, The Netherlands
         </p>
+        <script>
+          // On the birthday, point this line at the celebratory string instead.
+          // Swapping the key (rather than the text) keeps it inside the i18n
+          // path, so switching language still translates it and translate.js
+          // still refills the #age span afterwards.
+          (function () {
+            if (window.__activeSeason === "birthday") {
+              document.querySelector(".age-location").dataset.i18n = "aboutMe.birthday";
+            }
+          })();
+        </script>
         <h1 data-i18n="aboutMe.welcome" style="word-spacing: -1px;">
           <span style="white-space: nowrap;">Hello, I'm</span><wbr> <span style="white-space: nowrap;">Niels de
             Laat</span>
@@ -225,6 +226,9 @@
             class="external-link">movies</a>.
         </p>
         <h1 data-i18n="aboutMe.skills" style="text-align: center; position: relative; z-index: 10;">Skills</h1>
+        <!-- Defined here, immediately before the element, so the chips are upgraded
+             inline during parsing rather than appearing after load -->
+        <script src="components/tech-chip-list.js"></script>
         <tech-chip-list data-chips='[
     {"name": "C#", "png": "images/png/CSharpLogo.png", "webp": "images/webp/CSharpLogo.webp"},
     {"name": "Unity", "png": "images/png/UnityLogo.png", "webp": "images/webp/UnityLogo.webp"},
@@ -235,7 +239,8 @@
     {"name": "Scrum", "png": "images/png/TrelloLogo.png", "webp": "images/webp/TrelloLogo.webp"},
     {"name": "GameMaker", "png": "images/png/GMLogo.png", "webp": "images/webp/GMLogo.webp"},
     {"name": "WordPress", "png": "images/png/WordpressLogo.png", "webp": "images/webp/WordpressLogo.webp"},
-    {"name": "Power Platform", "png": "images/png/PowerPlatformLogo.png", "webp": "images/webp/PowerPlatformLogo.webp"}
+    {"name": "Power Platform", "png": "images/png/power-platforms-icon.png", "webp": "images/webp/powerPlatformLogo.webp"},
+    {"name": "Python", "png": "images/png/pythonLogo.png", "webp": "images/webp/pythonLogo.webp"}
   ]'>
         </tech-chip-list>
       </div>
@@ -248,22 +253,22 @@
 
     <!-- Project Tabs -->
     <div class="project-tabs" role="tablist" aria-label="Project categories">
-      <button class="tab-button active" data-tab="games" data-i18n="projects.games" role="tab" aria-selected="true"
-        aria-controls="projects-panel">Games</button>
-      <button class="tab-button" data-tab="web" data-i18n="projects.webProjects" role="tab" aria-selected="false"
-        aria-controls="projects-panel">Web</button>
+      <button class="tab-button active" id="tab-games" type="button" data-tab="games" data-i18n="projects.games"
+        role="tab" aria-selected="true" aria-controls="projects-panel">Games</button>
+      <button class="tab-button" id="tab-web" type="button" data-tab="web" data-i18n="projects.webProjects"
+        role="tab" aria-selected="false" aria-controls="projects-panel" tabindex="-1">Web</button>
       <!-- <button class="tab-button" data-tab="3dPrinting" data-i18n="projects.3dPrinting" role="tab" aria-selected="false"
         aria-controls="projects-panel">3D Printing</button> -->
     </div>
 
-    <div class="blog-container" id="projects-panel" role="tabpanel">
+    <div class="blog-container" id="projects-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-games">
       <!-- 
 -------------------------------------------------------------------------------------------------------------------    
     WA-LCH Origins                                        WA-LCH Origins                             WA-LCH Origins
 -------------------------------------------------------------------------------------------------------------------    
 -->
       <project-item link="projects/wa-lch-origins.html" title="WA-LCH Origins" year="2025" category="games"
-        image-webp="images/webp/WalchOrgins.webp" image-png="images/png/WalchOrgins_s.png"
+        image-webp="images/webp/WalchOrgins.webp" image-png="images/png/WalchOrgins.png"
         description="A prequel to WA-LCH exploring the origins of the cleaning bot's story."
         i18n-description="projects.descriptionGame1" i18n-technologies="projects.technologies"
         i18n-see-more="projects.seeMore" technologies='[
@@ -385,15 +390,15 @@ Maze Collector                                      Maze Collector              
     <h1 data-i18n="nav.experience">Experience</h1>
     <div class="timeline-container">
       <div class="controls">
-        <button id="prev-btn">◀</button>
+        <button id="prev-btn" type="button" aria-label="Previous experience"><span aria-hidden="true">◀</span></button>
         <div class="slider" id="slider">
-          <div class="slider-track" id="slider-track"></div>
-          <div class="slider-points">
+          <div class="slider-track" id="slider-track" aria-hidden="true"></div>
+          <div class="slider-points" role="group" aria-label="Experience timeline">
             <!-- JS will generate points -->
           </div>
-          <div class="slider-thumb" id="slider-thumb"></div>
+          <div class="slider-thumb" id="slider-thumb" aria-hidden="true"></div>
         </div>
-        <button id="next-btn">▶</button>
+        <button id="next-btn" type="button" aria-label="Next experience"><span aria-hidden="true">▶</span></button>
       </div>
 
       <!-- Web component: content sections go here -->
@@ -417,10 +422,10 @@ Maze Collector                                      Maze Collector              
       "badges": ["internship"],
       "startDate": "02.2026",
       "endDate": "Present",
-      "description": " ",
+      "description": "Ster.co automates business processes using the Microsoft Power Platform. They help businesses replace manual, time-consuming tasks with smart digital solutions.",
       "i18nDescription": "experience.stercoDescription",
       "skills": [
-        {"name": "Power Platform", "png": "images/png/PowerPlatformLogo.png", "webp": "images/webp/PowerPlatformLogo.webp"}
+        {"name": "Power Platform", "png": "images/png/power-platforms-icon.png", "webp": "images/webp/powerPlatformLogo.webp"}, {"name": "Python", "png": "images/png/pythonLogo.png", "webp": "images/webp/pythonLogo.webp"}
       ]
     }
   ]'></experience-section>
@@ -449,31 +454,27 @@ Maze Collector                                      Maze Collector              
     initializeTheme();
   </script>
 
-  <!-- Seasonal content - run immediately before anything renders -->
-  <script src="js/seasonal.js"></script>
-
   <script type="module" src="js/translate.js"></script>
 
   <!-- Component definitions - load early but defer execution -->
+  <script src="components/icons.js" defer></script>
   <script src="components/navbar.js" defer></script>
   <script src="components/project-item.js" defer></script>
-  <script src="components/tech-chip-list.js" defer></script>
   <script src="components/social-buttons.js" defer></script>
   <script src="components/experience-section.js" defer></script>
   <script src="components/footer.js" defer></script>
 
   <!-- Application scripts -->
-  <script src="js/main.js" defer></script>
   <script src="js/project-ordering.js" defer></script>
+  <script src="js/main.js" defer></script>
 
   <!-- Non-critical scripts with lower priority -->
-  <script defer src="js/animation.js"></script>
   <script defer src="js/Experience.js"></script>
   <script defer src="js/ios-viewport-fix.js"></script>
-  <script defer src="js/mobile-optimizations.js"></script>
+  <script defer src="js/particles.js"></script>
 
   <!-- Analytics loaded asynchronously -->
-  <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <site-footer></site-footer>
 </body>
 

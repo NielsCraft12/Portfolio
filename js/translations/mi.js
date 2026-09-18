@@ -12,6 +12,7 @@ export const mi = {
     // welcome: "Bello, ka'm Niels de Laat",
     welcome: '<span style="white-space: nowrap;">Bello, ka\'m</span><wbr> <span style="white-space: nowrap;">Niels de Laat</span>',
     ageLocation: '🎂 <span id="age"> </span>⠀| 📍 Utrecht, ta peebam',
+    birthday: '🎉 Tulaliloo ti amo! <span id="age"> </span> banana! 🎂⠀| 📍 Utrecht, ta peebam',
     aboutMe: 'ka\'m a runelm ben loves da maynoo entertaining bam.  Ka toka mi cwm da levo tug ane yee c# yee ka loka rahrap daga yee hubkif rimfil.  Kan ka\'m non hutelm ka am maenae <a href="https://infinitebacklog.net/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">bam</a> sif coryea <a href="https://trakt.tv/users/nielscraft12" target=" _blank" style="text-decoration: none; color: #fffffff9">gnuour</a>',
     skills: "Disell",
   },
@@ -42,6 +43,7 @@ export const mi = {
     futureTitle: "Ta tegpul",
     futureTime: "Tegpul",
     futureDescription: 'Tu yoref aca? mod <a style="color: #ff7e5f;" href="#Contact">aca</a> da koabo me',
+    stercoDescription: "Ster.co automates ohmand celtet tug ta masski meyay libmar.  Feila hep zapdor fluyip ebbwaw, jewdom lie com flu waptot yonpus",
   },
   contact: {
     //contact

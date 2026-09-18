@@ -40,12 +40,14 @@ class FontSwitcher extends HTMLElement {
           background-color: var(--nav-hover, rgba(255, 255, 255, 0.1));
         }
 
-        .font-btn i {
+        .font-btn i,
+        .font-btn .svg-icon {
           transition: transform 0.3s ease;
           margin-left: 8px;
         }
 
-        .font-switcher.active .font-btn i {
+        .font-switcher.active .font-btn i,
+        .font-switcher.active .font-btn .svg-icon {
           transform: rotate(180deg);
         }
 
@@ -148,7 +150,8 @@ class FontSwitcher extends HTMLElement {
             pointer-events: auto;
           }
 
-          .font-switcher:hover .font-btn i {
+          .font-switcher:hover .font-btn i,
+          .font-switcher:hover .font-btn .svg-icon {
             transform: rotate(180deg);
           }
         }

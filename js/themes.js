@@ -5,7 +5,8 @@ export const themes = {
     font: {
       name: "Baloo 2",
       family: '"Baloo 2", cursive',
-      googleFont: "Baloo+2:wght@800",
+      // self-hosted in css/style.css (variable, 400-800) -- no googleFont here
+      googleFont: null,
     },
     fontScale: 1, // 1 = normal size, 2 = double size (for small fonts like Micro 5)
     colors: {
@@ -289,10 +290,10 @@ export const themes = {
 
 // Load Google Font dynamically and wait for it to be ready
 async function loadGoogleFont(font) {
-  if (!font || !font.googleFont) return;
+  if (!font) return;
 
   // Check if font link already exists
-  let existingLink = document.querySelector(`link[data-font="${font.name}"]`);
+  let existingLink = font.googleFont ? document.querySelector(`link[data-font="${font.name}"]`) : true;
 
   if (!existingLink) {
     // Create and append font link
@@ -350,11 +351,8 @@ export async function applyTheme(themeName) {
     // Load the font and wait for it to be ready
     await loadGoogleFont(theme.font);
 
-    // Force browser to recognize font change by temporarily switching to a different font
-    document.body.style.fontFamily = "Arial, sans-serif";
-    void document.body.offsetHeight; // Force reflow
-
-    // Now apply the new font
+    // font-family inherits, and every stylesheet resolves it through
+    // var(--font-family), so setting the variable and body is enough.
     document.body.style.fontFamily = theme.font.family;
     root.style.setProperty("--font-family", theme.font.family);
 
@@ -367,16 +365,6 @@ export async function applyTheme(themeName) {
       document.body.classList.remove("micro5-font");
     }
 
-    // Also update all text elements directly
-    const allElements = document.querySelectorAll("*");
-    allElements.forEach((el) => {
-      // Skip elements inside shadow DOM (like theme-switcher)
-      if (el.shadowRoot) return;
-      el.style.fontFamily = theme.font.family;
-    });
-
-    // Force another reflow
-    void document.body.offsetHeight;
   }
 
   // Save preference

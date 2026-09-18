@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Work in progress, not linked from anywhere yet
+Disallow: /projects/mage-with-rage
+Disallow: /projects/3d-printing
+Disallow: /projects/maze-collector
+
+Sitemap: https://nielsdelaat.com/sitemap.xml

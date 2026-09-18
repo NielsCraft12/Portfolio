@@ -1,18 +1,33 @@
+// Accessible names for icon-only links, keyed by the FontAwesome glyph name.
+const ICON_LABELS = {
+  "fa-envelope": "Email me",
+  "fa-itch-io": "itch.io profile",
+  "fa-linkedin": "LinkedIn profile",
+  "fa-github": "GitHub profile",
+  "fa-file-alt": "Download my CV",
+  "fa-gamepad": "Games profile",
+  "fa-desktop": "Desktop version",
+  "fa-mobile-alt": "Mobile version",
+};
+
 class SocialButtons extends HTMLElement {
+  static labelForIcon(icon) {
+    if (!icon) return "";
+    const token = icon.split(/\s+/).find((c) => ICON_LABELS[c]);
+    return token ? ICON_LABELS[token] : "";
+  }
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
-    console.log("ConnectedCallback this context:", this); // Debugging: Log the `this` context
-
     let buttons = [];
     try {
       const data = this.getAttribute("data-buttons");
       if (data) {
         buttons = JSON.parse(data);
-        console.log("Parsed buttons data:", buttons); // Debugging: Log parsed buttons
       }
     } catch (e) {
       console.error("Invalid social button JSON", e);
@@ -21,17 +36,14 @@ class SocialButtons extends HTMLElement {
     // Build HTML
     const buttonsHTML = buttons
       .map((btn) => {
-        const title = btn.title ? `title="${btn.title}"` : "";
         const rel = btn.rel ? `rel="${btn.rel}"` : 'rel="noreferrer"';
         const target = btn.target ? `target="${btn.target}"` : 'target="_blank"';
 
-        // Add fallback text for when FontAwesome doesn't load
-        let fallbackText = "";
-        if (btn.icon.includes("fa-envelope")) fallbackText = "✉";
-        else if (btn.icon.includes("fa-itch-io")) fallbackText = "🎮";
-        else if (btn.icon.includes("fa-linkedin")) fallbackText = "💼";
-        else if (btn.icon.includes("fa-github")) fallbackText = "⚡";
-        else if (btn.icon.includes("fa-file")) fallbackText = "📄";
+        // The glyph is decorative (aria-hidden), so without this the anchor reaches
+        // the accessibility tree as a nameless link. Callers may pass `label`; the
+        // icon name is the fallback so pages that only supply an icon still get one.
+        const label = btn.label || btn.title || SocialButtons.labelForIcon(btn.icon) || "Link";
+        const title = btn.title ? `title="${btn.title}"` : "";
 
         // If the button is marked as the CV entry (isCv: true) add a data attribute so
         // the translation system or this component can update it when the language changes.
@@ -43,20 +55,18 @@ class SocialButtons extends HTMLElement {
          ${rel}
          class="${btn.icon} icon"
          ${cvAttr}
+         aria-label="${label.replace(/"/g, "&quot;")}"
          ${title}>
-         <span class="icon-fallback">${fallbackText}</span>
+         <i class="${btn.icon}" aria-hidden="true"></i>
        </a>`;
       })
       .join("");
-
-    console.log("Generated buttons HTML:", buttonsHTML); // Debugging: Log generated HTML
 
     // Determine the correct CSS path based on current location
     const cssPath = window.location.pathname.includes("/projects/") ? "../css/Contact.css" : "css/Contact.css";
 
     this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="${cssPath}">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
       <style>
         /* Core social button styles (from Contact.css) */
         .social-media-buttons {
@@ -120,15 +130,10 @@ class SocialButtons extends HTMLElement {
           color: white;
         }
         
-        /* Fallback styles */
-        .icon-fallback {
-          display: none;
-        }
-        .icon.fallback-mode .icon-fallback {
-          display: inline;
-        }
-        .icon.fallback-mode:before {
-          display: none;
+        .icon .svg-icon {
+          width: 1em;
+          height: 1em;
+          display: block;
         }
         
         /* Responsive styles */
@@ -152,19 +157,8 @@ class SocialButtons extends HTMLElement {
       </div>
     `;
 
-    // Check if FontAwesome loaded and add fallback if needed
-    setTimeout(() => {
-      const icons = this.shadowRoot.querySelectorAll(".icon");
-      icons.forEach((icon) => {
-        const computedStyle = window.getComputedStyle(icon, ":before");
-        const fontFamily = computedStyle.getPropertyValue("font-family");
-
-        // If FontAwesome isn't detected, enable fallback mode
-        if (!fontFamily.includes("Font Awesome")) {
-          icon.classList.add("fallback-mode");
-        }
-      });
-    }, 100);
+    // Shadow DOM is invisible to the document-level icon observer.
+    if (window.SiteIcons) window.SiteIcons.observe(this.shadowRoot);
 
     // Listen for translation updates so we can update the CV link inside the shadow DOM.
     // The translation system dispatches a `translationUpdated` event with detail.translations.
@@ -176,10 +170,13 @@ class SocialButtons extends HTMLElement {
         const cvAnchor = this.shadowRoot.querySelector("[data-cv-link]");
         if (cvAnchor) {
           if (cv.filePath) cvAnchor.href = cv.filePath;
-          if (cv.title) cvAnchor.title = cv.title;
+          if (cv.title) {
+            cvAnchor.title = cv.title;
+            cvAnchor.setAttribute("aria-label", cv.title);
+          }
         }
       } catch (err) {
-        console.error("Error updating CV link in social-buttons:", err);
+        /* the CV link simply keeps its previous href */
       }
     };
 

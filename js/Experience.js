@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
   let experienceCount = 0;
   let isDragging = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchTracking = false;
 
   // Wait for the experience component to be ready
   experienceSection.addEventListener("experience-ready", (e) => {
@@ -26,9 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Generate slider points
     sliderPoints.innerHTML = "";
     for (let i = 0; i < experienceCount; i++) {
-      const point = document.createElement("div");
+      // A bare <div> with a click handler has no role and no name in the
+      // accessibility tree, and cannot be reached by keyboard.
+      const point = document.createElement("button");
+      point.type = "button";
       point.className = "slider-point" + (i === 0 ? " active" : "");
       point.dataset.index = i;
+      point.setAttribute("aria-label", `Go to experience ${i + 1} of ${experienceCount}`);
+      point.setAttribute("aria-current", i === 0 ? "true" : "false");
+      const pointPercentage = experienceCount > 1 ? (i / (experienceCount - 1)) * 100 : 0;
+      point.style.left = `${pointPercentage}%`;
       point.addEventListener("click", () => navigateToExperience(i));
       sliderPoints.appendChild(point);
     }
@@ -50,6 +60,31 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSliderPosition();
   }
 
+  function hexToRgb(hex) {
+    const cleanHex = hex.replace("#", "");
+    const normalizedHex = cleanHex.length === 3
+      ? cleanHex.split("").map((c) => c + c).join("")
+      : cleanHex;
+
+    return {
+      r: parseInt(normalizedHex.slice(0, 2), 16),
+      g: parseInt(normalizedHex.slice(2, 4), 16),
+      b: parseInt(normalizedHex.slice(4, 6), 16),
+    };
+  }
+
+  function getGradientColorAt(percentage) {
+    const start = hexToRgb("#ff7e5f");
+    const end = hexToRgb("#feb47b");
+    const t = Math.max(0, Math.min(1, percentage / 100));
+
+    const r = Math.round(start.r + (end.r - start.r) * t);
+    const g = Math.round(start.g + (end.g - start.g) * t);
+    const b = Math.round(start.b + (end.b - start.b) * t);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
   function updateSliderPosition() {
     // Update slider thumb position
     const percentage = experienceCount > 1 ? (currentIndex / (experienceCount - 1)) * 100 : 0;
@@ -66,6 +101,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const points = sliderPoints.querySelectorAll(".slider-point");
     points.forEach((point, i) => {
       point.classList.toggle("active", i === currentIndex);
+      point.classList.toggle("filled", i <= currentIndex);
+      point.setAttribute("aria-current", i === currentIndex ? "true" : "false");
+
+      if (i <= currentIndex) {
+        const pointPercentage = experienceCount > 1 ? (i / (experienceCount - 1)) * 100 : 0;
+        point.style.setProperty("--filled-color", getGradientColorAt(pointPercentage));
+      } else {
+        point.style.removeProperty("--filled-color");
+      }
     });
 
     // Update button states
@@ -146,4 +190,39 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentIndex < experienceCount - 1) navigateToExperience(currentIndex + 1);
     }
   });
+
+  // Mobile swipe navigation
+  experienceSection.addEventListener("touchstart", (e) => {
+    if (!e.touches || e.touches.length !== 1) return;
+
+    touchTracking = true;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  experienceSection.addEventListener("touchend", (e) => {
+    if (!touchTracking || !e.changedTouches || e.changedTouches.length !== 1) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    const swipeThreshold = 50;
+
+    touchTracking = false;
+
+    if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) < Math.abs(deltaY)) {
+      return;
+    }
+
+    if (deltaX < 0 && currentIndex < experienceCount - 1) {
+      navigateToExperience(currentIndex + 1);
+    } else if (deltaX > 0 && currentIndex > 0) {
+      navigateToExperience(currentIndex - 1);
+    }
+  }, { passive: true });
+
+  experienceSection.addEventListener("touchcancel", () => {
+    touchTracking = false;
+  }, { passive: true });
 });

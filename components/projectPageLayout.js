@@ -1,16 +1,36 @@
-// Debugging: Confirm script execution
-console.log("[Embed Debug] projectPageLayout.js loaded");
-
-// Ensure PROJECT_DATA is accessible
-if (typeof PROJECT_DATA === "undefined") {
-  console.error("[Embed Debug] PROJECT_DATA is undefined at script start.");
-} else {
-  console.log("[Embed Debug] PROJECT_DATA is accessible at script start:", PROJECT_DATA);
-}
-
 // ============================================
 // COMPLETE RENDERING CODE - WITH COMPONENT WAITING
 // ============================================
+
+// Starts an autoplaying clip when it scrolls into view and pauses it on the way
+// out, so a page full of demo videos costs one download at a time.
+const videoVisibility =
+  typeof IntersectionObserver !== "undefined"
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+              if (video.preload !== "auto") video.preload = "auto";
+              const played = video.play();
+              if (played && played.catch) played.catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { rootMargin: "200px" }
+      )
+    : null;
+
+function observeVideo(video) {
+  if (videoVisibility) {
+    videoVisibility.observe(video);
+  } else {
+    video.preload = "auto";
+    video.autoplay = true;
+  }
+}
 
 // Wrap everything in an async init function
 async function initProjectPage() {
@@ -53,6 +73,8 @@ async function initProjectPage() {
           // Handle multiple images
           section.src.forEach((imageSrc, idx) => {
             const img = document.createElement("img");
+            img.loading = "lazy";
+            img.decoding = "async";
             img.src = imageSrc;
             img.alt = section.alt ? section.alt[idx] : `Project Image ${idx + 1}`;
             img.style.flex = section.flex ? section.flex[idx] : "1"; // Allow custom size per image
@@ -65,6 +87,8 @@ async function initProjectPage() {
         } else {
           // Handle single image
           const img = document.createElement("img");
+          img.loading = "lazy";
+          img.decoding = "async";
           img.src = section.src;
           img.alt = section.alt || "Project Image";
           img.style.width = section.width || "100%";
@@ -116,12 +140,16 @@ async function initProjectPage() {
           mediaDiv.className = "media-container inline-media";
 
           const video = document.createElement("video");
-          video.autoplay = section.autoplay !== false;
+          const wantsAutoplay = section.autoplay !== false;
           video.muted = section.muted !== false;
           video.loop = section.loop !== false;
           video.playsInline = true;
           video.controls = section.controls || false;
-          video.loading = section.loading || "lazy";
+          // <video> has no loading attribute, so `autoplay` used to start every
+          // clip on the page downloading at once -- several MB before the reader
+          // had scrolled anywhere near them. Hold off until each one is in view.
+          video.preload = "none";
+          if (wantsAutoplay) observeVideo(video);
           video.style.width = section.width || "100%";
           video.style.maxWidth = section.maxWidth || "800px";
           video.style.margin = "20px auto";
@@ -293,9 +321,33 @@ async function initProjectPage() {
   const screenshotsContainer = document.getElementById("screenshotsContainer");
   PROJECT_DATA.sidebar.screenshots.forEach((screenshot) => {
     const img = document.createElement("img");
-    img.src = screenshot.src;
+    img.loading = "lazy";
+    img.decoding = "async";
     img.alt = screenshot.alt;
     img.className = "screenshot";
+
+    // Intrinsic size reserves the right box before the lazy image arrives, so
+    // the sidebar does not jump as the gallery fills in.
+    if (screenshot.w && screenshot.h) {
+      img.width = screenshot.w;
+      img.height = screenshot.h;
+    }
+
+    // The gallery renders into a 350px column, so shipping the full-resolution
+    // capture (often 2559px wide) wasted most of its bytes. `thumbs` lists the
+    // widths that exist on disk as "<name>-<width>.webp" next to the original;
+    // the full file is kept for the modal only.
+    const thumbs = screenshot.thumbs;
+    if (thumbs && thumbs.length) {
+      const stem = screenshot.src.replace(/\.webp$/, "");
+      img.srcset = thumbs.map((w) => `${stem}-${w}.webp ${w}w`).join(", ");
+      img.sizes = "(min-width: 1025px) 350px, 92vw";
+      img.src = `${stem}-${thumbs[thumbs.length - 1]}.webp`;
+    } else {
+      img.src = screenshot.src;
+    }
+    img.dataset.full = screenshot.src;
+
     screenshotsContainer.appendChild(img);
   });
 
@@ -315,7 +367,7 @@ async function initProjectPage() {
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("screenshot")) {
       modal.style.display = "block";
-      modalImg.src = e.target.src;
+      modalImg.src = e.target.dataset.full || e.target.currentSrc || e.target.src;
     }
   });
 
@@ -333,8 +385,6 @@ async function initProjectPage() {
   const copyrightYearEl = document.getElementById("copyright-year");
   if (copyrightYearEl) {
     copyrightYearEl.textContent = new Date().getFullYear();
-  } else {
-    console.warn('[Embed Debug] Element with ID "copyright-year" not found.');
   }
 
   // Smooth Scrolling
@@ -382,7 +432,6 @@ async function initProjectPage() {
       if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", fn);
       } else {
-        console.log("[Embed Debug] DOM already loaded, executing logic.");
         fn();
       }
     }
@@ -420,19 +469,8 @@ async function initProjectPage() {
       const urlParams = typeof URLSearchParams !== "undefined" ? new URLSearchParams(window.location.search) : null;
       const forceEmbed = urlParams ? urlParams.get("forceEmbed") === "true" : false;
 
-      console.log("[Embed Debug] embedEnabled:", embedEnabled, "playableOnMobile:", playableOnMobile, "isTouchDevice:", isTouchDevice, "forceEmbed:", forceEmbed);
-
-      if (!embedEnabled) {
-        console.error("[Embed Debug] Embed is disabled.");
-      } else if (isTouchDevice && !playableOnMobile) {
-        console.warn("[Embed Debug] Touch device detected, embed not playable.");
-      } else {
-        console.log("[Embed Debug] Embed logic executed.");
-      }
-
       let messageEl = document.querySelector(".mobile-message");
       if (!messageEl) {
-        console.warn('[Embed Debug] Element with class "mobile-message" not found. Creating a new one.');
         messageEl = document.createElement("div");
         messageEl.className = "mobile-message";
         messageEl.innerHTML = `
@@ -446,7 +484,6 @@ async function initProjectPage() {
       if (!embedEnabled) {
         messageEl.style.display = "none";
         embedSection.style.display = "none";
-        console.log("[Embed Debug] Embed is disabled.");
       } else if (isTouchDevice && !playableOnMobile) {
         messageEl.style.display = "flex";
         messageEl.innerHTML = `
@@ -455,7 +492,6 @@ async function initProjectPage() {
                 `;
         embedSection.style.display = "none";
         embedSection.innerHTML = "";
-        console.log("[Embed Debug] Mobile detected, embed not playable. Showing updated message.");
       } else {
         messageEl.style.display = "none";
         embedSection.style.display = "block";
@@ -507,7 +543,6 @@ async function initProjectPage() {
         embedSection.innerHTML = "";
         embedSection.appendChild(h3);
         embedSection.appendChild(div);
-        console.log("[Embed Debug] Embed displayed successfully.");
       }
 
       function handleResize() {
@@ -593,7 +628,10 @@ document.title = PROJECT_DATA.title + " | Niels de Laat";
 // Add Scroll to Top Button
 const scrollToTopButton = document.createElement("button");
 scrollToTopButton.id = "scrollToTopButton";
-scrollToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>'; // Font Awesome arrow-up icon
+scrollToTopButton.innerHTML = '<i class="fas fa-arrow-up" aria-hidden="true"></i>'; // Font Awesome arrow-up icon
+scrollToTopButton.type = "button";
+// Icon-only, so the glyph alone would leave the button nameless in the a11y tree.
+scrollToTopButton.setAttribute("aria-label", "Back to top");
 scrollToTopButton.style.position = "fixed";
 scrollToTopButton.style.bottom = "20px";
 scrollToTopButton.style.right = "20px";

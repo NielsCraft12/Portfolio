@@ -33,7 +33,7 @@ class ProjectItem extends HTMLElement {
         <span class="chip">
           <picture>
             <source srcset="${tech.webp}" type="image/webp" />
-            <img class="chip__img" src="${tech.png}" alt="${tech.name} Logo" />
+            <img class="chip__img" src="${tech.png}" alt="${tech.name} Logo" loading="lazy" decoding="async" width="100" height="100" />
           </picture>
           <i class="chip__label">${tech.name}</i>
         </span>

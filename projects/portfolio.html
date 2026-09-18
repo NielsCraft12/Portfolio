@@ -6,23 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WA-LCH | Niels de Laat</title>
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../images/Favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../images/Favicon/favicon-16x16.png">
-  <link rel="manifest" href="../images/Favicon/site.webmanifest">
-
   <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
   <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
   <meta name="author" content="Niels de Laat">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <link href="../css/prism.css" rel="stylesheet" />
 
+  <script src="../components/icons.js" defer></script>
   <script type="module" src="../components/navbar.js"></script>
   <script type="module" src="../components/social-buttons.js"></script>
   <script type="module" src="../components/code-block.js"></script>
@@ -64,6 +55,7 @@
       }
     });
   </script>
+  <link rel="preload" href="/fonts/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/ProjectPage.css" id="customStyles">
 
@@ -215,7 +207,7 @@ switchToFirstProjectCategory(order) {
         },
         {
           type: "codeblock",
-          githubUrl: "https://github.com/NielsCraft12/Portfolio/blob/main/Projects/WA-LCH.html#L79-L309",
+          githubUrl: "https://github.com/NielsCraft12/Portfolio/blob/main/projects/wa-lch.html#L79-L309",
           language: "javascript",
           buttonI18n: "projectPages.viewOnGitHub",
           buttonText: "View on GitHub",
@@ -545,9 +537,9 @@ const codeObserver = new IntersectionObserver((entries) => {
       sidebar: {
         trailerUrl: "https://www.youtube.com/embed/YOUR_PORTFOLIO_DEMO_VIDEO",
         screenshots: [
-          { src: "../images/webp/Portfolio.webp", alt: "Portfolio Homepage" },
-          { src: "../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot1.webp", alt: "custom 404 Page" },
-          { src: "../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot2.webp", alt: "Project Page" },
+          { src: "../images/webp/Portfolio.webp", alt: "Portfolio Homepage", thumbs: [400, 800], w: 500, h: 270 },
+          { src: "../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot1.webp", alt: "custom 404 Page", thumbs: [400, 800], w: 2503, h: 1247 },
+          { src: "../images/webp/ProjectScreenShots/Portfolio/portfolioScreenshot2.webp", alt: "Project Page", thumbs: [400, 800], w: 2559, h: 1439 },
         ],
         socialButtons: [
           {

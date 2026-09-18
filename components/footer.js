@@ -26,6 +26,11 @@ class SiteFooter extends HTMLElement {
   position: absolute; /* Positions the icon absolutely within the footer */
   left: 10px; /* Adjusts the icon to the left side */
   cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  line-height: 0;
+  color: inherit;
 }
 
 .footer p {
@@ -63,10 +68,11 @@ class SiteFooter extends HTMLElement {
         </style>
       <footer>
         <div class="footer">
-          <a data-lang="mi" class="mi-icon-link" title="MI Logo">
-            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+          <button type="button" data-lang="mi" class="mi-icon-link" title="MI Logo"
+            aria-label="Switch to Minionese" aria-pressed="false">
+            <svg version="1.0" xmlns="https://www.w3.org/2000/svg" width="25" height="25"
               viewBox="0 0 736.000000 736.000000" preserveAspectRatio="xMidYMid meet"
-              class="mi-icon">
+              class="mi-icon" aria-hidden="true" focusable="false">
               <g transform="translate(0.000000,736.000000) scale(0.100000,-0.100000)"
                 fill="currentColor" stroke="none">
                 <path d="M3400 7350 c-913 -80 -1721 -460 -2350 -1106 -179 -184 -291 -323
@@ -83,7 +89,7 @@ class SiteFooter extends HTMLElement {
           -1440 483 -149 19 -562 27 -710 15z"/>
               </g>
             </svg>
-          </a>
+          </button>
 
           <p class="copyright">© ${year} Niels de Laat</p>
         </div>
@@ -96,6 +102,7 @@ class SiteFooter extends HTMLElement {
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang === 'mi') {
       link.classList.add('active');
+      link.setAttribute('aria-pressed', 'true');
     }
 
     // Listen for translationUpdated event that's already dispatched by translations.js
@@ -104,20 +111,16 @@ class SiteFooter extends HTMLElement {
         const lang = e.detail.language;
 
         // Update active state based on language
-        if (lang === 'mi') {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
+        link.classList.toggle('active', lang === 'mi');
+        link.setAttribute('aria-pressed', lang === 'mi' ? 'true' : 'false');
       }
     });
 
     // Add click event listener
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-
+    link.addEventListener('click', () => {
       // Activate MI language
       link.classList.add('active');
+      link.setAttribute('aria-pressed', 'true');
 
       // Call updateContent if it exists globally
       if (typeof updateContent === 'function') {

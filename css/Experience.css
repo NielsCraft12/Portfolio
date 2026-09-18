@@ -87,7 +87,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  background-color: #888;
+  background-color: #fff;
   border-radius: 50%;
   top: 50%;
   left: 60%;
@@ -105,12 +105,18 @@
   left: 0;
 }
 
+/* Rendered as a <button> so it is focusable and named in the accessibility tree;
+   these four lines strip the control's default chrome back to the old dot. */
 .slider-point {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  appearance: none;
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: #444;
-  border: 2px solid #222;
+  width: 2%;
+  height: 2px;
+  background-color: #333;
+  border: 2px solid #333;
   border-radius: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -120,8 +126,16 @@
 }
 
 .slider-point.active {
-  background-color: #888;
-  border-color: #888;
+  
+  background-color: #555;
+  border-color: #555;
+}
+
+.slider-point.filled {
+  width: 15px;
+  height: 15px;
+  background-color: var(--filled-color, #ff7e5f);
+  border-color: var(--filled-color, #ff7e5f);
 }
 
 .slider-point:hover {
@@ -136,7 +150,7 @@
   background-color: var(--primary-bg);
   color: white;
   position: sticky;
-  top: 10px;
+  top: 3px;
   z-index: 1;
   background-color: var(--primary-bg);
 }

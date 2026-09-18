@@ -8,30 +8,34 @@ class NavBar extends HTMLElement {
     // Determine the correct path based on current location
     const isInSubfolder = window.location.pathname.includes("/projects/");
     const cssPath = isInSubfolder ? "../css/Home.css" : "css/Home.css";
-    const logoPath = isInSubfolder ? "../images/Favicon/favicon.svg" : "images/Favicon/favicon.svg";
+    const logoPath = isInSubfolder ? "../images/Favicon/logo-96.webp" : "images/Favicon/logo-96.webp";
 
     this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="${cssPath}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
           <nav aria-label="Main navigation">
     <div class="nav-brand">
       <a href="../#Home" class="nav-logo">
-        <img src="${logoPath}" alt="Logo" />
+        <img src="${logoPath}" alt="Logo" width="40" height="40" />
       </a>
       <a href="../#Home" class="nav-title">Niels de Laat</a>
     </div>
-    <input type="checkbox" id="sidebar-active" aria-label="Toggle navigation menu" />
-    <label for="sidebar-active" class="open-sidebar-button" aria-label="Open navigation menu">
-      <div class="hamburger-icon">
+    <input type="checkbox" id="sidebar-active" tabindex="-1" aria-hidden="true" />
+    <!-- #sidebar-active is display:none, so the checkbox itself never reaches the
+         accessibility tree. The labels carry role/tabindex so the toggle is exposed
+         as a real control and stays keyboard operable. -->
+    <label for="sidebar-active" class="open-sidebar-button" role="button" tabindex="0"
+      aria-controls="sidebar-links" aria-expanded="false" aria-label="Open navigation menu">
+      <div class="hamburger-icon" aria-hidden="true">
         <span class="bar bar1"></span>
         <span class="bar bar2"></span>
         <span class="bar bar3"></span>
       </div>
     </label>
-    <label id="overlay" for="sidebar-active" aria-label="Close navigation overlay"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button" aria-label="Close navigation menu">
-        <div class="hamburger-icon">
+    <label id="overlay" for="sidebar-active" aria-hidden="true"></label>
+    <div class="links-container" id="sidebar-links">
+      <label for="sidebar-active" class="close-sidebar-button" role="button" tabindex="0"
+        aria-controls="sidebar-links" aria-expanded="false" aria-label="Close navigation menu">
+        <div class="hamburger-icon" aria-hidden="true">
           <span class="bar bar1"></span>
           <span class="bar bar2"></span>
           <span class="bar bar3"></span>
@@ -42,11 +46,12 @@ class NavBar extends HTMLElement {
       <a data-i18n="nav.contact" href="../#Contact">Contact</a>
       <theme-switcher></theme-switcher>
       <div class="language-switcher">
-        <button type="button" class="language-btn">
+        <button type="button" class="language-btn" aria-haspopup="true" aria-expanded="false"
+          aria-controls="language-menu">
           <span class="current-lang">English</span>
-          <i class="fa fa-caret-down"></i>
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
         </button>
-        <ul class="language-menu">
+        <ul class="language-menu" id="language-menu">
           <li><a href="#" data-lang="en" style="margin: auto; text-align: center;">English</a></li>
           <li><a href="#" data-lang="nl" style="margin: auto; text-align: center;">Nederlands</a></li>
         </ul>
@@ -58,8 +63,19 @@ class NavBar extends HTMLElement {
             font-size: 16px; /* Ensures consistent font size across all pages */
             font-weight: bold; /* Makes navbar links bold universally */
           }
+          /* Shadow DOM does not inherit style.css, so the icon rule is repeated here. */
+          .svg-icon {
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            vertical-align: -0.125em;
+            fill: currentColor;
+            flex-shrink: 0;
+          }
         </style>
  `;
+
+    if (window.SiteIcons) window.SiteIcons.observe(this.shadowRoot);
 
     // Initialize dropdown functionality after DOM is set
     this.initializeDropdown();
@@ -123,6 +139,29 @@ class NavBar extends HTMLElement {
     // Get all navigation links (excluding language menu links)
     const navigationLinks = this.shadowRoot.querySelectorAll(".links-container > a");
     const sidebarCheckbox = this.shadowRoot.querySelector("#sidebar-active");
+    const toggles = this.shadowRoot.querySelectorAll(".open-sidebar-button, .close-sidebar-button");
+
+    // A <label> is not focusable, so Enter/Space has to toggle the checkbox by hand.
+    toggles.forEach((toggle) => {
+      toggle.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
+        e.preventDefault();
+        if (sidebarCheckbox) {
+          sidebarCheckbox.checked = !sidebarCheckbox.checked;
+          sidebarCheckbox.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+
+    if (sidebarCheckbox) {
+      const syncExpanded = () => {
+        toggles.forEach((toggle) => toggle.setAttribute("aria-expanded", String(sidebarCheckbox.checked)));
+      };
+      sidebarCheckbox.addEventListener("change", syncExpanded);
+      // The label's native click fires after this handler, so read the state next tick.
+      toggles.forEach((toggle) => toggle.addEventListener("click", () => setTimeout(syncExpanded, 0)));
+      syncExpanded();
+    }
 
     // Add click event listeners to close mobile menu when navigation links are clicked
     navigationLinks.forEach((link) => {
@@ -130,6 +169,7 @@ class NavBar extends HTMLElement {
         // Close the mobile menu by unchecking the sidebar checkbox
         if (sidebarCheckbox) {
           sidebarCheckbox.checked = false;
+          sidebarCheckbox.dispatchEvent(new Event("change"));
         }
       });
     });
@@ -140,6 +180,7 @@ class NavBar extends HTMLElement {
       overlay.addEventListener("click", () => {
         if (sidebarCheckbox) {
           sidebarCheckbox.checked = false;
+          sidebarCheckbox.dispatchEvent(new Event("change"));
         }
       });
     }
@@ -162,6 +203,7 @@ class NavBar extends HTMLElement {
         // Toggle the active state
         if (isCurrentlyActive) {
           languageSwitcher.classList.remove("active");
+          languageBtn.setAttribute("aria-expanded", "false");
 
           // Remove the outside click handler when closing
           if (outsideClickHandler) {
@@ -170,6 +212,7 @@ class NavBar extends HTMLElement {
           }
         } else {
           languageSwitcher.classList.add("active");
+          languageBtn.setAttribute("aria-expanded", "true");
 
           // Remove any existing handler before adding a new one
           if (outsideClickHandler) {
@@ -182,6 +225,7 @@ class NavBar extends HTMLElement {
               // Only close if clicking outside the language switcher
               if (!languageSwitcher.contains(e.target)) {
                 languageSwitcher.classList.remove("active");
+                languageBtn.setAttribute("aria-expanded", "false");
                 document.removeEventListener("click", outsideClickHandler);
                 outsideClickHandler = null;
               }
@@ -201,6 +245,7 @@ class NavBar extends HTMLElement {
 
           // Close the dropdown immediately
           languageSwitcher.classList.remove("active");
+          languageBtn.setAttribute("aria-expanded", "false");
 
           // Remove outside click handler
           if (outsideClickHandler) {

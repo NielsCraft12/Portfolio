@@ -264,11 +264,14 @@ class ProjectOrdering {
     const targetButton = Array.from(tabButtons).find((button) => button.getAttribute("data-tab") === category);
 
     if (targetButton) {
-      // Remove active class from all buttons
-      tabButtons.forEach((btn) => btn.classList.remove("active"));
-
-      // Add active class to target button
-      targetButton.classList.add("active");
+      // selectProjectTab also moves aria-selected and the roving tabindex; fall back
+      // to the class swap if main.js has not initialised the tabs yet.
+      if (window.selectProjectTab) {
+        window.selectProjectTab(targetButton);
+      } else {
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        targetButton.classList.add("active");
+      }
 
       // Trigger the filtering for this category
       // We need to dispatch the filtering after the DOM is ready

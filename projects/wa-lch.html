@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WA-LCH | Niels de Laat</title>
+
+  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
+  <meta name="author" content="Niels de Laat">
+
+
+  <link href="../css/prism.css" rel="stylesheet" />
+
+  <script src="../components/icons.js" defer></script>
+  <script type="module" src="../components/navbar.js"></script>
+  <script type="module" src="../components/social-buttons.js"></script>
+  <script type="module" src="../components/code-block.js"></script>
+  <script type="module" src="../js/translate.js"></script>
+  <script type="module" src="../components/projectPageLayout.js"></script>
+  <script type="module" src="../components/footer.js"></script>
+
+  <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+
+  <script>
+    // Lazy load Prism.js only when code blocks are visible
+    const loadPrism = () => {
+      if (window.Prism) return; // Already loaded
+      const script = document.createElement('script');
+      script.src = '../js/prism.js';
+      script.onload = () => window.Prism?.highlightAll();
+      document.head.appendChild(script);
+    };
+
+    // Intersection Observer for lazy loading
+    const codeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadPrism();
+          codeObserver.disconnect(); // Only load once
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    // Observe code blocks when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const codeBlocks = document.querySelectorAll('pre code');
+      if (codeBlocks.length > 0) {
+        codeBlocks.forEach(block => codeObserver.observe(block));
+      }
+    });
+  </script>
+  <link rel="preload" href="/fonts/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/ProjectPage.css" id="customStyles">
+
+</head>
+
+<body>
+  <!-- Navigation Component -->
+  <nav-bar></nav-bar>
+  <!-- ============================================
+       CONTENT CONFIGURATION - EDIT YOUR CONTENT HERE
+       ============================================ -->
+  <script id="projectConfig">
+    const PROJECT_DATA = {
+      // Project Info
+      title: "WA-LCH",
+      title_i18n: "__NO_TRANSLATE__",
+
+      // Main Content Sections - with inline media and code block support
+      sections: [
+        {
+          title: "Description",
+          title_i18n: "projectPages.description",
+          content: `You are LCH, a cleaning bot who awakens from years of hibernation
+    by an unknown source. Your
+    mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant
+    access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon.`,
+          content_i18n: "projectPages.walch.description"
+        },
+        {
+          title: "What I Made",
+          title_i18n: "projectPages.whatIMadeTitle",
+          content_i18n: "__NO_TRANSLATE__"
+        },
+        {
+          title: "Procedural Level Generation",
+          title_i18n: "projectPages.walch.proceduralLevelGen.proceduralLevelGenTitle",
+          content: "Walch features a dynamic, grid-based dungeon generator that constructs levels using predefined room templates. Each level is made up of cells that can contain different types of rooms including normal, generator, and special event rooms.",
+          content_i18n: "projectPages.walch.proceduralLevelGen.proceduralLevelGenIntro",
+        },
+        {
+          title: "Key Concepts",
+          title_i18n: "projectPages.walch.proceduralLevelGen.keyConcepts",
+          type: "list",
+          items: [
+            "Rooms spawn based on custom spawn rules defined by coordinates and logic.",
+            "Adaptive grid size depending on player level.",
+            "Maze-like structure via backtracking algorithm."
+          ],
+          items_i18n: [
+            "projectPages.walch.proceduralLevelGen.proceduralLevelGenPoint1",
+            "projectPages.walch.proceduralLevelGen.proceduralLevelGenPoint2",
+            "projectPages.walch.proceduralLevelGen.proceduralLevelGenPoint3"
+          ]
+        },
+        // Code block BETWEEN Key Features and Image
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L10-L34",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+if (selected == 0) // Cosmetic selection
+{
+    public class Cell {
+        public bool visited = false;
+        public bool[] status = new bool[4]; // Up, Down, Right, Left
+    }
+
+    [System.Serializable]
+    public class Rule {
+        public GameObject room;
+        public Vector2Int minPosition;
+        public Vector2Int maxPosition;
+        public bool obligatory;
+
+        public int ProbabilityOfSpawning(int x, int y) {
+            return obligatory ? 2 : (IsInside(x, y) ? 1 : 0);
+        }
+
+        private bool IsInside(int x, int y) {
+            return x >= minPosition.x && x <= maxPosition.x &&
+                  y >= minPosition.y && y <= maxPosition.y;
+        }
+    }
+}
+    `
+        },
+
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/DungeonGenerator.cs#L105-L109",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+if (generatorRooms == 0 && j == size.y && i == size.x)
+{
+  int randomGenRoom = UnityEngine.Random.Range(3, 5);
+  newRoom = Instantiate(rooms[randomGenRoom].room, new Vector3(i * offset.x, 0, -j * offset.y),
+  Quaternion.identity, transform).GetComponent();
+}`
+        },
+        {
+          title: "Generator Activation via QTE",
+          title_i18n: "projectPages.walch.qte.qteTitle",
+          content: "To activate power generators in the dungeon, players must complete Quick Time Events (QTEs). These are skill checks using keys (E, R, T or controller equivalents).",
+          content_i18n: "projectPages.walch.qte.qteIntro"
+        },
+
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L177-L180",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+if ((qteGen == 1 && key == "E") || (qteGen== 2 && key== "R") || (qteGen== 3 && key== "T"))
+{
+  correctKey=1;
+}`
+        },
+
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/QTEScript.cs#L224-L244",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+IEnumerator CountDown()
+{
+    yield return new WaitForSeconds(timeoutTime);
+    if (countingDown == 1)
+    {
+      passBox.text = "Too Late"; active = false;
+    }
+  }`
+        },
+
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/Walch/walchQte.webm",
+          alt: "WA-LCH Game Screenshot",
+          loading: "lazy" // Added lazy loading
+        },
+        {
+          title: "Cleaning Pod Collection System",
+          title_i18n: "projectPages.walch.cleaningPod.cleaningPodTitle",
+          content: "leaning pods are scattered throughout the level. When collected, they update the game state and trigger sound effects.",
+          content_i18n: "projectPages.walch.cleaningPod.cleaningPodIntro"
+        },
+
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/CleanigPod.cs#L16-L24",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+private void OnTriggerEnter(Collider other)
+{
+  if (other.gameObject.CompareTag("Player"))
+  {
+    FindObjectOfType().Play("PodPickup");
+    Destroy(gameObject); gameManagerScript.cleanigPodsPickedUp++;
+    }
+  }`
+        },
+
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/Walch/walchCLean.webm",
+          alt: "WA-LCH Game Screenshot",
+          loading: "lazy" // Added lazy loading
+        },
+        {
+          title: "Dynamic Room Behavior",
+          title_i18n: "projectPages.walch.dynamicRoomBehavior.dynamicRoomBehaviorTitle",
+          content: "Each room updates its doors and walls based on neighboring connections.",
+          content_i18n: "projectPages.walch.dynamicRoomBehavior.dynamicRoomBehaviorIntro"
+        },
+        {
+          type: "codeblock",
+          githubUrl: "https://github.com/NielsCraft12/WA-LCH/blob/main/Assets/Developers/Niels/Scripts/RoomBehaviour.cs#L11-L22",
+          language: "csharp",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+public void UpdateRoom(bool[] status)
+{
+    for (int i = 0; i < status.Length; i++)
+    {
+        doors[i].SetActive(status[i]);
+        walls[i].SetActive(!status[i]);
+    }
+}`
+        },
+
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/Walch/walchRooms.webm",
+          alt: "WA-LCH Game Screenshot",
+          loading: "lazy" // Added lazy loading
+        },
+
+      ],
+      // Sidebar Content
+      sidebar: {
+        trailerUrl: "https://www.youtube.com/embed/D95I2jfcv_Q?si=lCGYlfrblu8t_9Bj",
+        screenshots: [
+          { src: "../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot1.webp", alt: "WA-LCH Screenshot 1", loading: "lazy", thumbs: [400, 800], w: 1919, h: 1079 },
+          { src: "../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot2.webp", alt: "WA-LCH Screenshot 2", loading: "lazy", thumbs: [400, 800], w: 1919, h: 1079 },
+          { src: "../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot3.webp", alt: "WA-LCH Screenshot 3", loading: "lazy", thumbs: [400, 800], w: 1919, h: 1079 }
+        ],
+        socialButtons: [
+          {
+            url: "https://github.com/NielsCraft12/WA-LCH",
+            icon: "fab fa-github",
+            title: "View on GitHub",
+            target: "_blank",
+            rel: "noreferrer"
+          }
+        ]
+      },
+
+      // Embed (itch.io, etc)
+      embed: {
+        enabled: true,
+        url: "https://itch.io/embed-upload/10784145?color=1E1E1E",
+        playableOnMobile: false
+      }
+    };
+  </script>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="gradient-title project-title" id="projectTitle"></h1>
+      <div id="mainContent"></div>
+      <div id="codeBlocks"></div>
+      <div id="mediaContent"></div>
+
+      <div id="embedSection"></div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2 class="gradient-title" data-i18n="projectPages.trailer">Trailer</h2>
+      <div class="video-container" id="trailerContainer"></div>
+
+      <h2 class="gradient-title" data-i18n="projectPages.screenshots">Screenshots</h2>
+      <div id="screenshotsContainer"></div>
+
+      <h2 class="gradient-title" data-i18n="projectPages.exploreCode">Explore Code</h2>
+      <social-buttons id="exploreCodeButtons"></social-buttons>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Enlarged screenshot">
+  </div>
+
+  <!-- Footer -->
+
+  <site-footer></site-footer>
+  <!-- <p>© <span id="copyright-year"></span> <span id="footerName"></span>Niels de Laat</p> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const embedSection = document.getElementById('embedSection');
+
+      if (isTouchDevice && !PROJECT_DATA.embed.playableOnMobile) {
+        embedSection.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>

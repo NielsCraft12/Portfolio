@@ -35,9 +35,47 @@ class TechChipList extends HTMLElement {
       )
       .join("");
 
-    // Build final HTML
+    // A shadow-root <link> resolves asynchronously, so the chips used to paint
+    // once at their intrinsic 100x100 and then collapse to ~22px when Home.css
+    // landed -- a ~250px jump in the Home column, and most of the page's CLS.
+    // These four rules are duplicated inline so the first paint is already
+    // correct; Home.css still loads after and stays authoritative.
+    const cssPath = window.location.pathname.includes("/projects/") ? "../css/Home.css" : "css/Home.css";
     this.shadowRoot.innerHTML = `
-      <link rel="stylesheet" href="css/Home.css">
+      <style>
+        .cd-demo-chip-list {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .chip {
+          border: 0;
+          color: inherit;
+          line-height: 1;
+          display: inline-flex;
+          align-items: center;
+          border-radius: 50em;
+          padding: 0.25rem;
+          background-color: var(--chip-bg);
+          font-size: 0.9375rem;
+        }
+        .chip__label {
+          padding: 0 0.5rem;
+          color: var(--chip-text);
+        }
+        .chip__img {
+          display: block;
+          width: 1.5em;
+          height: 1.5em;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      </style>
+      <link rel="stylesheet" href="${cssPath}">
       <ul class="cd-demo-chip-list">
         ${chipsHTML}
       </ul>

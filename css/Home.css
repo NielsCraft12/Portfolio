@@ -28,106 +28,131 @@
   overflow: hidden;
 }
 
-#Home .container .snowflakes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: visible;
+/* Seasonal background particles: snow in winter, confetti and balloons on the
+   birthday. Sits between the #Home::before gradient (z-index -1) and .container
+   (z-index 1), so particles are always behind the portrait and text. */
+#Home .particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
+  user-select: none;
   z-index: 0;
 }
 
-#Home .snowflake {
+/* Two layers so the travel and the sway don't fight over `transform`:
+   the wrapper moves vertically, the mark inside drifts sideways and spins.
+   Per-particle values (--x, --size, --dur, ...) are set by js/particles.js. */
+#Home .particle {
   position: absolute;
-  top: -10%;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 2em;
-  opacity: 1;
-  user-select: none;
-  animation: fall linear infinite;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+  top: calc(var(--size) * -2);
+  left: var(--x);
+  width: var(--size);
+  height: 100%;
+  will-change: transform;
+  animation: particle-fall var(--dur) linear var(--delay) infinite;
 }
 
-@keyframes fall {
+/* Balloons travel the same path backwards, so they rise instead of falling
+   without needing a second set of keyframes. */
+#Home .particle--rise {
+  animation-direction: reverse;
+}
+
+/* The wrapper is height: 100%, so a percentage translateY resolves against the
+   height of #Home - this follows a section taller than the viewport with no JS
+   measuring. The extra size*4 clears the negative `top` so the particle leaves
+   the far edge completely instead of stopping short of it. */
+@keyframes particle-fall {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, calc(100% + var(--size) * 4), 0);
+  }
+}
+
+@keyframes particle-sway {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(var(--drift), 0, 0) rotate(180deg);
+  }
+}
+
+/* Confetti flips end over end as it drifts, so pieces catch the eye edge-on
+   the way real paper does. */
+@keyframes confetti-tumble {
   0% {
-    top: -10%;
+    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate3d(1, 0.4, 0.2, 0deg);
   }
   100% {
-    top: 100%;
+    transform: translate3d(var(--drift), 0, 0) rotate3d(1, 0.4, 0.2, 720deg);
   }
 }
 
-#Home .snowflake:nth-child(1) {
-  left: 10%;
-  animation-duration: 10s;
-  animation-delay: 0s;
-  font-size: 1.2em;
+#Home .snow-dot,
+#Home .snow-crystal {
+  width: var(--size);
+  height: var(--size);
+  opacity: var(--opacity);
+  will-change: transform;
+  animation: particle-sway var(--sway-dur) ease-in-out infinite;
 }
 
-#Home .snowflake:nth-child(2) {
-  left: 20%;
-  animation-duration: 12s;
-  animation-delay: 2s;
-  font-size: 1.5em;
+/* Balloons keep their string pointing down, so they only tilt as they drift
+   rather than sharing the snowflakes' full 180deg spin. */
+@keyframes balloon-bob {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate(-7deg);
+  }
+  50% {
+    transform: translate3d(var(--drift), 0, 0) rotate(7deg);
+  }
 }
 
-#Home .snowflake:nth-child(3) {
-  left: 30%;
-  animation-duration: 8s;
-  animation-delay: 4s;
-  font-size: 1em;
+/* A soft-edged gradient rather than a blurred circle: it reads the same as
+   out-of-focus snow but costs nothing extra to paint. */
+#Home .snow-dot {
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--snow-color, rgba(255, 255, 255, 0.92)) 0%, var(--snow-color, rgba(255, 255, 255, 0.92)) 35%, transparent 70%);
 }
 
-#Home .snowflake:nth-child(4) {
-  left: 40%;
-  animation-duration: 14s;
-  animation-delay: 0s;
-  font-size: 1.8em;
+/* Only ~20% of flakes, so the drop-shadow stays cheap. */
+#Home .snow-crystal {
+  color: var(--snow-color, rgba(255, 255, 255, 0.92));
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
 }
 
-#Home .snowflake:nth-child(5) {
-  left: 50%;
-  animation-duration: 11s;
-  animation-delay: 3s;
-  font-size: 1.3em;
+/* The balloon SVG is taller than it is wide (body plus string), so it overrides
+   the square sizing above. Colour comes from the wrapper via currentColor. */
+#Home .balloon {
+  width: var(--size);
+  height: calc(var(--size) * 1.7);
+  opacity: var(--opacity);
+  transform-origin: 50% 20%;
+  will-change: transform;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  animation: balloon-bob var(--sway-dur) ease-in-out infinite;
 }
 
-#Home .snowflake:nth-child(6) {
-  left: 60%;
-  animation-duration: 9s;
-  animation-delay: 1s;
-  font-size: 1.6em;
+#Home .confetti {
+  width: var(--size);
+  height: calc(var(--size) / var(--aspect));
+  opacity: var(--opacity);
+  border-radius: 1px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: confetti-tumble var(--sway-dur) linear infinite;
 }
 
-#Home .snowflake:nth-child(7) {
-  left: 70%;
-  animation-duration: 13s;
-  animation-delay: 5s;
-  font-size: 1.1em;
-}
-
-#Home .snowflake:nth-child(8) {
-  left: 80%;
-  animation-duration: 10s;
-  animation-delay: 2s;
-  font-size: 1.4em;
-}
-
-#Home .snowflake:nth-child(9) {
-  left: 90%;
-  animation-duration: 15s;
-  animation-delay: 0s;
-  font-size: 1.7em;
-}
-
-#Home .snowflake:nth-child(10) {
-  left: 95%;
-  animation-duration: 12s;
-  animation-delay: 4s;
-  font-size: 1.2em;
+@media (prefers-reduced-motion: reduce) {
+  #Home .particles {
+    display: none;
+  }
 }
 
 /* Base styles */
@@ -484,7 +509,8 @@ nav a:hover {
   position: relative;
 }
 
-.language-btn i {
+.language-btn i,
+.language-btn .svg-icon {
   transition: transform 0.3s ease;
 }
 
@@ -564,7 +590,8 @@ nav a:hover {
     pointer-events: auto;
   }
 
-  .language-switcher:hover .language-btn i {
+  .language-switcher:hover .language-btn i,
+  .language-switcher:hover .language-btn .svg-icon {
     transform: rotate(180deg);
   }
 }
@@ -577,7 +604,8 @@ nav a:hover {
   pointer-events: auto;
 }
 
-.language-switcher.active .language-btn i {
+.language-switcher.active .language-btn i,
+.language-switcher.active .language-btn .svg-icon {
   transform: rotate(180deg);
 }
 
