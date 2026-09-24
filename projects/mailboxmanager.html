@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" data-i18n="projectPages.slimetasticPunchout.description"
+    content="Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It's slimy chaos at its best!">
+  <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
+  <meta name="author" content="Niels de Laat">
+
+
+  <!-- navbar.js and social-buttons.js pull these into their shadow roots, which
+       hides them from the preload scanner until those components upgrade. -->
+  <link rel="preload" href="../css/Home.css" as="style">
+  <link rel="preload" href="../css/Contact.css" as="style">
+  <link href="../css/prism.css" rel="stylesheet" />
+
+  <script src="../components/icons.js" defer></script>
+  <script type="module" src="../components/navbar.js"></script>
+  <script type="module" src="../components/social-buttons.js"></script>
+  <script type="module" src="../components/code-block.js"></script>
+  <!-- <script type="module" src="../js/translate.js"></script> -->
+  <!-- projectPageLayout.js imports this; preloading it keeps the import off the
+       critical path, where it otherwise costs a serial round trip. -->
+  <link rel="modulepreload" href="../js/youtube-facade.js">
+  <script type="module" src="../components/projectPageLayout.js"></script>
+  <script type="module" src="../components/footer.js"></script>
+
+  <link rel="icon" type="image/png" href="../images/Favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../images/Favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../images/Favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/Favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../images/Favicon/site.webmanifest" />
+
+  <script>
+    // Lazy load Prism.js only when code blocks are visible
+    const loadPrism = () => {
+      if (window.Prism) return; // Already loaded
+      const script = document.createElement('script');
+      script.src = '../js/prism.js';
+      script.onload = () => window.Prism?.highlightAll();
+      document.head.appendChild(script);
+    };
+
+    // Intersection Observer for lazy loading
+    const codeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadPrism();
+          codeObserver.disconnect(); // Only load once
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    // Observe code blocks when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const codeBlocks = document.querySelectorAll('pre code');
+      if (codeBlocks.length > 0) {
+        codeBlocks.forEach(block => codeObserver.observe(block));
+      }
+    });
+  </script>
+  <link rel="preload" href="/fonts/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/ProjectPage.css" id="customStyles">
+
+</head>
+
+<body>
+  <!-- Navigation Component -->
+  <nav-bar></nav-bar>
+  <!-- ============================================
+       CONTENT CONFIGURATION - EDIT YOUR CONTENT HERE
+       ============================================ -->
+  <script id="projectConfig">
+    const PROJECT_DATA = {
+      title: "Mailbox Manager",
+      title_i18n: "__NO_TRANSLATE__",
+
+      sections: [
+        {
+          title: "Description",
+          title_i18n: "projectPages.description",
+          content: `A mailbox manager where Copilot Studio agents read, classify, draft and translate replies to incoming customer emails, which you then review, edit and send from Power Apps, with a SharePoint list as the backing database, built on Power Apps, Power Automate and SharePoint.`,
+          content_i18n: "projectPages.mailboxManager.description",
+        },
+        {
+          title: "What I Made",
+          title_i18n: "projectPages.whatIMadeTitle",
+          content_i18n: "__NO_TRANSLATE__",
+        },
+        {
+          title: "Sorting Into Outlook Folders",
+          title_i18n: "projectPages.mailboxManager.sorting.title",
+          content: `The chain starts with a flow watching the shared mailbox's inbox for new mail. It strips the HTML body down to plain text and hands it to a Copilot Studio classification agent, which decides whether the message is a complaint, a warranty claim or a product question. Based on that verdict the flow moves the email out of the inbox and into the matching Outlook folder. It never touches the SharePoint list itself, it's purely a routing step.`,
+          content_i18n: "projectPages.mailboxManager.sorting.description",
+        },
+        {
+          title: "Grabbing The Mail Per Folder",
+          title_i18n: "projectPages.mailboxManager.grabbing.title",
+          content: `Each of those three folders has its own flow watching it, so as soon as the sorting flow drops a message in, that folder's flow picks it up. It runs its own Copilot Studio agents to extract the sender's name, address and product details and to draft both a reply and its Dutch translation, then writes one row per email into the SharePoint list, the "in review" queue the app displays.`,
+          content_i18n: "projectPages.mailboxManager.grabbing.description",
+        },
+        {
+          title: "Fixing A Wrong Category",
+          title_i18n: "projectPages.mailboxManager.recategorize.title",
+          content: `If the classification agent got it wrong, you can move a case straight to the right category from inside the app instead of digging through Outlook.`,
+          content_i18n: "projectPages.mailboxManager.recategorize.description",
+        },
+        {
+          type: "codeblock",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+// Wrong category: re-file this case under Warranty instead, then
+// refresh the queue so it drops off this screen.
+qb_mail_verplaatsen_naar_andere_map.Run(SelectedMail.ID, "Garantie");
+Navigate(ScrHome);
+Refresh(qb_incomming_emails)`,
+        },
+        {
+          title: "SharePoint As The Database",
+          title_i18n: "projectPages.mailboxManager.database.title",
+          content: `There's no separate database, a SharePoint list is the single source of truth for every mail the app shows, holding the original message, the generated draft, its translation, the extracted customer details and a status column (in review / archived). A second SharePoint list holds the long-term archive, and a weekly flow copies anything marked archived across into it.`,
+          content_i18n: "projectPages.mailboxManager.database.description",
+        },
+        {
+          title: "AI-Generated Replies",
+          title_i18n: "projectPages.mailboxManager.aiReplies.title",
+          content: `Every draft the app shows was written by a Copilot Studio agent from the original email, already sorted under the right category by the time you open it, so you're reviewing rather than writing from scratch.`,
+          content_i18n: "projectPages.mailboxManager.aiReplies.description",
+        },
+        {
+          // SCREENSHOT SUGGESTION: the app's home screen, with the three queue
+          // tiles (Openstaande garanties / klachten / productvragen) and their
+          // counts, showing the entry point into each category.
+          type: "media",
+          mediaType: "image",
+          src: "../images/webp/ProjectScreenShots/MailboxManager/homescreen.webp",
+          alt: "Mailbox Manager home screen with the complaint, warranty and question queues",
+        },
+        {
+          title: "Review & Edit",
+          title_i18n: "projectPages.mailboxManager.review.title",
+          content: `The reply screen is built around a rich text editor so you can review and tweak the generated draft before anything goes out, catching anything the agent got wrong or adding a line of your own.`,
+          content_i18n: "projectPages.mailboxManager.review.description",
+        },
+        {
+          // SCREENSHOT SUGGESTION: the reply/edit screen itself, rich text
+          // editor with the generated draft visible, ideally mid-edit so the
+          // toolbar shows.
+          type: "media",
+          mediaType: "image",
+          src: "../images/webp/ProjectScreenShots/MailboxManager/productvragen.webp",
+          alt: "Reply screen with the generated draft open in the rich text editor",
+        },
+        {
+          title: "Attachments",
+          title_i18n: "projectPages.mailboxManager.attachments.title",
+          content: `Whatever ends up in the case's attachments, yours or the customer's, shows up as a thumbnail gallery: click one and it opens an enlarged preview for images or a file viewer for anything else. Files you add here get converted to base64 and picked up by the send flow when the reply goes out.`,
+          content_i18n: "projectPages.mailboxManager.attachments.description",
+        },
+        {
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/MailboxManager/addingViewingattatchments.webm",
+          alt: "an attachment being added to a case and then opened in the file viewer",
+        },
+
+        {
+          title: "Translate",
+          title_i18n: "projectPages.mailboxManager.translate.title",
+          content: `A single toggle button translates the draft to or from Dutch on demand by calling a flow, and caches both language versions so switching back and forth never loses an edit you've already made.`,
+          content_i18n: "projectPages.mailboxManager.translate.description",
+        },
+        {
+          // GIF SUGGESTION: clicking the globe/translate icon and watching the
+          // draft flip from the original language to Dutch (and back), so the
+          // caching behavior described above is actually visible.
+          type: "media",
+          mediaType: "video",
+          src: "../videos/webm/MailboxManager/translatemail.webm",
+          alt: "Translate toggle switching the draft between the original language and Dutch",
+        },
+        {
+          type: "codeblock",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+// Cache the not-yet-translated version of the draft so flipping the
+// toggle back and forth never throws away typed edits.
+Set(LoaderSpinner, true);
+If(
+  RichTextEditor4_1.HtmlText <> BaseMailText,
+  // The text changed since the last toggle: translate it now and
+  // cache both language versions for next time.
+  If(
+    Translate,
+    // Currently showing Dutch -> translate it back to the original language.
+    Set(CacheOriginal, qb_translate_flow.Run(RichTextEditor4_1.HtmlText, SelectedMail.language).email);
+    Set(CacheNL, RichTextEditor4_1.HtmlText),
+    // Currently showing the original -> translate it to Dutch.
+    Set(CacheNL, qb_translate_flow.Run(RichTextEditor4_1.HtmlText, "nl").email);
+    Set(CacheOriginal, RichTextEditor4_1.HtmlText)
+  );
+  Set(BaseMailText, RichTextEditor4_1.HtmlText)
+);
+// Flip the toggle and show whichever cached version matches it now.
+If(Translate, Set(Translate, false), Set(Translate, true));
+Set(TranslateEdit, If(Translate, CacheNL, CacheOriginal));
+Set(BaseMailText, TranslateEdit);
+Set(LoaderSpinner, false);`,
+        },
+        {
+          title: "Handling Warranty Claims",
+          title_i18n: "projectPages.mailboxManager.warranty.title",
+          type: "list",
+          content: `The warranty screen works differently from the complaint and question ones. Instead of a single drafted reply, it holds two pre-generated templates side by side, repair and replace, generated once and cached on the record so reopening the case doesn't regenerate them. Before sending, you pick which outcome applies:`,
+          content_i18n: "projectPages.mailboxManager.warranty.description",
+          items: [
+            "Repair - puts the case on hold and attaches a return shipping label so the customer can send the item back.",
+            "Replace - kicks off a separate logistics flow that prepares a new shipment right away.",
+            "Neither option archives the case on send. It moves into a logistics status instead and stays there until the physical side, the return or the new shipment, is actually resolved.",
+          ],
+          items_i18n: [
+            "projectPages.mailboxManager.warranty.warrantyPoint1",
+            "projectPages.mailboxManager.warranty.warrantyPoint2",
+            "projectPages.mailboxManager.warranty.warrantyPoint3",
+          ],
+        },
+        {
+          // GIF SUGGESTION: switching between the "Repareren" (Repair) and
+          // "Vervangen" (Replace) options on the warranty screen and watching
+          // the draft swap to the matching template, to show the two-outcome
+          // behavior described above rather than just stating it.
+          type: "media",
+          mediaType: "video",
+          src: "",
+          alt: "Switching between the repair and replace templates on the warranty screen",
+        },
+        {
+          title: "Sending & Archiving",
+          title_i18n: "projectPages.mailboxManager.sendArchive.title",
+          content: `The send button calls a flow that replies on the original email thread through the shared mailbox, then patches the SharePoint row with the chosen product details and flips its status to archived, dropping it out of the review queue until the weekly archive flow sweeps it into the long-term list.`,
+          content_i18n: "projectPages.mailboxManager.sendArchive.description",
+        },
+        {
+          // GIF SUGGESTION: clicking send, the success notification appearing,
+          // and the case disappearing from the home screen's queue, to show the
+          // whole send-and-archive loop closing.
+          type: "media",
+          mediaType: "video",
+          src: "",
+          alt: "Sending a reply and watching it drop out of the review queue",
+        },
+        {
+          type: "codeblock",
+          language: "javascript",
+          buttonI18n: "projectPages.viewOnGitHub",
+          buttonText: "View on github",
+          buttonTitle: "View on GitHub",
+          code: `
+// Ask the send flow to reply on the original thread through the shared
+// mailbox, then let me know whether it went through.
+IfError(
+  qb_email_versturen_V2.Run(RichTextEditor4_1.HtmlText, SelectedMail.ID);,
+  Notify("Er is iets misgegaan bij het versturen van de e-mail. Kun je het opnieuw proberen?", NotificationType.Error),
+  Notify("De mail is succesvol verstuurd.", NotificationType.Success)
+);
+
+// Save the chosen product/warranty details back onto the SharePoint list
+// item and flip it to "archived" so it leaves the review queue - a
+// weekly flow later copies archived rows into the separate archive list.
+Patch(
+  qb_incomming_emails,
+  SelectedMail,
+{
+  product_type: Combobox7_1.Selected.value,
+  product_description: Combobox8_2.Selected.value,
+  product_variant: Combobox9_1.Selected.value,
+  product_number: TextInput4_1.Text,
+  warranty_kind: Combobox8_3.Selected.value,
+  status: { Value: "archived" }
+}
+);
+Set(MailChanged, false);
+Set(TranslateEdit, SelectedMail.response_mail);
+Navigate(ScrHome);`,
+        },
+      ],
+
+      sidebar: {
+        // SCREENSHOT SUGGESTIONS for the sidebar gallery: pick 2-3 of the body
+        // images/gifs above once captured; left empty for now, see notes.
+        screenshots: [{ src: "../images/webp/ProjectScreenShots/MailboxManager/homescreen.webp", alt: "Portfolio Homepage", thumbs: [400, 800], w: 500, h: 270 },
+        { src: "../images/webp/ProjectScreenShots/MailboxManager/productvragen.webp", alt: "Portfolio Homepage", thumbs: [400, 800], w: 500, h: 270 },
+        ],
+        socialButtons: [],
+      },
+    };
+
+  </script>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="gradient-title project-title" id="projectTitle"></h1>
+      <div id="mainContent"></div>
+      <div id="codeBlocks"></div>
+      <div id="mediaContent"></div>
+
+      <div id="embedSection"></div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2 class="gradient-title" style="display: none;" data-i18n="projectPages.trailer">Trailer</h2>
+      <div class="video-container" style="display: none;" id="trailerContainer"></div>
+
+      <h2 class="gradient-title" data-i18n="projectPages.screenshots">Screenshots</h2>
+      <div id="screenshotsContainer"></div>
+
+      <h2 class="gradient-title" style="display: none;" data-i18n="projectPages.exploreCode">Explore Code</h2>
+      <social-buttons id="exploreCodeButtons"></social-buttons>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Enlarged screenshot">
+  </div>
+
+  <!-- Footer -->
+
+  <site-footer></site-footer>
+  <!-- <p>© <span id="copyright-year"></span> <span id="footerName"></span>Niels de Laat</p> -->
+
+</body>
+
+</html>

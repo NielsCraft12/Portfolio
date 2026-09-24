@@ -1,0 +1,340 @@
+/* Seasonal effects for the #Home hero.
+ *
+ * Loaded only when a season is actually running - index.html resolves
+ * window.__activeSeason before body paint and injects this stylesheet (and
+ * js/particles.js) only then, so the rest of the year neither is requested.
+ */
+
+/* Seasonal background particles: snow in winter, fireworks over new year,
+   confetti and balloons on the birthday. Sits between the #Home::before
+   gradient (z-index -1) and .container (z-index 1), so particles are always
+   behind the portrait and text. */
+#Home .particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Two layers so the travel and the sway don't fight over `transform`:
+   the wrapper moves vertically, the mark inside drifts sideways and spins.
+   Per-particle values (--x, --size, --dur, ...) are set by js/particles.js. */
+#Home .particle {
+  position: absolute;
+  top: calc(var(--size) * -2);
+  left: var(--x);
+  width: var(--size);
+  height: 100%;
+  will-change: transform;
+  animation: particle-fall var(--dur) linear var(--delay) infinite;
+}
+
+/* Balloons travel the same path backwards, so they rise instead of falling
+   without needing a second set of keyframes. */
+#Home .particle--rise {
+  animation-direction: reverse;
+}
+
+/* The wrapper is height: 100%, so a percentage translateY resolves against the
+   height of #Home - this follows a section taller than the viewport with no JS
+   measuring. The extra size*4 clears the negative `top` so the particle leaves
+   the far edge completely instead of stopping short of it. */
+@keyframes particle-fall {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, calc(100% + var(--size) * 4), 0);
+  }
+}
+
+@keyframes particle-sway {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(var(--drift), 0, 0) rotate(180deg);
+  }
+}
+
+/* Confetti flips end over end as it drifts, so pieces catch the eye edge-on
+   the way real paper does. */
+@keyframes confetti-tumble {
+  0% {
+    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate3d(1, 0.4, 0.2, 0deg);
+  }
+  100% {
+    transform: translate3d(var(--drift), 0, 0) rotate3d(1, 0.4, 0.2, 720deg);
+  }
+}
+
+#Home .snow-dot,
+#Home .snow-crystal {
+  width: var(--size);
+  height: var(--size);
+  opacity: var(--opacity);
+  will-change: transform;
+  animation: particle-sway var(--sway-dur) ease-in-out infinite;
+}
+
+/* Balloons keep their string pointing down, so they only tilt as they drift
+   rather than sharing the snowflakes' full 180deg spin. */
+@keyframes balloon-bob {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate(-7deg);
+  }
+  50% {
+    transform: translate3d(var(--drift), 0, 0) rotate(7deg);
+  }
+}
+
+/* A soft-edged gradient rather than a blurred circle: it reads the same as
+   out-of-focus snow but costs nothing extra to paint. */
+#Home .snow-dot {
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--snow-color, rgba(255, 255, 255, 0.92)) 0%, var(--snow-color, rgba(255, 255, 255, 0.92)) 35%, transparent 70%);
+}
+
+/* Only ~20% of flakes, so the drop-shadow stays cheap. */
+#Home .snow-crystal {
+  color: var(--snow-color, rgba(255, 255, 255, 0.92));
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
+}
+
+/* The balloon SVG is taller than it is wide (body plus string), so it overrides
+   the square sizing above. Colour comes from the wrapper via currentColor. */
+#Home .balloon {
+  width: var(--size);
+  height: calc(var(--size) * 1.7);
+  opacity: var(--opacity);
+  transform-origin: 50% 20%;
+  will-change: transform;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  animation: balloon-bob var(--sway-dur) ease-in-out infinite;
+}
+
+#Home .confetti {
+  width: var(--size);
+  height: calc(var(--size) / var(--aspect));
+  opacity: var(--opacity);
+  border-radius: 1px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: confetti-tumble var(--sway-dur) linear infinite;
+}
+
+/* New year fireworks. The wrapper is a zero-size anchor sitting at the burst
+   point: the rocket climbs into it, the flash goes off there and the sparks
+   fly out of it. All three share --dur and --delay (set by js/particles.js),
+   so the burst always lands where the rocket stopped. Colour comes from the
+   wrapper via currentColor; --radius and --droop set how big it reads. */
+#Home .firework {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 0;
+  height: 0;
+  --droop: 30px;
+}
+
+/* Barely falls, so the ring stays round and reads as a hard detonation. */
+#Home .firework--burst {
+  --droop: 26px;
+}
+
+/* The long, slow droop of a willow shell - the sparks hang and rain down. */
+#Home .firework--willow {
+  --droop: calc(var(--radius) * 0.85);
+}
+
+/* Heavy sparks: thrown furthest, falling visibly on the way out. */
+#Home .firework--palm {
+  --droop: calc(var(--radius) * 0.4);
+}
+
+/* The element hangs below the anchor, so the bright end of the gradient is the
+   head and the fade behind it is the tail. It climbs the whole hero over the
+   first quarter of the cycle, then stays invisible until the next pass. The
+   tail is a fixed length: --rise is now most of the screen. */
+#Home .firework__rocket {
+  position: absolute;
+  width: 3px;
+  height: clamp(38px, 8vh, 86px);
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: linear-gradient(to top, transparent, currentColor 70%, #fff);
+  box-shadow: 0 0 8px currentColor;
+  transform-origin: 50% 0;
+  will-change: transform;
+  animation: rocket-rise var(--dur) ease-out var(--delay) infinite;
+}
+
+@keyframes rocket-rise {
+  0% {
+    transform: translate3d(0, var(--rise), 0) scaleY(0.5);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  26% {
+    transform: translate3d(0, 0, 0) scaleY(1);
+    opacity: 1;
+  }
+  28%,
+  100% {
+    transform: translate3d(0, 0, 0) scaleY(1);
+    opacity: 0;
+  }
+}
+
+/* The detonation itself: a white core that blows out to the burst radius in a
+   fraction of a second. Short-lived, so it punches without washing the hero. */
+#Home .firework__flash {
+  position: absolute;
+  width: var(--radius);
+  height: var(--radius);
+  margin: calc(var(--radius) / -2);
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, currentColor 30%, transparent 68%);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: burst-flash var(--dur) ease-out var(--delay) infinite;
+}
+
+@keyframes burst-flash {
+  0%,
+  25% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  29% {
+    transform: scale(0.55);
+    opacity: 0.85;
+  }
+  40%,
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Two layers, for the same reason the falling particles use two: gravity has to
+   read in screen space, so the outer element droops straight down while the
+   streak inside flies out along its own angle. */
+#Home .firework__spark {
+  position: absolute;
+  will-change: transform;
+  animation: spark-drop var(--dur) ease-in var(--delay) infinite;
+}
+
+/* A streak rather than a dot - elongated along its own angle, white-hot at the
+   leading tip and fading out behind it, which is what gives the burst rays. */
+#Home .firework__spark::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--spark-size) * 3.6);
+  height: var(--spark-size);
+  margin-top: calc(var(--spark-size) / -2);
+  border-radius: 999px;
+  background: linear-gradient(to right, transparent, currentColor 55%, #fff);
+  box-shadow: 0 0 8px currentColor;
+  will-change: transform, opacity;
+  animation: spark-fly var(--dur) ease-out var(--delay) infinite;
+}
+
+/* The inner ring only has to fill the middle, so it skips the glow - that is
+   most of the paint cost, and there are a lot of these on screen. */
+#Home .firework__spark--core::after {
+  width: calc(var(--spark-size) * 2.4);
+  box-shadow: none;
+  opacity: 0.85;
+}
+
+/* Starts only once the rocket has arrived at 26%, so the sparks don't drift
+   before there is anything to fall from. */
+@keyframes spark-drop {
+  0%,
+  26% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, var(--droop), 0);
+  }
+}
+
+@keyframes spark-fly {
+  0%,
+  26% {
+    transform: rotate(var(--angle)) translateX(0) scaleX(0.2);
+    opacity: 0;
+  }
+  29% {
+    opacity: 1;
+  }
+  52% {
+    transform: rotate(var(--angle)) translateX(var(--dist)) scaleX(1);
+    opacity: 1;
+  }
+  70%,
+  100% {
+    transform: rotate(var(--angle)) translateX(calc(var(--dist) * 1.12)) scaleX(0.35);
+    opacity: 0;
+  }
+}
+
+/* Willow and palm hang in the air instead of snapping out, so they get the
+   same flight with a later fade - a keyframe offset can't be a variable. */
+#Home .firework--willow .firework__spark::after {
+  animation-name: spark-fly-linger;
+}
+
+#Home .firework--palm .firework__spark::after {
+  animation-name: spark-fly-linger;
+}
+
+@keyframes spark-fly-linger {
+  0%,
+  26% {
+    transform: rotate(var(--angle)) translateX(0) scaleX(0.2);
+    opacity: 0;
+  }
+  29% {
+    opacity: 1;
+  }
+  56% {
+    transform: rotate(var(--angle)) translateX(var(--dist)) scaleX(1);
+    opacity: 1;
+  }
+  86%,
+  100% {
+    transform: rotate(var(--angle)) translateX(calc(var(--dist) * 1.14)) scaleX(0.3);
+    opacity: 0;
+  }
+}
+
+/* A fast flicker laid over the fade, on a third of the shells. Opacity here
+   multiplies with the spark's own fade, so it reads as burning embers. */
+#Home .firework--crackle .firework__spark {
+  animation: spark-drop var(--dur) ease-in var(--delay) infinite, spark-crackle 0.18s steps(2, end) var(--delay) infinite;
+}
+
+@keyframes spark-crackle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #Home .particles {
+    display: none;
+  }
+}

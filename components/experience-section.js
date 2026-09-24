@@ -67,6 +67,10 @@ class ExperienceSection extends HTMLElement {
         return `
         <div class="content-section ${index === 0 ? "active" : ""}" data-index="${index}" ${index === 0 ? "" : "inert"}>
           <div class="header">
+            <!-- The date comes first so it can be floated on narrow screens and
+                 have the title wrap around it; CSS order restores the visual
+                 left-to-right order on wider screens. -->
+                        <div class="date">${exp.startDate} - <span ${/* if endDate is a present marker, allow translation key to replace it */ ""}${exp.endDate && typeof exp.endDate === "string" && exp.endDate.toLowerCase() === "present" ? 'data-i18n="experience.present"' : ""}>${exp.endDate || ""}</span></div>
             <div class="title-container">
               <div class="title">${exp.title}</div>
                             <div class="badges">
@@ -79,7 +83,6 @@ class ExperienceSection extends HTMLElement {
                                   .join("")}
                             </div>
                         </div>
-                        <div class="date">${exp.startDate} - <span ${/* if endDate is a present marker, allow translation key to replace it */ ""}${exp.endDate && typeof exp.endDate === "string" && exp.endDate.toLowerCase() === "present" ? 'data-i18n="experience.present"' : ""}>${exp.endDate || ""}</span></div>
           </div>
 
           <div class="content">
@@ -192,8 +195,7 @@ class ExperienceSection extends HTMLElement {
       if (translations) {
         this.updateTranslations(translations);
       }
-    } catch (error) {
-    }
+    } catch (error) {}
   }
 
   checkMicro5Font() {

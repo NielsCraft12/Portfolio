@@ -318,9 +318,7 @@ async function loadGoogleFont(font) {
       await document.fonts.load(`1em "${font.name}"`);
       // Wait for all fonts to be ready
       await document.fonts.ready;
-    } catch (e) {
-      console.warn("Font loading API failed, proceeding anyway:", e);
-    }
+    } catch (e) {}
   } else {
     // Fallback: just wait a bit
     await new Promise((resolve) => setTimeout(resolve, 300));

@@ -3,7 +3,8 @@
   --vh: 1vh;
 }
 
-/* Snowflakes background effect - only in Home section */
+/* Home hero. The seasonal particle layer that sits on top of this lives in
+   css/seasonal.css, which is only loaded while a season is running. */
 #Home {
   position: relative;
   overflow: hidden;
@@ -26,133 +27,6 @@
   z-index: 1;
   background: transparent;
   overflow: hidden;
-}
-
-/* Seasonal background particles: snow in winter, confetti and balloons on the
-   birthday. Sits between the #Home::before gradient (z-index -1) and .container
-   (z-index 1), so particles are always behind the portrait and text. */
-#Home .particles {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
-
-/* Two layers so the travel and the sway don't fight over `transform`:
-   the wrapper moves vertically, the mark inside drifts sideways and spins.
-   Per-particle values (--x, --size, --dur, ...) are set by js/particles.js. */
-#Home .particle {
-  position: absolute;
-  top: calc(var(--size) * -2);
-  left: var(--x);
-  width: var(--size);
-  height: 100%;
-  will-change: transform;
-  animation: particle-fall var(--dur) linear var(--delay) infinite;
-}
-
-/* Balloons travel the same path backwards, so they rise instead of falling
-   without needing a second set of keyframes. */
-#Home .particle--rise {
-  animation-direction: reverse;
-}
-
-/* The wrapper is height: 100%, so a percentage translateY resolves against the
-   height of #Home - this follows a section taller than the viewport with no JS
-   measuring. The extra size*4 clears the negative `top` so the particle leaves
-   the far edge completely instead of stopping short of it. */
-@keyframes particle-fall {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(0, calc(100% + var(--size) * 4), 0);
-  }
-}
-
-@keyframes particle-sway {
-  0%,
-  100% {
-    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(var(--drift), 0, 0) rotate(180deg);
-  }
-}
-
-/* Confetti flips end over end as it drifts, so pieces catch the eye edge-on
-   the way real paper does. */
-@keyframes confetti-tumble {
-  0% {
-    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate3d(1, 0.4, 0.2, 0deg);
-  }
-  100% {
-    transform: translate3d(var(--drift), 0, 0) rotate3d(1, 0.4, 0.2, 720deg);
-  }
-}
-
-#Home .snow-dot,
-#Home .snow-crystal {
-  width: var(--size);
-  height: var(--size);
-  opacity: var(--opacity);
-  will-change: transform;
-  animation: particle-sway var(--sway-dur) ease-in-out infinite;
-}
-
-/* Balloons keep their string pointing down, so they only tilt as they drift
-   rather than sharing the snowflakes' full 180deg spin. */
-@keyframes balloon-bob {
-  0%,
-  100% {
-    transform: translate3d(calc(var(--drift) * -1), 0, 0) rotate(-7deg);
-  }
-  50% {
-    transform: translate3d(var(--drift), 0, 0) rotate(7deg);
-  }
-}
-
-/* A soft-edged gradient rather than a blurred circle: it reads the same as
-   out-of-focus snow but costs nothing extra to paint. */
-#Home .snow-dot {
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--snow-color, rgba(255, 255, 255, 0.92)) 0%, var(--snow-color, rgba(255, 255, 255, 0.92)) 35%, transparent 70%);
-}
-
-/* Only ~20% of flakes, so the drop-shadow stays cheap. */
-#Home .snow-crystal {
-  color: var(--snow-color, rgba(255, 255, 255, 0.92));
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
-}
-
-/* The balloon SVG is taller than it is wide (body plus string), so it overrides
-   the square sizing above. Colour comes from the wrapper via currentColor. */
-#Home .balloon {
-  width: var(--size);
-  height: calc(var(--size) * 1.7);
-  opacity: var(--opacity);
-  transform-origin: 50% 20%;
-  will-change: transform;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
-  animation: balloon-bob var(--sway-dur) ease-in-out infinite;
-}
-
-#Home .confetti {
-  width: var(--size);
-  height: calc(var(--size) / var(--aspect));
-  opacity: var(--opacity);
-  border-radius: 1px;
-  transform-style: preserve-3d;
-  will-change: transform;
-  animation: confetti-tumble var(--sway-dur) linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #Home .particles {
-    display: none;
-  }
 }
 
 /* Base styles */
@@ -238,6 +112,10 @@ body {
 
 .Picture img {
   border-radius: 10%;
+  /* Block-level so the auto margins below actually centre it: when the width
+     drops under 100% on mobile, an inline img would hug the left edge of the
+     shrink-to-fit <picture> box. */
+  display: block;
   max-width: min(70vh, 500px);
   width: 100%;
   height: auto;
@@ -245,7 +123,8 @@ body {
   border: var(--primary-bg);
   object-fit: cover;
   object-position: center;
-  aspect-ratio: 1600 / 2107;
+  /* Matches the served asset (800x1054); the ratio is unchanged to 3 decimals. */
+  aspect-ratio: 800 / 1054;
 }
 
 .Text {

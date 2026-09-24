@@ -27,7 +27,6 @@ async function loadTranslation(lang) {
   }
 
   try {
-    //  console.log(`Loading translation for language: ${lang}`);
     // Always use the regular (non-minified) version
     const filename = `${lang}.js`;
     const module = await import(`./translations/${filename}`);
@@ -64,11 +63,9 @@ async function updateContent(lang) {
   const translations = await loadTranslation(lang);
 
   if (!translations) {
-    console.warn(`Translation for language '${lang}' not found or failed to load`);
     return;
   }
 
-  //console.log(`Updating content to language: ${lang}`);
   let missingCount = 0;
   let successCount = 0;
 
@@ -105,8 +102,6 @@ async function updateContent(lang) {
         if (Array.isArray(items)) {
           const html = items.map(item => `<li>${item}</li>`).join('');
           if (element.innerHTML !== html) element.innerHTML = html;
-        } else {
-          console.warn(`Expected an array for list items at key '${itemsKey}'`);
         }
       } else if (element.innerHTML !== value) {
         element.innerHTML = value;
@@ -146,7 +141,6 @@ async function updateContent(lang) {
     }
   });
 
-  //console.log(`Translation update complete: ${successCount} successful, ${missingCount} missing`);
 
   // The ageLocation string ships an empty <span id="age">, so refill it in the
   // same task as the DOM write. Doing it after the awaits below let the browser
@@ -208,7 +202,6 @@ function shouldSkipElement(element) {
  * @param {string} lang - The current language
  */
 async function handleMissingTranslation(element, key, lang) {
-  console.warn(`Missing translation: "${key}" for language "${lang}"`);
 
   // Add visual styling to indicate missing translation
   element.classList.add("missing-translation");
@@ -413,7 +406,6 @@ window.updateContent = updateContent;
 window.toggleMissingTranslationDisplay = function () {
   const currentState = localStorage.getItem("showMissingTranslations") === "true";
   localStorage.setItem("showMissingTranslations", !currentState);
-  //console.log(`Missing translation display ${!currentState ? "enabled" : "disabled"}`);
   // Re-run translation to apply the change
   const currentLang = localStorage.getItem("preferredLanguage") || "en";
   updateContent(currentLang);
@@ -426,7 +418,6 @@ window.findMissingTranslations = async function (lang = "all") {
   for (const language of languages) {
     const translations = await loadTranslation(language);
     if (!translations) {
-      console.warn(`Language '${language}' not found`);
       continue;
     }
 
@@ -440,7 +431,6 @@ window.findMissingTranslations = async function (lang = "all") {
     });
   }
 
-  console.table(missing);
   return missing;
 };
 
@@ -450,7 +440,6 @@ let isInitialized = false;
 function initializeTranslationSystem() {
   if (isInitialized) return;
 
-  // console.log("Initializing translation system...");
   isInitialized = true;
   setupLanguageSwitcher();
   initTranslation();

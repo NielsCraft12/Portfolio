@@ -6,11 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WA-LCH | Niels de Laat</title>
 
-  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="description" data-i18n="projectPages.mergePacking.description" content="Merge Packing is a quick, quirky mobile game built over a few days using Unity and C#. It features a unique merging mechanic inspired by puzzle games like Suika Game, with an alien twist: a cheerful alien drops randomized packing peanuts as you attempt to combine them into larger items.">
   <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
   <meta name="author" content="Niels de Laat">
 
 
+  <!-- navbar.js and social-buttons.js pull these into their shadow roots, which
+       hides them from the preload scanner until those components upgrade. -->
+  <link rel="preload" href="../css/Home.css" as="style">
+  <link rel="preload" href="../css/Contact.css" as="style">
   <link href="../css/prism.css" rel="stylesheet" />
 
   <script src="../components/icons.js" defer></script>
@@ -18,6 +22,9 @@
   <script type="module" src="../components/social-buttons.js"></script>
   <script type="module" src="../components/code-block.js"></script>
   <script type="module" src="../js/translate.js"></script>
+  <!-- projectPageLayout.js imports this; preloading it keeps the import off the
+       critical path, where it otherwise costs a serial round trip. -->
+  <link rel="modulepreload" href="../js/youtube-facade.js">
   <script type="module" src="../components/projectPageLayout.js"></script>
   <script type="module" src="../components/footer.js"></script>
 

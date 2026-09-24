@@ -99,7 +99,6 @@ class ProjectOrdering {
       const stored = localStorage.getItem(this.storageKey);
       return stored ? JSON.parse(stored) : null;
     } catch (error) {
-      console.warn("Error reading stored project order:", error);
       return null;
     }
   }
@@ -110,9 +109,7 @@ class ProjectOrdering {
   storeOrder(order) {
     try {
       localStorage.setItem(this.storageKey, JSON.stringify(order));
-    } catch (error) {
-      console.warn("Error storing project order:", error);
-    }
+    } catch (error) {}
   }
 
   /**
@@ -182,16 +179,13 @@ class ProjectOrdering {
 
       if (validOrder.length === 0) {
         // URL order is invalid, fall back to stored order
-        console.warn("⚠️ URL order contains no valid projects. Trying stored order...");
         const validStored = Array.isArray(storedOrder) ? storedOrder.filter((id) => this.projectMappings[id]) : [];
 
         if (validStored.length > 0) {
-          //   console.log("✅ Falling back to stored order.");
           validOrder = validStored;
           customOrder = storedOrder;
           fromURL = false; // Use stored order behavior
         } else {
-          //   console.log("⚠️ No valid stored order found. Using default order and filter.");
           shouldInitializeDefaultFilter = true;
           return this.initializeDefaultState();
         }
@@ -205,12 +199,10 @@ class ProjectOrdering {
         if (validOrder.length > 0) {
           customOrder = storedOrder;
         } else {
-          //   console.log("ℹ️ No valid stored order. Using default order and filter.");
           shouldInitializeDefaultFilter = true;
           return this.initializeDefaultState();
         }
       } else {
-        // console.log("ℹ️ No custom or stored order. Using default order and filter.");
         shouldInitializeDefaultFilter = true;
         return this.initializeDefaultState();
       }
@@ -225,7 +217,6 @@ class ProjectOrdering {
       this.switchToFirstProjectCategory(validOrder);
     }
 
-    // console.log("✅ Applied custom order:", validOrder);
   }
 
   /**
@@ -236,7 +227,6 @@ class ProjectOrdering {
     const checkForFilterProjects = () => {
       if (typeof window.filterProjects === "function") {
         window.filterProjects("games");
-        // console.log("🎮 Initialized default filter: games");
       } else {
         // If filterProjects isn't ready yet, wait a bit more
         setTimeout(checkForFilterProjects, 50);
@@ -281,7 +271,6 @@ class ProjectOrdering {
         }
       }, 50);
 
-      //   console.log(`Auto-switched to category: ${category} for project: ${firstProjectId}`);
     }
   }
 
@@ -327,7 +316,6 @@ class ProjectOrdering {
       container.appendChild(project);
     });
 
-    // console.log("Applied custom project order:", order);
   }
 
   /**
@@ -344,9 +332,7 @@ class ProjectOrdering {
 
       // Reload to apply default order
       window.location.reload();
-    } catch (error) {
-      console.warn("Error resetting project order:", error);
-    }
+    } catch (error) {}
   }
 
   /**

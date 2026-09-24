@@ -58,11 +58,11 @@
   </style>
 
   <!-- Google fonts -->
-<!-- Style sheets -->
+  <!-- Style sheets -->
   <link rel="preload" href="/fonts/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/Home.css" />
-  <link rel="stylesheet" href="css/Experience.css" />
+  <link rel="stylesheet" href="css/Experience.css?v=3" />
   <link rel="stylesheet" href="css/Projects.css" />
   <link rel="stylesheet" href="css/Contact.css" />
   <script>
@@ -95,7 +95,8 @@
       // birthday falls on the opening day of the easter window.
       const seasons = [
         { name: "birthday", startMonth: 3, startDay: 20, endMonth: 3, endDay: 20 },
-        { name: "winter-holidays", startMonth: 12, startDay: 20, endMonth: 1, endDay: 30 }
+        { name: "winter-holidays", startMonth: 12, startDay: 23, endMonth: 12, endDay: 30 },
+        { name: "new-year", startMonth: 12, startDay: 31, endMonth: 1, endDay: 1 }
 
       ];
 
@@ -106,14 +107,17 @@
         }
       }
 
-      // ?holiday=1 / ?birthday=1 force a season so it can be previewed on any
-      // date - the winter treatment is otherwise only visible in December, and
-      // the birthday one on a single day of the year.
+      // ?holiday=1 / ?birthday=1 / ?newyear=1 force a season so it can be
+      // previewed on any date - the winter treatment is otherwise only visible in
+      // December, the new year one across two days, and the birthday one on a
+      // single day of the year.
       const params = new URLSearchParams(window.location.search);
       if (params.has("holiday")) {
         window.__activeSeason = "winter-holidays";
       } else if (params.has("birthday")) {
         window.__activeSeason = "birthday";
+      } else if (params.has("newyear")) {
+        window.__activeSeason = "new-year";
       }
 
       // Single source of truth for the hero image, used by both the preload
@@ -127,6 +131,10 @@
         "birthday": {
           srcset: "images/webp/me-birthday-300.webp 300w, images/webp/me-birthday-400.webp 400w, images/webp/me-birthday-600.webp 600w, images/webp/me-birthday-800.webp 800w",
           fallback: "images/png/me-birthday.jpg"
+        },
+        "new-year": {
+          srcset: "images/webp/me-newyear-300.webp 300w, images/webp/me-newyear-400.webp 400w, images/webp/me-newyear-600.webp 600w, images/webp/me-newyear-800.webp 800w",
+          fallback: "images/png/me-newyear.jpg"
         }
       };
       const hero = heroes[window.__activeSeason] || {
@@ -136,6 +144,18 @@
       window.__heroSizes = "(max-width: 767px) 90vw, (max-width: 1300px) 450px, 500px";
       window.__heroSrcset = hero.srcset;
       window.__heroFallback = hero.fallback;
+
+      // The particle effects are worth two files only while a season is
+      // actually running, so css/seasonal.css is injected here rather than
+      // linked statically (js/particles.js likewise, at the end of the body).
+      // Still in the head and still before body paint, so there is no flash of
+      // unstyled particles.
+      if (window.__activeSeason) {
+        const seasonalCss = document.createElement("link");
+        seasonalCss.rel = "stylesheet";
+        seasonalCss.href = "css/seasonal.css";
+        document.head.appendChild(seasonalCss);
+      }
     })();
   </script>
   <!-- Resource hints for better performance -->
@@ -176,7 +196,8 @@
 
   <!-- Home Section -->
   <section id="Home">
-    <!-- Filled by js/particles.js during the winter-holidays and birthday seasons -->
+    <!-- Filled by js/particles.js during the winter-holidays, new-year and
+         birthday seasons -->
     <div class="particles" aria-hidden="true" hidden></div>
     <div class="container">
       <div class="Picture">
@@ -184,8 +205,10 @@
           <source type="image/webp" id="hero-source"
             srcset="images/webp/me-small2.webp 200w, images/webp/me-small3.webp 300w, images/webp/me-small.webp 400w, images/webp/me-medium.webp 600w, images/webp/me-large.webp 800w"
             sizes="(max-width: 767px) 90vw, (max-width: 1300px) 450px, 500px" />
-          <img src="images/png/me-fallback.jpg" alt="Niels de Laat - Game Developer" fetchpriority="high"
-            width="1600" height="2107" id="profile-img" />
+          <!-- 800x1054 is the largest candidate the srcset above can serve; the old
+               1600x2107 described images/webp/me.webp, which nothing references. -->
+          <img src="images/png/me-fallback.jpg" alt="Niels de Laat - Game Developer" fetchpriority="high" width="800"
+            height="1054" id="profile-img" />
         </picture>
         <script>
           // Swap in the seasonal portrait before the browser starts fetching.
@@ -255,8 +278,8 @@
     <div class="project-tabs" role="tablist" aria-label="Project categories">
       <button class="tab-button active" id="tab-games" type="button" data-tab="games" data-i18n="projects.games"
         role="tab" aria-selected="true" aria-controls="projects-panel">Games</button>
-      <button class="tab-button" id="tab-web" type="button" data-tab="web" data-i18n="projects.webProjects"
-        role="tab" aria-selected="false" aria-controls="projects-panel" tabindex="-1">Web</button>
+      <button class="tab-button" id="tab-web" type="button" data-tab="web" data-i18n="projects.webProjects" role="tab"
+        aria-selected="false" aria-controls="projects-panel" tabindex="-1">Web</button>
       <!-- <button class="tab-button" data-tab="3dPrinting" data-i18n="projects.3dPrinting" role="tab" aria-selected="false"
         aria-controls="projects-panel">3D Printing</button> -->
     </div>
@@ -418,7 +441,7 @@ Maze Collector                                      Maze Collector              
       ]
     },
     {
-      "title": "Ster.Co",
+      "title": "Ster.co",
       "badges": ["internship"],
       "startDate": "02.2026",
       "endDate": "Present",
@@ -469,9 +492,18 @@ Maze Collector                                      Maze Collector              
   <script src="js/main.js" defer></script>
 
   <!-- Non-critical scripts with lower priority -->
-  <script defer src="js/Experience.js"></script>
+  <script defer src="js/Experience.js?v=3"></script>
   <script defer src="js/ios-viewport-fix.js"></script>
-  <script defer src="js/particles.js"></script>
+  <script>
+    // Counterpart to the css/seasonal.css injection in the head: out of season
+    // the particle script is never requested. Injected at the end of the body,
+    // so .particles is already parsed by the time it runs.
+    if (window.__activeSeason) {
+      const particles = document.createElement("script");
+      particles.src = "js/particles.js";
+      document.body.appendChild(particles);
+    }
+  </script>
 
   <!-- Analytics loaded asynchronously -->
   <script data-goatcounter="https://nielsdelaat.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>

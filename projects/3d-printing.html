@@ -237,7 +237,11 @@
     <link href="../css/style.css" rel="stylesheet" />
     <link href="../css/ProjectPage.css" rel="stylesheet" />
     <link href="../css/Home.css" rel="stylesheet" />
-    <link href="../css/prism.css" rel="stylesheet" />
+    <!-- navbar.js and social-buttons.js pull these into their shadow roots, which
+       hides them from the preload scanner until those components upgrade. -->
+  <link rel="preload" href="../css/Home.css" as="style">
+  <link rel="preload" href="../css/Contact.css" as="style">
+  <link href="../css/prism.css" rel="stylesheet" />
   </noscript>
 
   <!-- Font Awesome Icons - loaded asynchronously -->
@@ -613,7 +617,7 @@
       <!-- Trailer Section -->
       <!-- <h1 data-i18n="trailer" style="text-align: center" class="GradiantTitle">Trailer</h1>
         <div style="position: relative; padding-top: 56.25%; width: 100%; border-radius: 20px; overflow: hidden">
-          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="https://www.youtube.com/embed/z1rAx_g-JZI?si=OWBI3CY6Af5n6Iyw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" src="https://www.youtube-nocookie.com/embed/z1rAx_g-JZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
         </div> -->
 
       <!-- Screenshots Section -->
@@ -684,9 +688,7 @@
       translationsLoaded = true;
       try {
         await import('../js/translate.js');
-      } catch (e) {
-        console.warn('Failed to load translations:', e);
-      }
+      } catch (e) {}
     };
 
     // Load translations on first user interaction

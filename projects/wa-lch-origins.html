@@ -6,11 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WA-LCH | Niels de Laat</title>
 
-  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="description" data-i18n="projectPages.walchOrigins.description" content="Made in ~30 hours during a game jam (theme:“Bubbles”). Built with Unity and C#. WA-LCH Origins is a chaotic mini-cleanup adventure where you play as a janitor scrubbing away trash and trapping rogue rats using bubble-based tools. Built entirely under game jam pressure, it features player-controlled physics movement, animated doors, trap-based rat removal, and a bubbly cleaning mechanic.">
   <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
   <meta name="author" content="Niels de Laat">
 
 
+  <!-- navbar.js and social-buttons.js pull these into their shadow roots, which
+       hides them from the preload scanner until those components upgrade. -->
+  <link rel="preload" href="../css/Home.css" as="style">
+  <link rel="preload" href="../css/Contact.css" as="style">
   <link href="../css/prism.css" rel="stylesheet" />
 
   <script src="../components/icons.js" defer></script>
@@ -18,6 +22,9 @@
   <script type="module" src="../components/social-buttons.js"></script>
   <script type="module" src="../components/code-block.js"></script>
   <script type="module" src="../js/translate.js"></script>
+  <!-- projectPageLayout.js imports this; preloading it keeps the import off the
+       critical path, where it otherwise costs a serial round trip. -->
+  <link rel="modulepreload" href="../js/youtube-facade.js">
   <script type="module" src="../components/projectPageLayout.js"></script>
   <script type="module" src="../components/footer.js"></script>
 
@@ -241,7 +248,7 @@ void MoveDoor(Vector3 goalPos) {
         {
           type: "media",
           mediaType: "video",
-          src: "https://www.youtube.com/embed/z1rAx_g-JZI",
+          src: "https://www.youtube-nocookie.com/embed/z1rAx_g-JZI",
           alt: "WA-LCH Origins walking",
           loading: "lazy"
 
@@ -250,7 +257,7 @@ void MoveDoor(Vector3 goalPos) {
       ],
       // Sidebar Content
       sidebar: {
-        trailerUrl: "https://www.youtube.com/embed/z1rAx_g-JZI?si=OWBI3CY6Af5n6Iyw",
+        trailerUrl: "https://www.youtube-nocookie.com/embed/z1rAx_g-JZI",
         screenshots: [
           { src: "../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot1.webp", alt: "WA-LCH Origins Screenshot 1", thumbs: [400, 800], w: 2559, h: 1439 },
           { src: "../images/webp/ProjectScreenShots/WALCHOrgins/WalchOrginsScreenshot2.webp", alt: "WA-LCH Origins Screenshot 2", thumbs: [400, 800], w: 2559, h: 1439 },

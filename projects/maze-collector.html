@@ -5,11 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="description" content="Maze Collector is a first-person maze game where you navigate procedurally themed mazes and collect every pickup to find your way out.">
   <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
   <meta name="author" content="Niels de Laat">
 
 
+  <!-- navbar.js and social-buttons.js pull these into their shadow roots, which
+       hides them from the preload scanner until those components upgrade. -->
+  <link rel="preload" href="../css/Home.css" as="style">
+  <link rel="preload" href="../css/Contact.css" as="style">
   <link href="../css/prism.css" rel="stylesheet" />
 
   <script src="../components/icons.js" defer></script>
@@ -17,6 +21,9 @@
   <script type="module" src="../components/social-buttons.js"></script>
   <script type="module" src="../components/code-block.js"></script>
   <script type="module" src="../js/translate.js"></script>
+  <!-- projectPageLayout.js imports this; preloading it keeps the import off the
+       critical path, where it otherwise costs a serial round trip. -->
+  <link rel="modulepreload" href="../js/youtube-facade.js">
   <script type="module" src="../components/projectPageLayout.js"></script>
   <script type="module" src="../components/footer.js"></script>
 
@@ -78,7 +85,7 @@
       ],
       // Sidebar Content
       sidebar: {//localhost/Portfolio/projects/merge-packing-backup.html
-        trailerUrl: "https://www.youtube.com/embed/zgEdaaWe3JQ?si=Uud4DAc4EJKVmMVA",
+        trailerUrl: "https://www.youtube-nocookie.com/embed/zgEdaaWe3JQ",
         screenshots: [
           { src: "../images/webp/ProjectScreenShots/MazeCollector/MazeCollectorScreenshot1.webp", alt: "MazeCollector Screenshot 1", thumbs: [400, 800], w: 1020, h: 769 },
           { src: "../images/webp/ProjectScreenShots/MazeCollector/MazeCollectorScreenshot2.webp", alt: "MazeCollector Screenshot 2", thumbs: [400, 800], w: 1021, h: 763 },

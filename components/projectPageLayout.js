@@ -2,6 +2,8 @@
 // COMPLETE RENDERING CODE - WITH COMPONENT WAITING
 // ============================================
 
+import { createYouTubeFacade } from "../js/youtube-facade.js";
+
 // Starts an autoplaying clip when it scrolls into view and pauses it on the way
 // out, so a page full of demo videos costs one download at a time.
 const videoVisibility =
@@ -30,6 +32,17 @@ function observeVideo(video) {
     video.preload = "auto";
     video.autoplay = true;
   }
+}
+
+// A code block shows its "View on GitHub" button only when there is somewhere
+// to send the reader. Any of these turns it off: no `githubUrl` on the block,
+// `githubButton: false` on the block (a link you have but do not want public),
+// or `githubButtons: false` on PROJECT_DATA to drop them across the whole page.
+function resolveGithubButton(block) {
+  const pageDefault = typeof PROJECT_DATA !== "undefined" && PROJECT_DATA.githubButtons === false;
+  const url = typeof block.githubUrl === "string" ? block.githubUrl.trim() : "";
+  const enabled = block.githubButton !== false && !pageDefault && url !== "" && url !== "#";
+  return { url, enabled };
 }
 
 // Wrap everything in an async init function
@@ -102,7 +115,7 @@ async function initProjectPage() {
         mainContent.appendChild(mediaDiv);
       } else if (section.mediaType === "video") {
         // Check if it's a YouTube video
-        if (section.src.includes("youtube.com/embed") || section.src.includes("youtu.be")) {
+        if (section.src.includes("youtube.com/embed") || section.src.includes("youtube-nocookie.com/embed") || section.src.includes("youtu.be")) {
           // YouTube embed - use responsive container directly
           const videoContainer = document.createElement("div");
           videoContainer.className = "video-container";
@@ -116,23 +129,15 @@ async function initProjectPage() {
           videoContainer.style.position = "relative";
           videoContainer.style.paddingTop = "56.25%"; // 16:9 aspect ratio
 
-          const iframe = document.createElement("iframe");
-          iframe.src = section.src;
-          iframe.title = section.alt || "YouTube Video";
-          iframe.frameBorder = "0";
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-          iframe.allowFullscreen = true;
-          iframe.loading = section.loading || "lazy";
-
-          // Position iframe absolutely to fill the 16:9 wrapper
-          iframe.style.position = "absolute";
-          iframe.style.top = "0";
-          iframe.style.left = "0";
-          iframe.style.width = "100%";
-          iframe.style.height = "100%";
-          iframe.style.border = "0";
-
-          videoContainer.appendChild(iframe);
+          // Poster only -- the player iframe is created on click, so the page
+          // loads without touching YouTube or google.com. .yt-facade fills the
+          // 16:9 wrapper the same way the iframe used to.
+          videoContainer.appendChild(
+            createYouTubeFacade(section.src, {
+              title: section.alt || PROJECT_DATA.title,
+              loading: section.loading || "lazy",
+            })
+          );
           mainContent.appendChild(videoContainer);
         } else {
           // Local video file
@@ -171,7 +176,9 @@ async function initProjectPage() {
     // Handle inline code blocks
     if (section.type === "codeblock") {
       const codeBlockElement = document.createElement("code-block");
-      codeBlockElement.setAttribute("href", section.githubUrl || "");
+      const githubButton = resolveGithubButton(section);
+      codeBlockElement.setAttribute("href", githubButton.enabled ? githubButton.url : "");
+      if (!githubButton.enabled) codeBlockElement.setAttribute("button", "false");
       codeBlockElement.setAttribute("language", section.language || "csharp");
       codeBlockElement.setAttribute("code", section.code || "");
 
@@ -293,7 +300,9 @@ async function initProjectPage() {
   if (PROJECT_DATA.codeBlocks && PROJECT_DATA.codeBlocks.length > 0) {
     PROJECT_DATA.codeBlocks.forEach((block) => {
       const codeBlockElement = document.createElement("code-block");
-      codeBlockElement.setAttribute("href", block.githubUrl);
+      const githubButton = resolveGithubButton(block);
+      codeBlockElement.setAttribute("href", githubButton.enabled ? githubButton.url : "");
+      if (!githubButton.enabled) codeBlockElement.setAttribute("button", "false");
       codeBlockElement.setAttribute("language", block.language || "csharp");
       codeBlockElement.setAttribute("code", block.code);
 
@@ -313,10 +322,9 @@ async function initProjectPage() {
 
   // Render Sidebar
   const trailerContainer = document.getElementById("trailerContainer");
-  const trailerIframe = document.createElement("iframe");
-  trailerIframe.src = PROJECT_DATA.sidebar.trailerUrl;
-  trailerIframe.allowFullscreen = true;
-  trailerContainer.appendChild(trailerIframe);
+  trailerContainer.appendChild(
+    createYouTubeFacade(PROJECT_DATA.sidebar.trailerUrl, { title: PROJECT_DATA.title + " trailer" })
+  );
 
   const screenshotsContainer = document.getElementById("screenshotsContainer");
   PROJECT_DATA.sidebar.screenshots.forEach((screenshot) => {
@@ -422,9 +430,7 @@ async function initProjectPage() {
       }
       document.title = `${PROJECT_DATA.title} | Niels de Laat`;
     }
-  } catch (e) {
-    console.warn("Failed to re-run translations after dynamic rendering", e);
-  }
+  } catch (e) {}
 
   // Mobile / Tablet playability message logic
   (function () {

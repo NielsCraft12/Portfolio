@@ -194,6 +194,70 @@ code {
   border: none;
 }
 
+/* Click-to-load poster standing in for a YouTube iframe. Fills the 16:9
+   wrapper exactly as the iframe does, so swapping one for the other on click
+   causes no layout shift. See js/youtube-facade.js for why the real embed is
+   deferred. */
+.video-container .yt-facade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 0;
+  border: none;
+  background: #000;
+  cursor: pointer;
+}
+
+.video-container .yt-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-container .yt-facade-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.7);
+  transition: background var(--transition-speed, 0.3s) ease;
+}
+
+/* White triangle, drawn with borders so there is no extra asset to load. */
+.video-container .yt-facade-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  border-style: solid;
+  border-width: 11px 0 11px 19px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.video-container .yt-facade:hover .yt-facade-play,
+.video-container .yt-facade:focus-visible .yt-facade-play {
+  background: #f00;
+}
+
+.video-container .yt-facade:focus-visible {
+  outline: 3px solid var(--gradient-start, #fff);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-container .yt-facade-play {
+    transition: none;
+  }
+}
+
 .screenshot {
   width: 100%;
   /* required now that the img carries width/height attributes, otherwise the
@@ -320,6 +384,21 @@ footer {
   .container {
     grid-template-columns: 1fr;
     gap: var(--spacing-medium);
+  }
+
+  /* Below this breakpoint the grid collapses to one column, so the sidebar
+     stacks underneath .main-content instead of beside it. The whole article is
+     injected by projectPageLayout.js, which runs a few hundred ms after first
+     paint, so the sidebar first renders just below the title and is then shoved
+     down the article's full height -- that single shift was the page's entire
+     CLS (0.59 measured under Lighthouse's mobile throttling).
+
+     Reserving a viewport's worth of column keeps the divider and sidebar below
+     the fold until the real content lands, and a shift that happens off-screen
+     costs nothing. Every project page's article is far taller than this, so the
+     reservation never adds whitespace -- it only matters before the render. */
+  .main-content {
+    min-height: 100vh;
   }
 
   .divider {

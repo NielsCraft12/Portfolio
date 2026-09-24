@@ -1,15 +1,21 @@
 class CodeBlock extends HTMLElement {
   connectedCallback() {
-    const href = this.getAttribute("href") || "#";
+    const href = this.getAttribute("href") || "";
     const language = this.getAttribute("language") || "csharp";
     const code = this.getAttribute("code") || "";
     const buttonText = this.getAttribute("button-text") || "View on GitHub";
     const buttonI18n = this.getAttribute("button-i18n") || "projectPages.viewOnGitHub";
     const buttonTitle = this.getAttribute("button-title") || "View on GitHub";
 
-    this.innerHTML = `
-      <div class="code-block" style="position: relative !important;">
-        <a data-i18n="${buttonI18n}"
+    // The button is opt-out in two ways: `button="false"` hides it even when a
+    // link exists (private repo, unpublished branch), and an empty `href` hides
+    // it on its own -- a button pointing at "#" was never useful.
+    const buttonAttr = (this.getAttribute("button") || "").toLowerCase();
+    const buttonDisabled = buttonAttr === "false" || buttonAttr === "off" || buttonAttr === "none" || this.hasAttribute("no-button");
+    const showButton = !buttonDisabled && href !== "" && href !== "#";
+
+    const buttonMarkup = showButton
+      ? `<a data-i18n="${buttonI18n}"
           href="${href}"
           class="github-inline" target="_blank" title="${buttonTitle}"
           style="position: absolute !important;
@@ -30,7 +36,12 @@ class CodeBlock extends HTMLElement {
                  font-family: monospace !important;">
           <i class="fab fa-github"></i>
           ${buttonText}
-        </a>
+        </a>`
+      : "";
+
+    this.innerHTML = `
+      <div class="code-block" style="position: relative !important;">
+        ${buttonMarkup}
         <pre><code class="language-${language}">
 ${code}
         </code></pre>

@@ -62,9 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function hexToRgb(hex) {
     const cleanHex = hex.replace("#", "");
-    const normalizedHex = cleanHex.length === 3
-      ? cleanHex.split("").map((c) => c + c).join("")
-      : cleanHex;
+    const normalizedHex =
+      cleanHex.length === 3
+        ? cleanHex
+            .split("")
+            .map((c) => c + c)
+            .join("")
+        : cleanHex;
 
     return {
       r: parseInt(normalizedHex.slice(0, 2), 16),
@@ -192,37 +196,49 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Mobile swipe navigation
-  experienceSection.addEventListener("touchstart", (e) => {
-    if (!e.touches || e.touches.length !== 1) return;
+  experienceSection.addEventListener(
+    "touchstart",
+    (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
 
-    touchTracking = true;
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
+      touchTracking = true;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    },
+    { passive: true },
+  );
 
-  experienceSection.addEventListener("touchend", (e) => {
-    if (!touchTracking || !e.changedTouches || e.changedTouches.length !== 1) return;
+  experienceSection.addEventListener(
+    "touchend",
+    (e) => {
+      if (!touchTracking || !e.changedTouches || e.changedTouches.length !== 1) return;
 
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
-    const deltaX = touchEndX - touchStartX;
-    const deltaY = touchEndY - touchStartY;
-    const swipeThreshold = 50;
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      const swipeThreshold = 50;
 
-    touchTracking = false;
+      touchTracking = false;
 
-    if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) < Math.abs(deltaY)) {
-      return;
-    }
+      if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) < Math.abs(deltaY)) {
+        return;
+      }
 
-    if (deltaX < 0 && currentIndex < experienceCount - 1) {
-      navigateToExperience(currentIndex + 1);
-    } else if (deltaX > 0 && currentIndex > 0) {
-      navigateToExperience(currentIndex - 1);
-    }
-  }, { passive: true });
+      if (deltaX < 0 && currentIndex < experienceCount - 1) {
+        navigateToExperience(currentIndex + 1);
+      } else if (deltaX > 0 && currentIndex > 0) {
+        navigateToExperience(currentIndex - 1);
+      }
+    },
+    { passive: true },
+  );
 
-  experienceSection.addEventListener("touchcancel", () => {
-    touchTracking = false;
-  }, { passive: true });
+  experienceSection.addEventListener(
+    "touchcancel",
+    () => {
+      touchTracking = false;
+    },
+    { passive: true },
+  );
 });

@@ -6,11 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WA-LCH | Niels de Laat</title>
 
-  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="description" data-i18n="projectPages.walch.description" content="You are LCH, a cleaning bot who awakens from years of hibernation by an unknown source. Your mission is to clean everything around you to escape. Clean each room thoroughly to obtain keycards that grant access to the next area. But be careful... evil robots lurk in the shadows. Won second place at GluCon.">
   <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
   <meta name="author" content="Niels de Laat">
 
 
+  <!-- navbar.js and social-buttons.js pull these into their shadow roots, which
+       hides them from the preload scanner until those components upgrade. -->
+  <link rel="preload" href="../css/Home.css" as="style">
+  <link rel="preload" href="../css/Contact.css" as="style">
   <link href="../css/prism.css" rel="stylesheet" />
 
   <script src="../components/icons.js" defer></script>
@@ -18,6 +22,9 @@
   <script type="module" src="../components/social-buttons.js"></script>
   <script type="module" src="../components/code-block.js"></script>
   <script type="module" src="../js/translate.js"></script>
+  <!-- projectPageLayout.js imports this; preloading it keeps the import off the
+       critical path, where it otherwise costs a serial round trip. -->
+  <link rel="modulepreload" href="../js/youtube-facade.js">
   <script type="module" src="../components/projectPageLayout.js"></script>
   <script type="module" src="../components/footer.js"></script>
 
@@ -274,7 +281,7 @@ public void UpdateRoom(bool[] status)
       ],
       // Sidebar Content
       sidebar: {
-        trailerUrl: "https://www.youtube.com/embed/D95I2jfcv_Q?si=lCGYlfrblu8t_9Bj",
+        trailerUrl: "https://www.youtube-nocookie.com/embed/D95I2jfcv_Q",
         screenshots: [
           { src: "../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot1.webp", alt: "WA-LCH Screenshot 1", loading: "lazy", thumbs: [400, 800], w: 1919, h: 1079 },
           { src: "../images/webp/ProjectScreenShots/WALCH/WALCHscreenshot2.webp", alt: "WA-LCH Screenshot 2", loading: "lazy", thumbs: [400, 800], w: 1919, h: 1079 },

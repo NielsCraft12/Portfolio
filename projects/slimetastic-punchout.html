@@ -5,11 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" data-i18n="projects.wa_lch.description" content="WA-LCH game project by Niels de Laat">
+  <meta name="description" data-i18n="projectPages.slimetasticPunchout.description" content="Slimetastic Punchout is a chaotic and fun local multiplayer game where you take control of colorful, squishy slimes and battle it out in fast-paced arenas. The goal? Cover as many tiles as you can while sliding, bouncing, and splattering your way across the map. Along the way, you can land some solid punches to shove your opponents out of the way or just throw them off their game. Every match is unpredictable, full of laughter, and a messy fight for control. It's slimy chaos at its best!">
   <meta name="keywords" content="WA-LCH, game development, Unity, programming, portfolio">
   <meta name="author" content="Niels de Laat">
 
 
+  <!-- navbar.js and social-buttons.js pull these into their shadow roots, which
+       hides them from the preload scanner until those components upgrade. -->
+  <link rel="preload" href="../css/Home.css" as="style">
+  <link rel="preload" href="../css/Contact.css" as="style">
   <link href="../css/prism.css" rel="stylesheet" />
 
   <script src="../components/icons.js" defer></script>
@@ -17,6 +21,9 @@
   <script type="module" src="../components/social-buttons.js"></script>
   <script type="module" src="../components/code-block.js"></script>
   <script type="module" src="../js/translate.js"></script>
+  <!-- projectPageLayout.js imports this; preloading it keeps the import off the
+       critical path, where it otherwise costs a serial round trip. -->
+  <link rel="modulepreload" href="../js/youtube-facade.js">
   <script type="module" src="../components/projectPageLayout.js"></script>
   <script type="module" src="../components/footer.js"></script>
 
@@ -345,7 +352,7 @@ if (other.gameObject.CompareTag("Floor"))
       ],
       // Sidebar Content
       sidebar: {//localhost/Portfolio/projects/merge-packing-backup.html
-        trailerUrl: "https://www.youtube.com/embed/zgEdaaWe3JQ?si=Uud4DAc4EJKVmMVA",
+        trailerUrl: "https://www.youtube-nocookie.com/embed/zgEdaaWe3JQ",
         screenshots: [
           { src: "../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot1.webp", alt: "WA-LCH Origins Screenshot 1", thumbs: [400, 800], w: 2559, h: 1434 },
           { src: "../images/webp/ProjectScreenShots/SlimetasticPunchout/Screenshot2.webp", alt: "WA-LCH Origins Screenshot 1", thumbs: [400, 800], w: 874, h: 492 },
